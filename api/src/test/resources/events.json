@@ -1,0 +1,3652 @@
+{
+  "events": [
+    {
+      "guid": "import-5a4a8c1099b9cb88ee",
+      "title": "Anti-Honeypot Technology",
+      "subtitle": null,
+      "slug": "109_Anti-Honeypot_Techniques",
+      "link": "http://www.ccc.de/congress/2004/fahrplan/event/109.en.html",
+      "description": "Current Honeypot-based tools have a huge disadvantage: Attackers can detect honeypots with simple techniques and are to some extent also able to circumvent and disable the logging mechanisms. On the basis of some examples, we will show methods for attackers to play with honeypots.\n",
+      "original_language": "eng",
+      "persons": [
+        "Thorsten Holz"
+      ],
+      "tags": [
+        "21c3",
+        " Hacking"
+      ],
+      "view_count": 154,
+      "promoted": false,
+      "date": "2004-12-28T01:00:00.000+01:00",
+      "release_date": "2008-01-05T01:00:00.000+01:00",
+      "updated_at": "2019-09-29T01:17:14.597+02:00",
+      "length": 3341,
+      "duration": 3341,
+      "thumb_url": "https://static.media.ccc.de/media/congress/2004/109 Anti-Honeypot Techniques.jpg",
+      "poster_url": "https://static.media.ccc.de/media/congress/2004/109 Anti-Honeypot Techniques_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/congress/2004/import-5a4a8c1099b9cb88ee-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/congress/2004/import-5a4a8c1099b9cb88ee-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/109_Anti-Honeypot_Techniques",
+      "url": "https://api.media.ccc.de/public/events/import-5a4a8c1099b9cb88ee",
+      "conference_title": "21C3: The Usual Suspects",
+      "conference_url": "https://api.media.ccc.de/public/conferences/21c3",
+      "related": [
+        {
+          "event_id": 22,
+          "event_guid": "import-d9fdeee55d49ce271e",
+          "weight": 4
+        },
+        {
+          "event_id": 704,
+          "event_guid": "import-66eca4edef506d610a",
+          "weight": 3
+        },
+        {
+          "event_id": 706,
+          "event_guid": "import-b5dce9131ee2c352f1",
+          "weight": 9
+        },
+        {
+          "event_id": 707,
+          "event_guid": "import-656b0b8a34f30c8add",
+          "weight": 4
+        },
+        {
+          "event_id": 708,
+          "event_guid": "import-1d60732e54a7b8cbdb",
+          "weight": 3
+        },
+        {
+          "event_id": 709,
+          "event_guid": "import-86dcc5d427d763434f",
+          "weight": 3
+        },
+        {
+          "event_id": 710,
+          "event_guid": "import-996ee6767784dc2e88",
+          "weight": 3
+        },
+        {
+          "event_id": 742,
+          "event_guid": "import-8e99ee5524fb2d218b",
+          "weight": 3
+        },
+        {
+          "event_id": 834,
+          "event_guid": "import-a5e037ae18a0585a58",
+          "weight": 3
+        },
+        {
+          "event_id": 842,
+          "event_guid": "import-c767cd58e7116fb747",
+          "weight": 5
+        },
+        {
+          "event_id": 854,
+          "event_guid": "import-61f9360e56315a6d0d",
+          "weight": 3
+        },
+        {
+          "event_id": 859,
+          "event_guid": "import-75dd511530fcb882b6",
+          "weight": 4
+        }
+      ]
+    },
+    {
+      "guid": "f30f3708-8269-51ee-bdce-3c60a64693f1",
+      "title": "Collaborative Game Development with Godot: ",
+      "subtitle": "From Studio Model to Community-Built Games",
+      "slug": "godotfest2025-collaborative-game-development-with-godot-from-studio-model-to-community-built-games",
+      "link": "https://pretalx.godotfest.com/godotfest-25/talk/S798HC/",
+      "description": "Games can be more than finished products—they can be living classrooms.\r\nIn this session, Sarah Spiers (Senior Producer of Threadbare, former Development Director at EA, Forbes 30 Under 30) and Will Thompson (open-source developer, Endless Access) will share how collaborative development with Godot can transform game-making into a pathway for new creators.\r\n\r\nSarah will frame why open-source practices matter for the future of the industry and how collaborative models give new voices a way in. Will will showcase Threadbare, Endless Access’ open-source narrative adventure built in Godot, where learners and contributors from around the world are shaping the game. Attendees will see how the project is structured to welcome contributors of all levels, what challenges and successes have emerged, and how Godot powers not just great games but inclusive, community-driven learning.\r\n\r\nThis 25-minute talk will highlight how Endless Access is using Godot as both a development engine and a platform for collaborative, open-source learning.\r\n\r\nSpeakers:\r\nSarah Spiers, Senior Producer at Endless Access and former Development Director at EA, brings deep experience in studio production and a vision for collaborative, open practices in the games industry.\r\n\r\nWill Thompson, a long-time open-source developer and core contributor to Threadbare, bridges technical expertise with a mission to expand digital inclusion.\r\n\r\nContent \u0026 Flow:\r\nIntroduction \u0026 Context (Sarah) – Why collaborative game development matters, how it reimagines the studio model, and what it means for opening pathways into game-making.\r\n\r\nCase Study: Threadbare (Will) – Demonstration of the open-source game in development, built with Godot and shaped by a growing global community. He will show contributor pathways, onboarding practices, and lessons learned from engaging first-time coders, artists, and writers.\r\n\r\nTakeaways – Attendees will leave with a clear understanding of how open-source models can be applied in their own projects, practical insights on structuring community-driven development, and inspiration for using Godot to support inclusion and learning.\r\n\r\nThe talk combines industry perspective with an active case study, designed to resonate with both professional developers and educators seeking to expand access to game-making.\r\n\r\nLicensed to the public under https://creativecommons.org/licenses/by/4.0/",
+      "original_language": "eng",
+      "persons": [
+        "Will Thompson",
+        "Sarah Spiers"
+      ],
+      "tags": [
+        "92",
+        "2025",
+        "godotfest2025",
+        "Talk",
+        "Iberico",
+        "godotfest2025-eng",
+        "godot",
+        "Day 1"
+      ],
+      "view_count": 34,
+      "promoted": false,
+      "date": "2025-11-11T12:00:00.000+01:00",
+      "release_date": "2025-11-11T00:00:00.000+01:00",
+      "updated_at": "2025-12-17T21:15:07.698+01:00",
+      "length": 1372,
+      "duration": 1372,
+      "thumb_url": "https://static.media.ccc.de/media/events/godotfest/2025/92-f30f3708-8269-51ee-bdce-3c60a64693f1.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/godotfest/2025/92-f30f3708-8269-51ee-bdce-3c60a64693f1_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/godotfest/2025/92-f30f3708-8269-51ee-bdce-3c60a64693f1.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/godotfest/2025/92-f30f3708-8269-51ee-bdce-3c60a64693f1.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/godotfest2025-collaborative-game-development-with-godot-from-studio-model-to-community-built-games",
+      "url": "https://api.media.ccc.de/public/events/f30f3708-8269-51ee-bdce-3c60a64693f1",
+      "conference_title": "GodotFest 2025",
+      "conference_url": "https://api.media.ccc.de/public/conferences/godotfest2025",
+      "related": []
+    },
+    {
+      "guid": "import-252ce47c61b88786bd",
+      "title": "The School of Hacking Art",
+      "subtitle": "Is it possible?  10 years experience from the first man who said \"yes\".",
+      "slug": "cccamp07-en-2032-The_School_of_Hacking_Art",
+      "link": "http://events.ccc.de/camp/2007/Fahrplan/events/2032.en.html",
+      "description": "At the beginning of 90s Soviet (now Russian) hackerdom begin to experience same problems, as everywhere. Journalists became to blame computer fandom in virtually every crime they could imagine.\n",
+      "original_language": "eng",
+      "persons": [
+        "Ilya V. Vasilyev"
+      ],
+      "tags": [
+        "camp2007",
+        " Community"
+      ],
+      "view_count": 33,
+      "promoted": false,
+      "date": "2007-08-10T02:00:00.000+02:00",
+      "release_date": "2009-09-28T02:00:00.000+02:00",
+      "updated_at": "2025-02-02T21:15:07.810+01:00",
+      "length": 3066,
+      "duration": 3066,
+      "thumb_url": "https://static.media.ccc.de/media/conferences/camp2007/cccamp07-en-2032-The_School_of_Hacking_Art.jpg",
+      "poster_url": "https://static.media.ccc.de/media/conferences/camp2007/cccamp07-en-2032-The_School_of_Hacking_Art_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/conferences/camp2007/import-252ce47c61b88786bd-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/conferences/camp2007/import-252ce47c61b88786bd-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/cccamp07-en-2032-The_School_of_Hacking_Art",
+      "url": "https://api.media.ccc.de/public/events/import-252ce47c61b88786bd",
+      "conference_title": "Chaos Communication Camp 2007",
+      "conference_url": "https://api.media.ccc.de/public/conferences/camp2007",
+      "related": [
+        {
+          "event_id": 90,
+          "event_guid": "import-4d57a48783531e47ab",
+          "weight": 1
+        },
+        {
+          "event_id": 2659,
+          "event_guid": "e757e434-1104-45ff-80f6-9c022d028dc0",
+          "weight": 1
+        },
+        {
+          "event_id": 3450,
+          "event_guid": "4bdc2468-fc82-4a7d-9df8-df1f40e6ea8f",
+          "weight": 1
+        },
+        {
+          "event_id": 4885,
+          "event_guid": "956cf3ed-c342-4c1d-b636-29ec3d4578d2",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "guid": "c07ccea0-7685-48c9-9a2c-4be494f13e98",
+      "title": "So funkt's in Stuttgart",
+      "subtitle": null,
+      "slug": "fsck2023-56102-so-funkts-in-stuttgart",
+      "link": "https://cfp.events.hacknang.de/fsck-2023/talk/3XKLAV/",
+      "description": "Wie betreiben wir unser Netz? Was bewirken wir damit? Wie finanzieren wir uns? Wo können wir Unterstützung gebrauchen? In diesem Talk beanworten wir diese und weitere Fragen rund um Freifunk Stuttgart - von der Technik bis zur Organisation.\n\n",
+      "original_language": "deu",
+      "persons": [
+        "nrb"
+      ],
+      "tags": [
+        "import",
+        "56102",
+        "2023",
+        "Talks"
+      ],
+      "view_count": 125,
+      "promoted": false,
+      "date": "2023-06-03T22:45:00.000+02:00",
+      "release_date": "2023-06-12T00:00:00.000+02:00",
+      "updated_at": "2025-04-16T08:00:03.313+02:00",
+      "length": 1544,
+      "duration": 1544,
+      "thumb_url": "https://static.media.ccc.de/media/events/fsck/fsck2023/56102-c07ccea0-7685-48c9-9a2c-4be494f13e98.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fsck/fsck2023/56102-c07ccea0-7685-48c9-9a2c-4be494f13e98_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fsck/fsck2023/56102-c07ccea0-7685-48c9-9a2c-4be494f13e98.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fsck/fsck2023/56102-c07ccea0-7685-48c9-9a2c-4be494f13e98.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fsck2023-56102-so-funkts-in-stuttgart",
+      "url": "https://api.media.ccc.de/public/events/c07ccea0-7685-48c9-9a2c-4be494f13e98",
+      "conference_title": "FSCK 2023",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fsck2023",
+      "related": []
+    },
+    {
+      "guid": "9959c4ef-e376-422a-a60c-d7cba6573dbe",
+      "title": "Linux für Einsteiger",
+      "subtitle": "Alles was man wissen muss um heute Abend noch Linux zu installieren.",
+      "slug": "linux-fuer-einsteiger",
+      "link": "https://nook-luebeck.de/talks/linux-fuer-einsteiger/",
+      "description": "Linux oder auch GNU/Linux bezeichnet Betriebssysteme, die eine Alternative\nzu Windows darstellen. Linux ist dabei sehr anpassungsfähig, die Benutzeroberfläche\nkann komplett individualisiert werden oder es kann ganz auf sie verzichtet werden.\nAber vor allem ist Linux Kostenlos und Open Source, was bedeutet das jeder den\nProgrammcode von Linux einsehen und dazu beitragen kann.\n\nDer Vortrag „Linux\nfür Einsteiger“ ist für alle interessant, die sich bisher nicht an das Betriebssystem\ngewagt haben und einen Einstieg suchen. Für viele kann es zu Beginn schwierig\nsein die Distributionswelt und die Benutzeroberflächen von Linux zu verstehen.\nDaher bietet der Vortrag einen kurzen Überblick über Linux, zeigt die Unterschiede\nzu Windows auf und empfiehlt die ersten Schritte, die bei einem Umstieg zu beachten\nsind.\n",
+      "original_language": "deu",
+      "persons": [
+        "Alex"
+      ],
+      "tags": [
+        "nook22",
+        "29",
+        "2022"
+      ],
+      "view_count": 602,
+      "promoted": false,
+      "date": "2022-11-12T14:00:00.000+01:00",
+      "release_date": "2022-12-18T00:00:00.000+01:00",
+      "updated_at": "2025-12-31T22:00:18.284+01:00",
+      "length": 2039,
+      "duration": 2039,
+      "thumb_url": "https://static.media.ccc.de/media/events/nook/2022/29-9959c4ef-e376-422a-a60c-d7cba6573dbe.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/nook/2022/29-9959c4ef-e376-422a-a60c-d7cba6573dbe_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/nook/2022/29-9959c4ef-e376-422a-a60c-d7cba6573dbe.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/nook/2022/29-9959c4ef-e376-422a-a60c-d7cba6573dbe.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/linux-fuer-einsteiger",
+      "url": "https://api.media.ccc.de/public/events/9959c4ef-e376-422a-a60c-d7cba6573dbe",
+      "conference_title": "Nook 2022",
+      "conference_url": "https://api.media.ccc.de/public/conferences/nook22",
+      "related": []
+    },
+    {
+      "guid": "e0b7e1a7-e095-548c-b307-b6f2d88b9273",
+      "title": "Herstellung der Kompatibilität der Datenlizenz Deutschland Namensnennung 2.0 zur Open Database License",
+      "subtitle": null,
+      "slug": "fossgis2022-14145-herstellung-der-kompatibilitt-der-datenlizenz-deutschland-namensnennung-2-0-zur-open-database-license",
+      "link": "https://pretalx.com/fossgis2022/talk/MAPA7A/",
+      "description": "Zur Herstellung der Kompatibilität zwischen Datenlizenz Deutschland Namensnennung 2.0 (dl-de-by 2.0) und der Open Database License (ODbL) hat das Bundesamt für Kartographie und Geodäsie (BKG) gemeinsam mit dem FOSSGIS e.V. eine ergänzende Erklärung erarbeitet.\n\nDie entsprechende Erklärung wird im Vortrag vorgestellt und die Hintergründe erläutert.\n\nDer Mehrwert digitaler Informationen besteht ganz wesentlich im Zusammenführen unterschiedlicher Datensätze. Dabei sind die Lizenzen der jeweiligen Datensätze zu berücksichtigen. Dies gilt auch für Open (Government) Data.\n\nDie öffentliche Verwaltung setzt bei ihren Daten im Wesentlichen auf die Datenlizenz Deutschland Namensnennung 2.0 (dl-de-by 2.0). Diese ist nicht ohne Weiteres mit der Open Database License (ODbL) des OpenStreetMap-Projekts kompatibel.\n\nZur Herstellung der Kompatibilität zwischen den beiden Lizenzen hat das Bundesamt für Kartographie und Geodäsie (BKG) gemeinsam mit dem FOSSGIS e.V. eine ergänzende Erklärung erarbeitet. Diese kann Datensätze unter dl-de-by 2.0 mit der ODbL kompatibel machen.\n\nDer Vortrag stellt die ergänzende Lizenzerklärung und ihre Funktionsweise vor.",
+      "original_language": "deu",
+      "persons": [
+        "Falk Zscheile"
+      ],
+      "tags": [
+        "fossgis2022",
+        "14145",
+        "2022",
+        "Open Data und Lizenzen",
+        "Geo",
+        "OpenStreeetMap",
+        "FOSS",
+        "Online"
+      ],
+      "view_count": 171,
+      "promoted": false,
+      "date": "2022-03-10T09:00:00.000+01:00",
+      "release_date": "2022-03-20T00:00:00.000+01:00",
+      "updated_at": "2025-07-29T12:00:03.909+02:00",
+      "length": 1663,
+      "duration": 1663,
+      "thumb_url": "https://static.media.ccc.de/media/events/fossgis/2022/14145-e0b7e1a7-e095-548c-b307-b6f2d88b9273.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fossgis/2022/14145-e0b7e1a7-e095-548c-b307-b6f2d88b9273_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fossgis/2022/14145-e0b7e1a7-e095-548c-b307-b6f2d88b9273.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fossgis/2022/14145-e0b7e1a7-e095-548c-b307-b6f2d88b9273.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fossgis2022-14145-herstellung-der-kompatibilitt-der-datenlizenz-deutschland-namensnennung-2-0-zur-open-database-license",
+      "url": "https://api.media.ccc.de/public/events/e0b7e1a7-e095-548c-b307-b6f2d88b9273",
+      "conference_title": "FOSSGIS 2022",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fossgis2022",
+      "related": []
+    },
+    {
+      "guid": "ad19d388-2d06-5784-882b-b77588596bb4",
+      "title": "How (not) to configure your domainname [internet.nl]",
+      "subtitle": null,
+      "slug": "why2025-258-how-not-to-configure-your-domainname-internet-nl",
+      "link": "https://program.why2025.org/why2025/talk/XVET7C/",
+      "description": "The most common configurations seen in scanning domain names with [Internet.nl](https://internet.nl), e.g. those found in [biannual governmental measurements](https://www.forumstandaardisatie.nl/metingen/informatieveiligheidstandaarden).\n\nThis talk will explain how to configure modern security standards on your domain name with the help of [the open source](https://github.com/internetstandards/Internet.nl/) [Internet.nl](https://internet.nl). It will show common misconfigurations in DNS and security headers. Teach you why you should probably want to avoid `www CNAME @`, want to enable IPv6 and other observations from the [biannual measurements](https://www.forumstandaardisatie.nl/metingen/informatieveiligheidstandaarden) of scanning more than 10.000 governmental host names in The Netherlands.\n\nAfter this talk you'll know at least one DNS or security header improvement for your own or organization domain.\n\nThis presentation will touch:\n- why enable DNSSEC ([RFC 4033](https://datatracker.ietf.org/doc/html/rfc4033) and many more), some common failures (e.g. CNAME's)\n- why enable IPv6, not talking about 'IPv4-mapped IPv6 address' here, issues if you're still not supporting IPv6 (almost 30 years after [RFC 1883](https://datatracker.ietf.org/doc/html/rfc1883))\n- why not CNAME to your apex domain (if you have an Mx record)\n- why use Null MX ([RFC 7505](https://datatracker.ietf.org/doc/html/rfc7505))\n- why configuration SPF ([RFC 7208](https://datatracker.ietf.org/doc/html/rfc7208)) on all hostnames\n- why there are more reasons to avoid CNAME's\n- why enable DANE ([RFC 6698](https://datatracker.ietf.org/doc/html/rfc6698)) and TLSRPT ([RFC 8460](https://datatracker.ietf.org/doc/html/rfc8460)) and why it's superior to MTA-STA ([RFC 8461](https://datatracker.ietf.org/doc/html/rfc8461)), how to rotate DANE\n- why monitoring matters\n- why first doing a `https://` redirect before a domain redirect\n- why a strict Content-Security-Policy ([CSP v3](https://www.w3.org/TR/CSP3/)) will save you\n- why configure `ssl_reject_handshake` (nginx only)\n- why have an accessible security.txt (special allow rule if you have basic auth!) that contains at least one email address\n- why start cookie names with `__Host-`or `__Secure-` ([MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#cookie-namecookie-value))\n\nLicensed to the public under https://creativecommons.org/licenses/by/4.0/",
+      "original_language": "eng",
+      "persons": [
+        "Benjamin W. Broersma"
+      ],
+      "tags": [
+        "258",
+        "2025",
+        "why2025",
+        "Hacking",
+        "Cassiopeia",
+        "why2025-eng",
+        "Day 5"
+      ],
+      "view_count": 441,
+      "promoted": false,
+      "date": "2025-08-11T14:00:00.000+02:00",
+      "release_date": "2025-08-12T00:00:00.000+02:00",
+      "updated_at": "2025-12-31T22:15:13.363+01:00",
+      "length": 3016,
+      "duration": 3016,
+      "thumb_url": "https://static.media.ccc.de/media/events/why2025/258-ad19d388-2d06-5784-882b-b77588596bb4.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/why2025/258-ad19d388-2d06-5784-882b-b77588596bb4_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/why2025/258-ad19d388-2d06-5784-882b-b77588596bb4.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/why2025/258-ad19d388-2d06-5784-882b-b77588596bb4.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/why2025-258-how-not-to-configure-your-domainname-internet-nl",
+      "url": "https://api.media.ccc.de/public/events/ad19d388-2d06-5784-882b-b77588596bb4",
+      "conference_title": "What Hackers Yearn 2025",
+      "conference_url": "https://api.media.ccc.de/public/conferences/WHY2025",
+      "related": []
+    },
+    {
+      "guid": "aeb69827-9ae8-4176-9c3b-0096e5c369c7",
+      "title": "Endlich dieselbe Sprache sprechen!",
+      "subtitle": "Mit JGiven das Systemverhalten für alle verständlich dokumentieren",
+      "slug": "2023-11-04-endlich-dieselbe-sprache-sprechen-21",
+      "link": "https://2023.nook-luebeck.de/talks/endlich-dieselbe-sprache-sprechen/",
+      "description": "In der Sprache der Domäne erstellte Testberichte sind präzise Beschreibungen der Systemanforderungen und dienen zugleich als ausführbare Spezifikationen. Sie fungieren als lebendige Dokumentation des Systemverhaltens, erleichtern den Austausch mit der Fachabteilung und klären, ob die Implementierung den Anforderungen entspricht.\n\nJGiven ist eine leichtgewichtige Test-Bibliothek, die uns ermöglicht, unsere gewohnten Test-Werkzeuge in der IDE zu nutzen und dennoch leicht verständliche Testberichte in der Fachsprache zu erstellen. Wir müssen keine neue Syntax erlernen, sondern beschreiben die Szenarien einfach in Java. Dadurch können sie wie Produktiv-Code behandelt und mühelos angepasst werden.\n\nNach den ersten Schritten mit JGiven+JUnit werden wir sehen, wie aus einer Menge von TestCases ein lesbarer HTML-Report generiert wird. Danach individualisieren wir den Report und erkunden die vielfältigen Optionen für datengetriebene Tests.\n\n \n\n\t\t\t\n\t\t\t\tDie Night of Open Knowledge (Nook) in Lübeck ist eine offene Vortragsveranstaltung, die einem weiten Publikum Einblicke in die verschiedene Bereiche der Informatik, aber auch technikfremde Themen bietet. Die Nook wird vom Chaotikum e.V. aus Lübeck und der studentischen Gruppe MetaMeute der Uni Lübeck veranstaltet. https://nook-luebeck.de/\n \n\n\n\t\t\t\t\t\n\t\t\t\t\n \n\n\n\t\t\t\t\t\n\t\t\tThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY NC ND 4.0). https://creativecommons.org/licenses/by-nc-nd/4.0/\n\t\t\t",
+      "original_language": "deu",
+      "persons": [
+        "Johannes Thorn"
+      ],
+      "tags": [
+        "nook23",
+        "1497",
+        "2023"
+      ],
+      "view_count": 182,
+      "promoted": false,
+      "date": "2023-11-04T18:15:00.000+01:00",
+      "release_date": "2024-02-02T00:00:00.000+01:00",
+      "updated_at": "2025-12-23T18:45:04.561+01:00",
+      "length": 2922,
+      "duration": 2922,
+      "thumb_url": "https://static.media.ccc.de/media/events/nook/2023/1497-aeb69827-9ae8-4176-9c3b-0096e5c369c7.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/nook/2023/1497-aeb69827-9ae8-4176-9c3b-0096e5c369c7_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/nook/2023/1497-aeb69827-9ae8-4176-9c3b-0096e5c369c7.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/nook/2023/1497-aeb69827-9ae8-4176-9c3b-0096e5c369c7.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/2023-11-04-endlich-dieselbe-sprache-sprechen-21",
+      "url": "https://api.media.ccc.de/public/events/aeb69827-9ae8-4176-9c3b-0096e5c369c7",
+      "conference_title": "Nook 2023",
+      "conference_url": "https://api.media.ccc.de/public/conferences/nook23",
+      "related": []
+    },
+    {
+      "guid": "import-f62f881999e66ebf18",
+      "title": "\"You have a Farmville gift request!\"",
+      "subtitle": "Zu Social Casual Gaming",
+      "slug": "konferenz_mp6_og_-_2012-05-18_22_00_-_you_have_a_farmville_gift_request_-_katharina_kinder_-_66",
+      "link": "https://program.sigint.ccc.de/fahrplan/events/66.html",
+      "description": "Wissenschaftlicher, hoffentlich unterhaltsamer Vortrag zum Thema Social Casual Gaming mit Präsentation \n",
+      "original_language": "eng",
+      "persons": [
+        "Katharina Kinder"
+      ],
+      "tags": [
+        "sigint12",
+        " Society"
+      ],
+      "view_count": 16,
+      "promoted": false,
+      "date": "2012-05-18T02:00:00.000+02:00",
+      "release_date": "2012-07-21T02:00:00.000+02:00",
+      "updated_at": "2025-03-22T02:30:02.930+01:00",
+      "length": 2427,
+      "duration": 2427,
+      "thumb_url": "https://static.media.ccc.de/media/conferences/sigint12/konferenz_mp6_og_-_2012-05-18_22_00_-_you_have_a_farmville_gift_request_-_katharina_kinder_-_66.jpg",
+      "poster_url": "https://static.media.ccc.de/media/conferences/sigint12/konferenz_mp6_og_-_2012-05-18_22_00_-_you_have_a_farmville_gift_request_-_katharina_kinder_-_66_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/conferences/sigint12/import-f62f881999e66ebf18-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/conferences/sigint12/import-f62f881999e66ebf18-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/konferenz_mp6_og_-_2012-05-18_22_00_-_you_have_a_farmville_gift_request_-_katharina_kinder_-_66",
+      "url": "https://api.media.ccc.de/public/events/import-f62f881999e66ebf18",
+      "conference_title": "sigint12",
+      "conference_url": "https://api.media.ccc.de/public/conferences/sigint12",
+      "related": []
+    },
+    {
+      "guid": "87bf05f6-d49a-565b-807d-b4fd619dbc19",
+      "title": "Geber, Newton, Thoth: What Alchemy Tells Us About Modern Science",
+      "subtitle": null,
+      "slug": "emf2024-151-geber-newton-thoth",
+      "link": "https://www.emfcamp.org/schedule/2024/151-geber-newton-thoth",
+      "description": "Alchemy is a misunderstood art. From Hellenistic Egypt through to the modern day, the story of alchemical science teaches us about how science has changed in the last 2000 years and how it has stayed the same. The influence of this ancient science resonates through our modern world in scientific theory, misconceptions and popular culture. Learn how ancient alchemists formed accurate predictive models of the material world around them, How the Victorians lied to you and possibly even the secret to making gold.\n\nLicensed to the public under https://creativecommons.org/licenses/by-sa/4.0/",
+      "original_language": "eng",
+      "persons": [
+        "🐐"
+      ],
+      "tags": [
+        "151",
+        "emf2024",
+        "talk",
+        "Stage C",
+        "2024",
+        "Day 3"
+      ],
+      "view_count": 75,
+      "promoted": false,
+      "date": "2024-06-01T16:50:00.000+02:00",
+      "release_date": "2024-11-19T00:00:00.000+01:00",
+      "updated_at": "2025-12-29T04:00:06.651+01:00",
+      "length": 1175,
+      "duration": 1175,
+      "thumb_url": "https://static.media.ccc.de/media/events/emf/2024/151-87bf05f6-d49a-565b-807d-b4fd619dbc19.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/emf/2024/151-87bf05f6-d49a-565b-807d-b4fd619dbc19_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/emf/2024/151-87bf05f6-d49a-565b-807d-b4fd619dbc19.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/emf/2024/151-87bf05f6-d49a-565b-807d-b4fd619dbc19.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/emf2024-151-geber-newton-thoth",
+      "url": "https://api.media.ccc.de/public/events/87bf05f6-d49a-565b-807d-b4fd619dbc19",
+      "conference_title": "Electromagnetic Field 2024",
+      "conference_url": "https://api.media.ccc.de/public/conferences/emf2024",
+      "related": []
+    },
+    {
+      "guid": "cd1c753b-3faf-5a80-b8a6-d8ffac516533",
+      "title": "Closing",
+      "subtitle": null,
+      "slug": "fsck-2024-52-closing",
+      "link": "https://cfp.ctbk.de/fsck-2024/talk/GYEQAJ/",
+      "description": "Schön wars. Abschließende Infos und ein paar Statistiken.",
+      "original_language": "deu",
+      "persons": [
+        "Nick"
+      ],
+      "tags": [
+        "fsck2024",
+        "52",
+        "2024",
+        "Unterhaltung",
+        "fsck2024"
+      ],
+      "view_count": 50,
+      "promoted": false,
+      "date": "2024-05-05T16:30:00.000+02:00",
+      "release_date": "2024-06-18T00:00:00.000+02:00",
+      "updated_at": "2025-07-06T12:00:03.480+02:00",
+      "length": 1124,
+      "duration": 1124,
+      "thumb_url": "https://static.media.ccc.de/media/events/fsck/fsck2024/52-cd1c753b-3faf-5a80-b8a6-d8ffac516533.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fsck/fsck2024/52-cd1c753b-3faf-5a80-b8a6-d8ffac516533_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fsck/fsck2024/52-cd1c753b-3faf-5a80-b8a6-d8ffac516533.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fsck/fsck2024/52-cd1c753b-3faf-5a80-b8a6-d8ffac516533.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fsck-2024-52-closing",
+      "url": "https://api.media.ccc.de/public/events/cd1c753b-3faf-5a80-b8a6-d8ffac516533",
+      "conference_title": "FSCK 2024",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fsck2024",
+      "related": []
+    },
+    {
+      "guid": "import-d06544991d5aea8d3c",
+      "title": "Attacking the IPv6 Protocol Suite",
+      "subtitle": null,
+      "slug": "22C3-772-en-attacking_ipv6",
+      "link": "http://events.ccc.de/congress/2005/fahrplan/events/772.en.html",
+      "description": "After a short introduction on the differences of IPv4 to IPv6, the weaknesses in IPv6 will be shown. Highlight of the talk is the presentation of the THC-IPV6 Attack Toolkit, which includes all IPv6 attacks as well as a low level packet library for easy crafting packets.\n",
+      "original_language": "eng",
+      "persons": [
+        "van Hauser"
+      ],
+      "tags": [
+        "22c3",
+        " Hacking"
+      ],
+      "view_count": 151,
+      "promoted": false,
+      "date": "2005-12-29T01:00:00.000+01:00",
+      "release_date": "2007-12-29T01:00:00.000+01:00",
+      "updated_at": "2025-05-06T02:45:03.849+02:00",
+      "length": 3483,
+      "duration": 3483,
+      "thumb_url": "https://static.media.ccc.de/media/congress/2005/22C3-772-en-attacking_ipv6.jpg",
+      "poster_url": "https://static.media.ccc.de/media/congress/2005/22C3-772-en-attacking_ipv6_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/congress/2005/import-d06544991d5aea8d3c-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/congress/2005/import-d06544991d5aea8d3c-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/22C3-772-en-attacking_ipv6",
+      "url": "https://api.media.ccc.de/public/events/import-d06544991d5aea8d3c",
+      "conference_title": "22C3: Private Investigations",
+      "conference_url": "https://api.media.ccc.de/public/conferences/22c3",
+      "related": [
+        {
+          "event_id": 704,
+          "event_guid": "import-66eca4edef506d610a",
+          "weight": 1
+        },
+        {
+          "event_id": 725,
+          "event_guid": "import-e6b3200a23ed44995e",
+          "weight": 1
+        },
+        {
+          "event_id": 733,
+          "event_guid": "import-8596f6465a398aab20",
+          "weight": 1
+        },
+        {
+          "event_id": 748,
+          "event_guid": "import-ecb02c4dfaabbaf766",
+          "weight": 1
+        },
+        {
+          "event_id": 750,
+          "event_guid": "import-691e5b62d72613fe8d",
+          "weight": 2
+        },
+        {
+          "event_id": 760,
+          "event_guid": "import-e0dc3d63d8c85c7c2f",
+          "weight": 1
+        },
+        {
+          "event_id": 761,
+          "event_guid": "import-9407d03f44908c0cf5",
+          "weight": 1
+        },
+        {
+          "event_id": 867,
+          "event_guid": "import-951b951bbc36e5c5d7",
+          "weight": 1
+        },
+        {
+          "event_id": 946,
+          "event_guid": "import-d22042184df162ad5d",
+          "weight": 2
+        },
+        {
+          "event_id": 970,
+          "event_guid": "import-dcdeb7cfd3ac31cff6",
+          "weight": 2
+        },
+        {
+          "event_id": 973,
+          "event_guid": "import-ed1c1621de6cb7a72a",
+          "weight": 1
+        },
+        {
+          "event_id": 985,
+          "event_guid": "import-c0c97d7b572b39d4f7",
+          "weight": 1
+        },
+        {
+          "event_id": 1031,
+          "event_guid": "import-9d34a07f70755058e7",
+          "weight": 1
+        },
+        {
+          "event_id": 1046,
+          "event_guid": "import-c39609eaa4f8ce253f",
+          "weight": 2
+        },
+        {
+          "event_id": 1114,
+          "event_guid": "import-18f66a038ddc2f30c7",
+          "weight": 1
+        },
+        {
+          "event_id": 1317,
+          "event_guid": "import-4e688d68d9cb334a9f",
+          "weight": 1
+        },
+        {
+          "event_id": 1466,
+          "event_guid": "import-ff0545dcff90fcd929",
+          "weight": 2
+        },
+        {
+          "event_id": 1630,
+          "event_guid": "import-196baee714b3785cfb",
+          "weight": 1
+        },
+        {
+          "event_id": 1644,
+          "event_guid": "import-7510d3224277db726d",
+          "weight": 1
+        },
+        {
+          "event_id": 1667,
+          "event_guid": "import-a5a5dd91ef7a9120d5",
+          "weight": 1
+        },
+        {
+          "event_id": 1678,
+          "event_guid": "import-499496e1f8d0dc96ab",
+          "weight": 2
+        },
+        {
+          "event_id": 1718,
+          "event_guid": "import-290f7b71026756648d",
+          "weight": 1
+        },
+        {
+          "event_id": 2475,
+          "event_guid": "2b3d8f9e-7169-457a-b2db-834282f437f4",
+          "weight": 1
+        },
+        {
+          "event_id": 2735,
+          "event_guid": "5c0323b6-c538-4fb6-8d70-d08def6bf865",
+          "weight": 1
+        },
+        {
+          "event_id": 3608,
+          "event_guid": "a0c851a1-b44e-46cb-bbb8-db966bc8639b",
+          "weight": 1
+        },
+        {
+          "event_id": 3983,
+          "event_guid": "f21bc737-27f2-5aed-be11-48c52f144f4d",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "guid": "fcecaa27-bb7c-4458-9a72-95199fa9712f",
+      "title": "OSM-Samstag Zusammenfassung 1",
+      "subtitle": null,
+      "slug": "fossgis2017-5254-osm-samstag_zusammenfassung_1",
+      "link": "https://c3voc.de",
+      "description": "Berichte aus den Workshops",
+      "original_language": "deu",
+      "persons": [],
+      "tags": [
+        "fossgis17",
+        "5254",
+        "2017",
+        "Sonstiges"
+      ],
+      "view_count": 29,
+      "promoted": false,
+      "date": "2017-03-25T13:30:00.000+01:00",
+      "release_date": "2022-02-12T00:00:00.000+01:00",
+      "updated_at": "2022-04-08T12:15:14.051+02:00",
+      "length": 414,
+      "duration": 414,
+      "thumb_url": "https://static.media.ccc.de/media/events/fossgis/2017/5254-fcecaa27-bb7c-4458-9a72-95199fa9712f.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fossgis/2017/5254-fcecaa27-bb7c-4458-9a72-95199fa9712f_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fossgis/2017/5254-fcecaa27-bb7c-4458-9a72-95199fa9712f.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fossgis/2017/5254-fcecaa27-bb7c-4458-9a72-95199fa9712f.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fossgis2017-5254-osm-samstag_zusammenfassung_1",
+      "url": "https://api.media.ccc.de/public/events/fcecaa27-bb7c-4458-9a72-95199fa9712f",
+      "conference_title": "FOSSGIS 2017",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fossgis2017",
+      "related": []
+    },
+    {
+      "guid": "c6eaceb0-f4a3-51ee-b736-289369f5611e",
+      "title": "Das digitale Terzett mit dem Chapeau Club",
+      "subtitle": null,
+      "slug": "np14-16-das_digitale_terzett_mit_dem_chapeau_club",
+      "link": "https://c3voc.de",
+      "description": "Ein surrealer Fireside Chat der Extraklasse. Chefdramaturgin Frau Dr. Brunke-Ziller, Die Bärtige und Dr. Polytox reden über den Cyberspace und mehr",
+      "original_language": "deu",
+      "persons": [
+        "Frau Dr. Brunke-Ziller",
+        "Dr. Polytox",
+        "Die Bärtige"
+      ],
+      "tags": [
+        "14np",
+        "16"
+      ],
+      "view_count": 144,
+      "promoted": false,
+      "date": "2018-09-21T00:00:00.000+02:00",
+      "release_date": "2018-09-22T02:00:00.000+02:00",
+      "updated_at": "2024-08-05T21:30:03.832+02:00",
+      "length": 1326,
+      "duration": 1326,
+      "thumb_url": "https://static.media.ccc.de/media/events/netzpolitik/14np/16-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/netzpolitik/14np/16-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/netzpolitik/14np/c6eaceb0-f4a3-51ee-b736-289369f5611e-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/netzpolitik/14np/c6eaceb0-f4a3-51ee-b736-289369f5611e-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/np14-16-das_digitale_terzett_mit_dem_chapeau_club",
+      "url": "https://api.media.ccc.de/public/events/c6eaceb0-f4a3-51ee-b736-289369f5611e",
+      "conference_title": "Das ist Netzpolitik! #14np",
+      "conference_url": "https://api.media.ccc.de/public/conferences/14np",
+      "related": [
+        {
+          "event_id": 4698,
+          "event_guid": "87de639d-024d-48d7-8955-3f529befc9f5",
+          "weight": 2
+        },
+        {
+          "event_id": 5988,
+          "event_guid": "1f79fa0c-2d1a-51f6-b6cc-1df95691e966",
+          "weight": 1
+        },
+        {
+          "event_id": 5989,
+          "event_guid": "0e2666be-0e1d-548b-914c-fb4060bfc49b",
+          "weight": 2
+        },
+        {
+          "event_id": 5992,
+          "event_guid": "efb89c51-5b9e-597e-8110-18b21c9e3ca2",
+          "weight": 2
+        },
+        {
+          "event_id": 5996,
+          "event_guid": "b2fe7656-1152-5203-abe0-768262bda5f9",
+          "weight": 5
+        },
+        {
+          "event_id": 6001,
+          "event_guid": "97bd059a-b44f-5d06-b325-ee634a5ad4c1",
+          "weight": 11
+        },
+        {
+          "event_id": 6003,
+          "event_guid": "19b499fd-fc69-5648-9699-19e94e3185c4",
+          "weight": 6
+        },
+        {
+          "event_id": 6008,
+          "event_guid": "b6643005-0d63-53df-ae6c-54575a04987f",
+          "weight": 8
+        },
+        {
+          "event_id": 6014,
+          "event_guid": "45336cce-788c-5800-84f1-0a7411d7e2da",
+          "weight": 6
+        }
+      ]
+    },
+    {
+      "guid": "1742b794-0e16-6fdf-d35c-3264e549d11c",
+      "title": "Cray-1, Ikone des Supercomputing",
+      "subtitle": "Wie die Maschine zur Welt kam, und was danach passierte",
+      "slug": "vcfb2017_-_63_-_de_-_201710071030_-_cray-1_ikone_des_supercomputing_-_wolfgang_stief",
+      "link": "https://c3voc.de",
+      "description": null,
+      "original_language": "deu",
+      "persons": [
+        "Wolfgang Stief"
+      ],
+      "tags": [
+        "vcfb2017",
+        "63"
+      ],
+      "view_count": 471,
+      "promoted": false,
+      "date": "2017-10-07T00:00:00.000+02:00",
+      "release_date": "2017-10-07T02:00:00.000+02:00",
+      "updated_at": "2025-11-14T21:30:05.195+01:00",
+      "length": 3518,
+      "duration": 3518,
+      "thumb_url": "https://static.media.ccc.de/media/events/vcfb/2017/63-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/vcfb/2017/63-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/vcfb/2017/1742b794-0e16-6fdf-d35c-3264e549d11c-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/vcfb/2017/1742b794-0e16-6fdf-d35c-3264e549d11c-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/vcfb2017_-_63_-_de_-_201710071030_-_cray-1_ikone_des_supercomputing_-_wolfgang_stief",
+      "url": "https://api.media.ccc.de/public/events/1742b794-0e16-6fdf-d35c-3264e549d11c",
+      "conference_title": "Vintage Computing Festival Berlin 2017",
+      "conference_url": "https://api.media.ccc.de/public/conferences/vcfb2017",
+      "related": [
+        {
+          "event_id": 2697,
+          "event_guid": "cray",
+          "weight": 9
+        },
+        {
+          "event_id": 3505,
+          "event_guid": "07ccd1cc-3a0a-f0c9-a0f5-3bfcf501fa29",
+          "weight": 11
+        },
+        {
+          "event_id": 4620,
+          "event_guid": "77e081f4-95f2-eaef-3f76-ed3a8c9d73ba",
+          "weight": 14
+        },
+        {
+          "event_id": 4622,
+          "event_guid": "7b214241-3152-4cf3-fe67-4e5434e636d4",
+          "weight": 13
+        },
+        {
+          "event_id": 4623,
+          "event_guid": "49c234de-3276-b71c-89d7-0b3c6d276d6c",
+          "weight": 19
+        },
+        {
+          "event_id": 4624,
+          "event_guid": "9b01013a-2e85-3074-5c29-33a2f606f5a2",
+          "weight": 13
+        },
+        {
+          "event_id": 4625,
+          "event_guid": "d7f7c152-686b-6bdc-2ebf-2b2a7afe5013",
+          "weight": 15
+        },
+        {
+          "event_id": 4626,
+          "event_guid": "32093af1-8822-934e-a99b-8cac2ab090d9",
+          "weight": 33
+        },
+        {
+          "event_id": 4627,
+          "event_guid": "b4b35a2e-dc10-0435-43a9-66521c933088",
+          "weight": 27
+        },
+        {
+          "event_id": 4628,
+          "event_guid": "4964b712-70ca-1895-366d-70423c26c73b",
+          "weight": 16
+        },
+        {
+          "event_id": 4629,
+          "event_guid": "4dd99ace-1f61-1832-2e7f-d34394dba06e",
+          "weight": 42
+        },
+        {
+          "event_id": 4631,
+          "event_guid": "97587c20-addc-0f18-d971-eb27e5dfda7b",
+          "weight": 17
+        },
+        {
+          "event_id": 6151,
+          "event_guid": "799b4f08-66a0-3585-2e9e-092f7507722d",
+          "weight": 12
+        }
+      ]
+    },
+    {
+      "guid": "6512be33-401d-5040-9f0d-bd9f7bdfdee2",
+      "title": "Observability is just Contextualized Monitoring. Change my mind.",
+      "subtitle": null,
+      "slug": "38c3-observability-is-just-contextualized-monitoring-change-my-mind",
+      "link": "https://events.ccc.de/congress/2024/hub/event/observability-is-just-contextualized-monitoring-change-my-mind/",
+      "description": "The infrastructure industry has recently started co-opting a well-established software engineering practice and is doing so badly. Observability is being overhyped as something revolutionary that you can only practice using the latest new shiny tool. Real observability provides insight only when we take the time to understand what we’re monitoring, why it matters to our organization, and how each metric connects to our goals.\n\nThis talk critiques the tool-centric approach that has taken over infrastructure monitoring, encouraging infrastructure teams to step out of their offices, touch grass, and talk with their organizations to answer the essential question: What is it you want monitored anyway and why?\n\nWe’ll explore the power of applying observability as a practice, not just a product, and highlight F/L/OSS tools that offer powerful, adaptable solutions without the hype. \n\nIf you’re tired of replacing one flashy dashboard with the next, or if you’ve ever wondered whether observability is really the game-changer it’s made out to be, this talk is for you. Let’s take a cue from our software engineering friends and approach observability as a collaborative, cross-functional practice that builds on strategy rather than the next tool.\n\nThe term “observability” is everywhere, packaged as the next game-changer for infrastructure. But beneath the hype, it’s little more than contextualized monitoring—and the infrastructure industry has co-opted it badly. This talk takes a critical look at the tool-centric approach to observability that’s dominating the market and offers an alternative: an approach to observability based on strategy, not the latest tool.\nWe’ll explore the origins of observability as a software engineering practice, where things went wrong as it moved into infrastructure, and how tool-driven marketing misses the point. From understanding why we’re monitoring to identifying what actually matters to our organizations, this session challenges infrastructure teams to rethink observability and ask essential questions that can transform monitoring into a true asset.\nFinally, we’ll dig into powerful F/L/OSS tools that already do the job well, without the hype or the hefty price tag, and consider how infrastructure teams can use and contribute to open-source observability practices that support genuine insight. Join me in side-stepping the hype, and discover how real observability could mean thinking like a hacker—using practical, adaptable, and community-driven solutions that prioritize understanding over just another flashy dashboard.\n\nLicensed to the public under http://creativecommons.org/licenses/by/4.0",
+      "original_language": "eng",
+      "persons": [
+        "Obsidian (he/him)"
+      ],
+      "tags": [
+        "38c3",
+        "799",
+        "2024",
+        "Stage HUFF"
+      ],
+      "view_count": 982,
+      "promoted": false,
+      "date": "2024-12-30T14:45:00.000+01:00",
+      "release_date": "2024-12-30T00:00:00.000+01:00",
+      "updated_at": "2025-12-30T16:30:20.098+01:00",
+      "length": 1950,
+      "duration": 1950,
+      "thumb_url": "https://static.media.ccc.de/media/congress/2024/799-6512be33-401d-5040-9f0d-bd9f7bdfdee2.jpg",
+      "poster_url": "https://static.media.ccc.de/media/congress/2024/799-6512be33-401d-5040-9f0d-bd9f7bdfdee2_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/congress/2024/799-6512be33-401d-5040-9f0d-bd9f7bdfdee2.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/congress/2024/799-6512be33-401d-5040-9f0d-bd9f7bdfdee2.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/38c3-observability-is-just-contextualized-monitoring-change-my-mind",
+      "url": "https://api.media.ccc.de/public/events/6512be33-401d-5040-9f0d-bd9f7bdfdee2",
+      "conference_title": "38C3: Illegal Instructions",
+      "conference_url": "https://api.media.ccc.de/public/conferences/38c3",
+      "related": []
+    },
+    {
+      "guid": "8a9dcc49-ee05-5c33-a843-c5081a4d74b8",
+      "title": "Arch Linux Team Q\u0026A",
+      "subtitle": null,
+      "slug": "arch-conf-online-2020-6309-arch-linux-team-q-a",
+      "link": "https://pretalx.com/arch-conf-online-2020/talk/ZQLAZ8/",
+      "description": "Members from the Arch Linux team has a live Q\u0026A. We will be answering questions from the live chats and try have fun doing it over spotty live video conferencing software.",
+      "original_language": "eng",
+      "persons": [
+        "The Arch Linux Team"
+      ],
+      "tags": [
+        "arch-conf-2020",
+        "6309",
+        "2020",
+        "archlinux",
+        "archconf2020",
+        "archconf",
+        "linux",
+        "conference"
+      ],
+      "view_count": 343,
+      "promoted": false,
+      "date": "2020-10-11T15:00:00.000+02:00",
+      "release_date": "2020-11-01T00:00:00.000+01:00",
+      "updated_at": "2025-11-30T08:15:04.955+01:00",
+      "length": 2846,
+      "duration": 2846,
+      "thumb_url": "https://static.media.ccc.de/media/conferences/archconf/2020/6309-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/conferences/archconf/2020/6309-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/conferences/archconf/2020/6309-hd.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/conferences/archconf/2020/6309-hd.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/arch-conf-online-2020-6309-arch-linux-team-q-a",
+      "url": "https://api.media.ccc.de/public/events/8a9dcc49-ee05-5c33-a843-c5081a4d74b8",
+      "conference_title": "Arch Conf 2020",
+      "conference_url": "https://api.media.ccc.de/public/conferences/arch-conf-2020",
+      "related": []
+    },
+    {
+      "guid": "e1958a5d-9de1-5cc3-b30c-c6f45d9fedc0",
+      "title": "Twintesizer",
+      "subtitle": null,
+      "slug": "jh-berlin-2018-21-twintesizer",
+      "link": "https://c3voc.de",
+      "description": null,
+      "original_language": "deu",
+      "persons": [
+        "Theresa",
+        "Lydia",
+        "Elias",
+        "Loic"
+      ],
+      "tags": [
+        "jh18-berlin",
+        "21"
+      ],
+      "view_count": 72,
+      "promoted": false,
+      "date": "2018-10-21T00:00:00.000+02:00",
+      "release_date": "2018-10-22T02:00:00.000+02:00",
+      "updated_at": "2025-10-06T23:15:06.651+02:00",
+      "length": 582,
+      "duration": 582,
+      "thumb_url": "https://static.media.ccc.de/media/events/jugendhackt/2018/21-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/jugendhackt/2018/21-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/jugendhackt/2018/e1958a5d-9de1-5cc3-b30c-c6f45d9fedc0-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/jugendhackt/2018/e1958a5d-9de1-5cc3-b30c-c6f45d9fedc0-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/jh-berlin-2018-21-twintesizer",
+      "url": "https://api.media.ccc.de/public/events/e1958a5d-9de1-5cc3-b30c-c6f45d9fedc0",
+      "conference_title": "Jugend hackt 2018",
+      "conference_url": "https://api.media.ccc.de/public/conferences/jh18",
+      "related": [
+        {
+          "event_id": 5426,
+          "event_guid": "5200da56-4ba5-4a0c-aa27-413299d3ad58",
+          "weight": 5
+        },
+        {
+          "event_id": 6183,
+          "event_guid": "0d9a8ed7-d571-5f68-8c7a-b9575db30ccd",
+          "weight": 4
+        },
+        {
+          "event_id": 6187,
+          "event_guid": "727ab4e8-3c10-550f-b9c9-9c9d5e2762bc",
+          "weight": 4
+        },
+        {
+          "event_id": 6191,
+          "event_guid": "177f3537-1744-5042-9e63-0adaa09660fc",
+          "weight": 5
+        },
+        {
+          "event_id": 6206,
+          "event_guid": "ebb47169-0fba-50de-a128-52158c76f613",
+          "weight": 5
+        },
+        {
+          "event_id": 6211,
+          "event_guid": "523819a2-6286-5f69-bbaa-d774d9ce9522",
+          "weight": 4
+        },
+        {
+          "event_id": 6214,
+          "event_guid": "b77dda06-f304-5369-9de7-3a38e1c1f9e4",
+          "weight": 12
+        },
+        {
+          "event_id": 6218,
+          "event_guid": "2a465579-1ef2-51e5-8807-6ef1d8f7d69d",
+          "weight": 4
+        },
+        {
+          "event_id": 6222,
+          "event_guid": "a652af06-ac95-53f0-88c0-96a8869f90d2",
+          "weight": 3
+        },
+        {
+          "event_id": 6226,
+          "event_guid": "1558bd56-a5a6-5a9d-ade1-f7f4da7dab38",
+          "weight": 5
+        },
+        {
+          "event_id": 6227,
+          "event_guid": "fefc9946-3fe4-5f78-9ec1-9ef95b3bf502",
+          "weight": 7
+        },
+        {
+          "event_id": 6228,
+          "event_guid": "f91571a6-05c7-58d3-add6-5934e640fc8c",
+          "weight": 6
+        }
+      ]
+    },
+    {
+      "guid": "13hAy7IIWod2RIuLMvnELw",
+      "title": "SS7map : mapping vulnerability of the international mobile roaming infrastructure",
+      "subtitle": null,
+      "slug": "31c3_-_6531_-_en_-_saal_6_-_201412272300_-_ss7map_mapping_vulnerability_of_the_international_mobile_roaming_infrastructure_-_laurent_ghigonis_-_alexandre_de_oliveira",
+      "link": "http://events.ccc.de/congress/2014/Fahrplan/events/6531.html",
+      "description": "SS7 has been shown repeatedly as an insecure protocol: spoofing, faking, crash through fuzzing, fraud. The main question of our study is to determine how this insecurity is mitigated by network operator’s action to prevent compromise on both network exposure of infrastructure and privacy compromise of subscribers. It's why we wanted to come out with SS7map.",
+      "original_language": "eng",
+      "persons": [
+        "Laurent Ghigonis",
+        "Alexandre De Oliveira"
+      ],
+      "tags": [
+        "Security \u0026 Hacking"
+      ],
+      "view_count": 6279,
+      "promoted": false,
+      "date": "2014-12-27T23:00:00.000+01:00",
+      "release_date": "2014-12-28T01:00:00.000+01:00",
+      "updated_at": "2025-12-08T17:15:04.811+01:00",
+      "length": 3655,
+      "duration": 3655,
+      "thumb_url": "https://static.media.ccc.de/media/congress/2014/6531-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/congress/2014/6531-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/congress/2014/13hAy7IIWod2RIuLMvnELw-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/congress/2014/13hAy7IIWod2RIuLMvnELw-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/31c3_-_6531_-_en_-_saal_6_-_201412272300_-_ss7map_mapping_vulnerability_of_the_international_mobile_roaming_infrastructure_-_laurent_ghigonis_-_alexandre_de_oliveira",
+      "url": "https://api.media.ccc.de/public/events/13hAy7IIWod2RIuLMvnELw",
+      "conference_title": "31C3: a new dawn",
+      "conference_url": "https://api.media.ccc.de/public/conferences/31c3",
+      "related": [
+        {
+          "event_id": 1274,
+          "event_guid": "import-b24e96b14b74162533",
+          "weight": 17
+        },
+        {
+          "event_id": 1410,
+          "event_guid": "import-e59a9fc136517bf537",
+          "weight": 24
+        },
+        {
+          "event_id": 1655,
+          "event_guid": "import-4fd5a1fd16f55e0a18",
+          "weight": 2
+        },
+        {
+          "event_id": 1835,
+          "event_guid": "xdX27wLbHpeOU_dSgBO4Hg",
+          "weight": 9
+        },
+        {
+          "event_id": 2148,
+          "event_guid": "NjtxGgpt76NkFb1Q4LLjvg",
+          "weight": 2
+        },
+        {
+          "event_id": 2152,
+          "event_guid": "J9UXjl3ggsIGnkIJSxSxmw",
+          "weight": 5
+        },
+        {
+          "event_id": 2156,
+          "event_guid": "-n9QScyDLXMEwkqrCHASYw",
+          "weight": 156
+        },
+        {
+          "event_id": 2157,
+          "event_guid": "szHEwO2pazLIG7w8wQTa1w",
+          "weight": 71
+        },
+        {
+          "event_id": 2162,
+          "event_guid": "_lVlmBO98KMg4M-n-_A3FA",
+          "weight": 2
+        },
+        {
+          "event_id": 2172,
+          "event_guid": "ELK9-ZQeFcqKxBYW8eay8g",
+          "weight": 5
+        },
+        {
+          "event_id": 2222,
+          "event_guid": "Z4htibNZxLewwCmPKSdeqA",
+          "weight": 3
+        },
+        {
+          "event_id": 2226,
+          "event_guid": "hl9yD87mkTYvOY5J2BIQwQ",
+          "weight": 4
+        },
+        {
+          "event_id": 2291,
+          "event_guid": "2f68e356-6c3f-4034-9640-c06d717ed96b",
+          "weight": 5
+        },
+        {
+          "event_id": 2475,
+          "event_guid": "2b3d8f9e-7169-457a-b2db-834282f437f4",
+          "weight": 22
+        },
+        {
+          "event_id": 2863,
+          "event_guid": "9f89d94f-07fd-47f4-9ad0-c8dda94de175",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "guid": "9bdf26f9-3938-51a3-ba3f-3f125f14a8fb",
+      "title": "Willkommen zur Abschlusspräsentation!",
+      "subtitle": null,
+      "slug": "jugend-hackt-frankfurt-am-main-2022-48969-willkommen-zur-abschlussprsentation-",
+      "link": "https://pretalx.c3voc.de/jugend-hackt-frankfurt-am-main-2022/talk/P79CGD/",
+      "description": "Vorstellung aller Projekte von Jugend hackt Frankfurt am Main 2022",
+      "original_language": "deu",
+      "persons": [
+        "Liv",
+        "Rainer"
+      ],
+      "tags": [
+        "jugend-hackt-frankfurt-am-main-2022",
+        "48969",
+        "2022",
+        "Projektvorstellung"
+      ],
+      "view_count": 29,
+      "promoted": false,
+      "date": "2022-06-19T13:15:00.000+02:00",
+      "release_date": "2022-06-19T00:00:00.000+02:00",
+      "updated_at": "2025-02-07T15:15:07.682+01:00",
+      "length": 267,
+      "duration": 267,
+      "thumb_url": "https://static.media.ccc.de/media/events/jugendhackt/2022/48969-9bdf26f9-3938-51a3-ba3f-3f125f14a8fb.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/jugendhackt/2022/48969-9bdf26f9-3938-51a3-ba3f-3f125f14a8fb_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/jugendhackt/2022/48969-9bdf26f9-3938-51a3-ba3f-3f125f14a8fb.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/jugendhackt/2022/48969-9bdf26f9-3938-51a3-ba3f-3f125f14a8fb.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/jugend-hackt-frankfurt-am-main-2022-48969-willkommen-zur-abschlussprsentation-",
+      "url": "https://api.media.ccc.de/public/events/9bdf26f9-3938-51a3-ba3f-3f125f14a8fb",
+      "conference_title": "Jugend hackt 2022",
+      "conference_url": "https://api.media.ccc.de/public/conferences/jh22",
+      "related": []
+    },
+    {
+      "guid": "86885c01-9f35-59e6-85f0-2d307c5a9b22",
+      "title": "Java EE 6 - das volle Programm",
+      "subtitle": null,
+      "slug": "linuxtag12-181-java_ee_6_das_volle_programm",
+      "link": "https://c3voc.de",
+      "description": "Entwicklung mit Java EE 6 anhand eines ganzheitlichen Beispiels  Die Java EE 6 Spezifikation bietet mit den zahlreichen kombinierbaren Einzelspezifikationen mehr als nur eine Grundlage für die effiziente Entwicklung moderner Softwaresysteme. Gerade durch die Kombinierbarkeit der einzelnen Spezifikationen untereinander sowie mit weiteren im Java EE Bereich verfügbaren Technologien steht eine robuste und zukunftsträchtige Technologie-Landschaft bereit. Es wird Zeit, diese ganzheitlich exemplarisch zu beleuchten.  Der erste Schritt bei der Umsetzung eines Java EE Projektes ist bekanntlich das Aufsetzen der Software-Infrastruktur und -Architektur. Dieser Schritt erfordert umfangreiches und tief gehendes technisches Wissen um die beteiligten Technologien. Bereits hier wird die Grundlage für die Effizienz bei der Umsetzung des Projektes sowie für die Wartbarkeit der fertiggestellten Software gelegt. Ein Problem stellt hierbei nicht nur die Komplexität der Aufgabe als solche dar, sondern auch der in Projekten übliche Zeitdruck, durch welchen oft wichtige Aspekte wie zum Beispiel eine Umgebung für die Testautomatisierung unter den Tisch fallen gelassen werden.  Der Artikel beleuchtet das Thema auf eine praktische Art. So wird viel auf Livecode gesetzt. Der Quellcode wird auf GitHub zur allgemeinen Verwendung bereitgestellt.\n\nÜber den Autor Michael Schütz:  Michael arbeitet als Senior Software Engineer bei der akquinet AG in Berlin und beschäftigt sich seit Jahren mit Java Enterprise Architekturen und Technologien. Er ist Gründer und Moderator der Seam-Plattform auf Xing und wirkt regelmäßig an JBoss Open Source Projekten mit. Michaels berufliche Interessen liegen derzeit in den Bereichen Seam/CDI, Java EE Testing, Java EE Cloud Hosting und Git.",
+      "original_language": "deu",
+      "persons": [
+        "Michael Schütz (akquinet AG)"
+      ],
+      "tags": [
+        "linuxtag12",
+        "181"
+      ],
+      "view_count": 18,
+      "promoted": false,
+      "date": "2012-05-23T00:00:00.000+02:00",
+      "release_date": "2019-01-28T01:00:00.000+01:00",
+      "updated_at": "2021-12-09T13:15:19.914+01:00",
+      "length": 2059,
+      "duration": 2059,
+      "thumb_url": "https://static.media.ccc.de/media/events/linuxtag/2012/181-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/linuxtag/2012/181-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/linuxtag/2012/181-hd.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/linuxtag/2012/181-hd.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/linuxtag12-181-java_ee_6_das_volle_programm",
+      "url": "https://api.media.ccc.de/public/events/86885c01-9f35-59e6-85f0-2d307c5a9b22",
+      "conference_title": "Linuxtag 2012",
+      "conference_url": "https://api.media.ccc.de/public/conferences/linuxtag12",
+      "related": [
+        {
+          "event_id": 5457,
+          "event_guid": "6c8a8eff-c71b-5471-ad8c-681fc5483aa8",
+          "weight": 1
+        },
+        {
+          "event_id": 5719,
+          "event_guid": "2ea0582f-bf75-52bc-a5c5-d0914db47c52",
+          "weight": 1
+        },
+        {
+          "event_id": 6543,
+          "event_guid": "48ed6dea-e67d-4866-8c35-318e9d892363",
+          "weight": 1
+        },
+        {
+          "event_id": 6689,
+          "event_guid": "7e315c21-fe30-527b-a7cc-6b1c58dec4dc",
+          "weight": 1
+        },
+        {
+          "event_id": 6692,
+          "event_guid": "92fb4404-88f4-5c6e-bd11-ff2c1621fbc7",
+          "weight": 1
+        },
+        {
+          "event_id": 6735,
+          "event_guid": "b7640bd5-2810-53ee-8b8e-b5f8472add1f",
+          "weight": 1
+        },
+        {
+          "event_id": 6742,
+          "event_guid": "d4edc795-dfcb-51e1-b2b7-08c40f7069ac",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "guid": "import-d5d8add3bc284763a8",
+      "title": "The Semantic Web - Raising of the Dead? ",
+      "subtitle": null,
+      "slug": "konferenz_mp6_og_-_2012-05-19_12_00_-_the_semantic_web_-_raising_of_the_dead_-_carina_haupt_-_41",
+      "link": "https://program.sigint.ccc.de/fahrplan/events/41.html",
+      "description": "A lot of people say that the semantic web is dead, but why is then google announcing that they plan to make the biggest change in their web search ever by introducing it. So, what is the semantic web actually? Which technologies are behind it? Why was it called dead? And why is it coming back?\n",
+      "original_language": "eng",
+      "persons": [
+        "Carina Haupt"
+      ],
+      "tags": [
+        "sigint12",
+        " Science"
+      ],
+      "view_count": 739,
+      "promoted": false,
+      "date": "2012-05-19T02:00:00.000+02:00",
+      "release_date": "2012-07-21T02:00:00.000+02:00",
+      "updated_at": "2025-08-22T14:45:08.397+02:00",
+      "length": 2733,
+      "duration": 2733,
+      "thumb_url": "https://static.media.ccc.de/media/conferences/sigint12/konferenz_mp6_og_-_2012-05-19_12_00_-_the_semantic_web_-_raising_of_the_dead_-_carina_haupt_-_41.jpg",
+      "poster_url": "https://static.media.ccc.de/media/conferences/sigint12/konferenz_mp6_og_-_2012-05-19_12_00_-_the_semantic_web_-_raising_of_the_dead_-_carina_haupt_-_41_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/conferences/sigint12/import-d5d8add3bc284763a8-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/conferences/sigint12/import-d5d8add3bc284763a8-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/konferenz_mp6_og_-_2012-05-19_12_00_-_the_semantic_web_-_raising_of_the_dead_-_carina_haupt_-_41",
+      "url": "https://api.media.ccc.de/public/events/import-d5d8add3bc284763a8",
+      "conference_title": "sigint12",
+      "conference_url": "https://api.media.ccc.de/public/conferences/sigint12",
+      "related": [
+        {
+          "event_id": 2797,
+          "event_guid": "d934d3e2-9de8-11e5-8a67-5b7bcd9fe77d",
+          "weight": 12
+        },
+        {
+          "event_id": 2806,
+          "event_guid": "654331ae-1710-42e5-bdf4-65a03a80c614",
+          "weight": 9
+        },
+        {
+          "event_id": 2949,
+          "event_guid": "5c8d1a32-d9ce-49cb-b058-846fa58663d8",
+          "weight": 11
+        },
+        {
+          "event_id": 3461,
+          "event_guid": "8e19cc1e-42d7-4832-a787-e9d81c717751",
+          "weight": 10
+        },
+        {
+          "event_id": 5379,
+          "event_guid": "a3bda554-eb73-5a33-a14c-6303f83cc451",
+          "weight": 11
+        },
+        {
+          "event_id": 5400,
+          "event_guid": "17a278b3-34af-5a04-92d8-e3e26165b410",
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "guid": "513e83e3-8b11-5e68-a114-7a3ba273d210",
+      "title": "Workflows in Geo Engine: Von der UI zum Python-Notebook und zurück",
+      "subtitle": null,
+      "slug": "fossgis2022-14107-workflows-in-geo-engine-von-der-ui-zum-python-notebook-und-zurck",
+      "link": "https://pretalx.com/fossgis2022/talk/JBLB7F/",
+      "description": "Geo Engine ist eine cloud-ready Geoanalyseplattform, die einen niederschwelligen Zugang zu Geodaten, deren Verarbeitung, Schnittstellen und Visualisierung bietet. Nutzer können sowohl in einem Browser-basierten User Interface als auch mit Jupyter Notebooks in Python auf die Engine zugreifen. In diesem Vortrag zeigen wir den nahtlosen Übergang vom UI zu Python-Notebooks und auch den Schritt zurück. So lassen sich die Vorteile des explorativen UIs mit der Flexibilität von Python verknüpfen.\n\nDie Geo Engine ist eine cloud-ready Geoanalyseplattform, die aus einer Processing-Engine, einer Web-UI und einer Python-Bibliothek besteht. Sie bündelt die Integration und die effiziente Verarbeitung raum-zeitlicher Daten. Ein wichtiges Element dabei ist die homogenisierte “Datacube”-artige Sicht auf heterogene Daten, welche Forschungsgruppen und Unternehmen einen einfachen Zugriff und niederschwellige Analysen ermöglicht. Gleichzeitig ist sie ein Framework für die Erstellung und den Betrieb von Geodatenportalen.\n\n2021 haben wir die Grundlagen des Systems auf der FOSSGIS vorgestellt (https://pretalx.com/fossgis2021/talk/UKLUGE/). Für 2022 stellen wir unsere Python-Bibliothek für Jupyter Notebooks sowie Neuerungen in unserem User Interface vor. So kann man zwischen einem visuell-explorativen Zugriff über das User Interface und einem flexiblen, programmatischen Zugriff via Python wählen. Darüber hinaus ist man nicht auf ein Werkzeug beschränkt, sondern kann im UI erstellte Workflows und Workflowergebnisse nahtlos nach Python übernehmen und dort weiterarbeiten. Der Rückweg von Python in das UI ist ebenfalls möglich. Dies erlaubt es jedem Werkzeug dort die Stärken auszuspielen, wo es am besten passt.\n\nIn diesem Vortrag zeigen wir einen Anwendungsfall auf, den wir mit der Geo Engine bearbeiten. Hierfür starten wir im UI und suchen passende Daten. Anschließend wechseln wir in ein Python-Notebook und bringen dort eigene Daten aus DataFrames ein. Zur Ansicht der Ergebnisse wechseln wir wieder in das UI zurück. Im Anschluss geben wir weitere Ausblicke auf zukünftige Arbeiten an der Geo Engine.",
+      "original_language": "deu",
+      "persons": [
+        "Dr. Christian Beilschmidt",
+        "Johannes Drönner"
+      ],
+      "tags": [
+        "fossgis2022",
+        "14107",
+        "2022",
+        "Daten, Datenbanken und Datenprozessierung",
+        "Geo",
+        "OpenStreeetMap",
+        "FOSS",
+        "Online"
+      ],
+      "view_count": 91,
+      "promoted": false,
+      "date": "2022-03-09T11:00:00.000+01:00",
+      "release_date": "2022-03-20T00:00:00.000+01:00",
+      "updated_at": "2025-12-02T13:00:09.261+01:00",
+      "length": 1200,
+      "duration": 1200,
+      "thumb_url": "https://static.media.ccc.de/media/events/fossgis/2022/14107-513e83e3-8b11-5e68-a114-7a3ba273d210.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fossgis/2022/14107-513e83e3-8b11-5e68-a114-7a3ba273d210_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fossgis/2022/14107-513e83e3-8b11-5e68-a114-7a3ba273d210.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fossgis/2022/14107-513e83e3-8b11-5e68-a114-7a3ba273d210.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fossgis2022-14107-workflows-in-geo-engine-von-der-ui-zum-python-notebook-und-zurck",
+      "url": "https://api.media.ccc.de/public/events/513e83e3-8b11-5e68-a114-7a3ba273d210",
+      "conference_title": "FOSSGIS 2022",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fossgis2022",
+      "related": []
+    },
+    {
+      "guid": "48481859-af2f-53dc-b0ef-31ad70f20f4d",
+      "title": "2.5D Indoor-Karten auf Basis von OpenStreetMap-Daten",
+      "subtitle": null,
+      "slug": "fossgis2025-65368-2-5d-indoor-karten-auf-basis-von-openstreetmap-daten",
+      "link": "https://pretalx.com/fossgis2025/talk/RMMA9H/",
+      "description": "Das Poster stellt eine 2.5D-Darstellung von Indoor-Karten für einen digitalen Infopunkt vor. Durch die Kombination aus 2D- und perspektivischer Ansicht mehrerer Etagen wird die Orientierung erleichtert. Besondere Herausforderungen waren die Abgrenzung der Etagen und die realitätsnahe Darstellung von Treppenhäusern mit _Maptalks_ und _THREE.js_. Zudem wurden Barrierefreiheitsaspekte wie ein Rollstuhlmodus integriert. Das Poster zeigt zentrale Designentscheidungen und technische Lösungsansätze.\n\nDas Poster stellt eine innovative Methode zur Darstellung von Indoor-Karten in 2.5D auf Basis von OpenStreetMap-Daten vor. Ziel ist die Verbesserung der Gebäudenavigation durch eine Kombination aus klassischer 2D-Karten und perspektivischer Darstellung mehrerer Etagen übereinander.\n\nDie vorgestellte Lösung basiert auf der bestehenden Anwendung _Mapable_ der TU Dresden und erweitert diese um eine 2.5D-Darstellung von Stockwerken. Diese Darstellungsform ermöglicht es, mehrere Etagen gleichzeitig übersichtlich anzuzeigen und die Orientierung im Gebäude zu erleichtern. Im Gegensatz zur klassischen 2D-Ansicht bleibt die räumliche Struktur erhalten, ohne dabei die Nachteile einer vollständigen 3D-Darstellung, wie verdeckte Elemente oder komplexe Navigation, mit sich zu bringen.\n\nBesondere Herausforderungen bei der Implementierung der 2.5D-Karten waren die optimale Wahl der Perspektive, die visuelle Abgrenzung einzelner Etagen sowie die Darstellung von Aufzügen und Treppenhäusern. Zudem wurde ein Fokus auf Barrierefreiheit gelegt, beispielsweise durch einen Rollstuhlmodus für die Benutzeroberfläche und das bewusste Vereinfachen oder Ausblenden weniger relevante Gebäudeteile, wie Zwischenwände oder kleinere Raumelemente in der 2.5D-Ansicht.\n\nDie räumliche Darstellung von Treppen und Treppenhäusern spielt eine zentrale Rolle in der 2.5D-Indoor-Kartografie, da sie die vertikale Orientierung innerhalb eines Gebäudes erheblich erleichtert. Mithilfe von _Maptalks_ und _THREE.js_ werden Treppenhäuser als extrudierte Prismen dargestellt, während freistehende Treppen durch eine Kombination aus Mittellinien und interpolierten Höheninformationen rekonstruiert werden. Dabei entstehen realitätsnahe Modelle, die Nutzenden eine intuitive Wegfindung ermöglichen.\n\nDas Poster fasst zentrale Designentscheidungen zusammen, zeigt praktische Anwendungsfälle auf und stellt technische Lösungsansätze vor. Es richtet sich an Fachleute aus den Bereichen Geoinformatik, Kartografie und Barrierefreiheit sowie an Entwickler:innen, die sich mit innovativen Navigationslösungen beschäftigen.\n\nLicensed to the public under https://creativecommons.org/licenses/by/4.0/",
+      "original_language": "deu",
+      "persons": [
+        "Richard Karl Fuchs",
+        "Jacques-Maurice Walther"
+      ],
+      "tags": [
+        "65368",
+        "2025",
+        "fossgis2025",
+        "Kartographie und Visualisierung",
+        "Poster (Zelt)",
+        "fossgis2025-deu",
+        "Day 2"
+      ],
+      "view_count": 200,
+      "promoted": false,
+      "date": "2025-03-27T11:40:00.000+01:00",
+      "release_date": "2025-03-28T00:00:00.000+01:00",
+      "updated_at": "2025-12-10T11:00:03.943+01:00",
+      "length": 390,
+      "duration": 390,
+      "thumb_url": "https://static.media.ccc.de/media/events/fossgis/2025/65368-48481859-af2f-53dc-b0ef-31ad70f20f4d.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fossgis/2025/65368-48481859-af2f-53dc-b0ef-31ad70f20f4d_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fossgis/2025/65368-48481859-af2f-53dc-b0ef-31ad70f20f4d.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fossgis/2025/65368-48481859-af2f-53dc-b0ef-31ad70f20f4d.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fossgis2025-65368-2-5d-indoor-karten-auf-basis-von-openstreetmap-daten",
+      "url": "https://api.media.ccc.de/public/events/48481859-af2f-53dc-b0ef-31ad70f20f4d",
+      "conference_title": "FOSSGIS 2025",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fossgis2025",
+      "related": []
+    },
+    {
+      "guid": "959da12c-9fa3-584e-81b3-2c8b5561f562",
+      "title": "Nutze die Streuung: Geometrische Analysen von GPS-Daten zur Klassifikation von Verweil- und Bewegungsphasen",
+      "subtitle": null,
+      "slug": "fossgis2022-15430-nutze-die-streuung-geometrische-analysen-von-gps-daten-zur-klassifikation-von-verweil-und-bewegungsphasen",
+      "link": "https://pretalx.com/fossgis2022/talk/WMA73P/",
+      "description": "Es wird ein neuer Algorithmus zur Erkennung von Verweil- und Bewegungsphasen vorgestellt. Dieser basiert auf geometrischen Analysen von GPS-Ortspunkten. \nÜber zwei Monate hinweg wurde ein GPS-Testdatensatz mit Bewegungstagebuch aufgezeichnet. Hier erreicht das vorgestellte Verfahren etwa 95% Klassifikationsleistung und erkennt Stopps zuverlässig ab 90 Sekunden Dauer.\n\nVerweil- und Bewegungsphasen aus GPS-Daten zu abzuleiten ist eine typische Vorverarbeitungsaufgabe in vielen Mobilitätsanalysen. Üblicherweise werden sie mithilfe von Zeit- und Entfernungsschwellwerten identifiziert. Dieses Standardverfahren, das z.B. von Ashbrook \u0026 Starner (2002) beschrieben wurde, wird in Abwandlung bis heute in Projekten wie beispielsweise MovingPandas, scikit-mobility oder ArcGIS Pro eingesetzt. Für stark streuende oder driftende Signale führt dies jedoch zu häufigen Unterbrechungen der erkannten Phasen oder einer mangelnden Auflösung aufgrund zu hoher Schwellwerte.\n\nIn diesem Vortrag wird ein neuer Algorithmus vorgestellt, der Signalstreuungen geometrisch analysiert. Streuungen entstehen durch ein ungenaues GPS-Signal, gerade längere Stopps zeigen dadurch ein sternförmiges Muster um den eigentlichen Verweilort. Diese Muster lassen sich sehr gut geometrisch untersuchen und zur Klassifikation einsetzen. Das Verfahren ist nicht auf einen festen Radius oder eine Mindestverweildauer beschränkt. Stattdessen integriert es verschiedene geometrische Ansätze, die sich gegenseitig ausgleichen können. Auch Beschleunigungsdaten können zur Analyse einbezogen werden, wodurch sich das Verfahren insbesondere für die Vorverarbeitung von Smartphone-Aufzeichnungen eignet.\n\nUm das System zu testen wurden über zwei Monate hinweg GPS-Daten aufgezeichnet und ein genaues Bewegungstagebuch geführt. Der vorgestellte Algorithmus erkennt Stopps und Trips mit etwa 95% Genauigkeit (bezogen auf die Gesamtheit aller Samples).",
+      "original_language": "deu",
+      "persons": [
+        "Robert Spang"
+      ],
+      "tags": [
+        "fossgis2022",
+        "15430",
+        "2022",
+        "Daten, Datenbanken und Datenprozessierung",
+        "Geo",
+        "OpenStreeetMap",
+        "FOSS",
+        "Online"
+      ],
+      "view_count": 67,
+      "promoted": false,
+      "date": "2022-03-10T10:15:00.000+01:00",
+      "release_date": "2022-03-15T00:00:00.000+01:00",
+      "updated_at": "2025-11-15T21:45:07.132+01:00",
+      "length": 324,
+      "duration": 324,
+      "thumb_url": "https://static.media.ccc.de/media/events/fossgis/2022/15430-959da12c-9fa3-584e-81b3-2c8b5561f562.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fossgis/2022/15430-959da12c-9fa3-584e-81b3-2c8b5561f562_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fossgis/2022/15430-959da12c-9fa3-584e-81b3-2c8b5561f562.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fossgis/2022/15430-959da12c-9fa3-584e-81b3-2c8b5561f562.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fossgis2022-15430-nutze-die-streuung-geometrische-analysen-von-gps-daten-zur-klassifikation-von-verweil-und-bewegungsphasen",
+      "url": "https://api.media.ccc.de/public/events/959da12c-9fa3-584e-81b3-2c8b5561f562",
+      "conference_title": "FOSSGIS 2022",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fossgis2022",
+      "related": []
+    },
+    {
+      "guid": "9f96d2dd-b3f9-5b10-8db1-414c12104885",
+      "title": "Howto eventphone",
+      "subtitle": null,
+      "slug": "eh21-56-howto-eventphone",
+      "link": "https://fahrplan.eh21.easterhegg.eu/eh/talk/HZLXXW/",
+      "description": "Wie funktioniert die eventphone Telefonanlage?\n\nWährend der letzten Jahre wurde das eventphone System kontinuierlich weiterentwickelt. In diesem Vortrag wollen wir die neuesten Features vorstellen.\n\nDer Talk baut inhaltlich auf den vorangegangen Talks vom [35C3](https://media.ccc.de/v/35c3oio-70-eventphone-frher-heute-morgen-) und [EH19](https://media.ccc.de/v/eh19-179-das-neue-eventphone-poc-telefonsystem) auf.",
+      "original_language": "deu",
+      "persons": [
+        "zivillian",
+        "Garwin",
+        "PoC Bernie"
+      ],
+      "tags": [
+        "eh21",
+        "56",
+        "2024"
+      ],
+      "view_count": 388,
+      "promoted": false,
+      "date": "2024-03-31T14:45:00.000+02:00",
+      "release_date": "2024-03-31T00:00:00.000+01:00",
+      "updated_at": "2025-12-31T17:00:14.513+01:00",
+      "length": 3457,
+      "duration": 3457,
+      "thumb_url": "https://static.media.ccc.de/media/conferences/eh2024/56-9f96d2dd-b3f9-5b10-8db1-414c12104885.jpg",
+      "poster_url": "https://static.media.ccc.de/media/conferences/eh2024/56-9f96d2dd-b3f9-5b10-8db1-414c12104885_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/conferences/eh2024/56-9f96d2dd-b3f9-5b10-8db1-414c12104885.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/conferences/eh2024/56-9f96d2dd-b3f9-5b10-8db1-414c12104885.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/eh21-56-howto-eventphone",
+      "url": "https://api.media.ccc.de/public/events/9f96d2dd-b3f9-5b10-8db1-414c12104885",
+      "conference_title": "Easterhegg 2024: Rabbit Prototyping",
+      "conference_url": "https://api.media.ccc.de/public/conferences/eh21",
+      "related": []
+    },
+    {
+      "guid": "e5bd7031-bc26-588e-850f-8b1ff94e1380",
+      "title": "Geostationäre Satelliten als Hobby",
+      "subtitle": null,
+      "slug": "38c3-geostationre-satelliten-als-hobby",
+      "link": "https://events.ccc.de/congress/2024/hub/event/geostationre-satelliten-als-hobby/",
+      "description": "Geostationäre Satelliten können ein spannendes Hobby sein, von Satellitenpiraterie über Amateurfunksatelliten bis hin zum digitalen Satellitenrundfunk finden sich viele Betätigungsfelder.\n\nWas sind geostationäre Satelliten, was macht man damit, und warum hört man auf US-Militärsatelliten auch mal Leute Portugisisch sprechen oder Songs von den Bangles? Das sind nur einige Fragen die ich in diesem kleinen Ritt durch die Nachrichtentechnik der Fernmeldesatelliten beantworten werde. Das ganze mit Illustrationen und realen Beispielen sichtbar gemacht, sowie Praxistipps wie man diese Satelliten auch selbst nutzen kann.\n\nDer Vortrag versucht für ein breites Publikum verständlich zu sein und dabei eine Balance zwischen didaktischer Vereinfachung und der korrekten Darstellung von Technologien und Verfahren. Es häufig gezeigt wohin man gehen kann, wenn man mehr wissen will.\n\nLicensed to the public under http://creativecommons.org/licenses/by/4.0",
+      "original_language": "deu",
+      "persons": [
+        "Christian Berger"
+      ],
+      "tags": [
+        "38c3",
+        "740",
+        "2024",
+        "Stage YELL"
+      ],
+      "view_count": 2796,
+      "promoted": false,
+      "date": "2024-12-28T21:10:00.000+01:00",
+      "release_date": "2024-12-30T00:00:00.000+01:00",
+      "updated_at": "2025-12-31T12:45:18.409+01:00",
+      "length": 2194,
+      "duration": 2194,
+      "thumb_url": "https://static.media.ccc.de/media/congress/2024/740-e5bd7031-bc26-588e-850f-8b1ff94e1380.jpg",
+      "poster_url": "https://static.media.ccc.de/media/congress/2024/740-e5bd7031-bc26-588e-850f-8b1ff94e1380_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/congress/2024/740-e5bd7031-bc26-588e-850f-8b1ff94e1380.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/congress/2024/740-e5bd7031-bc26-588e-850f-8b1ff94e1380.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/38c3-geostationre-satelliten-als-hobby",
+      "url": "https://api.media.ccc.de/public/events/e5bd7031-bc26-588e-850f-8b1ff94e1380",
+      "conference_title": "38C3: Illegal Instructions",
+      "conference_url": "https://api.media.ccc.de/public/conferences/38c3",
+      "related": []
+    },
+    {
+      "guid": "10a4489a-3229-4bff-af03-f1d77dc45eba",
+      "title": "Der GIS-Arbeitsplatz der Zukunft",
+      "subtitle": null,
+      "slug": "fossgis2017-5213-der_gis-arbeitsplatz_der_zukunft",
+      "link": "https://c3voc.de",
+      "description": "Mobilität gewinnt bei der Gestaltung des Arbeitslebens immer mehr an Bedeutung. Arbeitnehmern ist es zunehmend wichtig, selbst über die Gestaltung des Arbeitstages zu bestimmen und damit einhergehend auch ortsunabhängig arbeiten zu können. Auch über das eingesetzte Werkzeug, Stichwort „bring your own device“ (BYOD), möchte er selbst entscheiden. Vor dem Hintergrund der rasanten Entwicklungen der Technologie ist ein einfaches „Geht nicht“ keine akzeptierte Antwort mehr auf die Frage nach der Gestaltung des zukünftigen IT-Arbeitsplatzes. Diese Entwicklungen betreffen auch die Geo-Branche. Wie soll er also aussehen, der GIS-Arbeitsplatz der Zukunft? Welche besonderen Herausforderungen sind damit verbunden? Hier möchte der eingereichte Beitrag aufzeigen, was mit heutigen Mitteln vor dem Hintergrund der Mobilität möglich ist und zur Diskussion anregen. Ein klassischer GIS-Arbeitsplatz basiert heutzutage auf einer Fat-Client-Hardware und einem darauf installierten (proprietären) Desktop-GIS. Je nach Komplexität der Tätigkeit können dazu noch weitere Werkzeuge zur Geodatenkonvertierung oder zum Spatial ETL kommen. Darüber hinaus besitzt der GIS-Arbeitsplatz in der Regel Schnittstellen zu Datenbankservern und/oder Geodiensten im Intra- bzw. Internet. Solche Architekturen begründen einen hohen Zeit-, Personal- und Kostenaufwand für Wartung und Pflege. Hier kommt die Cloud ins Spiel. Bereits heute wissen wir, dass die Auslagerung von Anwendungen in die Cloud geeignet ist, Einsparungen im IT-Betrieb in Verbindung mit Ressourcenoptimierung und Ausfallsicherheit herbeizuführen. Aber ein typischer GIS-Arbeitsplatz besteht aus Desktop-Anwendungen. Wie können diese in der Cloud betrieben werden? Eine klassische Antwort lautet hier: Web-GIS. Aber möchte man wirklich mittels Web-GIS die Funktionalität eines Desktop-GIS bereitstellen, ist dies überhaupt möglich und sinnvoll? Kann die Desktop-Anwendung nicht so bleiben, wie sie ist?\n\nDieser Beitrag möchte am Beispiel von AWS Appstream 2.0 aufzeigen, wie Open-Source-Anwendungen aus dem OSGeo-Umfeld (wie beispielsweise. QGIS) und Spatial-ETL-Werkzeuge (wie beispielsweise. hale.studio), mit kleinem Aufwand für beliebig viele Nutzer bereitgestellt werden können. Der GIS-Arbeitsplatz der Zukunft wird damit dem steigenden Bedürfnis der Arbeitnehmer nach Mobilität gerecht, denn durch die Bereitstellung der Open-Source-Werkzeuge mittels Appstream 2.0 kann er jederzeit und überall mit beliebigen Endgeräten arbeiten. Gleichzeitig wird der Ressourceneinsatz seitens der Unternehmen und Behörden optimiert. Durch kluge Einrichtung von Deployment-Prozessen verfügt der Arbeitsplatz dabei immer über die neuesten Versionen der eingesetzten Open-Source-GIS Technologien. Somit ist der GIS-Arbeitsplatz der Zukunft mobil, vergleichsweise kostengünstig, immer auf dem neuesten Stand und dynamisch skalierbar.\n",
+      "original_language": "deu",
+      "persons": [
+        "Sebastian Goerke"
+      ],
+      "tags": [
+        "fossgis17",
+        "5213",
+        "2017",
+        "Freie Software"
+      ],
+      "view_count": 11,
+      "promoted": false,
+      "date": "2017-03-23T11:30:00.000+01:00",
+      "release_date": "2022-02-12T00:00:00.000+01:00",
+      "updated_at": "2024-08-28T22:45:02.660+02:00",
+      "length": 1359,
+      "duration": 1359,
+      "thumb_url": "https://static.media.ccc.de/media/events/fossgis/2017/5213-10a4489a-3229-4bff-af03-f1d77dc45eba.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fossgis/2017/5213-10a4489a-3229-4bff-af03-f1d77dc45eba_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fossgis/2017/5213-10a4489a-3229-4bff-af03-f1d77dc45eba.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fossgis/2017/5213-10a4489a-3229-4bff-af03-f1d77dc45eba.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fossgis2017-5213-der_gis-arbeitsplatz_der_zukunft",
+      "url": "https://api.media.ccc.de/public/events/10a4489a-3229-4bff-af03-f1d77dc45eba",
+      "conference_title": "FOSSGIS 2017",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fossgis2017",
+      "related": []
+    },
+    {
+      "guid": "9422bcc6-9ed2-53c8-bc3b-fa069b740088",
+      "title": "OpenStreetMap FeatureInfo",
+      "subtitle": null,
+      "slug": "fossgis2025-57632-openstreetmap-featureinfo",
+      "link": "https://pretalx.com/fossgis2025/talk/KBTU78/",
+      "description": "Der Vortrag stellt eine Implementierung vor, die es erlaubt Informationen zu OSM Objekten um einen Ort herum über eine einfache Schnittstelle abzufragen. Die Idee dahinter ist, das Rad nicht neu zu erfinden, sondern bewährte Software-Komponenten zu kombinieren und auf etablierte Standards zu setzen.\n\nDie Daten werden mit osm2pgsql in eine PostgreSQL/PostGIS Datenbank geladen und kontinuierlich auf dem neusten Stand gehalten. Die Abfrage wird mit einer parametrisierten SQL-Abfrage durchgeführt und das Ergebnis mittels pg_featureserv über eine REST-Schnittstelle verfügbar gemacht. Weitere Ideen sind die Schnittstelle konform zu OGC API Processes zu machen. Eine mögliche Anwendung wäre die Nutzung als Backend für Objektabfrage in der offiziellen OpenStreetMap Webseite.\n\nLicensed to the public under https://creativecommons.org/licenses/by/4.0/",
+      "original_language": "deu",
+      "persons": [
+        "Jakob Miksch"
+      ],
+      "tags": [
+        "57632",
+        "2025",
+        "fossgis2025",
+        "Daten, Datenbanken und Datenprozessierung",
+        "HS4 (S2)",
+        "fossgis2025-deu",
+        "Day 2"
+      ],
+      "view_count": 104,
+      "promoted": false,
+      "date": "2025-03-27T11:20:00.000+01:00",
+      "release_date": "2025-03-27T00:00:00.000+01:00",
+      "updated_at": "2025-12-01T21:30:09.574+01:00",
+      "length": 289,
+      "duration": 289,
+      "thumb_url": "https://static.media.ccc.de/media/events/fossgis/2025/57632-9422bcc6-9ed2-53c8-bc3b-fa069b740088.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fossgis/2025/57632-9422bcc6-9ed2-53c8-bc3b-fa069b740088_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fossgis/2025/57632-9422bcc6-9ed2-53c8-bc3b-fa069b740088.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fossgis/2025/57632-9422bcc6-9ed2-53c8-bc3b-fa069b740088.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fossgis2025-57632-openstreetmap-featureinfo",
+      "url": "https://api.media.ccc.de/public/events/9422bcc6-9ed2-53c8-bc3b-fa069b740088",
+      "conference_title": "FOSSGIS 2025",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fossgis2025",
+      "related": []
+    },
+    {
+      "guid": "c158ea63-8c09-5cee-95b4-3619e20fc24f",
+      "title": "How to survive in spacecraft",
+      "subtitle": null,
+      "slug": "rc3-158638-how_to_survive_in_spacecraft",
+      "link": "https://pretalx.rc3.studio/rc3-channels-2020/talk/GLGHGQ/",
+      "description": "If you pop out into space, you die. No oxygen to breathe, no ambient pressure makes your bodily fluids boil, UV radiation burns your skin to a crisp. It's not a good place to be for humans. So in order to survive, you need to bring a number of things along, commonly called the \"life support system\". This talk explains how this works!\n\nHow do oxygen generators and CO_2 scrubbers work? Do you need to heat or cool your craft? If you eat beans and fart a lot, do you ever get rid of the smell? Can you just fill your spacecraft with plants and live off them? \u003cbr /\u003e This talk goes through historic, present and future ways that life support is managed in spacecraft, spacesuits and future planetary outposts. It also explains why you have to breathe your own pee on the International Space Station. \u003cbr /\u003e (This is the logical followup to the two previous, german talks about how to fly spaceships and how to build them, from the GulaschProgrammierNacht 13 and 16)\n\nSlides: http://urs.nerd2nerd.org/rC3-talk.svg",
+      "original_language": "eng",
+      "persons": [
+        "urs"
+      ],
+      "tags": [
+        "rc3-cwtv",
+        "127",
+        "2020",
+        "CWTV",
+        "Chaos-West"
+      ],
+      "view_count": 11080,
+      "promoted": false,
+      "date": "2020-12-28T13:30:00.000+01:00",
+      "release_date": "2020-12-31T00:00:00.000+01:00",
+      "updated_at": "2025-12-31T15:00:12.970+01:00",
+      "length": 4004,
+      "duration": 4004,
+      "thumb_url": "https://static.media.ccc.de/media/events/rc3/127-c158ea63-8c09-5cee-95b4-3619e20fc24f.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/rc3/127-c158ea63-8c09-5cee-95b4-3619e20fc24f_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/rc3/127-c158ea63-8c09-5cee-95b4-3619e20fc24f.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/rc3/127-c158ea63-8c09-5cee-95b4-3619e20fc24f.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/rc3-158638-how_to_survive_in_spacecraft",
+      "url": "https://api.media.ccc.de/public/events/c158ea63-8c09-5cee-95b4-3619e20fc24f",
+      "conference_title": "Remote Chaos Experience",
+      "conference_url": "https://api.media.ccc.de/public/conferences/rc3",
+      "related": []
+    },
+    {
+      "guid": "462a2b57-d588-577c-a746-cac57ba9dde6",
+      "title": "Unser FOSS Gamedesign Workflow",
+      "subtitle": null,
+      "slug": "glt19-45-unser-foss-gamedesign-workflow",
+      "link": "https://pretalx.linuxtage.at/glt19/talk/Y9B7EJ",
+      "description": "Erfahrungen, Vorteile und Herausforderungen zu einem komplett freien Gamedesign Workflow.\nVom Betriebssystem, der Asseterstellung bis hin zur Engine wurde nur freie Software eingesetzt.\n\nIm Laufe der Vorlesung GDD1 mussten (müssen) wir ein kleines Spiel erstellen. \nAls besonderes Ziel haben wir uns den ausschließlichen Einsatz von freier Software (Ausgenommen Treiber) gesetzt. In diesem Vortrag möchten wir auf unsere Tool Chains und vor allem auf die Vorteile eingehen.",
+      "original_language": "deu",
+      "persons": [
+        "Thomas Brunner"
+      ],
+      "tags": [
+        "glt19",
+        "45",
+        "Entwickler",
+        "Graz",
+        "linuxtage"
+      ],
+      "view_count": 49,
+      "promoted": false,
+      "date": "2019-04-27T00:00:00.000+02:00",
+      "release_date": "2019-04-27T02:00:00.000+02:00",
+      "updated_at": "2025-01-09T10:30:12.223+01:00",
+      "length": 2458,
+      "duration": 2458,
+      "thumb_url": "https://static.media.ccc.de/media/events/glt/2019/45-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/glt/2019/45-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/glt/2019/45-hd.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/glt/2019/45-hd.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/glt19-45-unser-foss-gamedesign-workflow",
+      "url": "https://api.media.ccc.de/public/events/462a2b57-d588-577c-a746-cac57ba9dde6",
+      "conference_title": "Grazer Linuxtage 2019",
+      "conference_url": "https://api.media.ccc.de/public/conferences/glt19",
+      "related": [
+        {
+          "event_id": 6926,
+          "event_guid": "e51e5695-68c6-52f8-828b-472a204ffaec",
+          "weight": 3
+        },
+        {
+          "event_id": 6929,
+          "event_guid": "76f25555-9427-5509-aa8a-9f7f8e4be83f",
+          "weight": 2
+        },
+        {
+          "event_id": 6981,
+          "event_guid": "c1399e8e-cdb7-53f2-9454-907bcf78d0e8",
+          "weight": 3
+        },
+        {
+          "event_id": 6982,
+          "event_guid": "9593f5f1-2aa2-5abc-8240-19c748293332",
+          "weight": 5
+        },
+        {
+          "event_id": 6985,
+          "event_guid": "814a06d5-678e-5402-9aee-f89bc58654e9",
+          "weight": 1
+        },
+        {
+          "event_id": 6994,
+          "event_guid": "8e9740a2-56f3-581c-b17d-fe1e63e84976",
+          "weight": 3
+        },
+        {
+          "event_id": 7016,
+          "event_guid": "1ef521cc-4b8f-590c-8738-15bea2657941",
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "guid": "import-ea971d9a74241bb280",
+      "title": "Web security 101 (or: how to hack security conferences)",
+      "subtitle": null,
+      "slug": "vortrag_mp6_og_-_2013-07-05_15:00_-_web_security_101_or_how_to_hack_security_conferences_-_sander_bos_-_5107",
+      "link": "https://sigint.ccc.de/schedule/events/5107.html",
+      "description": "The vulnerable nature of Web applications was found out to apply even to security conferences.\n",
+      "original_language": "eng",
+      "persons": [
+        "Sander Bos"
+      ],
+      "tags": [
+        "sigint13",
+        " Hacking"
+      ],
+      "view_count": 269,
+      "promoted": false,
+      "date": "2013-07-05T02:00:00.000+02:00",
+      "release_date": "2013-07-22T02:00:00.000+02:00",
+      "updated_at": "2025-10-02T05:00:02.941+02:00",
+      "length": 2738,
+      "duration": 2738,
+      "thumb_url": "https://static.media.ccc.de/media/conferences/sigint13/vortrag_mp6_og_-_2013-07-05_15:00_-_web_security_101_or_how_to_hack_security_conferences_-_sander_bos_-_5107.jpg",
+      "poster_url": "https://static.media.ccc.de/media/conferences/sigint13/vortrag_mp6_og_-_2013-07-05_15:00_-_web_security_101_or_how_to_hack_security_conferences_-_sander_bos_-_5107_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/conferences/sigint13/import-ea971d9a74241bb280-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/conferences/sigint13/import-ea971d9a74241bb280-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/vortrag_mp6_og_-_2013-07-05_15:00_-_web_security_101_or_how_to_hack_security_conferences_-_sander_bos_-_5107",
+      "url": "https://api.media.ccc.de/public/events/import-ea971d9a74241bb280",
+      "conference_title": "sigint13",
+      "conference_url": "https://api.media.ccc.de/public/conferences/sigint13",
+      "related": [
+        {
+          "event_id": 365,
+          "event_guid": "import-951fb835b898590d42",
+          "weight": 1
+        },
+        {
+          "event_id": 654,
+          "event_guid": "import-ab016bd5cd9892b4f5",
+          "weight": 1
+        },
+        {
+          "event_id": 657,
+          "event_guid": "import-a4e46602a0e417b76b",
+          "weight": 1
+        },
+        {
+          "event_id": 664,
+          "event_guid": "import-70c200884c5a8b15b6",
+          "weight": 1
+        },
+        {
+          "event_id": 666,
+          "event_guid": "import-96a9a004b788c32b05",
+          "weight": 1
+        },
+        {
+          "event_id": 675,
+          "event_guid": "import-67732f87c85cd9bc30",
+          "weight": 1
+        },
+        {
+          "event_id": 678,
+          "event_guid": "import-0275a644da683f930b",
+          "weight": 1
+        },
+        {
+          "event_id": 679,
+          "event_guid": "import-896e00155e91edd7b8",
+          "weight": 1
+        },
+        {
+          "event_id": 684,
+          "event_guid": "import-3c6185884db88b4055",
+          "weight": 3
+        },
+        {
+          "event_id": 686,
+          "event_guid": "import-b93ce60268c2d2302a",
+          "weight": 1
+        },
+        {
+          "event_id": 693,
+          "event_guid": "import-b55a825bce0ede19d7",
+          "weight": 1
+        },
+        {
+          "event_id": 697,
+          "event_guid": "import-6e41e3f78f87e167ab",
+          "weight": 2
+        },
+        {
+          "event_id": 699,
+          "event_guid": "import-264973248d5b2f9520",
+          "weight": 1
+        },
+        {
+          "event_id": 1225,
+          "event_guid": "import-693a7916772f61c4c9",
+          "weight": 1
+        },
+        {
+          "event_id": 1442,
+          "event_guid": "import-ac2d78310990a8f3ff",
+          "weight": 1
+        },
+        {
+          "event_id": 1719,
+          "event_guid": "import-1975766c6d4f873c2c",
+          "weight": 1
+        },
+        {
+          "event_id": 1814,
+          "event_guid": "3HEv_YYlkY2P_y1pKfU7fA",
+          "weight": 1
+        },
+        {
+          "event_id": 1940,
+          "event_guid": "6IZxJ5WEpSV_OZWwm74Gwg",
+          "weight": 1
+        },
+        {
+          "event_id": 1948,
+          "event_guid": "3QioQqB0iLfI0WUwkTtsQg",
+          "weight": 1
+        },
+        {
+          "event_id": 1976,
+          "event_guid": "b0167f2efcd6a228",
+          "weight": 1
+        },
+        {
+          "event_id": 2378,
+          "event_guid": "213f5667-d2b5-4f7c-b3f7-90ef3f6322a0",
+          "weight": 1
+        },
+        {
+          "event_id": 2397,
+          "event_guid": "688c483bd1b80f3c9866ba7a5743b036",
+          "weight": 1
+        },
+        {
+          "event_id": 2405,
+          "event_guid": "5640ced59c1ddef8adf6787a8f5df094",
+          "weight": 1
+        },
+        {
+          "event_id": 2649,
+          "event_guid": "fec73a01-e9dc-4078-bb82-b2a6b46f635d",
+          "weight": 1
+        },
+        {
+          "event_id": 2720,
+          "event_guid": "zboXEMtoT7r3Aurvymmg5Q",
+          "weight": 1
+        },
+        {
+          "event_id": 2827,
+          "event_guid": "f79c744f-30d1-4175-a173-2e760049337d",
+          "weight": 1
+        },
+        {
+          "event_id": 2860,
+          "event_guid": "81cba379-0eb6-4dbb-a48c-80feaea60939",
+          "weight": 1
+        },
+        {
+          "event_id": 2917,
+          "event_guid": "16613345-4f8c-44f1-a065-b3fa1d7b51cc",
+          "weight": 1
+        },
+        {
+          "event_id": 2959,
+          "event_guid": "83ab70a1-de38-42d3-993e-08024cac1ddg",
+          "weight": 1
+        },
+        {
+          "event_id": 3024,
+          "event_guid": "f91ddf92-efa3-4f10-a822-35430200544e",
+          "weight": 1
+        },
+        {
+          "event_id": 3043,
+          "event_guid": "79e60f58-b2e7-4910-be32-f0a8896569e0",
+          "weight": 1
+        },
+        {
+          "event_id": 3069,
+          "event_guid": "b5b1172a-7405-4c50-9661-883762c6b4ad",
+          "weight": 1
+        },
+        {
+          "event_id": 3108,
+          "event_guid": "79db9f42-6794-4696-bb2b-28ea56102d8f",
+          "weight": 1
+        },
+        {
+          "event_id": 3147,
+          "event_guid": "MvDEUEd240rFYyOokI_1eQ",
+          "weight": 1
+        },
+        {
+          "event_id": 3332,
+          "event_guid": "e6d8beca-655a-514c-a0db-6f12614d40f0",
+          "weight": 1
+        },
+        {
+          "event_id": 3405,
+          "event_guid": "8c834770-a8d7-44a8-8405-abd4c10f6a17",
+          "weight": 1
+        },
+        {
+          "event_id": 3480,
+          "event_guid": "39c7e715-f094-4b45-bdff-f4a996c142d7",
+          "weight": 1
+        },
+        {
+          "event_id": 3603,
+          "event_guid": "798573a8-f544-48f0-abaf-ebc405f03f4a",
+          "weight": 1
+        },
+        {
+          "event_id": 3629,
+          "event_guid": "686b1941-b211-4902-b4c4-1d642398e08b",
+          "weight": 1
+        },
+        {
+          "event_id": 3636,
+          "event_guid": "a1a52c4c-8233-403b-8f04-db981df016c1",
+          "weight": 2
+        },
+        {
+          "event_id": 3652,
+          "event_guid": "60b52369-b0ee-455f-904a-4dfef49596eb",
+          "weight": 1
+        },
+        {
+          "event_id": 3654,
+          "event_guid": "ac80424a-f4dc-431d-95f3-3f85664ba2dc",
+          "weight": 1
+        },
+        {
+          "event_id": 3690,
+          "event_guid": "8d0aed87-2484-4880-ae08-2dc3c7898959",
+          "weight": 1
+        },
+        {
+          "event_id": 3816,
+          "event_guid": "e370add0-106d-48e6-9e97-cd560ba60b9c",
+          "weight": 1
+        },
+        {
+          "event_id": 3862,
+          "event_guid": "7f97fb44-f121-4f16-8bf7-05800fb37bdf",
+          "weight": 1
+        },
+        {
+          "event_id": 3873,
+          "event_guid": "da554088-7556-43ca-81f0-1de27299973a",
+          "weight": 1
+        },
+        {
+          "event_id": 3883,
+          "event_guid": "b54fc618-f047-4465-bcc0-bd9c71401e30",
+          "weight": 1
+        },
+        {
+          "event_id": 3970,
+          "event_guid": "bb80a752-488c-533d-9953-108ce50ebb01",
+          "weight": 2
+        },
+        {
+          "event_id": 4108,
+          "event_guid": "a53b2bd1-2104-504f-8469-6eb198675c7b",
+          "weight": 1
+        },
+        {
+          "event_id": 4123,
+          "event_guid": "9eaf7e5d-9802-5e62-8ef3-31565134237f",
+          "weight": 1
+        },
+        {
+          "event_id": 4257,
+          "event_guid": "9f3c556d-5cb0-4b17-a099-3c4626a7e83b",
+          "weight": 1
+        },
+        {
+          "event_id": 4265,
+          "event_guid": "9ba5a35b-0608-40f1-84ec-e02c387cb60b",
+          "weight": 1
+        },
+        {
+          "event_id": 4322,
+          "event_guid": "e41aee32-a8c0-4dce-b55a-a13aac7b5cad",
+          "weight": 1
+        },
+        {
+          "event_id": 4338,
+          "event_guid": "62a4c312-72d1-42da-a84e-99f97b52d0f6",
+          "weight": 1
+        },
+        {
+          "event_id": 4370,
+          "event_guid": "cf9916ac-0cb4-4a61-ae81-5fc40f36b67f",
+          "weight": 1
+        },
+        {
+          "event_id": 4410,
+          "event_guid": "26c1f7b1-3859-4ce3-a837-664a1bcb735d",
+          "weight": 1
+        },
+        {
+          "event_id": 4436,
+          "event_guid": "0a5c2a3a-aae3-47c6-97e8-c28af5efc466",
+          "weight": 1
+        },
+        {
+          "event_id": 4447,
+          "event_guid": "48c05b36-a467-42db-ae4f-6ba4a86ce6ea",
+          "weight": 1
+        },
+        {
+          "event_id": 4485,
+          "event_guid": "da208942-2be8-4f14-9466-ba8e7b74fca8",
+          "weight": 1
+        },
+        {
+          "event_id": 4610,
+          "event_guid": "c2373c87-45da-51d5-a097-feb11e901877",
+          "weight": 1
+        },
+        {
+          "event_id": 4665,
+          "event_guid": "bac361fe-2e40-4671-abd5-694d07187365",
+          "weight": 1
+        },
+        {
+          "event_id": 4694,
+          "event_guid": "39e1e8bd-418b-4463-b105-abcd086a4eb3",
+          "weight": 1
+        },
+        {
+          "event_id": 4751,
+          "event_guid": "39866be3-5319-42ed-abf6-aa502a6da89a",
+          "weight": 1
+        },
+        {
+          "event_id": 4793,
+          "event_guid": "22027440-b3fb-49d5-a35b-b86e7d77cfb9",
+          "weight": 1
+        },
+        {
+          "event_id": 4812,
+          "event_guid": "7edaed35-e938-4a13-b21c-aac4bb0ebf94",
+          "weight": 1
+        },
+        {
+          "event_id": 4831,
+          "event_guid": "f068c5df-f969-4206-befb-540326e3d053",
+          "weight": 1
+        },
+        {
+          "event_id": 4832,
+          "event_guid": "275f85de-d612-4440-8755-85dee5912f12",
+          "weight": 1
+        },
+        {
+          "event_id": 4850,
+          "event_guid": "949bee69-3be0-4cc8-915b-5f1167141dcc",
+          "weight": 1
+        },
+        {
+          "event_id": 4855,
+          "event_guid": "51b586be-500c-436e-b70c-fc433e65c4be",
+          "weight": 1
+        },
+        {
+          "event_id": 4866,
+          "event_guid": "117a52b4-f675-49dd-aafe-659c07b6bc9c",
+          "weight": 1
+        },
+        {
+          "event_id": 4909,
+          "event_guid": "03ba9edb-1d3a-4774-9384-7548c0696df7",
+          "weight": 1
+        },
+        {
+          "event_id": 4929,
+          "event_guid": "8e222759-cd6b-403b-8fe1-3517bf7d2802",
+          "weight": 1
+        },
+        {
+          "event_id": 5223,
+          "event_guid": "4647424c-5553-2020-2020-202020202020",
+          "weight": 1
+        },
+        {
+          "event_id": 5233,
+          "event_guid": "4a433356-4456-2020-2020-202020202020",
+          "weight": 1
+        },
+        {
+          "event_id": 5247,
+          "event_guid": "48454348-4e44-2020-2020-202020202020",
+          "weight": 1
+        },
+        {
+          "event_id": 5279,
+          "event_guid": "baef3860-9786-4917-a46c-5ddd4fdac22e",
+          "weight": 1
+        },
+        {
+          "event_id": 5391,
+          "event_guid": "93474b10-fc14-5cd4-b316-77ffc49ff668",
+          "weight": 1
+        },
+        {
+          "event_id": 5557,
+          "event_guid": "d6e55ac4-08b0-5c60-a88c-daa5496dfbf6",
+          "weight": 1
+        },
+        {
+          "event_id": 5578,
+          "event_guid": "2087de04-a1de-500c-aed8-b7c9a2ad85dc",
+          "weight": 1
+        },
+        {
+          "event_id": 5607,
+          "event_guid": "d360b86d-4efa-5caa-a6a3-87fde4b48cdf",
+          "weight": 1
+        },
+        {
+          "event_id": 5830,
+          "event_guid": "1f3a0237-0515-4cdb-90ac-d57f7bc85586",
+          "weight": 1
+        },
+        {
+          "event_id": 5911,
+          "event_guid": "734952f2-9c9a-52db-9067-b804f112156d",
+          "weight": 1
+        },
+        {
+          "event_id": 5953,
+          "event_guid": "3c3707ab-6d54-53b8-93d9-7c414cac425e",
+          "weight": 1
+        },
+        {
+          "event_id": 5958,
+          "event_guid": "736d18c5-2d2d-5815-b488-aad7429dfdea",
+          "weight": 1
+        },
+        {
+          "event_id": 5960,
+          "event_guid": "541dc917-721a-59c3-b4eb-371a7e8acc3e",
+          "weight": 1
+        },
+        {
+          "event_id": 5969,
+          "event_guid": "121459c7-aa60-5448-af88-2cf9a53f0a6c",
+          "weight": 1
+        },
+        {
+          "event_id": 5988,
+          "event_guid": "1f79fa0c-2d1a-51f6-b6cc-1df95691e966",
+          "weight": 1
+        },
+        {
+          "event_id": 5990,
+          "event_guid": "c6eaceb0-f4a3-51ee-b736-289369f5611e",
+          "weight": 1
+        },
+        {
+          "event_id": 6001,
+          "event_guid": "97bd059a-b44f-5d06-b325-ee634a5ad4c1",
+          "weight": 1
+        },
+        {
+          "event_id": 6015,
+          "event_guid": "2565d7fd-510e-57b4-a4e8-2566d6c85915",
+          "weight": 1
+        },
+        {
+          "event_id": 6058,
+          "event_guid": "7fe2a84b-bbed-4a4e-80fb-85b581c14b13",
+          "weight": 1
+        },
+        {
+          "event_id": 6078,
+          "event_guid": "8a3c7006-ba7f-451c-a555-3a9ca4af5f2f",
+          "weight": 1
+        },
+        {
+          "event_id": 6235,
+          "event_guid": "92ef3314-f658-46c1-bf24-6772fe973e60",
+          "weight": 1
+        },
+        {
+          "event_id": 6238,
+          "event_guid": "3593cd0e-8329-4684-863b-24e72e92d508",
+          "weight": 1
+        },
+        {
+          "event_id": 6446,
+          "event_guid": "80664626-4764-53b5-8ca3-17014e213f1c",
+          "weight": 1
+        },
+        {
+          "event_id": 7095,
+          "event_guid": "9e0c19c0-935b-5f08-9fbe-a9daaebbc2c6",
+          "weight": 1
+        },
+        {
+          "event_id": 7124,
+          "event_guid": "4ad50a8c-38de-5023-9cde-06b1620303b2",
+          "weight": 1
+        },
+        {
+          "event_id": 7134,
+          "event_guid": "8f035c60-97b4-53f1-b2de-32e65f6f2844",
+          "weight": 1
+        },
+        {
+          "event_id": 7146,
+          "event_guid": "da767a60-2f04-511e-bcc8-9cb136de77f7",
+          "weight": 1
+        },
+        {
+          "event_id": 7256,
+          "event_guid": "ccab9927-22fe-52a3-a14a-e33f5dffb485",
+          "weight": 1
+        },
+        {
+          "event_id": 7259,
+          "event_guid": "942a7a7e-a7d3-11e9-a2a3-2a2ae2dbcce4",
+          "weight": 1
+        },
+        {
+          "event_id": 7308,
+          "event_guid": "725bf5fc-26a0-468b-a1ee-c5e5e8154fd2",
+          "weight": 1
+        },
+        {
+          "event_id": 7332,
+          "event_guid": "50ad5991-1b2f-4a92-ba87-dec6456f085a",
+          "weight": 1
+        },
+        {
+          "event_id": 7339,
+          "event_guid": "4293552f-5a33-4b91-b107-fd0246c04948",
+          "weight": 1
+        },
+        {
+          "event_id": 7345,
+          "event_guid": "a04f9f57-2046-4b50-b6da-4154bc0aa375",
+          "weight": 1
+        },
+        {
+          "event_id": 7426,
+          "event_guid": "7926f5ba-d424-4523-890b-08736b08a9b9",
+          "weight": 1
+        },
+        {
+          "event_id": 7448,
+          "event_guid": "ca82c94e-28b1-4c77-b7c1-0ab024a46c25",
+          "weight": 1
+        },
+        {
+          "event_id": 7820,
+          "event_guid": "9a497fd7-62b4-5b5b-bf09-5dd123d18305",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "guid": "d606b45a-38da-5e4d-a4b5-c12f515ff9e2",
+      "title": "Modernizing GNOME",
+      "subtitle": null,
+      "slug": "all-systems-go-2025-364-modernizing-gnome",
+      "link": "https://cfp.all-systems-go.io/all-systems-go-2025/talk/FQE7QZ/",
+      "description": "GNOME has collected some very old code over the years. During the recent GNOME 49 release, we've made some drastic cleanups. Most visibly, we've dropped support for X11 and gained many dependencies on systemd. Let's explore some of the what and why for these changes!\n\nLicensed to the public under https://creativecommons.org/licenses/by/4.0/de/",
+      "original_language": "eng",
+      "persons": [
+        "Adrian Vovk"
+      ],
+      "tags": [
+        "364",
+        "2025",
+        "asg2025",
+        "Galerie",
+        "asg2025-eng",
+        "asg2025",
+        "Day 2"
+      ],
+      "view_count": 405,
+      "promoted": false,
+      "date": "2025-10-01T11:25:00.000+02:00",
+      "release_date": "2025-10-01T00:00:00.000+02:00",
+      "updated_at": "2025-12-31T18:00:09.790+01:00",
+      "length": 1914,
+      "duration": 1914,
+      "thumb_url": "https://static.media.ccc.de/media/events/all_systems_go/2025/364-d606b45a-38da-5e4d-a4b5-c12f515ff9e2.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/all_systems_go/2025/364-d606b45a-38da-5e4d-a4b5-c12f515ff9e2_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/all_systems_go/2025/364-d606b45a-38da-5e4d-a4b5-c12f515ff9e2.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/all_systems_go/2025/364-d606b45a-38da-5e4d-a4b5-c12f515ff9e2.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/all-systems-go-2025-364-modernizing-gnome",
+      "url": "https://api.media.ccc.de/public/events/d606b45a-38da-5e4d-a4b5-c12f515ff9e2",
+      "conference_title": "All Systems Go! 2025",
+      "conference_url": "https://api.media.ccc.de/public/conferences/asg2025",
+      "related": []
+    },
+    {
+      "guid": "780a8d95-2dbb-588d-9f28-d28093ba8cf2",
+      "title": "Neues von PGP",
+      "subtitle": null,
+      "slug": "pw18-19-neues-von-pgp",
+      "link": "https://cfp.privacyweek.at/pw18/talk/TKSBNY",
+      "description": "In den letzten Monaten wurden mehrere Schachstellen von E-Mail-Verschlüsselung bekannt, währenddessen wird aktiv daran gearbeitet, die Techniken leichter nutzbar zu machen und auch Metadaten zu schützen. Der Vortrag gibt einen Überblick über aktuelle Entwicklungen.\n\nEfail: Im Mai 2018 gingen Behauptungen durch alle Medien, dass unverschlüsselte E-Mails sicherer seien als verschlüsselte. Was ist dran an den Behauptungen der Sicherheitsforscher und was bedeutet das für den Nutzer der (vermeintlich) betroffenen Programme?\n\nMit dem Memoryhole Standard werden die trotz Verschlüsselung des Mailinhalts unverschlüsselten Metadaten (wie dem Betreff) so weit wie möglich auf dem Transport verschlüsselt - was einen Kritikpunkt an PGP teilweise entkräftet.\n\nIm September 2018 meldete ein Newsportal, dass die Anzeigen von gültigen in vielen Programmen vom Absender nachgeahmt werden können, wobei die Ähnlichkeiten von Mailprogramm zu Mailprogramm variieren.\n\nPEP (Pretty easy privacy) und Autocrypt machen die Nutzung von PGP für Einsteiger deutlich leichter und wurden schon in diversen Programmen integriert. Das ist ein wichtiger Schritt für PGP, doch wurde dann Anfang Oktober 2018 bekannt, dass damit für kurze Zeit unter Windows E-Mails gar nicht verschlüsselt wurden.",
+      "original_language": "deu",
+      "persons": [
+        "Sebastian Wagner"
+      ],
+      "tags": [
+        "pw18",
+        "19"
+      ],
+      "view_count": 302,
+      "promoted": false,
+      "date": "2018-10-27T00:00:00.000+02:00",
+      "release_date": "2019-01-28T01:00:00.000+01:00",
+      "updated_at": "2025-12-31T20:15:17.513+01:00",
+      "length": 2152,
+      "duration": 2152,
+      "thumb_url": "https://static.media.ccc.de/media/events/privacyweek/2018/19-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/privacyweek/2018/19-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/privacyweek/2018/19-hd.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/privacyweek/2018/19-hd.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/pw18-19-neues-von-pgp",
+      "url": "https://api.media.ccc.de/public/events/780a8d95-2dbb-588d-9f28-d28093ba8cf2",
+      "conference_title": "PrivacyWeek 2018",
+      "conference_url": "https://api.media.ccc.de/public/conferences/pw18",
+      "related": [
+        {
+          "event_id": 5010,
+          "event_guid": "c34a07a2-0add-4809-bb25-280368b84db0",
+          "weight": 4
+        },
+        {
+          "event_id": 6477,
+          "event_guid": "c85de43e-107e-4247-b550-946f376e2ec4",
+          "weight": 4
+        },
+        {
+          "event_id": 6707,
+          "event_guid": "92d4043d-757a-5650-aa1e-c338386695e8",
+          "weight": 4
+        },
+        {
+          "event_id": 6713,
+          "event_guid": "e4b9eb41-0ffd-546a-b56e-4c06eb676334",
+          "weight": 13
+        },
+        {
+          "event_id": 6719,
+          "event_guid": "dd88e389-69a5-5e2a-8920-963f300ba8f4",
+          "weight": 5
+        },
+        {
+          "event_id": 6720,
+          "event_guid": "0401b381-51f1-5e0b-aa93-b24aba39a2d8",
+          "weight": 4
+        },
+        {
+          "event_id": 6723,
+          "event_guid": "89e5bbf5-ed9a-58dc-962b-91ebfba80da3",
+          "weight": 11
+        },
+        {
+          "event_id": 6724,
+          "event_guid": "3424364c-cbd5-58da-ad91-5bef295f6146",
+          "weight": 7
+        },
+        {
+          "event_id": 6729,
+          "event_guid": "d9171468-acf9-59f9-a7a7-ca7133bb6355",
+          "weight": 8
+        },
+        {
+          "event_id": 6735,
+          "event_guid": "b7640bd5-2810-53ee-8b8e-b5f8472add1f",
+          "weight": 9
+        },
+        {
+          "event_id": 6742,
+          "event_guid": "d4edc795-dfcb-51e1-b2b7-08c40f7069ac",
+          "weight": 4
+        },
+        {
+          "event_id": 6748,
+          "event_guid": "b3fe7f83-cdd3-436a-91db-56c13b2aeb3a",
+          "weight": 6
+        }
+      ]
+    },
+    {
+      "guid": "159aa64d-4952-413d-82a7-cc949febca50",
+      "title": "Andreas Eschbach – Fireside Chat",
+      "subtitle": "Lesung und Hintergrundgespräch",
+      "slug": "rc3-11580-andreas_eschbach_fireside_chat",
+      "link": "https://fahrplan.events.ccc.de/rc3/2020/Fahrplan/events/11580.html",
+      "description": "Lesung aus N.S.A. und lockeres Gespräch mit dem deutschen SciFi-Autor.",
+      "original_language": "deu",
+      "persons": [
+        "Andreas Eschbach"
+      ],
+      "tags": [
+        "rc3-mcr",
+        "11580",
+        "2020",
+        "Fireside Chat",
+        "main"
+      ],
+      "view_count": 677,
+      "promoted": false,
+      "date": "2020-12-29T21:40:00.000+01:00",
+      "release_date": "2020-12-31T00:00:00.000+01:00",
+      "updated_at": "2025-10-28T22:45:04.545+01:00",
+      "length": 5773,
+      "duration": 5773,
+      "thumb_url": "https://static.media.ccc.de/media/events/rc3/11580-159aa64d-4952-413d-82a7-cc949febca50.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/rc3/11580-159aa64d-4952-413d-82a7-cc949febca50_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/rc3/11580-159aa64d-4952-413d-82a7-cc949febca50.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/rc3/11580-159aa64d-4952-413d-82a7-cc949febca50.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/rc3-11580-andreas_eschbach_fireside_chat",
+      "url": "https://api.media.ccc.de/public/events/159aa64d-4952-413d-82a7-cc949febca50",
+      "conference_title": "Remote Chaos Experience",
+      "conference_url": "https://api.media.ccc.de/public/conferences/rc3",
+      "related": []
+    },
+    {
+      "guid": "6f101308-b808-5a40-8f65-ee56f4e23e50",
+      "title": "Pödelwitz - ein Modellprojekt zur praktischen Umsetzung einer klimagerechten Digitalisierung",
+      "subtitle": null,
+      "slug": "bitsundbaeume-20702-pdelwitz-ein-modellprojekt-zur-praktischen-umsetzung-einer-klimagerechten-digitalisierung",
+      "link": "https://fahrplan22.bits-und-baeume.org/bitsundbaeume/talk/EJ3QL7/",
+      "description": "Pödelwitz will ein Modellprojekt zur praktischen Umsetzung einer klimagerechten Digitalisierung auf kommunaler Ebene im Kontext der sozial-ökologischen Transformation werden. Dafür wurden in den Jahren des Widerstands gegen die physische Zerstörung fruchtbare Grundlagen geschaffen und die entwickelten Visionen und Konzepte sollen nun in Kooperation mit anderen Organisationen realisiert werden.\n\nNach dem erfolgreichen Widerstand gegen die physische Zerstörung durch den Abbau von Braunkohle zur Energiegewinnung will das Dorf Pödelwitz bei Leipzig nun ein Modellprojekt für den Strukturwandel in der Region mit einer globalen sozial- und klimagerechten Perspektive werden. Ziel ist ein solidarisches und zukunftsfähiges Zivilisations- und Gesellschaftsmodell, das dringliche Themen wie Ernährungssouveränität, soziale und globale Gerechtigkeit und für alle verfügbaren Wohnraum ausprobiert, erlernt, umsetzt und vermittelt. Im Bündnis „Pödelwitz hat Zukunft“ haben sich in Pödelwitz Lebende und Unterstützende mit zivilgesellschaftlichen Organisationen zusammengeschlossen, die dies in Pödelwitz als Teil dieser sozial-ökologischen Transformation gestalten und umsetzen wollen.\n\nDaraus ergibt sich inhaltlich eine große Übereinstimmung mit den Zielen der Bits \u0026 Bäume-Bewegung und dadurch eine solide Basis für nachhaltige Kooperationen, was wir mit unserem Beitrag thematisieren wollen. Nach einer kurzen Projektvorstellung und Darstellung des momentanen Stands freuen wir uns auf eine konstruktive Diskussion zur weiteren Entwicklung des Projekts. \n\nPödelwitz kann ein Ort werden, wo im Kontext der Bewegung entwickelte Digitalisierungs-Konzepte im kleinen Rahmen praktisch umgesetzt und ausprobiert werden können. Dabei sind viele Aspekte der Schnittstelle von Nachhaltigkeit und Digitalisierung relevant und konkrete personen- und gruppenindividuelle Handlungsoptionen in nahezu allen Bereichen unseres Lebens können durch die im Aufbau befindliche heterogene Gemeinschaft unter Einbezug vieler Perspektiven entwickelt und in ihrer realen Auswirkung analysiert werden.",
+      "original_language": "deu",
+      "persons": [
+        "Pödelwitz hat Zukunft e. V."
+      ],
+      "tags": [
+        "bub2022",
+        "20702",
+        "2022",
+        "Digitalisierung, Umwelt- und Klimaschutz"
+      ],
+      "view_count": 88,
+      "promoted": false,
+      "date": "2022-10-02T15:20:00.000+02:00",
+      "release_date": "2022-10-02T00:00:00.000+02:00",
+      "updated_at": "2024-12-15T09:00:01.945+01:00",
+      "length": 2674,
+      "duration": 2674,
+      "thumb_url": "https://static.media.ccc.de/media/events/bitsundbaeume/2022/20702-6f101308-b808-5a40-8f65-ee56f4e23e50.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/bitsundbaeume/2022/20702-6f101308-b808-5a40-8f65-ee56f4e23e50_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/bitsundbaeume/2022/20702-6f101308-b808-5a40-8f65-ee56f4e23e50.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/bitsundbaeume/2022/20702-6f101308-b808-5a40-8f65-ee56f4e23e50.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/bitsundbaeume-20702-pdelwitz-ein-modellprojekt-zur-praktischen-umsetzung-einer-klimagerechten-digitalisierung",
+      "url": "https://api.media.ccc.de/public/events/6f101308-b808-5a40-8f65-ee56f4e23e50",
+      "conference_title": "Bits \u0026 Bäume 2022",
+      "conference_url": "https://api.media.ccc.de/public/conferences/bub2022",
+      "related": []
+    },
+    {
+      "guid": "a9b47ec2-1e9b-48e6-a8d3-e68236fb72dc",
+      "title": "KI im Klassenzimmer - ein Update!",
+      "subtitle": "Wie KI in der Schule wirklich entlasten könnte",
+      "slug": "37c3-11756-ki_im_klassenzimmer_-_ein_update",
+      "link": "https://events.ccc.de/congress/2023/hub/event/ki_im_klassenzimmer_-_ein_update/",
+      "description": "Seit ChatGPT ist das Thema Künstliche Intelligenz mittlerweile an fast allen Schulen angekommen. Immer noch soll KI Lehrkräfte entlasten, doch mit der kommenden KI-Verordnung kann sich die Belastung einfach nur verschieben. Der Vortrag gibt ein Update zum Vortrag von der #rC3 2020, was nun konkret auf Schulen zukommen kann und wie KI tatsächlich zu Entlastungen beitragen kann. \n\nSchon länger experimentieren Bundesländer und Schulen zusammen mit EdTech-Unternehmen mit KI und Algorithmen in Learning Analytics-Programmen (LA) und sogenannten Intelligenten Tutor Systemen. Wie auch schon bei anderen technologischen Entwicklungen hängt auch bei KI die gesetzliche Regulierung der gelebten Praxis hinterher und Schulen oder auch Schulträger haben bislang keine rechtssichere Grundlage für die Arbeit mit KI. Noch. Doch bereits seit dem Frühjahr 2021 wird in Brüssel an der sogenannten KI-Verordnung gearbeitet, die diese Lücke schließen soll. Nun steht die KI-Verordnung kurz vor dem Abschluss und der Vortrag zeigt, was nun juristisch konkret auf Schulen, Schulträger oder Länder zukommen kann, und gibt ein Update zu den technischen und pädagogischen Herausforderungen, die der Einsatz von KI in der Schule mitbringt. Nur wenn KI richtig und geplant beschafft, eingesetzt und begleitet wird, kann sie zu Entlastungseffekten führen. Der Vortrag stellt die nötigen Schritte vor. ",
+      "original_language": "deu",
+      "persons": [
+        "Nina  Galla"
+      ],
+      "tags": [
+        "37c3",
+        "11756",
+        "2023",
+        "Ethics, Politics \u0026 Society",
+        ""
+      ],
+      "view_count": 3781,
+      "promoted": false,
+      "date": "2023-12-30T13:50:00.000+01:00",
+      "release_date": "2023-12-30T00:00:00.000+01:00",
+      "updated_at": "2025-12-19T12:00:11.252+01:00",
+      "length": 2573,
+      "duration": 2573,
+      "thumb_url": "https://static.media.ccc.de/media/congress/2023/11756-a9b47ec2-1e9b-48e6-a8d3-e68236fb72dc.jpg",
+      "poster_url": "https://static.media.ccc.de/media/congress/2023/11756-a9b47ec2-1e9b-48e6-a8d3-e68236fb72dc_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/congress/2023/11756-a9b47ec2-1e9b-48e6-a8d3-e68236fb72dc.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/congress/2023/11756-a9b47ec2-1e9b-48e6-a8d3-e68236fb72dc.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/37c3-11756-ki_im_klassenzimmer_-_ein_update",
+      "url": "https://api.media.ccc.de/public/events/a9b47ec2-1e9b-48e6-a8d3-e68236fb72dc",
+      "conference_title": "37C3: Unlocked",
+      "conference_url": "https://api.media.ccc.de/public/conferences/37c3",
+      "related": []
+    },
+    {
+      "guid": "17c7c011-07ef-438d-95e6-aed190fd7332",
+      "title": "Retroblah #17",
+      "subtitle": "Sendung #17 - Hack the Games!",
+      "slug": "EH2017-8542-retroblah_17",
+      "link": "https://c3voc.de",
+      "description": "Retroblah Ausgabe #17 - Live vom Easterhegg 2017 \nWir zocken und reden über Hacking-Games wie, (tusch) \"Hacker\" - \"Impossible Mission\" etc. ",
+      "original_language": "deu",
+      "persons": [
+        "sanifox"
+      ],
+      "tags": [
+        "eh17",
+        "8542"
+      ],
+      "view_count": 200,
+      "promoted": false,
+      "date": "2017-04-14T00:00:00.000+02:00",
+      "release_date": "2017-04-15T02:00:00.000+02:00",
+      "updated_at": "2025-12-06T19:30:05.766+01:00",
+      "length": 5847,
+      "duration": 5847,
+      "thumb_url": "https://static.media.ccc.de/media/conferences/eh2017/8542-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/conferences/eh2017/8542-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/conferences/eh2017/17c7c011-07ef-438d-95e6-aed190fd7332-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/conferences/eh2017/17c7c011-07ef-438d-95e6-aed190fd7332-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/EH2017-8542-retroblah_17",
+      "url": "https://api.media.ccc.de/public/events/17c7c011-07ef-438d-95e6-aed190fd7332",
+      "conference_title": "Easterhegg 2017",
+      "conference_url": "https://api.media.ccc.de/public/conferences/eh17",
+      "related": [
+        {
+          "event_id": 3790,
+          "event_guid": "6575fcac-cfae-4286-b464-67842ae6842d",
+          "weight": 29
+        },
+        {
+          "event_id": 3791,
+          "event_guid": "37e9af94-4aad-4417-8f88-1863ecfef4d1",
+          "weight": 29
+        },
+        {
+          "event_id": 3792,
+          "event_guid": "f2f3b250-3806-4a0b-9eb5-17b3441cbe61",
+          "weight": 19
+        },
+        {
+          "event_id": 3793,
+          "event_guid": "a48cf7af-c38e-4a19-8713-13facdbc0fd9",
+          "weight": 25
+        },
+        {
+          "event_id": 3795,
+          "event_guid": "fe6af5ce-7bba-4aa6-af9e-dea7a176ec3c",
+          "weight": 13
+        },
+        {
+          "event_id": 3796,
+          "event_guid": "6d0ad07f-0bb2-48ac-af93-10c63ec45cb3",
+          "weight": 15
+        },
+        {
+          "event_id": 3802,
+          "event_guid": "a588243f-a16e-4298-9e66-d26fb949aaea",
+          "weight": 22
+        },
+        {
+          "event_id": 3805,
+          "event_guid": "d5565688-a086-42e6-b8eb-17fa54e6fc3b",
+          "weight": 27
+        },
+        {
+          "event_id": 3806,
+          "event_guid": "d64cae15-a142-41ca-b659-df10fafbb297",
+          "weight": 12
+        },
+        {
+          "event_id": 3812,
+          "event_guid": "d180c287-0760-4421-9406-fedac5a3639c",
+          "weight": 13
+        },
+        {
+          "event_id": 3818,
+          "event_guid": "adb3ca92-d333-4a8d-b44a-09b3bbb75656",
+          "weight": 13
+        }
+      ]
+    },
+    {
+      "guid": "1ffb0767-0cce-50d4-bad2-757a5c2829fa",
+      "title": "Gesundheit ist eine soziale Frage ",
+      "subtitle": "Interdisziplinäre Primärversorgung und Prävention in der Poliklinik Veddel",
+      "slug": "rc3-10-gesundheit_ist_eine_soziale_frage",
+      "link": "https://c3voc.de",
+      "description": "\n Eine Darstellung der Entstehung, Arbeitsweise und Ziele (Ausblick) der Poliklinik.\n\"Gesunheit ist politisch\": Welches Gesundheitsverständnis liegt der Poliklinik zugrunde und welche Versorgungs- und Präventionsarbeit leitet sich daraus ab? Wie arbeiten wir aktuell auf der Veddel?\nUm mit diesem Versorgungskonzept in das deutsche Gesundheitswesen intervenieren zu können, ist die Poliklinik Veddel seit diesem Jahr mit anderen Gruppen als bundesweites Syndikat organisiert.\nWas fehlt, um die Potentiale dieser Struktur weiter ausschöpfen zu können? \n        \n\n\n Die Poliklinik Veddel ist ein interdisziplinär versorgendes Stadtteilgesundheitszentrum auf der Veddel in Hamburg (poliklinik1.org). Derzeit leisten dort fünf Fachbereiche ambulante Primärversorgung. Es gibt einen Allgemeinarzt, die Sozial- und die psychologische Beratung, eine Community Health Nurse und eine Hebamme. Zudem leistet die Poliklinik Gemeinwesenarbeit, die eindeutig der Gesundheitsarbeit zugerechnet wird.\nDie Arbeit(sweise) der Poliklinik fußt auf dem Verständnis, dass Gesundheit ein soziale Frage ist. Wie bereits in den 70er Jahren erstmalig von der Weltgesundheitsorganisation formuliert, haben Lebensverhältnisse einen starken Einfluss auf die relative Gesundheit der Menschen. Arbeits- und Wohnverhältnisse, der Zugang zu Bildung oder das Erleben von Diskriminierung sind einige Beispiele der sogenannten Sozialen Determinanten von Gesundheit, die lebensverlängernden oder -verkürzenden Einfluss haben. Individuelles Verhalten, welches (nicht nur) in Gesundheitsfragen heutzutage hauptsächlich adressiert wird, passiert vor dem Hintergrund dieser Verhältnisse. Gerade in Stadtteilen und Regionen, die von prekären Lebensverhältnissen gekennzeichnet sind, weisen die Menschen eine überdurchschnittliche Krankheits- und Morbiditätsrate auf. \nInterdisziplinäre und partizipative Versorgung mit deutlichem Sozialraumbezug (hier der Stadtteil Veddel) aus einer Hand ist aus unserer Sicht die notwendige Antwort auf dieses Phänomen und die Versorgungsform der Zukunft. Wir verstehen die Poliklinik und unsere Arbeit als Modellprojekt und streben eine bundesweite Asuweitung dieser Versorgung an.\n        ",
+      "original_language": "deu",
+      "persons": [
+        "Tobias Filmar"
+      ],
+      "tags": [
+        "rc3-chaostrawler",
+        "10",
+        "2020",
+        "Ethics, Society \u0026 Politics",
+        "ChaosTrawler"
+      ],
+      "view_count": 877,
+      "promoted": false,
+      "date": "2020-12-28T19:00:00.000+01:00",
+      "release_date": "2020-12-29T00:00:00.000+01:00",
+      "updated_at": "2025-09-02T22:00:03.934+02:00",
+      "length": 1891,
+      "duration": 1891,
+      "thumb_url": "https://static.media.ccc.de/media/events/rc3/10-1ffb0767-0cce-50d4-bad2-757a5c2829fa.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/rc3/10-1ffb0767-0cce-50d4-bad2-757a5c2829fa_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/rc3/10-1ffb0767-0cce-50d4-bad2-757a5c2829fa.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/rc3/10-1ffb0767-0cce-50d4-bad2-757a5c2829fa.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/rc3-10-gesundheit_ist_eine_soziale_frage",
+      "url": "https://api.media.ccc.de/public/events/1ffb0767-0cce-50d4-bad2-757a5c2829fa",
+      "conference_title": "Remote Chaos Experience",
+      "conference_url": "https://api.media.ccc.de/public/conferences/rc3",
+      "related": []
+    },
+    {
+      "guid": "import-088d6fa7916eb5736e",
+      "title": "The blackbox in your phone",
+      "subtitle": "Some details about SIM cards",
+      "slug": "cccamp11-4427-the_blackbox_in_your_phone-en",
+      "link": "http://events.ccc.de/camp/2011/Fahrplan/events/4427.en.html",
+      "description": "This talk sheds some light on a cellphone-component, that's inevitable, virtually unclonable and as closed as it gets: the SIM. The SIM can do a lot more than just user-authentication nowadays: the SIM Application Toolkit gives it control over your phone\n",
+      "original_language": "eng",
+      "persons": [
+        "hunz"
+      ],
+      "tags": [
+        "camp2011",
+        " Hacking"
+      ],
+      "view_count": 180,
+      "promoted": false,
+      "date": "2011-08-10T02:00:00.000+02:00",
+      "release_date": "2011-08-12T02:00:00.000+02:00",
+      "updated_at": "2025-12-03T11:15:09.459+01:00",
+      "length": 3533,
+      "duration": 3533,
+      "thumb_url": "https://static.media.ccc.de/media/conferences/camp2011/cccamp11-4427-the_blackbox_in_your_phone-en.jpg",
+      "poster_url": "https://static.media.ccc.de/media/conferences/camp2011/cccamp11-4427-the_blackbox_in_your_phone-en_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/conferences/camp2011/import-088d6fa7916eb5736e-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/conferences/camp2011/import-088d6fa7916eb5736e-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/cccamp11-4427-the_blackbox_in_your_phone-en",
+      "url": "https://api.media.ccc.de/public/events/import-088d6fa7916eb5736e",
+      "conference_title": "Chaos Communication Camp 2011",
+      "conference_url": "https://api.media.ccc.de/public/conferences/camp2011",
+      "related": [
+        {
+          "event_id": 88,
+          "event_guid": "import-015e28bafa9b484416",
+          "weight": 1
+        },
+        {
+          "event_id": 92,
+          "event_guid": "import-89729efee6abf7945c",
+          "weight": 1
+        },
+        {
+          "event_id": 99,
+          "event_guid": "import-38b13899aa39910195",
+          "weight": 1
+        },
+        {
+          "event_id": 105,
+          "event_guid": "import-699c2f9e58bb11f2d6",
+          "weight": 1
+        },
+        {
+          "event_id": 113,
+          "event_guid": "import-fd18555b23138238e1",
+          "weight": 1
+        },
+        {
+          "event_id": 118,
+          "event_guid": "import-1f4121511842b31d10",
+          "weight": 1
+        },
+        {
+          "event_id": 125,
+          "event_guid": "import-94efdacada20c130ed",
+          "weight": 2
+        },
+        {
+          "event_id": 131,
+          "event_guid": "import-43791f22a53f559498",
+          "weight": 2
+        },
+        {
+          "event_id": 135,
+          "event_guid": "import-0090bd639de5cf7498",
+          "weight": 1
+        },
+        {
+          "event_id": 137,
+          "event_guid": "import-09be6c4dcd22a304d3",
+          "weight": 2
+        },
+        {
+          "event_id": 139,
+          "event_guid": "import-a1179a0b9f7d1fd3d8",
+          "weight": 1
+        },
+        {
+          "event_id": 143,
+          "event_guid": "import-d13f2e3804b7dc1690",
+          "weight": 2
+        },
+        {
+          "event_id": 147,
+          "event_guid": "import-8fc3552b8dc23b5f8d",
+          "weight": 1
+        },
+        {
+          "event_id": 148,
+          "event_guid": "import-633868694666482e9f",
+          "weight": 1
+        },
+        {
+          "event_id": 153,
+          "event_guid": "import-4620b76ff7f8dbd8be",
+          "weight": 1
+        },
+        {
+          "event_id": 155,
+          "event_guid": "import-0b5b1fe8443b7a4274",
+          "weight": 1
+        },
+        {
+          "event_id": 158,
+          "event_guid": "import-a3f25884980707cd5c",
+          "weight": 1
+        },
+        {
+          "event_id": 159,
+          "event_guid": "import-ab478ca0d3df4201d0",
+          "weight": 1
+        },
+        {
+          "event_id": 162,
+          "event_guid": "import-c103a561a60405ea5c",
+          "weight": 1
+        },
+        {
+          "event_id": 164,
+          "event_guid": "import-36dbb5c49c18934cd7",
+          "weight": 5
+        },
+        {
+          "event_id": 169,
+          "event_guid": "import-3eee1d460ed0c3da7c",
+          "weight": 1
+        },
+        {
+          "event_id": 171,
+          "event_guid": "import-7db8885a836120d0dd",
+          "weight": 1
+        },
+        {
+          "event_id": 172,
+          "event_guid": "import-45f24173d01b67a62c",
+          "weight": 1
+        },
+        {
+          "event_id": 174,
+          "event_guid": "import-8b9acbb013dda29c4d",
+          "weight": 3
+        },
+        {
+          "event_id": 180,
+          "event_guid": "import-20ec8bc95ec75582c5",
+          "weight": 1
+        },
+        {
+          "event_id": 185,
+          "event_guid": "import-c09aabf3b80f40f452",
+          "weight": 1
+        },
+        {
+          "event_id": 1835,
+          "event_guid": "xdX27wLbHpeOU_dSgBO4Hg",
+          "weight": 1
+        },
+        {
+          "event_id": 1949,
+          "event_guid": "0d7893ca11637d8d",
+          "weight": 1
+        },
+        {
+          "event_id": 2403,
+          "event_guid": "d542eb645157198eb09eaf63efc7914c",
+          "weight": 1
+        },
+        {
+          "event_id": 2405,
+          "event_guid": "5640ced59c1ddef8adf6787a8f5df094",
+          "weight": 1
+        },
+        {
+          "event_id": 2498,
+          "event_guid": "cdc39fc3-715d-4610-b633-3821e4762aa4",
+          "weight": 1
+        },
+        {
+          "event_id": 2511,
+          "event_guid": "b66681b5-d811-4359-a7b4-c97d9acd2877",
+          "weight": 1
+        },
+        {
+          "event_id": 2512,
+          "event_guid": "8e851e7a-d9d1-4074-a802-4e9d7a297a6a",
+          "weight": 2
+        },
+        {
+          "event_id": 2526,
+          "event_guid": "e8f03c57-f500-492a-9028-b91acffe7695",
+          "weight": 1
+        },
+        {
+          "event_id": 2540,
+          "event_guid": "cd66723d-23cc-40e7-9b76-f9b38dc576ab",
+          "weight": 1
+        },
+        {
+          "event_id": 2541,
+          "event_guid": "58068b84-9261-4f5c-bb73-5c674fa5c45b",
+          "weight": 1
+        },
+        {
+          "event_id": 2547,
+          "event_guid": "379a56ad-5123-4861-a656-c0d534d53a96",
+          "weight": 1
+        },
+        {
+          "event_id": 2605,
+          "event_guid": "bbb3a3f0-407f-4351-bda8-177b930576e2",
+          "weight": 1
+        },
+        {
+          "event_id": 2826,
+          "event_guid": "9ab1407a-126f-48d9-898d-eae7974324e9",
+          "weight": 1
+        },
+        {
+          "event_id": 3603,
+          "event_guid": "798573a8-f544-48f0-abaf-ebc405f03f4a",
+          "weight": 1
+        },
+        {
+          "event_id": 3615,
+          "event_guid": "74783236-46f4-493c-9574-1b27a44847b7",
+          "weight": 1
+        },
+        {
+          "event_id": 3687,
+          "event_guid": "5ae90a09-0b83-4357-bdb4-9afc04100c68",
+          "weight": 2
+        },
+        {
+          "event_id": 3762,
+          "event_guid": "25e2df7d-5740-4c2f-bc34-986326d606fe",
+          "weight": 1
+        },
+        {
+          "event_id": 3771,
+          "event_guid": "32e9b904-0c52-4262-8e56-03cee2342424",
+          "weight": 1
+        },
+        {
+          "event_id": 3803,
+          "event_guid": "3a85b5ca-222d-11e7-b6e0-a743b98e1890",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "guid": "84296196-aaf7-5acf-8d87-553201a67914",
+      "title": "Wieso Typ 1 Diabetes so anders ist.",
+      "subtitle": null,
+      "slug": "gpn22-298-wieso-typ-1-diabetes-so-anders-ist-",
+      "link": "https://cfp.gulas.ch/gpn22/talk/EF77XF/",
+      "description": "Kann ich als Typ 1 Diabetikerin in die Apotheke gehen und dort alles bekommen, was ich so an Verbrauchsmaterial brauche?\nKann ich einfach ins Krankenhaus gehen und die haben alle Dinge vorrätig, die ich brauche?\nDie Antwort auf diese beiden Fragen ist nein und was das bedeutet und wieso das so ist werden wir uns ein bisschen in diesem Talk anschauen.\nZudem möchte ich aufzeigen wie es in anderen Ländern ist und welchen großen Einfluss auf die Diabetiker*innen eine mögliche \"Verbesserung\" unseres Systems hätte.",
+      "original_language": "deu",
+      "persons": [
+        "avara"
+      ],
+      "tags": [
+        "gpn22",
+        "298",
+        "2024",
+        "Science"
+      ],
+      "view_count": 196,
+      "promoted": false,
+      "date": "2024-05-31T13:15:00.000+02:00",
+      "release_date": "2024-05-31T00:00:00.000+02:00",
+      "updated_at": "2025-12-13T11:45:07.967+01:00",
+      "length": 3537,
+      "duration": 3537,
+      "thumb_url": "https://static.media.ccc.de/media/events/gpn/gpn22/298-84296196-aaf7-5acf-8d87-553201a67914.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/gpn/gpn22/298-84296196-aaf7-5acf-8d87-553201a67914_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/gpn/gpn22/298-84296196-aaf7-5acf-8d87-553201a67914.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/gpn/gpn22/298-84296196-aaf7-5acf-8d87-553201a67914.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/gpn22-298-wieso-typ-1-diabetes-so-anders-ist-",
+      "url": "https://api.media.ccc.de/public/events/84296196-aaf7-5acf-8d87-553201a67914",
+      "conference_title": "Gulaschprogrammiernacht 22",
+      "conference_url": "https://api.media.ccc.de/public/conferences/gpn22",
+      "related": []
+    },
+    {
+      "guid": "00fad166-b62a-54d1-88c3-4318d4f3feaf",
+      "title": "Der Weg zur modernen Basiskarte – Potenziale und Herausforderungen von Kartographie und Datengrundlage",
+      "subtitle": null,
+      "slug": "fossgis2021-8963-der-weg-zur-modernen-basiskarte-potenziale-und-herausforderungen-von-kartographie-und-datengrundlage",
+      "link": "https://pretalx.com/fossgis2021/talk/G3PSUK/",
+      "description": "Der Einsatz von Basiskarten zählt seit jeher zu den kartographischen Grundpfeilern einer jeden (Web)GIS Applikation. Sie bieten den Nutzern Orientierung und Wiedererkennungswert und bieten eine geeignete Basis für themenspezifische Fachdaten. Dieser Vortrag erläutert und diskutiert die Erstellung moderner Basiskarten unter Berücksichtigung von sowohl amtlichen- als auch OSM-Daten, dem Einsatz moderner kartographischer Trends sowie der Verwendung freier GIS Software.\n\nDer Open-Source GIS Welt stehen mittlerweile eine Vielzahl an unterschiedlichen Tools zur Erstellung von Basiskarten zur Verfügung. Neben der Wahl der Kartenserver-Software, eng verknüpft mit Wahl zwischen Vektor- oder Rasterkacheln, muss ein geeignetes Styling-Format gefunden werden, das sämtliche Funktionen für den gewünschten Kartographie-Stil gerecht werden kann. Die Qualität der Karte ist zudem von der Datenbasis abhängig, beispielsweise des verfügbaren Straßen- und Wegenetzes.\n\nWenngleich Open Data zunehmend Bedeutung in öffentlichen Institutionen gewinnt und folglich mehr und mehr Geodatensätze zur Verfügung stehen, so reichen diese oftmals nicht als Basis für Gestaltung von Basiskarten aus. Hierbei kommen freie OpenStreetMap-Daten ins Spiel, die beispielsweise als Ergänzung dienen können. Schwierigkeiten sind hierbei unter anderen unterschiedliche Aktualität der Daten, Labeling oder im Allgemeinen die Topologie.\n\nDiese und weitere Herausforderungen sollen in diesem Vortrag am Beispiel der neuen Basiskarten des Stadtmessungsamt Stuttgarts erläutert und diskutiert werden. Hintergrund ist die Migration von proprietärer zur quelloffener Software, in diesem Fall in erster Linie GeoServer, sowie der Nach- bzw. Neubau von Basiskarten in offenen Stilformaten. Konkret geht es um die Ausgestaltung von 60 Layern, vorliegend im GeoPackage Format, und das Zusammenstecken zu einer Basiskarte.",
+      "original_language": "deu",
+      "persons": [
+        "Hannes Blitza",
+        "Christian Fremd"
+      ],
+      "tags": [
+        "fossgis2021",
+        "8963",
+        "2021",
+        "Kartographie und Visualisierung",
+        "Geo",
+        "OpenStreeetMap",
+        "FOSS",
+        "Online"
+      ],
+      "view_count": 135,
+      "promoted": false,
+      "date": "2021-06-09T14:00:00.000+02:00",
+      "release_date": "2021-06-09T00:00:00.000+02:00",
+      "updated_at": "2025-12-03T13:30:07.003+01:00",
+      "length": 1568,
+      "duration": 1568,
+      "thumb_url": "https://static.media.ccc.de/media/events/fossgis/2021/8963-00fad166-b62a-54d1-88c3-4318d4f3feaf.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/fossgis/2021/8963-00fad166-b62a-54d1-88c3-4318d4f3feaf_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/fossgis/2021/8963-00fad166-b62a-54d1-88c3-4318d4f3feaf.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/fossgis/2021/8963-00fad166-b62a-54d1-88c3-4318d4f3feaf.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/fossgis2021-8963-der-weg-zur-modernen-basiskarte-potenziale-und-herausforderungen-von-kartographie-und-datengrundlage",
+      "url": "https://api.media.ccc.de/public/events/00fad166-b62a-54d1-88c3-4318d4f3feaf",
+      "conference_title": "FOSSGIS 2021",
+      "conference_url": "https://api.media.ccc.de/public/conferences/fossgis2021",
+      "related": []
+    },
+    {
+      "guid": "15cbe225-b4b1-54c8-a014-233f94c90f26",
+      "title": "Videoüberwachung am ZOB – Stümperei oder Autoritarismus? Der Palmer-Unterkomplex",
+      "subtitle": null,
+      "slug": "tdf4-64-videoberwachung-am-zob-stmperei-oder-autoritarismus-der-palmer-unterkomplex",
+      "link": "https://cfp.cttue.de/tdf4/talk/RGMEWL/",
+      "description": "Aufgrund der geplanten Videoüberwachung am Tübinger ZOB waren wir im vergangenen Jahr leider mit der politischen Arbeit von Boris Palmer beschäftigt. \n\nIn dem Vortrag dokumentieren wir was bisher geschah, was nun geplant ist und wie es weiter geht.\n\nLicensed to the public under https://creativecommons.org/licenses/by/4.0/",
+      "original_language": "deu",
+      "persons": [
+        "Steffen"
+      ],
+      "tags": [
+        "64",
+        "2025",
+        "tdf2025",
+        "Ethik, Politik und Gesellschaft",
+        "Bühne 1 (EG)",
+        "tdf2025-deu",
+        "Day 1"
+      ],
+      "view_count": 254,
+      "promoted": false,
+      "date": "2025-07-26T21:00:00.000+02:00",
+      "release_date": "2025-07-27T00:00:00.000+02:00",
+      "updated_at": "2025-12-23T13:00:07.891+01:00",
+      "length": 2642,
+      "duration": 2642,
+      "thumb_url": "https://static.media.ccc.de/media/events/tdf/2025/64-15cbe225-b4b1-54c8-a014-233f94c90f26.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/tdf/2025/64-15cbe225-b4b1-54c8-a014-233f94c90f26_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/tdf/2025/64-15cbe225-b4b1-54c8-a014-233f94c90f26.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/tdf/2025/64-15cbe225-b4b1-54c8-a014-233f94c90f26.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/tdf4-64-videoberwachung-am-zob-stmperei-oder-autoritarismus-der-palmer-unterkomplex",
+      "url": "https://api.media.ccc.de/public/events/15cbe225-b4b1-54c8-a014-233f94c90f26",
+      "conference_title": "4. Tübinger Tage der digitalen Freiheit",
+      "conference_url": "https://api.media.ccc.de/public/conferences/tdf2025",
+      "related": []
+    },
+    {
+      "guid": "1lKbMS92kS0J0pQAAO6XZA",
+      "title": "net neutrality: days of future past? ",
+      "subtitle": "Taking stock after two years of net neutrality in the Netherlands",
+      "slug": "31c3_-_6170_-_en_-_saal_g_-_201412282145_-_net_neutrality_days_of_future_past_-_rejo_zenger_-_thomas_lohninger",
+      "link": "http://events.ccc.de/congress/2014/Fahrplan/events/6170.html",
+      "description": "Our talk will highlight the current debates surrounding net neutrality in Europe, the United States and other parts of the world. We will look at the results of the \u003ca href=\"https://savetheinternet.eu\"\u003eSaveTheInternet.eu\u003c/a\u003e campaign which was lunched a year ago on 30c3. We will discuss various legal protections for net neutrality, look closer at the experience of the Netherlands and we will give an overview of all important open ends of the debate.",
+      "original_language": "eng",
+      "persons": [
+        "Rejo Zenger",
+        "Thomas Lohninger"
+      ],
+      "tags": [
+        "Ethics, Society \u0026 Politics"
+      ],
+      "view_count": 1502,
+      "promoted": false,
+      "date": "2014-12-28T21:45:00.000+01:00",
+      "release_date": "2014-12-29T01:00:00.000+01:00",
+      "updated_at": "2025-07-28T04:30:03.283+02:00",
+      "length": 3610,
+      "duration": 3610,
+      "thumb_url": "https://static.media.ccc.de/media/congress/2014/6170-hd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/congress/2014/6170-hd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/congress/2014/1lKbMS92kS0J0pQAAO6XZA-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/congress/2014/1lKbMS92kS0J0pQAAO6XZA-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/31c3_-_6170_-_en_-_saal_g_-_201412282145_-_net_neutrality_days_of_future_past_-_rejo_zenger_-_thomas_lohninger",
+      "url": "https://api.media.ccc.de/public/events/1lKbMS92kS0J0pQAAO6XZA",
+      "conference_title": "31C3: a new dawn",
+      "conference_url": "https://api.media.ccc.de/public/conferences/31c3",
+      "related": [
+        {
+          "event_id": 4563,
+          "event_guid": "0a56cbe7-e3b5-5c46-9954-b6761677e2e6",
+          "weight": 3
+        },
+        {
+          "event_id": 4664,
+          "event_guid": "8d3b7f85-76ed-4532-a986-7d53d7fcce49",
+          "weight": 1
+        },
+        {
+          "event_id": 4867,
+          "event_guid": "8d87b905-24e0-461e-bff8-d122207ea2e4",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "guid": "26704f96-e414-508d-a501-3d250f174bb3",
+      "title": "TrävelBuddy",
+      "subtitle": null,
+      "slug": "jugend-hackt-rhein-neckar-2022-49065-trvelbuddy",
+      "link": "https://pretalx.c3voc.de/jugend-hackt-rhein-neckar-2022/talk/EGUGBQ/",
+      "description": "Eine App, die reisen leichter macht",
+      "original_language": "deu",
+      "persons": [
+        "Philipp",
+        "Davide"
+      ],
+      "tags": [
+        "jugend-hackt-rhein-neckar-2022",
+        "49065",
+        "2022"
+      ],
+      "view_count": 28,
+      "promoted": false,
+      "date": "2022-07-17T14:25:00.000+02:00",
+      "release_date": "2022-08-06T00:00:00.000+02:00",
+      "updated_at": "2025-04-18T20:30:07.125+02:00",
+      "length": 241,
+      "duration": 241,
+      "thumb_url": "https://static.media.ccc.de/media/events/jugendhackt/2022/49065-26704f96-e414-508d-a501-3d250f174bb3.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/jugendhackt/2022/49065-26704f96-e414-508d-a501-3d250f174bb3_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/jugendhackt/2022/49065-26704f96-e414-508d-a501-3d250f174bb3.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/jugendhackt/2022/49065-26704f96-e414-508d-a501-3d250f174bb3.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/jugend-hackt-rhein-neckar-2022-49065-trvelbuddy",
+      "url": "https://api.media.ccc.de/public/events/26704f96-e414-508d-a501-3d250f174bb3",
+      "conference_title": "Jugend hackt 2022",
+      "conference_url": "https://api.media.ccc.de/public/conferences/jh22",
+      "related": []
+    },
+    {
+      "guid": "import-29c8513b5ebcac13d0",
+      "title": "Climate Change - State of the Science",
+      "subtitle": null,
+      "slug": "25c3-2863-en-climate_change_-_state_of_the_science",
+      "link": "http://events.ccc.de/congress/2008/Fahrplan/events/2863.en.html",
+      "description": "We are in the midst of a major global warming, as witnessed not just by temperature measurements, but also for example by the record loss of Arctic sea ice in 2007 and 2008. This year, both the Northwest Passage and the Northeast Passage in the Arctic were open for ships to pass through for the first time in living memory.\n",
+      "original_language": "eng",
+      "persons": [
+        "Rahmstorf"
+      ],
+      "tags": [
+        "25c3",
+        " Science"
+      ],
+      "view_count": 99,
+      "promoted": false,
+      "date": "2008-12-28T01:00:00.000+01:00",
+      "release_date": "2009-01-18T01:00:00.000+01:00",
+      "updated_at": "2024-12-27T01:30:03.039+01:00",
+      "length": 3884,
+      "duration": 3884,
+      "thumb_url": "https://static.media.ccc.de/media/congress/2008/25c3-2863-en-climate_change_-_state_of_the_science.jpg",
+      "poster_url": "https://static.media.ccc.de/media/congress/2008/25c3-2863-en-climate_change_-_state_of_the_science_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/congress/2008/import-29c8513b5ebcac13d0-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/congress/2008/import-29c8513b5ebcac13d0-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/25c3-2863-en-climate_change_-_state_of_the_science",
+      "url": "https://api.media.ccc.de/public/events/import-29c8513b5ebcac13d0",
+      "conference_title": "25C3: nothing to hide",
+      "conference_url": "https://api.media.ccc.de/public/conferences/25c3",
+      "related": [
+        {
+          "event_id": 771,
+          "event_guid": "import-4d16517d50ae0e0c3b",
+          "weight": 1
+        },
+        {
+          "event_id": 796,
+          "event_guid": "import-802e39aaed267dfb47",
+          "weight": 1
+        },
+        {
+          "event_id": 797,
+          "event_guid": "import-99180de8618aece534",
+          "weight": 1
+        },
+        {
+          "event_id": 1235,
+          "event_guid": "import-44b95398baaaf72556",
+          "weight": 1
+        },
+        {
+          "event_id": 1267,
+          "event_guid": "import-ab5825f2382abe8af8",
+          "weight": 2
+        },
+        {
+          "event_id": 1277,
+          "event_guid": "import-46ee25357ca568906f",
+          "weight": 1
+        },
+        {
+          "event_id": 1278,
+          "event_guid": "import-c061c38bfc1a4656a5",
+          "weight": 1
+        },
+        {
+          "event_id": 1286,
+          "event_guid": "import-f6c40cb6e8f7feb70c",
+          "weight": 1
+        },
+        {
+          "event_id": 1287,
+          "event_guid": "import-555a982abc9d8b293e",
+          "weight": 1
+        },
+        {
+          "event_id": 1290,
+          "event_guid": "import-7fdd19a6d7f3fa79ff",
+          "weight": 1
+        },
+        {
+          "event_id": 1295,
+          "event_guid": "import-e764d19e33d6433269",
+          "weight": 1
+        },
+        {
+          "event_id": 1299,
+          "event_guid": "import-5fa5d5ff35316aaa6c",
+          "weight": 1
+        },
+        {
+          "event_id": 1303,
+          "event_guid": "import-8a69e7b1ee3f8cc625",
+          "weight": 1
+        },
+        {
+          "event_id": 1313,
+          "event_guid": "import-ab7c839b128736450c",
+          "weight": 1
+        },
+        {
+          "event_id": 1314,
+          "event_guid": "import-48cba9fbb65a92437f",
+          "weight": 1
+        },
+        {
+          "event_id": 1315,
+          "event_guid": "import-317788719156ce0058",
+          "weight": 1
+        },
+        {
+          "event_id": 1319,
+          "event_guid": "import-8397d9a280bad60e5c",
+          "weight": 1
+        },
+        {
+          "event_id": 1321,
+          "event_guid": "import-0ec6cf83fd3d4ca115",
+          "weight": 1
+        },
+        {
+          "event_id": 1323,
+          "event_guid": "import-5e89fe5c21c6e4d891",
+          "weight": 1
+        },
+        {
+          "event_id": 1327,
+          "event_guid": "import-34e9b068fe2dc20234",
+          "weight": 1
+        },
+        {
+          "event_id": 1331,
+          "event_guid": "import-b6d9b9d565c00a5acb",
+          "weight": 1
+        },
+        {
+          "event_id": 1334,
+          "event_guid": "import-999159d42d326f39e3",
+          "weight": 1
+        },
+        {
+          "event_id": 1339,
+          "event_guid": "import-1750405b344a79e865",
+          "weight": 1
+        },
+        {
+          "event_id": 1347,
+          "event_guid": "import-a7dc5a6ad09460f44a",
+          "weight": 1
+        },
+        {
+          "event_id": 1349,
+          "event_guid": "import-c9fb5ca0b9154e1ba1",
+          "weight": 1
+        },
+        {
+          "event_id": 1350,
+          "event_guid": "import-bbaef39cd440f712fd",
+          "weight": 1
+        },
+        {
+          "event_id": 1373,
+          "event_guid": "import-613c31891add515c96",
+          "weight": 1
+        },
+        {
+          "event_id": 1389,
+          "event_guid": "import-5e05e9fcc28e3e5161",
+          "weight": 1
+        },
+        {
+          "event_id": 1422,
+          "event_guid": "import-d7f37b1162046a6dc0",
+          "weight": 1
+        },
+        {
+          "event_id": 1429,
+          "event_guid": "import-491788383a692aaae6",
+          "weight": 1
+        },
+        {
+          "event_id": 1433,
+          "event_guid": "import-0d85220ad4a9ae8992",
+          "weight": 1
+        },
+        {
+          "event_id": 1436,
+          "event_guid": "import-b6cba2c62c6ac212a4",
+          "weight": 1
+        },
+        {
+          "event_id": 1451,
+          "event_guid": "import-383c676610cff2f149",
+          "weight": 1
+        },
+        {
+          "event_id": 1454,
+          "event_guid": "import-3299afbb3645f5d6ee",
+          "weight": 1
+        },
+        {
+          "event_id": 1455,
+          "event_guid": "import-524e41ae54d3230bb9",
+          "weight": 1
+        },
+        {
+          "event_id": 1456,
+          "event_guid": "import-ffedc66f28f81c9a2e",
+          "weight": 1
+        },
+        {
+          "event_id": 1460,
+          "event_guid": "import-973ed884893c6dffcd",
+          "weight": 1
+        },
+        {
+          "event_id": 1461,
+          "event_guid": "import-4703df2362d43a594d",
+          "weight": 1
+        },
+        {
+          "event_id": 1469,
+          "event_guid": "import-7cc5774ada31a7936e",
+          "weight": 1
+        },
+        {
+          "event_id": 1474,
+          "event_guid": "import-00d4d9403ecf738d65",
+          "weight": 1
+        },
+        {
+          "event_id": 1476,
+          "event_guid": "import-18ff532f1aae2ba415",
+          "weight": 1
+        },
+        {
+          "event_id": 1477,
+          "event_guid": "import-633bd84860f65db047",
+          "weight": 1
+        },
+        {
+          "event_id": 1487,
+          "event_guid": "import-31618b1a3c02facb8d",
+          "weight": 1
+        },
+        {
+          "event_id": 1493,
+          "event_guid": "import-e0153826abfc289658",
+          "weight": 1
+        },
+        {
+          "event_id": 1501,
+          "event_guid": "import-ff92b8bbffb2bdb1ac",
+          "weight": 1
+        },
+        {
+          "event_id": 1503,
+          "event_guid": "import-019cfe6488a1c1abe9",
+          "weight": 1
+        },
+        {
+          "event_id": 1509,
+          "event_guid": "import-31d801b8dfc62fa380",
+          "weight": 1
+        },
+        {
+          "event_id": 1510,
+          "event_guid": "import-5c41c1053cc25fb4b8",
+          "weight": 1
+        },
+        {
+          "event_id": 1512,
+          "event_guid": "import-79dd14a9f3d562f20e",
+          "weight": 1
+        },
+        {
+          "event_id": 1516,
+          "event_guid": "import-7a231e34c3be021873",
+          "weight": 1
+        },
+        {
+          "event_id": 1518,
+          "event_guid": "import-9730c46adda6b5864e",
+          "weight": 1
+        },
+        {
+          "event_id": 1519,
+          "event_guid": "import-7c24eae3ff97e72737",
+          "weight": 1
+        },
+        {
+          "event_id": 1810,
+          "event_guid": "d3O96YnMHkiPLhp50TPJAA",
+          "weight": 1
+        },
+        {
+          "event_id": 2253,
+          "event_guid": "uMGv2XJJqkQodKm0_Mtr_A",
+          "weight": 2
+        },
+        {
+          "event_id": 2539,
+          "event_guid": "b0be37e7-88fd-4f5c-bbd1-14b7e5f9a78d",
+          "weight": 1
+        },
+        {
+          "event_id": 2899,
+          "event_guid": "0c8f0e98-92ee-42ba-aa75-04fc50344904",
+          "weight": 1
+        },
+        {
+          "event_id": 3615,
+          "event_guid": "74783236-46f4-493c-9574-1b27a44847b7",
+          "weight": 1
+        },
+        {
+          "event_id": 3660,
+          "event_guid": "69ce21df-4bf5-43ce-a500-ac7707ee64b7",
+          "weight": 1
+        },
+        {
+          "event_id": 3661,
+          "event_guid": "599ef527-fc3f-4474-8137-cf0e49cf118f",
+          "weight": 1
+        },
+        {
+          "event_id": 3667,
+          "event_guid": "6347d122-daf0-4b30-851c-32cac06bf6bd",
+          "weight": 1
+        },
+        {
+          "event_id": 3728,
+          "event_guid": "094b6119-b261-4750-89cf-43fed50eb679",
+          "weight": 3
+        },
+        {
+          "event_id": 3737,
+          "event_guid": "d51d9e44-947b-4a09-94ad-c31c5cf5e5e1",
+          "weight": 1
+        },
+        {
+          "event_id": 3762,
+          "event_guid": "25e2df7d-5740-4c2f-bc34-986326d606fe",
+          "weight": 2
+        },
+        {
+          "event_id": 4777,
+          "event_guid": "a66fa9d5-b12c-4d6b-84f9-f279faf38f86",
+          "weight": 1
+        },
+        {
+          "event_id": 4826,
+          "event_guid": "16645200-2036-4a3c-a44d-a5ff44ac2991",
+          "weight": 1
+        },
+        {
+          "event_id": 4854,
+          "event_guid": "81125495-9d1d-481a-8c63-0d3ef9ff0617",
+          "weight": 1
+        },
+        {
+          "event_id": 4866,
+          "event_guid": "117a52b4-f675-49dd-aafe-659c07b6bc9c",
+          "weight": 1
+        },
+        {
+          "event_id": 4887,
+          "event_guid": "2541602b-f58c-4dec-9722-db72b1dea19e",
+          "weight": 2
+        },
+        {
+          "event_id": 4889,
+          "event_guid": "8b136e88-ea36-4398-bac2-13cf2a509d5e",
+          "weight": 2
+        },
+        {
+          "event_id": 6084,
+          "event_guid": "23b6a643-93ae-4700-b299-ba16f85c0311",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "guid": "71888f3e-ab33-4c92-882c-d920b9df432d",
+      "title": "What’s new in Keycloak, the open source IAM?",
+      "subtitle": null,
+      "slug": "froscon2024-3066-what_s_new_in_keycloak_the_open_source_iam",
+      "link": "https://programm.froscon.org/2024/events/3066.html",
+      "description": "Authentication and authorization are keys to automation and new business capabilities. All of this requires APIs and services that an Identity and Access Management (IAM) solution can provide.\n\nAfter presenting some highlights of the latest Keycloak version, this talk will focus on changes to OpenID Connect and Keycloak's capabilities around scalability, high availability and customizability via declarative user profiles. Additionally, features that are currently under development and planned for one of the next Keycloak versions will be presented.",
+      "original_language": "eng",
+      "persons": [
+        "Alexander Schwartz"
+      ],
+      "tags": [
+        "froscon2024",
+        "3066",
+        "2024",
+        "Security"
+      ],
+      "view_count": 383,
+      "promoted": false,
+      "date": "2024-08-18T14:00:00.000+02:00",
+      "release_date": "2024-08-18T00:00:00.000+02:00",
+      "updated_at": "2025-12-29T01:45:09.828+01:00",
+      "length": 3602,
+      "duration": 3602,
+      "thumb_url": "https://static.media.ccc.de/media/events/froscon/2024/3066-71888f3e-ab33-4c92-882c-d920b9df432d.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/froscon/2024/3066-71888f3e-ab33-4c92-882c-d920b9df432d_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/froscon/2024/3066-71888f3e-ab33-4c92-882c-d920b9df432d.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/froscon/2024/3066-71888f3e-ab33-4c92-882c-d920b9df432d.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/froscon2024-3066-what_s_new_in_keycloak_the_open_source_iam",
+      "url": "https://api.media.ccc.de/public/events/71888f3e-ab33-4c92-882c-d920b9df432d",
+      "conference_title": "FrOSCon 2024",
+      "conference_url": "https://api.media.ccc.de/public/conferences/froscon2024",
+      "related": []
+    },
+    {
+      "guid": "be3539c9-f332-4b73-9453-5927ad192e87",
+      "title": "Darcs, because git won",
+      "subtitle": null,
+      "slug": "bob2021-darcs-because-git-won-ketchum",
+      "link": "https://bobkonf.de/2021/",
+      "description": "Darcs is one of the oldest distributed version control systems which are currently in use, yet it remains a somewhat obscure choice. In this talk I want to highlight why darcs is a viable choice due to its unique, and surprisingly fresh and straightforward, approach which is rooted in mathematics and how it differs from pretty much every other VCS that is current being used.\n\nDarcs’ patch theory offers a unique why to work in a non-centralized way. This can be used to structure alternative workflows, as well as an underlying model for synchronizing data between multiple peers in applications.\n\nDarcs’ workflow is intuitive and easy to grasp, even though the underlying formalism is incredibly powerful. Raichoo Ketchum presents how release engineering can benefit from this model and how it can reduce cognitive and organizational overhead in project management.\n\t\t",
+      "original_language": "eng",
+      "persons": [
+        "Raichoo Ketchum"
+      ],
+      "tags": [
+        "bob2021",
+        "101",
+        "2021",
+        "Talk",
+        "BOB",
+        "BOBKonferenz"
+      ],
+      "view_count": 207,
+      "promoted": false,
+      "date": "2021-02-26T11:45:00.000+01:00",
+      "release_date": "2021-06-19T00:00:00.000+02:00",
+      "updated_at": "2025-12-15T04:00:02.457+01:00",
+      "length": 2026,
+      "duration": 2026,
+      "thumb_url": "https://static.media.ccc.de/media/events/bobkonf/2021/101-be3539c9-f332-4b73-9453-5927ad192e87.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/bobkonf/2021/101-be3539c9-f332-4b73-9453-5927ad192e87_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/bobkonf/2021/101-be3539c9-f332-4b73-9453-5927ad192e87.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/bobkonf/2021/101-be3539c9-f332-4b73-9453-5927ad192e87.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/bob2021-darcs-because-git-won-ketchum",
+      "url": "https://api.media.ccc.de/public/events/be3539c9-f332-4b73-9453-5927ad192e87",
+      "conference_title": "BOB Konferenz 2021",
+      "conference_url": "https://api.media.ccc.de/public/conferences/bobkonf2021",
+      "related": []
+    },
+    {
+      "guid": "87cd9070-0cc6-51be-b054-c019f2ba2873",
+      "title": "Showing keys in public",
+      "subtitle": null,
+      "slug": "emf2014-47-showing-keys-in-public",
+      "link": "https://c3voc.de",
+      "description": "If a reporter wants to get the point across that certain people shouldn’t have access to a particular key, would it be wise for said reporter to then show that key to the world? Like the New York City subway key? The key to the subway? On the Internet?! This and other media fails will be shown. And maybe even one or two non-fail examples…. Several cases of key-copying-by-sight will be discussed with lots of pictures and videos. How this can happen will be explained, as well as what to do to prevent it.",
+      "original_language": "eng",
+      "persons": [
+        "Jos Weyers"
+      ],
+      "tags": [
+        "emf2014",
+        "47",
+        "2014"
+      ],
+      "view_count": 75,
+      "promoted": false,
+      "date": "2014-08-29T20:00:00.000+02:00",
+      "release_date": "2024-08-27T00:00:00.000+02:00",
+      "updated_at": "2025-10-14T17:30:08.652+02:00",
+      "length": 3431,
+      "duration": 3431,
+      "thumb_url": "https://static.media.ccc.de/media/events/emf/2014/47-87cd9070-0cc6-51be-b054-c019f2ba2873.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/emf/2014/47-87cd9070-0cc6-51be-b054-c019f2ba2873_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/emf/2014/47-87cd9070-0cc6-51be-b054-c019f2ba2873.timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/emf/2014/47-87cd9070-0cc6-51be-b054-c019f2ba2873.thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/emf2014-47-showing-keys-in-public",
+      "url": "https://api.media.ccc.de/public/events/87cd9070-0cc6-51be-b054-c019f2ba2873",
+      "conference_title": "Electromagnetic Field 2014",
+      "conference_url": "https://api.media.ccc.de/public/conferences/emf2014",
+      "related": []
+    },
+    {
+      "guid": "732a3378-feed-52ff-b8b3-899549842eb4",
+      "title": "Root and Proof (C++ scripting interface and parallel data analysis)",
+      "subtitle": null,
+      "slug": "linuxtag06-305-root_and_proof_c_scripting_interface_and_parallel_data_analysis",
+      "link": "https://c3voc.de",
+      "description": "ROOT (== ROOT Object Oriented Toolkit) is an Open Source analysis environment developed at the European Center for Nuclear Research CERN in Geneva. It is based on a C++ interpreter - cint - which is versatile enough to be used as an extension module for compiled programs and which can itself be extended with compiled libraries. With a few million lines of code it is also one of the largest Open Source projects available. PROOF (the Parallel ROOT Facility) allows to do distributed analysis of (very) large datasets in a Grid environment, using ROOT.\n\nÜber den Autor Ruediger Berlich:  Dr. Ruediger Berlich has studied physics at the University of Bochum in Germany. Until 2001 he was a member of SuSE Linux AG, then Europe's leading Linux distributor. Among other duties, he has served as Technical Manager (Support) of SuSE's US office in Oakland/California and as founder and Managing Director of SuSE's UK office SuSE Linux Ltd. near London/UK. In January 2004, he finished a PHD at Bochum University, relating to particle physics and distributed computing. Since then he has been active in the field of Grid Computing at Forschungszentrum Karlsruhe, Germany's largest independent research institution. Apart from his research activities, he is responsible for the work areas \"training\" and \"dissemination and outreach\" of the largest EU Grid initiative, EGEE (\"Enabling Grids for E-SciencE\"), on behalf of the German/Swiss EGEE federation.",
+      "original_language": "eng",
+      "persons": [
+        "Ruediger Berlich (Forschungszentrum Karlsruhe)"
+      ],
+      "tags": [
+        "linuxtag06",
+        "305"
+      ],
+      "view_count": 28,
+      "promoted": false,
+      "date": "2006-05-06T00:00:00.000+02:00",
+      "release_date": "2018-06-25T02:00:00.000+02:00",
+      "updated_at": "2024-08-09T08:30:02.412+02:00",
+      "length": 3010,
+      "duration": 3010,
+      "thumb_url": "https://static.media.ccc.de/media/events/linuxtag/2006/305-sd.jpg",
+      "poster_url": "https://static.media.ccc.de/media/events/linuxtag/2006/305-sd_preview.jpg",
+      "timeline_url": "https://static.media.ccc.de/media/events/linuxtag/2006/732a3378-feed-52ff-b8b3-899549842eb4-timeline.jpg",
+      "thumbnails_url": "https://static.media.ccc.de/media/events/linuxtag/2006/732a3378-feed-52ff-b8b3-899549842eb4-thumbnails.vtt",
+      "frontend_link": "https://media.ccc.de/v/linuxtag06-305-root_and_proof_c_scripting_interface_and_parallel_data_analysis",
+      "url": "https://api.media.ccc.de/public/events/732a3378-feed-52ff-b8b3-899549842eb4",
+      "conference_title": "Linuxtag 2006",
+      "conference_url": "https://api.media.ccc.de/public/conferences/linuxtag06",
+      "related": [
+        {
+          "event_id": 2073,
+          "event_guid": "4rOepRrO3-15F25YRbZPOQ",
+          "weight": 1
+        },
+        {
+          "event_id": 3355,
+          "event_guid": "1b0f7a57-4f8e-5897-855a-a1e0fe4a8de5",
+          "weight": 1
+        },
+        {
+          "event_id": 3640,
+          "event_guid": "700a07e7-a9c4-437b-a4c5-4491b23a9b4a",
+          "weight": 1
+        },
+        {
+          "event_id": 3648,
+          "event_guid": "8aaa55ad-b426-4d7a-8d46-f4b34a906eda",
+          "weight": 1
+        },
+        {
+          "event_id": 3986,
+          "event_guid": "ff2bf44f-3417-5914-a017-9777087662f7",
+          "weight": 1
+        },
+        {
+          "event_id": 5254,
+          "event_guid": "83235eb6-ce2d-4f4d-8124-1d38010a2076",
+          "weight": 1
+        },
+        {
+          "event_id": 5256,
+          "event_guid": "c2474049-40f0-4d92-935e-e22090e3d343",
+          "weight": 2
+        },
+        {
+          "event_id": 5262,
+          "event_guid": "1e7ca9c3-609b-4c73-bf25-60501cba6791",
+          "weight": 2
+        },
+        {
+          "event_id": 5271,
+          "event_guid": "3af88c8a-b051-4691-9c3e-f518f42ca5d3",
+          "weight": 1
+        },
+        {
+          "event_id": 5273,
+          "event_guid": "065e78a2-c020-4199-ad38-4bea1e62eb15",
+          "weight": 1
+        },
+        {
+          "event_id": 5274,
+          "event_guid": "c38c514b-99f4-4906-a0e5-189df72dbd9e",
+          "weight": 1
+        },
+        {
+          "event_id": 5280,
+          "event_guid": "2fb00fb8-016b-42a0-a2db-742b6fc2dc80",
+          "weight": 1
+        },
+        {
+          "event_id": 5393,
+          "event_guid": "faea7134-21b2-5264-9e02-a8706b63e7fc",
+          "weight": 1
+        },
+        {
+          "event_id": 5618,
+          "event_guid": "bac51d24-c529-5d9e-81c9-73a5c09e81ac",
+          "weight": 1
+        },
+        {
+          "event_id": 5637,
+          "event_guid": "d9898c2f-fd78-4d04-b5d3-683df6895fa3",
+          "weight": 1
+        },
+        {
+          "event_id": 5638,
+          "event_guid": "bc119064-0b23-443b-82d4-55719d478151",
+          "weight": 1
+        },
+        {
+          "event_id": 5960,
+          "event_guid": "541dc917-721a-59c3-b4eb-371a7e8acc3e",
+          "weight": 1
+        },
+        {
+          "event_id": 6380,
+          "event_guid": "e9095f5f-a38a-48da-b3d7-20da141b8b14",
+          "weight": 1
+        },
+        {
+          "event_id": 6434,
+          "event_guid": "6beabddc-2dd6-43d2-9936-618d41d42cde",
+          "weight": 1
+        },
+        {
+          "event_id": 6866,
+          "event_guid": "892b81d8-3262-51b3-b5cd-a75aabc862fc",
+          "weight": 1
+        },
+        {
+          "event_id": 7004,
+          "event_guid": "d738e0f8-7937-5871-8e5f-d7fcd799c37b",
+          "weight": 1
+        },
+        {
+          "event_id": 7016,
+          "event_guid": "1ef521cc-4b8f-590c-8738-15bea2657941",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}
