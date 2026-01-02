@@ -6,10 +6,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusTarget
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
@@ -23,7 +25,9 @@ import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.ccc.media.api.LectureModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.time.Duration.Companion.seconds
 
@@ -35,9 +39,8 @@ fun PlayerOverlay(
     player: Player,
 ) {
     val progressState = rememberProgressStateWithTickInterval(player)
-    val playPauseState = rememberPlayPauseButtonState(player)
 
-    val uiVisible = remember { mutableStateOf(true) }
+    val uiVisible = remember { mutableStateOf(false) }
 
     val mainInteractionSource = remember { MutableInteractionSource() }
 
@@ -45,12 +48,33 @@ fun PlayerOverlay(
         uiVisible.value = false
     }
 
-    LaunchedEffect(playPauseState.showPlay) {
-        if (playPauseState.showPlay) {
+    val hideJob = remember { mutableStateOf<Job?>(null) }
+    val hideScope = rememberCoroutineScope()
+    val showUi = remember {
+        {
+            hideJob.value?.cancel()
             uiVisible.value = true
-        } else {
-            delay(5.seconds)
-            uiVisible.value = false
+        }
+    }
+
+    DisposableEffect(player, hideJob, uiVisible) {
+        val listener = object : Player.Listener {
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+                if (isPlaying) {
+                    hideJob.value?.cancel()
+                    hideJob.value = hideScope.launch {
+                        delay(5.seconds)
+                        uiVisible.value = false
+                    }
+                } else {
+                    showUi()
+                }
+            }
+        }
+
+        player.addListener(listener)
+        onDispose {
+            player.removeListener(listener)
         }
     }
 
@@ -58,7 +82,7 @@ fun PlayerOverlay(
         modifier = Modifier.fillMaxSize()
             .clickable(mainInteractionSource, indication = null, enabled = !uiVisible.value) {
                 uiVisible.value = true
-            }.onKeyEvent {
+            }.onPreviewKeyEvent {
                 if (it.type == KeyEventType.KeyDown) {
                     when (it.key) {
                         Key.MediaPlayPause -> {
@@ -76,11 +100,41 @@ fun PlayerOverlay(
                         }
                         Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward -> {
                             player.seekForward()
+                            showUi()
                             true
                         }
                         Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward -> {
                             player.seekBack()
+                            showUi()
                             true
+                        }
+                        Key.DirectionRight -> {
+                            if (!uiVisible.value) {
+                                player.seekForward()
+                                showUi()
+                                true
+                            } else false
+                        }
+
+                        Key.DirectionLeft -> {
+                            if (!uiVisible.value) {
+                                player.seekBack()
+                                showUi()
+                                true
+                            } else false
+                        }
+
+                        Key.DirectionUp,
+                        Key.DirectionDown,
+                        Key.DirectionCenter,
+                        Key.DirectionUpLeft,
+                        Key.DirectionDownLeft,
+                        Key.DirectionUpRight,
+                        Key.DirectionDownRight -> {
+                            if (!uiVisible.value) {
+                                showUi()
+                                true
+                            } else false
                         }
                         else -> false
                     }
