@@ -21,11 +21,12 @@ import de.ccc.media.api.ConferenceModel
 import de.justjanne.voctotv.ui.theme.VoctoTvTheme
 
 @Composable
-fun FeaturedRow(
+fun ConferenceRow(
+    title: String,
     featured: List<ConferenceModel>,
     openConference: (String) -> Unit,
 ) {
-    Text("Featured", modifier = Modifier.padding(horizontal = 20.dp))
+    Text(title, modifier = Modifier.padding(horizontal = 20.dp))
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(20.dp),
         contentPadding = PaddingValues(20.dp),

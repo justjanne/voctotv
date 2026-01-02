@@ -1,49 +1,57 @@
-package de.justjanne.voctotv
+package de.justjanne.voctotv.ui
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
-import de.justjanne.voctotv.ui.FeaturedRow
-import de.justjanne.voctotv.ui.LectureCard
 import de.justjanne.voctotv.viewmodel.HomeViewModel
 
+@OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
 fun HomeRoute(
-    homeViewModel: HomeViewModel = viewModel(),
+    viewModel: HomeViewModel,
     openConference: (String) -> Unit,
     openLecture: (String) -> Unit,
     openPlayer: (String) -> Unit,
 ) {
-    val featured by homeViewModel.featured.collectAsState()
-    val recent by homeViewModel.recent.collectAsState()
+    val conferences by viewModel.conferences.collectAsState()
+    val erfas by viewModel.erfas.collectAsState()
+    val recent by viewModel.recent.collectAsState()
+    val featuredLectures by viewModel.featuredLectures.collectAsState()
 
-    Column(
+    LazyColumn(
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.Start,
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize()
     ) {
-        FeaturedRow(featured, openConference)
+        item("featured") {
+            FeaturedCarousel(featuredLectures, openPlayer)
+        }
 
-        Text("Recent", modifier = Modifier.padding(horizontal = 20.dp))
+        item("conferences") {
+            ConferenceRow("Conferences", conferences, openConference)
+        }
 
-        LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(20.dp),
-            contentPadding = PaddingValues(20.dp),
-        ) {
-            items(recent) { lecture ->
-                LectureCard(lecture, openPlayer)
+        item("erfas") {
+            ConferenceRow("Erfas", erfas, openConference)
+        }
+
+        item("recent-lectures") {
+            Text("Recent", modifier = Modifier.padding(horizontal = 20.dp))
+
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
+                contentPadding = PaddingValues(20.dp),
+            ) {
+                items(recent) { lecture ->
+                    LectureCard(lecture, openPlayer)
+                }
             }
         }
     }

@@ -1,11 +1,20 @@
 package de.justjanne.voctotv
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.tv.material3.Text
+import de.justjanne.voctotv.ui.ConferenceRoute
+import de.justjanne.voctotv.ui.HomeRoute
+import de.justjanne.voctotv.ui.PlayerRoute
+import de.justjanne.voctotv.viewmodel.ConferenceViewModel
+import de.justjanne.voctotv.viewmodel.HomeViewModel
+import de.justjanne.voctotv.viewmodel.PlayerViewModel
 
 @Composable
 fun AppRouter() {
@@ -13,9 +22,16 @@ fun AppRouter() {
 
     NavDisplay(
         backStack = backStack,
+        entryDecorators = listOf(
+            rememberSaveableStateHolderNavEntryDecorator(),
+            rememberViewModelStoreNavEntryDecorator()
+        ),
         entryProvider = entryProvider {
             entry<Routes.Home> {
+                val viewModel = hiltViewModel<HomeViewModel>()
+
                 HomeRoute(
+                    viewModel,
                     openConference = {
                         backStack.add(Routes.Conference(it))
                     },
@@ -28,13 +44,28 @@ fun AppRouter() {
                 )
             }
             entry<Routes.Conference> { key ->
-                Text("Conference: ${key.id}")
+                val viewModel = hiltViewModel<ConferenceViewModel, ConferenceViewModel.Factory> { factory ->
+                    factory.create(key.id)
+                }
+
+                ConferenceRoute(
+                    viewModel,
+                    openLecture = {
+                        backStack.add(Routes.Lecture(it))
+                    },
+                    openPlayer = {
+                        backStack.add(Routes.Player(it))
+                    }
+                )
             }
             entry<Routes.Lecture> { key ->
                 Text("Lecture: ${key.id}")
             }
             entry<Routes.Player> { key ->
-                VideoPlayerRoute(key.id)
+                val viewModel = hiltViewModel<PlayerViewModel, PlayerViewModel.Factory> { factory ->
+                    factory.create(key.id)
+                }
+                PlayerRoute(viewModel)
             }
         }
     )
