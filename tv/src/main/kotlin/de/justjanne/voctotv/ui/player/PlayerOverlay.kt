@@ -5,13 +5,8 @@ import androidx.annotation.OptIn
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusTarget
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
@@ -39,6 +34,7 @@ fun PlayerOverlay(
     player: Player,
 ) {
     val progressState = rememberProgressStateWithTickInterval(player)
+    val playPauseState = rememberPlayPauseButtonState(player)
 
     val uiVisible = remember { mutableStateOf(false) }
 
@@ -90,24 +86,29 @@ fun PlayerOverlay(
                             else player.play()
                             true
                         }
+
                         Key.MediaPlay -> {
                             player.play()
                             true
                         }
+
                         Key.MediaPause -> {
                             player.pause()
                             true
                         }
+
                         Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward -> {
                             player.seekForward()
                             showUi()
                             true
                         }
+
                         Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward -> {
                             player.seekBack()
                             showUi()
                             true
                         }
+
                         Key.DirectionRight -> {
                             if (!uiVisible.value) {
                                 player.seekForward()
@@ -136,6 +137,7 @@ fun PlayerOverlay(
                                 true
                             } else false
                         }
+
                         else -> false
                     }
                 } else false
@@ -171,7 +173,7 @@ fun PlayerOverlay(
                 )
             }
             Seekbar(player)
-            PlayerButtons(player, lecture)
+            PlayerButtons(player, playPauseState, lecture)
         }
     }
 }
