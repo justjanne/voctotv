@@ -4,6 +4,7 @@
 .gradle
 .kotlin
 local.properties
+signing.properties
 build
 
 /captures

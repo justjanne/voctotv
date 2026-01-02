@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.*
 
 plugins {
     alias(libs.plugins.android.application)
@@ -22,16 +23,56 @@ android {
 
     }
 
+    data class SigningData(
+        val storeFile: String,
+        val storePassword: String,
+        val keyAlias: String,
+        val keyPassword: String
+    )
+
+    fun signingData(properties: Properties?): SigningData? {
+        if (properties == null) return null
+
+        val storeFile = properties.getProperty("storeFile") ?: return null
+        val storePassword = properties.getProperty("storePassword") ?: return null
+        val keyAlias = properties.getProperty("keyAlias") ?: return null
+        val keyPassword = properties.getProperty("keyPassword") ?: return null
+
+        return SigningData(storeFile, storePassword, keyAlias, keyPassword)
+    }
+
+    fun Project.properties(fileName: String): Provider<Properties> =
+        providers.fileContents(rootProject.layout.projectDirectory.file(fileName))
+            .asBytes
+            .map { Properties().apply { load(it.inputStream()) } }
+
+    signingConfigs {
+        signingData(rootProject.properties("signing.properties").orNull)?.let {
+            register("release") {
+                storeFile = file(it.storeFile)
+                storePassword = it.storePassword
+                keyAlias = it.keyAlias
+                keyPassword = it.keyPassword
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
+        }
+
+        debug {
+            applicationIdSuffix = ".debug"
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     buildFeatures {
         compose = true
     }
