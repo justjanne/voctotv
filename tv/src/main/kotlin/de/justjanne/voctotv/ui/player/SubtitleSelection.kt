@@ -1,5 +1,6 @@
 package de.justjanne.voctotv.ui.player
 
+import androidx.annotation.OptIn
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,15 +17,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.C
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.PlayPauseButtonState
-import androidx.tv.material3.IconButton
-import androidx.tv.material3.ListItem
-import androidx.tv.material3.LocalContentColor
-import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.RadioButton
-import androidx.tv.material3.Text
+import androidx.tv.material3.*
 import de.justjanne.voctotv.R
 
+@OptIn(UnstableApi::class)
 @Composable
 fun SubtitleSelection(
     player: Player,

@@ -9,7 +9,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import de.justjanne.voctotv.DI
+import de.ccc.media.api.VoctowebApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -17,10 +17,11 @@ import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel(assistedFactory = PlayerViewModel.Factory::class)
 class PlayerViewModel @AssistedInject constructor(
-    @Assisted lectureId: String
+    @Assisted lectureId: String,
+    api: VoctowebApi,
 ) : ViewModel() {
     val lecture = flow {
-        emit(DI.api.lecture.get(lectureId))
+        emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     val mediaItem = lecture

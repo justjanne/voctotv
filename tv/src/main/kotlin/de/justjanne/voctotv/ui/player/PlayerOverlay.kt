@@ -23,6 +23,7 @@ import de.ccc.media.api.LectureModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Locale
 import kotlin.math.abs
 import kotlin.time.Duration.Companion.seconds
 
@@ -188,6 +189,6 @@ fun formatTime(timeMs: Long): String {
     val seconds = totalSeconds % 60
     val minutes = (totalSeconds / 60) % 60
     val hours = totalSeconds / 3600
-    return if (hours > 0) String.format("%s%d:%02d:%02d", prefix, hours, minutes, seconds)
-    else String.format("%s%02d:%02d", prefix, minutes, seconds)
+    return if (hours > 0) String.format(Locale.ROOT, "%s%d:%02d:%02d", prefix, hours, minutes, seconds)
+    else String.format(Locale.ROOT, "%s%02d:%02d", prefix, minutes, seconds)
 }

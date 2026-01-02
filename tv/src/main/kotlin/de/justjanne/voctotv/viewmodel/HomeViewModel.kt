@@ -3,7 +3,7 @@ package de.justjanne.voctotv.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import de.justjanne.voctotv.DI
+import de.ccc.media.api.VoctowebApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -11,9 +11,11 @@ import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor() : ViewModel() {
+class HomeViewModel @Inject constructor(
+    val api: VoctowebApi
+) : ViewModel() {
     val result = flow {
-        emit(DI.api.conference.list().conferences)
+        emit(runCatching { api.conference.list().conferences }.getOrNull().orEmpty())
     }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
     val conferences = result.map {
@@ -38,7 +40,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val recent = flow {
-        emit(DI.api.lecture.listRecent().lectures)
+        emit(runCatching { api.lecture.listRecent().lectures }.getOrNull().orEmpty())
     }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
     val featuredLectures = recent.map {

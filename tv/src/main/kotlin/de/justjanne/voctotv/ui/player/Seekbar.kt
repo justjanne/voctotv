@@ -1,5 +1,6 @@
 package de.justjanne.voctotv.ui.player
 
+import androidx.annotation.OptIn
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -25,6 +26,7 @@ import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import de.justjanne.voctotv.ui.theme.Primary
 
@@ -32,6 +34,7 @@ val thumb = 16.dp
 val focusedHeight = 6.dp
 val unfocusedHeight = 3.dp
 
+@OptIn(UnstableApi::class)
 @Composable
 fun Seekbar(
     player: Player

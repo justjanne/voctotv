@@ -1,5 +1,6 @@
 package de.justjanne.voctotv.ui.player
 
+import androidx.annotation.OptIn
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.PlayPauseButtonState
 import androidx.tv.material3.IconButton
 import androidx.tv.material3.IconButtonDefaults
@@ -18,6 +20,7 @@ import androidx.tv.material3.LocalContentColor
 import de.ccc.media.api.LectureModel
 import de.justjanne.voctotv.R
 
+@OptIn(UnstableApi::class)
 @Composable
 fun PlayerButtons(
     player: Player,
