@@ -100,7 +100,7 @@ fun AudioSelection(
             },
         ) {
             Icon(
-                painter = painterResource(R.drawable.translate),
+                painter = painterResource(R.drawable.ic_translate),
                 contentDescription = "Language",
                 tint = LocalContentColor.current,
             )

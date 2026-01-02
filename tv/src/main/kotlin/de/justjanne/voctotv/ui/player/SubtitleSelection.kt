@@ -23,7 +23,6 @@ import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.RadioButton
 import androidx.tv.material3.Text
-import de.ccc.media.api.LectureModel
 import de.justjanne.voctotv.R
 
 @Composable
@@ -95,7 +94,7 @@ fun SubtitleSelection(
             },
         ) {
             Icon(
-                painter = painterResource(R.drawable.closed_caption),
+                painter = painterResource(R.drawable.ic_closed_caption),
                 contentDescription = "Subtitles",
                 tint = LocalContentColor.current,
             )

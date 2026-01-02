@@ -26,6 +26,7 @@ import androidx.compose.ui.input.key.type
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
+import de.justjanne.voctotv.ui.theme.Primary
 
 val thumb = 16.dp
 val focusedHeight = 6.dp
@@ -93,7 +94,7 @@ fun Seekbar(
                     size = Size(buffered * currentWidth, currentHeight),
                     topLeft = barOffset
                 )
-                drawRect(Color.Red, size = Size(progress * currentWidth, currentHeight), topLeft = barOffset)
+                drawRect(Primary, size = Size(progress * currentWidth, currentHeight), topLeft = barOffset)
                 if (isFocused.value) {
                     drawCircle(Color.White, radius = thumb / 2, center = thumbOffset)
                 }

@@ -13,12 +13,13 @@
 
   <application
      android:allowBackup="true"
-     android:banner="@mipmap/ic_launcher"
+     android:banner="@mipmap/ic_banner"
      android:icon="@mipmap/ic_launcher"
+     android:roundIcon="@mipmap/ic_launcher_round"
      android:label="@string/app_name"
      android:supportsRtl="true"
      android:name=".VoctoTV"
-     android:theme="@style/Theme.voctotv">
+     android:theme="@style/Theme.VoctoTv">
     <activity
        android:name=".MainActivity"
        android:exported="true">

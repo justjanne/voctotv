@@ -45,7 +45,7 @@ fun PlayerButtons(
             modifier = Modifier.requiredSize(IconButtonDefaults.LargeButtonSize)
         ) {
             Icon(
-                painter = painterResource(if (playPauseState.showPlay) R.drawable.play_arrow else R.drawable.pause),
+                painter = painterResource(if (playPauseState.showPlay) R.drawable.ic_play_arrow else R.drawable.ic_pause),
                 contentDescription = if (playPauseState.showPlay) "Play" else "Pause",
                 tint = LocalContentColor.current,
             )
