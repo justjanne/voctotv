@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "de.justjanne.voctotv"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
