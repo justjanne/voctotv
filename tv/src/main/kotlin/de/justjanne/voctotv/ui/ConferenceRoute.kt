@@ -21,9 +21,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
+import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.viewmodel.ConferenceViewModel
@@ -40,10 +42,31 @@ fun ConferenceRoute(
     val itemsByTrack by viewModel.itemsByTrack.collectAsState()
 
     LazyColumn(
-        verticalArrangement = Arrangement.Bottom,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier.fillMaxSize(),
     ) {
+        conference?.let { conference ->
+            item("header") {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp)
+                ) {
+                    Text(
+                        text = conference.title,
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            shadow = Shadow(
+                                color = Color.Black.copy(alpha = 0.5f),
+                                offset = Offset(x = 2f, y = 4f),
+                                blurRadius = 2f
+                            )
+                        ),
+                        maxLines = 2,
+                    )
+                }
+            }
+        }
+
         item("featured") {
             FeaturedCarousel(featured, openPlayer)
         }

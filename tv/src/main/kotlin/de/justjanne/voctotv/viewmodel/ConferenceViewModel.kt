@@ -40,6 +40,9 @@ class ConferenceViewModel @AssistedInject constructor(
                 for (tag in tags) {
                     getOrPut(tag, ::mutableListOf).add(lecture)
                 }
+                if (tags.isEmpty()) {
+                    getOrPut("Other", ::mutableListOf).add(lecture)
+                }
             }
             for (value in values) {
                 value.sortByDescending { it.releaseDate }

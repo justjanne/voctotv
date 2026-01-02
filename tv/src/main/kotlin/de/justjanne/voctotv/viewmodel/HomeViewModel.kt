@@ -17,7 +17,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
     val conferences = result.map {
-        it.filter { it.eventLastReleasedAt != null}
+        it.filter { it.eventLastReleasedAt != null }
             .groupBy {
                 when {
                     it.slug.startsWith("congress/")

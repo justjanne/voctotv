@@ -49,7 +49,7 @@ fun FeaturedCarousel(
             itemCount = lectures.size,
             modifier = modifier.height(361.dp)
                 .fillMaxWidth()
-                .padding(32.dp).border(
+                .padding(start = 32.dp, end = 32.dp, bottom = 20.dp).border(
                     width = 3.dp,
                     color = Color.White.copy(alpha = alpha),
                     shape = ShapeDefaults.Medium,

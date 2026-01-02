@@ -1,17 +1,26 @@
 package de.justjanne.voctotv.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ExperimentalTvMaterial3Api
+import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.Text
+import de.justjanne.voctotv.R
 import de.justjanne.voctotv.viewmodel.ConferenceKind
 import de.justjanne.voctotv.viewmodel.HomeViewModel
 
@@ -34,10 +43,24 @@ fun HomeRoute(
     }
 
     LazyColumn(
-        verticalArrangement = Arrangement.Bottom,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier.fillMaxSize()
     ) {
+        item("header") {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp)
+            ) {
+                Image(
+                    painterResource(R.drawable.mediacccde),
+                    contentDescription = null,
+                    modifier = Modifier.height(32.dp),
+                    colorFilter = ColorFilter.tint(LocalContentColor.current),
+                )
+            }
+        }
+
         item("featured") {
             FeaturedCarousel(featuredLectures, openPlayer, Modifier.focusRequester(focusRequester))
         }
