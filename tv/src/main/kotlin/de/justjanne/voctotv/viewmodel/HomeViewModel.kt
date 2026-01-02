@@ -18,13 +18,23 @@ class HomeViewModel @Inject constructor() : ViewModel() {
 
     val conferences = result.map {
         it.filter { it.eventLastReleasedAt != null}
-            .filter { it.slug.startsWith("congress/") || it.slug.startsWith("conferences/") }
-            .sortedByDescending { it.eventLastReleasedAt?.toEpochSecond() ?: 0 }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
-
-    val erfas = result.map {
-        it.filter { it.slug.startsWith("erfas/") }
-            .sortedByDescending { it.eventLastReleasedAt?.toEpochSecond() ?: 0 }
+            .groupBy {
+                when {
+                    it.slug.startsWith("congress/")
+                        -> ConferenceKind.CONGRESS
+                    it.slug.startsWith("conferences/gpn/")
+                        -> ConferenceKind.GPN
+                    it.slug.startsWith("conferences/") || it.slug.startsWith("events/")
+                        -> ConferenceKind.CONFERENCE
+                    it.slug.startsWith("erfas/")
+                        -> ConferenceKind.ERFA
+                    it.slug.startsWith("documentations/")
+                        -> ConferenceKind.DOCUMENTATIONS
+                    else -> ConferenceKind.OTHER
+                }
+            }.mapValues {
+                it.value.sortedByDescending { it.eventLastReleasedAt?.toEpochSecond() ?: 0 }
+            }.entries.filter { it.value.isNotEmpty() }.sortedBy { it.key }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val recent = flow {

@@ -7,9 +7,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
+import de.justjanne.voctotv.viewmodel.ConferenceKind
 import de.justjanne.voctotv.viewmodel.HomeViewModel
 
 @OptIn(ExperimentalTvMaterial3Api::class)
@@ -21,9 +24,14 @@ fun HomeRoute(
     openPlayer: (String) -> Unit,
 ) {
     val conferences by viewModel.conferences.collectAsState()
-    val erfas by viewModel.erfas.collectAsState()
     val recent by viewModel.recent.collectAsState()
     val featuredLectures by viewModel.featuredLectures.collectAsState()
+
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
 
     LazyColumn(
         verticalArrangement = Arrangement.Bottom,
@@ -31,15 +39,7 @@ fun HomeRoute(
         modifier = Modifier.fillMaxSize()
     ) {
         item("featured") {
-            FeaturedCarousel(featuredLectures, openPlayer)
-        }
-
-        item("conferences") {
-            ConferenceRow("Conferences", conferences, openConference)
-        }
-
-        item("erfas") {
-            ConferenceRow("Erfas", erfas, openConference)
+            FeaturedCarousel(featuredLectures, openPlayer, Modifier.focusRequester(focusRequester))
         }
 
         item("recent-lectures") {
@@ -53,6 +53,17 @@ fun HomeRoute(
                     LectureCard(lecture, openPlayer)
                 }
             }
+        }
+
+        items(conferences) {
+            ConferenceRow(when (it.key) {
+                ConferenceKind.CONGRESS -> "Congress"
+                ConferenceKind.GPN -> "GPN"
+                ConferenceKind.CONFERENCE -> "Conferences"
+                ConferenceKind.DOCUMENTATIONS -> "Documentaries"
+                ConferenceKind.ERFA -> "Erfas"
+                ConferenceKind.OTHER -> "Other"
+            }, it.value, openConference)
         }
     }
 }

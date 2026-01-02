@@ -22,7 +22,7 @@ class PlayerViewModel @AssistedInject constructor(
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     val mediaItem = lecture
-        .map { it?.resources?.first { track -> track.mimeType == "video/mp4" && track.highQuality && track.language == it.originalLanguage} }
+        .map { it?.resources?.first { track -> track.mimeType == "video/mp4" && track.highQuality} }
         .map { it?.let { MediaItem.Builder().setUri(it.recordingUrl).setMediaId(it.filename).build() } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
