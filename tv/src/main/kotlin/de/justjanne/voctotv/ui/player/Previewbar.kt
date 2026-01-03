@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.text.CueGroup
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.ui.compose.state.rememberPlayPauseButtonState
+import androidx.media3.ui.compose.state.rememberPlaybackSpeedState
 import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.Border
 import androidx.tv.material3.Surface
@@ -36,8 +38,10 @@ fun Previewbar(
     lecture: LectureModel?,
     player: Player,
     interactionSource: InteractionSource,
+    visible: State<Boolean>,
     modifier: Modifier = Modifier,
 ) {
+    val playbackState = rememberPlayPauseButtonState(player)
     val progressState = rememberProgressStateWithTickInterval(player)
     val isFocused = interactionSource.collectIsFocusedAsState()
     val currentCue = remember { mutableStateOf<String?>(null) }
@@ -92,26 +96,28 @@ fun Previewbar(
             .height(96.dp)
             .fillMaxWidth()
     ) {
-        Surface(
-            modifier = Modifier
-                .graphicsLayer {
-                    val thumb = thumb.toPx()
-                    val progress = progressState.currentPositionMs.toFloat() / progressState.durationMs.toFloat()
-                    val currentWidth = constraints.maxWidth - thumb
-                    val translation = (progress * currentWidth + thumb / 2) - size.width / 2
-                    translationX = translation.coerceIn(0f, currentWidth - size.width)
-                    translationY = -size.height + 24.dp.toPx()
-                    alpha = if (isFocused.value) 1f else 0f
-                },
-            shape = RoundedCornerShape(8.dp),
-            border = Border(BorderStroke(width = 3.dp, color = Color(red = 28, green = 27, blue = 31, alpha = 204)))
-        ) {
-            Box(Modifier.height(90.dp).aspectRatio(16f / 9f)) {
-                AsyncImage(
-                    model = currentThumbnail.value,
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize()
-                )
+        if (visible.value && playbackState.showPlay) {
+            Surface(
+                modifier = Modifier
+                    .graphicsLayer {
+                        val thumb = thumb.toPx()
+                        val progress = progressState.currentPositionMs.toFloat() / progressState.durationMs.toFloat()
+                        val currentWidth = constraints.maxWidth - thumb
+                        val translation = (progress * currentWidth + thumb / 2) - size.width / 2
+                        translationX = translation.coerceIn(0f, currentWidth - size.width)
+                        translationY = -size.height + 24.dp.toPx()
+                        alpha = if (isFocused.value) 1f else 0f
+                    },
+                shape = RoundedCornerShape(8.dp),
+                border = Border(BorderStroke(width = 3.dp, color = Color(red = 28, green = 27, blue = 31, alpha = 204)))
+            ) {
+                Box(Modifier.height(90.dp).aspectRatio(16f / 9f)) {
+                    AsyncImage(
+                        model = currentThumbnail.value,
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
             }
         }
     }

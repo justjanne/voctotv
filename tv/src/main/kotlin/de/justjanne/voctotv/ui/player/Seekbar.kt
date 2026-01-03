@@ -34,6 +34,8 @@ private val unfocusedHeight = 3.dp
 fun Seekbar(
     player: Player,
     interactionSource: MutableInteractionSource,
+    seekBack: () -> Unit,
+    seekForward: () -> Unit,
 ) {
     val progressState = rememberProgressStateWithTickInterval(player)
     val isFocused = interactionSource.collectIsFocusedAsState()
@@ -54,14 +56,12 @@ fun Seekbar(
                 if (it.type == KeyEventType.KeyDown) {
                     when (it.key) {
                         Key.DirectionRight -> {
-                            player.pause()
-                            player.seekForward()
+                            seekForward()
                             true
                         }
 
                         Key.DirectionLeft -> {
-                            player.pause()
-                            player.seekBack()
+                            seekBack()
                             true
                         }
 

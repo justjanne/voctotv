@@ -57,6 +57,29 @@ fun PlayerOverlay(
         }
     }
 
+    val seeking = remember { mutableStateOf(false) }
+    LaunchedEffect(uiVisible.value) {
+        if (!uiVisible.value) {
+            seeking.value = false
+        }
+    }
+    val seekBack = remember {
+        {
+            player.pause()
+            player.seekBack()
+            seeking.value = true
+            showUi()
+        }
+    }
+    val seekForward = remember {
+        {
+            player.pause()
+            player.seekForward()
+            seeking.value = true
+            showUi()
+        }
+    }
+
     DisposableEffect(player, hideJob, uiVisible) {
         val listener = object : Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) {
@@ -102,33 +125,25 @@ fun PlayerOverlay(
                         }
 
                         Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward -> {
-                            player.pause()
-                            player.seekForward()
-                            showUi()
+                            seekForward()
                             true
                         }
 
                         Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward -> {
-                            player.pause()
-                            player.seekBack()
-                            showUi()
+                            seekBack()
                             true
                         }
 
                         Key.DirectionRight -> {
                             if (!uiVisible.value) {
-                                player.pause()
-                                player.seekForward()
-                                showUi()
+                                seekForward()
                                 true
                             } else false
                         }
 
                         Key.DirectionLeft -> {
                             if (!uiVisible.value) {
-                                player.pause()
-                                player.seekBack()
-                                showUi()
+                                seekBack()
                                 true
                             } else false
                         }
@@ -163,7 +178,7 @@ fun PlayerOverlay(
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {
             Box {
-                Previewbar(lecture, player, seekbarInteractionSource, modifier = Modifier.align(Alignment.TopCenter))
+                Previewbar(lecture, player, seekbarInteractionSource, seeking, modifier = Modifier.align(Alignment.TopCenter))
                 Column(
                     modifier = Modifier
                         .background(
@@ -200,7 +215,7 @@ fun PlayerOverlay(
                             ),
                         )
                     }
-                    Seekbar(player, seekbarInteractionSource)
+                    Seekbar(player, seekbarInteractionSource, seekBack, seekForward)
                     PlayerButtons(player, playPauseState, lecture)
                 }
             }
