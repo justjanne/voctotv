@@ -2,12 +2,16 @@ package de.justjanne.voctotv.ui.player
 
 import androidx.activity.compose.BackHandler
 import androidx.annotation.OptIn
+import androidx.compose.animation.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.input.key.*
@@ -38,6 +42,7 @@ fun PlayerOverlay(
     val uiVisible = remember { mutableStateOf(false) }
 
     val mainInteractionSource = remember { MutableInteractionSource() }
+    val seekbarInteractionSource = remember { MutableInteractionSource() }
 
     BackHandler(uiVisible.value) {
         uiVisible.value = false
@@ -97,12 +102,14 @@ fun PlayerOverlay(
                         }
 
                         Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward -> {
+                            player.pause()
                             player.seekForward()
                             showUi()
                             true
                         }
 
                         Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward -> {
+                            player.pause()
                             player.seekBack()
                             showUi()
                             true
@@ -110,6 +117,7 @@ fun PlayerOverlay(
 
                         Key.DirectionRight -> {
                             if (!uiVisible.value) {
+                                player.pause()
                                 player.seekForward()
                                 showUi()
                                 true
@@ -118,6 +126,7 @@ fun PlayerOverlay(
 
                         Key.DirectionLeft -> {
                             if (!uiVisible.value) {
+                                player.pause()
                                 player.seekBack()
                                 showUi()
                                 true
@@ -147,32 +156,54 @@ fun PlayerOverlay(
             lecture
         )
 
-        BottomOverlay(uiVisible.value) {
-            Row(Modifier.padding(start = 32.dp, end = 32.dp, top = 32.dp)) {
-                Text(
-                    text = formatTime(progressState.currentPositionMs),
-                    style = MaterialTheme.typography.labelLarge.copy(
-                        shadow = Shadow(
-                            color = Color.Black.copy(alpha = 0.5f),
-                            offset = Offset(x = 2f, y = 4f),
-                            blurRadius = 2f
+        AnimatedVisibility(
+            uiVisible.value,
+            enter = fadeIn() + slideInVertically(initialOffsetY = { it / 2 }),
+            exit = fadeOut() + slideOutVertically(targetOffsetY = { it / 2 }),
+            modifier = Modifier.align(Alignment.BottomCenter)
+        ) {
+            Box {
+                Previewbar(lecture, player, seekbarInteractionSource, modifier = Modifier.align(Alignment.TopCenter))
+                Column(
+                    modifier = Modifier
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    Color(red = 28, green = 27, blue = 31, alpha = 0),
+                                    Color(red = 28, green = 27, blue = 31, alpha = 204)
+                                )
+                            )
                         )
-                    ),
-                )
-                Spacer(Modifier.weight(1f))
-                Text(
-                    text = formatTime(progressState.durationMs),
-                    style = MaterialTheme.typography.labelLarge.copy(
-                        shadow = Shadow(
-                            color = Color.Black.copy(alpha = 0.5f),
-                            offset = Offset(x = 2f, y = 4f),
-                            blurRadius = 2f
+                        .fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Row(Modifier.padding(start = 32.dp, end = 32.dp, top = 32.dp)) {
+                        Text(
+                            text = formatTime(progressState.currentPositionMs),
+                            style = MaterialTheme.typography.labelLarge.copy(
+                                shadow = Shadow(
+                                    color = Color.Black.copy(alpha = 0.5f),
+                                    offset = Offset(x = 2f, y = 4f),
+                                    blurRadius = 2f
+                                )
+                            ),
                         )
-                    ),
-                )
+                        Spacer(Modifier.weight(1f))
+                        Text(
+                            text = formatTime(progressState.durationMs),
+                            style = MaterialTheme.typography.labelLarge.copy(
+                                shadow = Shadow(
+                                    color = Color.Black.copy(alpha = 0.5f),
+                                    offset = Offset(x = 2f, y = 4f),
+                                    blurRadius = 2f
+                                )
+                            ),
+                        )
+                    }
+                    Seekbar(player, seekbarInteractionSource)
+                    PlayerButtons(player, playPauseState, lecture)
+                }
             }
-            Seekbar(player)
-            PlayerButtons(player, playPauseState, lecture)
         }
     }
 }

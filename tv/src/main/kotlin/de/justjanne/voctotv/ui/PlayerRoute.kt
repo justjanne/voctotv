@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.media3.common.C
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.ScrubbingModeParameters
 import androidx.media3.ui.compose.ContentFrame
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
 import de.justjanne.voctotv.ui.player.PlayerOverlay
@@ -16,7 +18,13 @@ import de.justjanne.voctotv.viewmodel.PlayerViewModel
 fun rememberPlayer(): Player {
     val context = LocalContext.current
     val player = remember(context) {
-        ExoPlayer.Builder(context).build()
+        ExoPlayer.Builder(context)
+            .setScrubbingModeParameters(
+                ScrubbingModeParameters.DEFAULT.buildUpon()
+                    .setDisabledTrackTypes(setOf(C.TRACK_TYPE_AUDIO))
+                    .build()
+            )
+            .build()
     }
     DisposableEffect(player) {
         onDispose {
@@ -38,6 +46,7 @@ fun PlayerRoute(
         player.clearMediaItems()
         player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
             .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
+            .setPreferredTextRoleFlags(C.ROLE_FLAG_TRICK_PLAY)
             .build()
         mediaItem?.let {
             player.setMediaItem(it)

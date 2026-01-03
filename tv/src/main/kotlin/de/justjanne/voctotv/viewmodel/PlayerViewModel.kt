@@ -39,6 +39,9 @@ class PlayerViewModel @AssistedInject constructor(
                                         .setMimeType("text/vtt")
                                         .setRoleFlags(C.ROLE_FLAG_TRICK_PLAY)
                                         .setSelectionFlags(C.SELECTION_FLAG_FORCED)
+                                        .setId("thumbnails")
+                                        .setLabel("thumbnails")
+                                        .setLanguage("und")
                                         .build()
                                 )
                                 /*

@@ -15,33 +15,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.Key
-import androidx.compose.ui.input.key.KeyEventType
-import androidx.compose.ui.input.key.key
-import androidx.compose.ui.input.key.onKeyEvent
-import androidx.compose.ui.input.key.type
+import androidx.compose.ui.input.key.*
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import de.justjanne.voctotv.ui.theme.Primary
 
-val thumb = 16.dp
-val focusedHeight = 6.dp
-val unfocusedHeight = 3.dp
+private val thumb = 16.dp
+private val focusedHeight = 6.dp
+private val unfocusedHeight = 3.dp
 
 @OptIn(UnstableApi::class)
 @Composable
 fun Seekbar(
-    player: Player
+    player: Player,
+    interactionSource: MutableInteractionSource,
 ) {
     val progressState = rememberProgressStateWithTickInterval(player)
-    val seekbarInteractionSource = remember { MutableInteractionSource() }
-    val isFocused = seekbarInteractionSource.collectIsFocusedAsState()
+    val isFocused = interactionSource.collectIsFocusedAsState()
 
     val focusRequester = remember { FocusRequester() }
 
@@ -59,11 +54,13 @@ fun Seekbar(
                 if (it.type == KeyEventType.KeyDown) {
                     when (it.key) {
                         Key.DirectionRight -> {
+                            player.pause()
                             player.seekForward()
                             true
                         }
 
                         Key.DirectionLeft -> {
+                            player.pause()
                             player.seekBack()
                             true
                         }
@@ -72,7 +69,7 @@ fun Seekbar(
                     }
                 } else false
             }
-            .clickable(interactionSource = seekbarInteractionSource, indication = null) {
+            .clickable(interactionSource = interactionSource, indication = null) {
                 if (player.isPlaying) player.pause()
                 else player.play()
             }

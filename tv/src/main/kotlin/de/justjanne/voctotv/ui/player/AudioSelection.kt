@@ -20,8 +20,8 @@ import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.PlayPauseButtonState
 import androidx.tv.material3.*
-import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.R
+import de.justjanne.voctotv.mediacccde.model.LectureModel
 
 @OptIn(UnstableApi::class)
 @Composable
