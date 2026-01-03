@@ -1,6 +1,11 @@
 # VoctoTV
 
-WIP AndroidTV client for media.ccc.de
+A stylish new AndroidTV client for media.ccc.de.
+
+<a href=".github/readme/screenshot_home.png"><img src=".github/readme/screenshot_home.png" width="640"></a>
+
+<a href=".github/readme/screenshot_seeking.png"><img src=".github/readme/screenshot_seeking.png" width="320"></a>
+<a href=".github/readme/screenshot_audioselection.png"><img src=".github/readme/screenshot_audioselection.png" width="320"></a>
 
 ## License
 
