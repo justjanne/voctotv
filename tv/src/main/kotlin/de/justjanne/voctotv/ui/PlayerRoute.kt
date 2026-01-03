@@ -21,7 +21,7 @@ fun rememberPlayer(): Player {
         ExoPlayer.Builder(context)
             .setScrubbingModeParameters(
                 ScrubbingModeParameters.DEFAULT.buildUpon()
-                    .setDisabledTrackTypes(setOf(C.TRACK_TYPE_AUDIO))
+                    .setDisabledTrackTypes(emptySet())
                     .build()
             )
             .build()
