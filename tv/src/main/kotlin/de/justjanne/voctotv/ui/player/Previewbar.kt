@@ -14,10 +14,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
-import androidx.media3.common.text.CueGroup
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.rememberPlayPauseButtonState
-import androidx.media3.ui.compose.state.rememberPlaybackSpeedState
 import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.Border
 import androidx.tv.material3.Surface
@@ -28,14 +26,14 @@ import coil3.request.transformations
 import coil3.size.SizeResolver
 import coil3.transform.Transformation
 import de.justjanne.voctotv.mediacccde.model.LectureModel
-import okhttp3.HttpUrl.Companion.toHttpUrl
+import de.justjanne.voctotv.viewmodel.PlayerViewModel
 
 private val thumb = 16.dp
 
 @OptIn(UnstableApi::class)
 @Composable
 fun Previewbar(
-    lecture: LectureModel?,
+    viewModel: PlayerViewModel,
     player: Player,
     interactionSource: InteractionSource,
     visible: State<Boolean>,
@@ -44,23 +42,12 @@ fun Previewbar(
     val playbackState = rememberPlayPauseButtonState(player)
     val progressState = rememberProgressStateWithTickInterval(player)
     val isFocused = interactionSource.collectIsFocusedAsState()
-    val currentCue = remember { mutableStateOf<String?>(null) }
+    val allCues = viewModel.previews.collectAsState()
 
-    DisposableEffect(lecture, player) {
-        val listener = object : Player.Listener {
-            override fun onCues(cueGroup: CueGroup) {
-                lecture?.let {
-                    cueGroup.cues.firstNotNullOfOrNull { it.text }?.toString()?.let { cue ->
-                        val baseUrl = lecture.thumbnailsUrl.toHttpUrl()
-                        currentCue.value = baseUrl.resolve(cue).toString()
-                    }
-                }
-            }
-        }
-
-        player.addListener(listener)
-        onDispose {
-            player.removeListener(listener)
+    val currentCue = remember {
+        derivedStateOf {
+            val currentTimestamp = progressState.currentPositionMs * 1000
+            allCues.value.firstOrNull { it.startUs <= currentTimestamp && it.endUs >= currentTimestamp }?.data
         }
     }
 
@@ -69,20 +56,29 @@ fun Previewbar(
     val context = LocalContext.current
     val currentThumbnail = remember(context) {
         derivedStateOf {
-            currentCue.value?.let { cue ->
+            currentCue.value?.let { url ->
                 try {
-                    val url = cue.substringBefore("?xywh=")
-                    val (x, y, w, h) = cue.substringAfter("?xywh=", "").split(',')
-
-                    ImageRequest.Builder(context)
-                        .data(url)
-                        .placeholder(previousThumbnail.value)
-                        .size(SizeResolver.ORIGINAL)
-                        .transformations(SpritesheetTransformation(w.toInt(), h.toInt(), x.toInt(), y.toInt()))
-                        .listener(onSuccess = { _, result ->
-                            previousThumbnail.value = result.image
-                        })
-                        .build()
+                    url.queryParameter("xywh")?.let { fragment ->
+                        val (x, y, w, h) = fragment.split(',')
+                        ImageRequest.Builder(context)
+                            .data(url.toString())
+                            .placeholder(previousThumbnail.value)
+                            .size(SizeResolver.ORIGINAL)
+                            .transformations(SpritesheetTransformation(w.toInt(), h.toInt(), x.toInt(), y.toInt()))
+                            .listener(onSuccess = { _, result ->
+                                previousThumbnail.value = result.image
+                            })
+                            .build()
+                    } ?: run {
+                        ImageRequest.Builder(context)
+                            .data(url.toString())
+                            .placeholder(previousThumbnail.value)
+                            .size(SizeResolver.ORIGINAL)
+                            .listener(onSuccess = { _, result ->
+                                previousThumbnail.value = result.image
+                            })
+                            .build()
+                    }
                 } catch (e: Throwable) {
                     e.printStackTrace()
                 }

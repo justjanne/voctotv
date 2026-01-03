@@ -1,67 +1,62 @@
 package de.justjanne.voctotv.viewmodel
 
+import android.annotation.SuppressLint
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MimeTypes
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.justjanne.voctotv.mediacccde.api.VoctowebApi
+import de.justjanne.voctotv.util.PreviewLoader
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
+@SuppressLint("UnsafeOptInUsageError")
 @HiltViewModel(assistedFactory = PlayerViewModel.Factory::class)
 class PlayerViewModel @AssistedInject constructor(
     @Assisted lectureId: String,
     api: VoctowebApi,
+    previewLoader: PreviewLoader,
 ) : ViewModel() {
     val lecture = flow {
         emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
+    val previews = lecture
+        .map { it?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
+        .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
     val mediaItem = lecture
         .map { lecture ->
             lecture?.let { lecture ->
-                lecture.resources.orEmpty()
-                    .firstOrNull { track -> track.mimeType == "video/mp4" && track.highQuality }
-                    ?.let {
-                        MediaItem.Builder()
-                            .setUri(it.recordingUrl)
-                            .setMediaId(it.filename)
-                            .setSubtitleConfigurations(
-                                listOf(
-                                    MediaItem.SubtitleConfiguration.Builder(lecture.thumbnailsUrl.toUri())
-                                        .setMimeType("text/vtt")
-                                        .setRoleFlags(C.ROLE_FLAG_TRICK_PLAY)
-                                        .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-                                        .setId("thumbnails")
-                                        .setLabel("thumbnails")
-                                        .setLanguage("und")
-                                        .build()
-                                )
-                                /*
-                                lecture.resources.orEmpty()
-                                    .filter { it.mimeType == "text/vtt" }
-                                    .map {
-                                        MediaItem.SubtitleConfiguration.Builder(it.recordingUrl.toUri())
-                                            .setLanguage(it.language)
-                                            .setMimeType(it.mimeType)
-                                            .setRoleFlags(C.ROLE_FLAG_SUBTITLE)
-                                            .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
-                                            .build()
-                                    }
-                                 */
-                            )
-                            .build()
-                    }
+                val track = lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
+                    ?: lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
+                track?.let {
+                    MediaItem.Builder()
+                        .setUri(it.recordingUrl)
+                        .setMediaId(it.filename)
+                        .setSubtitleConfigurations(
+                            lecture.resources?.filter { it.mimeType == MimeTypes.TEXT_VTT }?.map {
+                                MediaItem.SubtitleConfiguration.Builder(it.recordingUrl.toUri())
+                                    .setMimeType(it.mimeType)
+                                    .setRoleFlags(C.ROLE_FLAG_CAPTION)
+                                    .setLabel(it.language)
+                                    .setLanguage(it.language)
+                                    .build()
+                            }.orEmpty()
+                        )
+                        .build()
+                }
             }
         }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     @AssistedFactory
     interface Factory {

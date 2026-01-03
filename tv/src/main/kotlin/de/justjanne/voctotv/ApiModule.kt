@@ -15,15 +15,21 @@ import retrofit2.converter.kotlinx.serialization.asConverterFactory
 @InstallIn(SingletonComponent::class)
 internal object ApiModule {
     @Provides
-    fun provideApi(): VoctowebApi {
-        val client: OkHttpClient = OkHttpClient.Builder().addNetworkInterceptor { chain ->
-            chain.proceed(
-                chain.request().newBuilder().header("User-Agent", "VoctowebApi.kt/0.0.1").build()
-            )
-        }.build()
+    fun provideApi(
+        client: OkHttpClient,
+    ): VoctowebApi {
         val contentType = "application/json".toMediaType()
         val retrofit = Retrofit.Builder().baseUrl("https://api.media.ccc.de/")
             .addConverterFactory(Json.asConverterFactory(contentType)).client(client).build()
         return VoctowebApi.build(retrofit)
+    }
+
+    @Provides
+    fun provideClient(): OkHttpClient {
+        return OkHttpClient.Builder().addNetworkInterceptor { chain ->
+            chain.proceed(
+                chain.request().newBuilder().header("User-Agent", "VoctowebApi.kt/0.0.1").build()
+            )
+        }.build()
     }
 }

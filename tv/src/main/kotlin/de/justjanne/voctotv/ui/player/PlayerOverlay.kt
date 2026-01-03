@@ -24,6 +24,7 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.util.formatTime
+import de.justjanne.voctotv.viewmodel.PlayerViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -33,6 +34,7 @@ import kotlin.time.Duration.Companion.seconds
 @OptIn(UnstableApi::class)
 @Composable
 fun PlayerOverlay(
+    viewModel: PlayerViewModel,
     lecture: LectureModel?,
     player: Player,
 ) {
@@ -178,7 +180,13 @@ fun PlayerOverlay(
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {
             Box {
-                Previewbar(lecture, player, seekbarInteractionSource, seeking, modifier = Modifier.align(Alignment.TopCenter))
+                Previewbar(
+                    viewModel,
+                    player,
+                    seekbarInteractionSource,
+                    seeking,
+                    modifier = Modifier.align(Alignment.TopCenter)
+                )
                 Column(
                     modifier = Modifier
                         .background(

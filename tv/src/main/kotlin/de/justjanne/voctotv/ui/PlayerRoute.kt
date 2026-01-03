@@ -1,5 +1,6 @@
 package de.justjanne.voctotv.ui
 
+import androidx.annotation.OptIn
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
@@ -7,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.media3.common.C
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.ScrubbingModeParameters
 import androidx.media3.ui.compose.ContentFrame
@@ -14,6 +16,7 @@ import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
 import de.justjanne.voctotv.ui.player.PlayerOverlay
 import de.justjanne.voctotv.viewmodel.PlayerViewModel
 
+@OptIn(UnstableApi::class)
 @Composable
 fun rememberPlayer(): Player {
     val context = LocalContext.current
@@ -46,7 +49,7 @@ fun PlayerRoute(
         player.clearMediaItems()
         player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
             .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
-            .setPreferredTextRoleFlags(C.ROLE_FLAG_TRICK_PLAY)
+            .setPreferredTextRoleFlags(C.ROLE_FLAG_TRICK_PLAY or C.ROLE_FLAG_CAPTION)
             .build()
         mediaItem?.let {
             player.setMediaItem(it)
@@ -63,6 +66,6 @@ fun PlayerRoute(
             surfaceType = SURFACE_TYPE_SURFACE_VIEW,
         )
 
-        PlayerOverlay(lecture, player)
+        PlayerOverlay(viewModel, lecture, player)
     }
 }
