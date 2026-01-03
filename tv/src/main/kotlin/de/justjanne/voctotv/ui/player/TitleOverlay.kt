@@ -38,7 +38,10 @@ fun BoxScope.TitleOverlay(
                 modifier = Modifier
                     .background(
                         Brush.verticalGradient(
-                            listOf(Color.Black.copy(alpha = 0.67f), Color.Transparent)
+                            listOf(
+                                Color(red = 28, green = 27, blue = 31, alpha = 204),
+                                Color(red = 28, green = 27, blue = 31, alpha = 0),
+                            )
                         )
                     )
                     .padding(32.dp)

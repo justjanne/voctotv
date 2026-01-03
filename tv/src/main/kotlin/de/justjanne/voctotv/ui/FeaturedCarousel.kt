@@ -21,6 +21,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -67,9 +68,9 @@ fun FeaturedCarousel(
 
             Card(
                 onClick = { openLecture(lecture.guid) }, colors = CardDefaults.colors(
-                    containerColor = Color.Black,
-                    focusedContainerColor = Color.Black,
-                    pressedContainerColor = Color.Black,
+                    containerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
+                    focusedContainerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
+                    pressedContainerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
                 )
             ) {
                 Box {
@@ -176,8 +177,8 @@ private fun CarouselItemBackground(lecture: LectureModel, modifier: Modifier = M
                 Brush.radialGradient(
                     center = Offset(Float.POSITIVE_INFINITY, 0f),
                     colors = listOf(
-                        Color.Transparent,
-                        Color.Black,
+                        Color(red = 28, green = 27, blue = 31, alpha = 0),
+                        Color(red = 28, green = 27, blue = 31, alpha = 204)
                     ),
                     radius = size.maxDimension,
                 ),

@@ -30,7 +30,10 @@ fun BoxScope.BottomOverlay(visible: Boolean, content: @Composable ColumnScope.()
             modifier = Modifier
                 .background(
                     Brush.verticalGradient(
-                        listOf(Color.Transparent, Color.Black.copy(alpha = 0.67f))
+                        listOf(
+                            Color(red = 28, green = 27, blue = 31, alpha = 0),
+                            Color(red = 28, green = 27, blue = 31, alpha = 204)
+                        )
                     )
                 )
                 .fillMaxWidth(),
