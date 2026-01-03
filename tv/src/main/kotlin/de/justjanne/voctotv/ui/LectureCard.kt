@@ -1,18 +1,23 @@
 package de.justjanne.voctotv.ui
 
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastJoinToString
-import androidx.tv.material3.CompactCard
-import androidx.tv.material3.Text
+import androidx.tv.material3.*
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.util.formatTime
 
 @Composable
 fun LectureCard(
@@ -49,5 +54,83 @@ fun LectureCard(
                 modifier = Modifier.fillMaxSize(),
             )
         },
+        badge = {
+            Text(
+                text = formatTime(lecture.duration * 1000),
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(6.dp)
+                    .background(Color.Black, shape = MaterialTheme.shapes.extraSmall)
+                    .padding(horizontal = 6.dp, vertical = 2.dp),
+                style = MaterialTheme.typography.labelLarge.copy(
+                    color = Color.White,
+                ),
+            )
+        }
     )
 }
+
+@Composable
+private fun CompactCard(
+    onClick: () -> Unit,
+    image: @Composable BoxScope.() -> Unit,
+    title: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+    onLongClick: (() -> Unit)? = null,
+    subtitle: @Composable () -> Unit = {},
+    description: @Composable () -> Unit = {},
+    badge: @Composable BoxScope.() -> Unit = {},
+    shape: CardShape = CardDefaults.shape(),
+    colors: CardColors = CardDefaults.compactCardColors(),
+    scale: CardScale = CardDefaults.scale(),
+    border: CardBorder = CardDefaults.border(),
+    glow: CardGlow = CardDefaults.glow(),
+    scrimBrush: Brush = CardDefaults.ScrimBrush,
+    interactionSource: MutableInteractionSource? = null
+) {
+    Card(
+        onClick = onClick,
+        onLongClick = onLongClick,
+        modifier = modifier,
+        interactionSource = interactionSource,
+        shape = shape,
+        colors = colors,
+        scale = scale,
+        border = border,
+        glow = glow
+    ) {
+        Box(contentAlignment = Alignment.BottomStart) {
+            Box(
+                modifier =
+                    Modifier.drawWithCache {
+                        onDrawWithContent {
+                            drawContent()
+                            drawRect(brush = scrimBrush)
+                        }
+                    },
+                contentAlignment = Alignment.Center,
+                content = image
+            )
+            Column { CardContent(title = title, subtitle = subtitle, description = description) }
+            badge()
+        }
+    }
+}
+
+@Composable
+private fun CardContent(
+    title: @Composable () -> Unit,
+    subtitle: @Composable () -> Unit = {},
+    description: @Composable () -> Unit = {}
+) {
+    ProvideTextStyle(MaterialTheme.typography.titleMedium) { title.invoke() }
+    ProvideTextStyle(MaterialTheme.typography.bodySmall) {
+        Box(Modifier.graphicsLayer { alpha = SubtitleAlpha }) { subtitle.invoke() }
+    }
+    ProvideTextStyle(MaterialTheme.typography.bodySmall) {
+        Box(Modifier.graphicsLayer { alpha = DescriptionAlpha }) { description.invoke() }
+    }
+}
+
+private const val SubtitleAlpha = 0.6f
+private const val DescriptionAlpha = 0.8f

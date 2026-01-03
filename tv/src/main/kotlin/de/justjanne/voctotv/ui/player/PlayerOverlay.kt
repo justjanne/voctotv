@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.unit.dp
-import androidx.media3.common.C
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.rememberPlayPauseButtonState
@@ -20,11 +19,10 @@ import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.util.formatTime
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.Locale
-import kotlin.math.abs
 import kotlin.time.Duration.Companion.seconds
 
 
@@ -177,18 +175,4 @@ fun PlayerOverlay(
             PlayerButtons(player, playPauseState, lecture)
         }
     }
-}
-
-fun formatTime(timeMs: Long): String {
-    if (timeMs == C.TIME_UNSET) {
-        return formatTime(0);
-    }
-    val prefix = if (timeMs < 0) "-" else ""
-    val timeMsValue = abs(timeMs)
-    val totalSeconds = (timeMsValue + 500) / 1000
-    val seconds = totalSeconds % 60
-    val minutes = (totalSeconds / 60) % 60
-    val hours = totalSeconds / 3600
-    return if (hours > 0) String.format(Locale.ROOT, "%s%d:%02d:%02d", prefix, hours, minutes, seconds)
-    else String.format(Locale.ROOT, "%s%02d:%02d", prefix, minutes, seconds)
 }
