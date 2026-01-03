@@ -22,7 +22,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.fastJoinToString
 import androidx.tv.material3.*
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.mediacccde.model.LectureModel
@@ -33,6 +35,7 @@ fun FeaturedCarousel(
     lectures: List<LectureModel>,
     openLecture: (String) -> Unit,
     modifier: Modifier = Modifier,
+    showConference: Boolean = true,
 ) {
     val isCarouselFocused = remember { mutableStateOf(false) }
     val alpha = if (isCarouselFocused.value) {
@@ -77,6 +80,7 @@ fun FeaturedCarousel(
                     CarouselItemForeground(
                         lecture,
                         modifier = Modifier.fillMaxSize(),
+                        showConference = showConference,
                         openLecture = openLecture,
                     )
                 }
@@ -89,6 +93,7 @@ fun FeaturedCarousel(
 private fun CarouselItemForeground(
     lecture: LectureModel,
     modifier: Modifier = Modifier,
+    showConference: Boolean = true,
     openLecture: (String) -> Unit,
 ) {
     Box(
@@ -98,19 +103,21 @@ private fun CarouselItemForeground(
             modifier = Modifier.fillMaxHeight().width(418.dp).padding(32.dp),
             verticalArrangement = Arrangement.Bottom
         ) {
-            Text(
-                text = lecture.conferenceTitle,
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    color = Color.White.copy(alpha = 0.65f),
-                    shadow = Shadow(
-                        color = Color.Black.copy(alpha = 0.5f),
-                        offset = Offset(x = 2f, y = 4f),
-                        blurRadius = 2f
-                    )
-                ),
-                maxLines = 1,
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
+            if (showConference) {
+                Text(
+                    text = lecture.conferenceTitle,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = Color.White.copy(alpha = 0.6f),
+                        shadow = Shadow(
+                            color = Color.Black.copy(alpha = 0.5f),
+                            offset = Offset(x = 2f, y = 4f),
+                            blurRadius = 2f
+                        )
+                    ),
+                    maxLines = 1,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+            }
             Text(
                 text = lecture.title,
                 style = MaterialTheme.typography.titleLarge.copy(
@@ -120,12 +127,26 @@ private fun CarouselItemForeground(
                         blurRadius = 2f
                     )
                 ),
+                overflow = TextOverflow.Ellipsis,
                 maxLines = 2,
+            )
+            Text(
+                text = lecture.persons.fastJoinToString(" · "),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    color = Color.White.copy(alpha = 0.6f),
+                    shadow = Shadow(
+                        color = Color.Black.copy(alpha = 0.5f),
+                        offset = Offset(x = 2f, y = 4f),
+                        blurRadius = 2f
+                    )
+                ),
+                modifier = Modifier.padding(bottom = 4.dp)
             )
             lecture.description?.let {
                 Text(
-                    text = it, style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.White.copy(alpha = 0.65f),
+                    text = it.replace(Regex("\n\n+"), "\n"),
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = Color.White.copy(alpha = 0.8f),
                         shadow = Shadow(
                             color = Color.Black.copy(alpha = 0.5f),
                             offset = Offset(x = 2f, y = 4f),
@@ -133,6 +154,7 @@ private fun CarouselItemForeground(
                         )
                     ),
                     maxLines = 3,
+                    overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.padding(top = 8.dp)
                 )
             }

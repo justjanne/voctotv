@@ -68,7 +68,7 @@ fun ConferenceRoute(
         }
 
         item("featured") {
-            FeaturedCarousel(featured, openPlayer)
+            FeaturedCarousel(featured, openPlayer, showConference = false)
         }
 
         items(itemsByTrack.entries.sortedBy { it.key }.toList()) { (track, items) ->
