@@ -17,7 +17,7 @@ import androidx.media3.ui.compose.state.PlayPauseButtonState
 import androidx.tv.material3.IconButton
 import androidx.tv.material3.IconButtonDefaults
 import androidx.tv.material3.LocalContentColor
-import de.ccc.media.api.LectureModel
+import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.R
 
 @OptIn(UnstableApi::class)

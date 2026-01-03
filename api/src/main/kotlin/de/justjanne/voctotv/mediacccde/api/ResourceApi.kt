@@ -1,5 +1,6 @@
-package de.ccc.media.api
+package de.justjanne.voctotv.mediacccde.api
 
+import de.justjanne.voctotv.mediacccde.model.ResourceModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import retrofit2.http.GET

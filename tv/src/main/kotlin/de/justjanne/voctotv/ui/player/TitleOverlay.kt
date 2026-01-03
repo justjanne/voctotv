@@ -20,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Text
-import de.ccc.media.api.LectureModel
+import de.justjanne.voctotv.mediacccde.model.LectureModel
 
 @Composable
 fun BoxScope.TitleOverlay(

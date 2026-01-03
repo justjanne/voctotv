@@ -1,4 +1,4 @@
-package de.ccc.media.api
+package de.justjanne.voctotv.mediacccde.model
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable

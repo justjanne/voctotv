@@ -1,8 +1,8 @@
 package de.justjanne.voctotv.api
 
-import de.ccc.media.api.ResourceApi
-import de.ccc.media.api.ResourceModel
-import de.ccc.media.api.VoctowebApi
+import de.justjanne.voctotv.mediacccde.api.ResourceApi
+import de.justjanne.voctotv.mediacccde.api.VoctowebApi
+import de.justjanne.voctotv.mediacccde.model.ResourceModel
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json

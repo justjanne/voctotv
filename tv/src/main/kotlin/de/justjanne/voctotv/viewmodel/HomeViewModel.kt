@@ -3,7 +3,7 @@ package de.justjanne.voctotv.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import de.ccc.media.api.VoctowebApi
+import de.justjanne.voctotv.mediacccde.api.VoctowebApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map

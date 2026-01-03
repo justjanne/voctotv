@@ -1,9 +1,8 @@
-package de.ccc.media.api
+package de.justjanne.voctotv.mediacccde.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
 
 @OptIn(ExperimentalUuidApi::class)
 @Serializable

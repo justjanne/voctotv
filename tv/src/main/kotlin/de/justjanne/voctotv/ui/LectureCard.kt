@@ -12,7 +12,7 @@ import androidx.compose.ui.util.fastJoinToString
 import androidx.tv.material3.CompactCard
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import de.ccc.media.api.LectureModel
+import de.justjanne.voctotv.mediacccde.model.LectureModel
 
 @Composable
 fun LectureCard(

@@ -19,7 +19,7 @@ import androidx.media3.ui.compose.state.rememberPlayPauseButtonState
 import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import de.ccc.media.api.LectureModel
+import de.justjanne.voctotv.mediacccde.model.LectureModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

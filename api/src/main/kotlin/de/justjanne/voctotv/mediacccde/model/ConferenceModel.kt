@@ -1,8 +1,7 @@
-package de.ccc.media.api
+package de.justjanne.voctotv.mediacccde.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.time.OffsetDateTime
 
 @Serializable
 data class ConferenceModel(

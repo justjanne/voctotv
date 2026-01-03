@@ -1,4 +1,4 @@
-package de.ccc.media.api
+package de.justjanne.voctotv.mediacccde.api
 
 import retrofit2.Retrofit
 import retrofit2.create

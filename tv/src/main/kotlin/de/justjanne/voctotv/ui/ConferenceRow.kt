@@ -1,12 +1,6 @@
 package de.justjanne.voctotv.ui
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -17,7 +11,7 @@ import androidx.tv.material3.Card
 import androidx.tv.material3.StandardCardContainer
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import de.ccc.media.api.ConferenceModel
+import de.justjanne.voctotv.mediacccde.model.ConferenceModel
 import de.justjanne.voctotv.ui.theme.VoctoTvTheme
 
 @Composable

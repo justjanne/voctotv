@@ -1,14 +1,14 @@
 @file:OptIn(ExperimentalUuidApi::class)
 
-package de.ccc.media.api
+package de.justjanne.voctotv.mediacccde.api
 
+import de.justjanne.voctotv.mediacccde.model.LectureModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
 
 interface LectureApi {
     @GET("public/events")
