@@ -19,6 +19,8 @@ stages:
 test:
   stage: "test"
   script:
+    - git rev-list --count HEAD --tags
+    - git describe --always --tags HEAD
     - "./gradlew assembleRelease -x lintRelease -x lintVitalRelease --info"
     - "cp tv/build/outputs/apk/release/*.apk ."
     - "./gradlew check -x connectedCheck -info"
