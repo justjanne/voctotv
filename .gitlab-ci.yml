@@ -1,0 +1,33 @@
+image: "k8r.eu/justjanne/android-sdk:36-latest"
+
+cache:
+  key: "$CI_PROJECT_NAME"
+  paths:
+    - ".gradle/caches"
+
+before_script:
+  - "mkdir -p $(pwd)/.gradle"
+  - "export GRADLE_USER_HOME=$(pwd)/.gradle"
+  - "echo $SIGNING_KEYSTORE | base64 -d > /root/signing.keystore"
+  - "echo $SIGNING_PROPERTIES | base64 -d > signing.properties"
+  - "chmod +x ./gradlew"
+
+stages:
+  - "test"
+  - "release"
+
+test:
+  stage: "test"
+  script:
+    - "./gradlew assembleRelease -x lintRelease -x lintVitalRelease"
+    - "cp tv/build/outputs/apk/release/*.apk ."
+    - "./gradlew check -x connectedCheck --stacktrace"
+  artifacts:
+    paths:
+      - "*.apk"
+      - "*/build/test-results/**/TEST-*.xml"
+      - "*/build/reports/*.xml"
+    reports:
+      junit:
+        - "*/build/test-results/**/TEST-*.xml"
+        - "*/build/reports/*.xml"

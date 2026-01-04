@@ -10,6 +10,10 @@ plugins {
     alias(libs.plugins.dagger.hilt)
 }
 
+configure<BasePluginExtension> {
+    archivesName.set("${rootProject.name}-$name")
+}
+
 android {
     namespace = "de.justjanne.voctotv"
     compileSdk = 36
