@@ -38,6 +38,7 @@ fun rememberPlayer(): Player {
     return player
 }
 
+@OptIn(UnstableApi::class)
 @Composable
 fun PlayerRoute(
     viewModel: PlayerViewModel,
