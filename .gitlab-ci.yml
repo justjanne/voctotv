@@ -19,9 +19,9 @@ stages:
 test:
   stage: "test"
   script:
-    - "./gradlew assembleRelease -x lintRelease -x lintVitalRelease"
+    - "./gradlew assembleRelease -x lintRelease -x lintVitalRelease --info"
     - "cp tv/build/outputs/apk/release/*.apk ."
-    - "./gradlew check -x connectedCheck --stacktrace"
+    - "./gradlew check -x connectedCheck -info"
   artifacts:
     paths:
       - "*.apk"
