@@ -4,12 +4,17 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
@@ -57,15 +62,17 @@ fun ConferenceRoute(
             FeaturedCarousel(featured, openPlayer, showConference = false)
         }
 
-        items(itemsByTrack.entries.sortedBy { it.key }.toList()) { (track, items) ->
+        items(itemsByTrack.entries.sortedBy { it.key }.toList(), key = { it.key }) { (track, items) ->
             Text(track, modifier = Modifier.padding(horizontal = 20.dp))
 
+            val focusRequester = remember(track) { FocusRequester() }
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(20.dp),
                 contentPadding = PaddingValues(20.dp),
+                modifier = Modifier.focusRestorer(focusRequester)
             ) {
-                items(items) { lecture ->
-                    LectureCard(lecture, openPlayer)
+                itemsIndexed(items, key = { _, lecture -> lecture.guid }) { index, lecture ->
+                    LectureCard(lecture, openPlayer, if (index == 0) Modifier.focusRequester(focusRequester) else Modifier)
                 }
             }
         }

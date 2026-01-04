@@ -14,13 +14,22 @@ android {
     namespace = "de.justjanne.voctotv"
     compileSdk = 36
 
+    fun Project.git(vararg command: String): Provider<String> =
+        providers.exec { commandLine("git", *command) }
+            .standardOutput
+            .asText
+            .map { it.trim() }
+
     defaultConfig {
         applicationId = "de.justjanne.voctotv"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = git("rev-list", "--count", "HEAD", "--tags").orNull?.toIntOrNull() ?: 1
+        versionName = git("describe", "--always", "--tags", "HEAD").getOrElse("0.1.0")
+    }
 
+    buildFeatures {
+        buildConfig = true
     }
 
     data class SigningData(

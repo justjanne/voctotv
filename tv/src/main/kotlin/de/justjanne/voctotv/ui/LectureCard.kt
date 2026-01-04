@@ -23,12 +23,13 @@ import de.justjanne.voctotv.util.formatTime
 fun LectureCard(
     lecture: LectureModel,
     openLecture: (String) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     CompactCard(
         onClick = {
             openLecture(lecture.guid)
         },
-        modifier = Modifier
+        modifier = modifier
             .width(268.dp)
             .aspectRatio(16f / 9),
         title = {

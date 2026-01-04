@@ -1,15 +1,20 @@
 package de.justjanne.voctotv
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import de.justjanne.voctotv.mediacccde.api.VoctowebApi
+import de.justjanne.voctotv.util.UserAgentInterceptor
 import kotlinx.serialization.json.Json
+import okhttp3.Cache
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import java.io.File
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -25,11 +30,17 @@ internal object ApiModule {
     }
 
     @Provides
-    fun provideClient(): OkHttpClient {
-        return OkHttpClient.Builder().addNetworkInterceptor { chain ->
-            chain.proceed(
-                chain.request().newBuilder().header("User-Agent", "VoctowebApi.kt/0.0.1").build()
+    fun provideClient(@ApplicationContext context: Context): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addNetworkInterceptor(
+                UserAgentInterceptor("${BuildConfig.APPLICATION_ID}/${BuildConfig.VERSION_NAME}")
             )
-        }.build()
+            .cache(
+                Cache(
+                    directory = File(context.cacheDir, "http_cache"),
+                    maxSize = 50L * 1024L * 1024L,
+                )
+            )
+            .build()
     }
 }

@@ -3,8 +3,13 @@ package de.justjanne.voctotv.ui
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Card
@@ -20,15 +25,20 @@ fun ConferenceRow(
     featured: List<ConferenceModel>,
     openConference: (String) -> Unit,
 ) {
+    val focusRequester = remember { FocusRequester() }
+
     Text(title, modifier = Modifier.padding(horizontal = 20.dp))
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(20.dp),
         contentPadding = PaddingValues(20.dp),
+        modifier = Modifier.focusRestorer(focusRequester)
     ) {
-        items(featured) { conference ->
+        itemsIndexed(featured, key = { _, item -> item.acronym }) { index, conference ->
+            val modifier = if (index == 0) Modifier.focusRequester(focusRequester) else Modifier
+
             Column {
                 StandardCardContainer(
-                    modifier = Modifier.width(196.dp),
+                    modifier = modifier.width(196.dp),
                     imageCard = { interactionSource ->
                         VoctoTvTheme(isInDarkTheme = false) {
                             Card(

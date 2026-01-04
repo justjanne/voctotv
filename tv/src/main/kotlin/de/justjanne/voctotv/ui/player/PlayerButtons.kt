@@ -58,7 +58,7 @@ fun PlayerButtons(
             modifier = Modifier.weight(1f),
             horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
         ) {
-            //SubtitleSelection(player, playPauseState)
+            CaptionSelection(player, playPauseState)
             AudioSelection(player, playPauseState, lecture)
         }
     }

@@ -5,11 +5,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -64,25 +66,30 @@ fun HomeRoute(
         item("recent-lectures") {
             Text("Recent", modifier = Modifier.padding(horizontal = 20.dp))
 
+            val focusRequester = remember { FocusRequester() }
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(20.dp),
                 contentPadding = PaddingValues(20.dp),
+                modifier = Modifier.focusRestorer(focusRequester)
             ) {
-                items(recent) { lecture ->
-                    LectureCard(lecture, openPlayer)
+                itemsIndexed(recent, key = { _, lecture -> lecture.guid }) { index, lecture ->
+                    LectureCard(lecture, openPlayer, if (index == 0) Modifier.focusRequester(focusRequester) else Modifier)
                 }
             }
         }
 
-        items(conferences) {
-            ConferenceRow(when (it.key) {
-                ConferenceKind.CONGRESS -> "Congress"
-                ConferenceKind.GPN -> "GPN"
-                ConferenceKind.CONFERENCE -> "Conferences"
-                ConferenceKind.DOCUMENTATIONS -> "Documentaries"
-                ConferenceKind.ERFA -> "Erfas"
-                ConferenceKind.OTHER -> "Other"
-            }, it.value, openConference)
+        items(conferences, key = { it.key }) {
+            val title = remember(it) {
+                when (it.key) {
+                    ConferenceKind.CONGRESS -> "Congress"
+                    ConferenceKind.GPN -> "GPN"
+                    ConferenceKind.CONFERENCE -> "Conferences"
+                    ConferenceKind.DOCUMENTATIONS -> "Documentaries"
+                    ConferenceKind.ERFA -> "Erfas"
+                    ConferenceKind.OTHER -> "Other"
+                }
+            }
+            ConferenceRow(title, it.value, openConference)
         }
     }
 }

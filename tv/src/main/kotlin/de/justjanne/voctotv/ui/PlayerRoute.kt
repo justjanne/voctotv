@@ -14,6 +14,7 @@ import androidx.media3.exoplayer.ScrubbingModeParameters
 import androidx.media3.ui.compose.ContentFrame
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
 import de.justjanne.voctotv.ui.player.PlayerOverlay
+import de.justjanne.voctotv.ui.player.SubtitleDisplay
 import de.justjanne.voctotv.viewmodel.PlayerViewModel
 
 @OptIn(UnstableApi::class)
@@ -49,7 +50,7 @@ fun PlayerRoute(
         player.clearMediaItems()
         player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
             .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
-            .setPreferredTextRoleFlags(C.ROLE_FLAG_TRICK_PLAY or C.ROLE_FLAG_CAPTION)
+            .setPreferredTextLanguages()
             .build()
         mediaItem?.let {
             player.setMediaItem(it)
@@ -65,6 +66,8 @@ fun PlayerRoute(
             modifier = Modifier.fillMaxSize(),
             surfaceType = SURFACE_TYPE_SURFACE_VIEW,
         )
+
+        SubtitleDisplay(player)
 
         PlayerOverlay(viewModel, lecture, player)
     }
