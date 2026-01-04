@@ -1,4 +1,4 @@
-image: "k8r.eu/justjanne/android-sdk:36-latest"
+image: "k8r.eu/justjanne/android-sdk:36-594c2cc3"
 
 cache:
   key: "$CI_PROJECT_NAME"
@@ -19,8 +19,6 @@ stages:
 test:
   stage: "test"
   script:
-    - git rev-list --count HEAD --tags
-    - git describe --always --tags HEAD
     - "./gradlew assembleRelease -x lintRelease -x lintVitalRelease --info"
     - "cp tv/build/outputs/apk/release/*.apk ."
     - "./gradlew check -x connectedCheck -info"
