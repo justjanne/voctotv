@@ -43,15 +43,30 @@ class PlayerViewModel @AssistedInject constructor(
                         .setUri(it.recordingUrl)
                         .setMediaId(it.filename)
                         .setSubtitleConfigurations(
-                            lecture.resources?.filter { it.mimeType == MimeTypes.TEXT_VTT }?.map {
-                                MediaItem.SubtitleConfiguration.Builder(it.recordingUrl.replace("https://cdn.media.ccc.de/", "https://static.media.ccc.de/media/").toUri())
-                                    .setMimeType(it.mimeType)
-                                    .setRoleFlags(C.ROLE_FLAG_CAPTION)
-                                    .setLabel(it.language)
-                                    .setLanguage(it.language)
-                                    .setSelectionFlags(0)
-                                    .build()
-                            }.orEmpty()
+                            buildList {
+                                lecture.resources?.filter { it.mimeType == MimeTypes.TEXT_VTT }?.forEach {
+                                    add(
+                                        MediaItem.SubtitleConfiguration.Builder(it.recordingUrl.replace("https://cdn.media.ccc.de/", "https://static.media.ccc.de/media/").toUri())
+                                            .setMimeType(it.mimeType)
+                                            .setRoleFlags(C.ROLE_FLAG_CAPTION)
+                                            .setLabel(it.language)
+                                            .setLanguage(it.language)
+                                            .setSelectionFlags(0)
+                                            .build()
+                                    )
+                                }
+                                lecture.resources?.filter { it.mimeType == MimeTypes.APPLICATION_SUBRIP }?.forEach {
+                                    add(
+                                        MediaItem.SubtitleConfiguration.Builder(it.recordingUrl.toUri())
+                                            .setMimeType(it.mimeType)
+                                            .setRoleFlags(C.ROLE_FLAG_CAPTION)
+                                            .setLabel(it.language)
+                                            .setLanguage(it.language)
+                                            .setSelectionFlags(0)
+                                            .build()
+                                    )
+                                }
+                            }
                         )
                         .build()
                 }
