@@ -89,6 +89,18 @@ android {
     buildFeatures {
         compose = true
     }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
 }
 
 kotlin {
