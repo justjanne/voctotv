@@ -1,7 +1,11 @@
 package de.justjanne.voctotv.ui.player
 
 import android.text.Layout
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateOf
@@ -19,19 +23,20 @@ import androidx.media3.common.text.CueGroup
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
+import de.justjanne.voctotv.viewmodel.PlayerViewModel
 
 @Composable
-fun SubtitleDisplay(player: Player) {
+fun SubtitleDisplay(viewModel: PlayerViewModel) {
     val currentCue = remember { mutableStateOf<CueGroup?>(null) }
-    DisposableEffect(player) {
+    DisposableEffect(viewModel.mediaSession.player) {
         val listener = object : Player.Listener {
             override fun onCues(cueGroup: CueGroup) {
                 currentCue.value = cueGroup
             }
         }
-        player.addListener(listener)
+        viewModel.mediaSession.player.addListener(listener)
         onDispose {
-            player.removeListener(listener)
+            viewModel.mediaSession.player.removeListener(listener)
         }
     }
 

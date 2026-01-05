@@ -36,10 +36,9 @@ import kotlin.time.Duration.Companion.seconds
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
-    player: Player,
 ) {
-    val progressState = rememberProgressStateWithTickInterval(player)
-    val playPauseState = rememberPlayPauseButtonState(player)
+    val progressState = rememberProgressStateWithTickInterval(viewModel.mediaSession.player)
+    val playPauseState = rememberPlayPauseButtonState(viewModel.mediaSession.player)
 
     val uiVisible = remember { mutableStateOf(false) }
 
@@ -67,22 +66,22 @@ fun PlayerOverlay(
     }
     val seekBack = remember {
         {
-            player.pause()
-            player.seekBack()
+            viewModel.mediaSession.player.pause()
+            viewModel.mediaSession.player.seekBack()
             seeking.value = true
             showUi()
         }
     }
     val seekForward = remember {
         {
-            player.pause()
-            player.seekForward()
+            viewModel.mediaSession.player.pause()
+            viewModel.mediaSession.player.seekForward()
             seeking.value = true
             showUi()
         }
     }
 
-    DisposableEffect(player, hideJob, uiVisible) {
+    DisposableEffect(viewModel.mediaSession.player, hideJob, uiVisible) {
         val listener = object : Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 if (isPlaying) {
@@ -97,9 +96,9 @@ fun PlayerOverlay(
             }
         }
 
-        player.addListener(listener)
+        viewModel.mediaSession.player.addListener(listener)
         onDispose {
-            player.removeListener(listener)
+            viewModel.mediaSession.player.removeListener(listener)
         }
     }
 
@@ -111,18 +110,18 @@ fun PlayerOverlay(
                 if (it.type == KeyEventType.KeyDown) {
                     when (it.key) {
                         Key.MediaPlayPause -> {
-                            if (player.isPlaying) player.pause()
-                            else player.play()
+                            if (viewModel.mediaSession.player.isPlaying) viewModel.mediaSession.player.pause()
+                            else viewModel.mediaSession.player.play()
                             true
                         }
 
                         Key.MediaPlay -> {
-                            player.play()
+                            viewModel.mediaSession.player.play()
                             true
                         }
 
                         Key.MediaPause -> {
-                            player.pause()
+                            viewModel.mediaSession.player.pause()
                             true
                         }
 
@@ -182,7 +181,7 @@ fun PlayerOverlay(
             Box {
                 Previewbar(
                     viewModel,
-                    player,
+                    viewModel.mediaSession.player,
                     seekbarInteractionSource,
                     seeking,
                     modifier = Modifier.align(Alignment.TopCenter)
@@ -223,8 +222,8 @@ fun PlayerOverlay(
                             ),
                         )
                     }
-                    Seekbar(player, seekbarInteractionSource, seekBack, seekForward)
-                    PlayerButtons(player, playPauseState, lecture)
+                    Seekbar(viewModel.mediaSession.player, seekbarInteractionSource, seekBack, seekForward)
+                    PlayerButtons(viewModel.mediaSession.player, playPauseState, lecture)
                 }
             }
         }

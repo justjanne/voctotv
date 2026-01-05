@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
+import androidx.media3.session.MediaSession
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -24,6 +25,7 @@ class PlayerViewModel @AssistedInject constructor(
     @Assisted lectureId: String,
     api: VoctowebApi,
     previewLoader: PreviewLoader,
+    val mediaSession: MediaSession,
 ) : ViewModel() {
     val lecture = flow {
         emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
@@ -73,6 +75,11 @@ class PlayerViewModel @AssistedInject constructor(
             }
         }
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    override fun onCleared() {
+        mediaSession.player.release()
+        mediaSession.release()
+    }
 
     @AssistedFactory
     interface Factory {
