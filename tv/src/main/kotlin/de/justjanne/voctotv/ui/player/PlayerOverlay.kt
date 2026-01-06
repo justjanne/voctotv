@@ -1,6 +1,8 @@
 package de.justjanne.voctotv.ui.player
 
+import android.view.WindowManager
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.LocalActivity
 import androidx.annotation.OptIn
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
@@ -15,6 +17,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.input.key.*
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
@@ -81,16 +84,19 @@ fun PlayerOverlay(
         }
     }
 
+    val context = LocalActivity.current
     DisposableEffect(viewModel.mediaSession.player, hideJob, uiVisible) {
         val listener = object : Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 if (isPlaying) {
+                    context?.window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
                     hideJob.value?.cancel()
                     hideJob.value = hideScope.launch {
                         delay(5.seconds)
                         uiVisible.value = false
                     }
                 } else {
+                    context?.window?.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
                     showUi()
                 }
             }
