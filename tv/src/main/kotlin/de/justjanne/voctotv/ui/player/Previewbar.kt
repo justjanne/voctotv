@@ -61,7 +61,7 @@ fun Previewbar(
                     url.queryParameter("xywh")?.let { fragment ->
                         val (x, y, w, h) = fragment.split(',')
                         ImageRequest.Builder(context)
-                            .data(url.toString())
+                            .data(url.newBuilder().removeAllQueryParameters("xywh").toString())
                             .placeholder(previousThumbnail.value)
                             .size(SizeResolver.ORIGINAL)
                             .transformations(SpritesheetTransformation(w.toInt(), h.toInt(), x.toInt(), y.toInt()))

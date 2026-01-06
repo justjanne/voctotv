@@ -1,23 +1,16 @@
 package de.justjanne.voctotv.ui.player
 
 import androidx.annotation.OptIn
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.anchoredDraggable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Slider
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.material3.minimumInteractiveComponentSize
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.focus.FocusRequester
@@ -25,8 +18,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.*
-import androidx.compose.ui.layout.layout
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onLayoutRectChanged
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
@@ -49,7 +41,10 @@ fun Seekbar(
     val scaleFactor = remember { mutableStateOf(0f) }
     val dragState = rememberDraggableState {
         val start = seekPositionMs.value ?: progressState.currentPositionMs
-        seekPositionMs.value = start + (it * scaleFactor.value).toLong()
+        if (progressState.durationMs > 0) {
+            val position = (start + (it * scaleFactor.value).toLong()).coerceIn(0, progressState.durationMs)
+            seekPositionMs.value = position
+        }
     }
 
     val focusRequester = remember { FocusRequester() }
@@ -61,14 +56,30 @@ fun Seekbar(
     Box(
         modifier = Modifier
             .focusRequester(focusRequester)
-            .padding(horizontal = 32.dp)
-            .height(20.dp)
+            .padding(start = 32.dp, end = 32.dp, bottom = 20.dp)
+            .minimumInteractiveComponentSize()
             .fillMaxWidth()
+            .pointerInput(Unit) {
+                detectTapGestures(
+                    onPress = {},
+                    onTap = {
+                        if (progressState.durationMs > 0) {
+                            val position = (it.x * scaleFactor.value).toLong().coerceIn(0, progressState.durationMs)
+                            player.seekTo(position)
+                        }
+                        seekPositionMs.value = null
+                    },
+                )
+            }
             .draggable(
                 state = dragState,
                 orientation = Orientation.Horizontal,
+                startDragImmediately = seekPositionMs.value != null,
                 onDragStarted = {
-                    seekPositionMs.value = progressState.currentPositionMs
+                    if (progressState.durationMs > 0) {
+                        val position = (it.x * scaleFactor.value).toLong().coerceIn(0, progressState.durationMs)
+                        seekPositionMs.value = position
+                    }
                 },
                 onDragStopped = {
                     seekPositionMs.value?.let {

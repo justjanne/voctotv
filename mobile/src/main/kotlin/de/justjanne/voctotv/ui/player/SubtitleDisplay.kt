@@ -1,11 +1,7 @@
 package de.justjanne.voctotv.ui.player
 
 import android.text.Layout
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,7 +21,7 @@ import androidx.media3.common.text.CueGroup
 import de.justjanne.voctotv.viewmodel.PlayerViewModel
 
 @Composable
-fun SubtitleDisplay(viewModel: PlayerViewModel) {
+fun SubtitleDisplay(viewModel: PlayerViewModel, contentPadding: PaddingValues) {
     val currentCue = remember { mutableStateOf<CueGroup?>(null) }
     DisposableEffect(viewModel.mediaSession.player) {
         val listener = object : Player.Listener {
@@ -39,7 +35,7 @@ fun SubtitleDisplay(viewModel: PlayerViewModel) {
         }
     }
 
-    BoxWithConstraints(Modifier.fillMaxSize()) {
+    BoxWithConstraints(Modifier.fillMaxSize().padding(contentPadding)) {
         val lineSize = constraints.maxHeight / 20f
         val padding = with(LocalDensity.current) { lineSize.toDp() }
         val lineHeight = with(LocalDensity.current) { lineSize.toSp() }

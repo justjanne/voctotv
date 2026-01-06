@@ -14,10 +14,16 @@ import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.justjanne.voctotv.mediacccde.api.VoctowebApi
 import de.justjanne.voctotv.viewmodel.util.PreviewLoader
+import de.justjanne.voctotv.viewmodel.util.PreviewPreloader
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import retrofit2.http.Url
+import java.net.URI
+import java.net.URL
 
 @SuppressLint("UnsafeOptInUsageError")
 @HiltViewModel(assistedFactory = PlayerViewModel.Factory::class)
@@ -25,6 +31,7 @@ class PlayerViewModel @AssistedInject constructor(
     @Assisted lectureId: String,
     api: VoctowebApi,
     previewLoader: PreviewLoader,
+    private val previewPreloader: PreviewPreloader,
     val mediaSession: MediaSession,
 ) : ViewModel() {
     val lecture = flow {
@@ -80,6 +87,14 @@ class PlayerViewModel @AssistedInject constructor(
             }
         }
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    init {
+        viewModelScope.launch {
+            previews.collectLatest {
+                previewPreloader.preload(it)
+            }
+        }
+    }
 
     override fun onCleared() {
         mediaSession.player.release()
