@@ -198,35 +198,6 @@ fun PlayerOverlay(
 
         AnimatedVisibility(
             uiVisible.value,
-            enter = fadeIn(),
-            exit = fadeOut(),
-            modifier = Modifier.align(Alignment.Center)
-        ) {
-            FilledIconButton(
-                onClick = {
-                    if (viewModel.mediaSession.player.isPlaying) {
-                        viewModel.mediaSession.player.pause()
-                    } else viewModel.mediaSession.player.play()
-                },
-                colors = IconButtonDefaults.filledIconButtonColors(
-                    containerColor = Color.White,
-                    disabledContainerColor = Color.White,
-                    contentColor = Color.Black,
-                    disabledContentColor = Color.Black,
-                ),
-                modifier = Modifier.requiredSize(96.dp).shadow(elevation = 8.dp, shape = CircleShape),
-            ) {
-                Icon(
-                    painter = painterResource(if (playPauseState.showPlay) R.drawable.ic_play_arrow else R.drawable.ic_pause),
-                    contentDescription = if (playPauseState.showPlay) "Play" else "Pause",
-                    tint = LocalContentColor.current,
-                    modifier = Modifier.size(32.dp),
-                )
-            }
-        }
-
-        AnimatedVisibility(
-            uiVisible.value,
             enter = fadeIn() + slideInVertically(initialOffsetY = { it / 2 }),
             exit = fadeOut() + slideOutVertically(targetOffsetY = { it / 2 }),
             modifier = Modifier.align(Alignment.BottomCenter)
@@ -284,6 +255,35 @@ fun PlayerOverlay(
                     }
                 }
                 Seekbar(viewModel.mediaSession.player, seekPositionMs)
+            }
+        }
+
+        AnimatedVisibility(
+            uiVisible.value && seekPositionMs.value == null,
+            enter = fadeIn(),
+            exit = fadeOut(),
+            modifier = Modifier.align(Alignment.Center)
+        ) {
+            FilledIconButton(
+                onClick = {
+                    if (viewModel.mediaSession.player.isPlaying) {
+                        viewModel.mediaSession.player.pause()
+                    } else viewModel.mediaSession.player.play()
+                },
+                colors = IconButtonDefaults.filledIconButtonColors(
+                    containerColor = Color.White,
+                    disabledContainerColor = Color.White,
+                    contentColor = Color.Black,
+                    disabledContentColor = Color.Black,
+                ),
+                modifier = Modifier.requiredSize(96.dp).shadow(elevation = 8.dp, shape = CircleShape),
+            ) {
+                Icon(
+                    painter = painterResource(if (playPauseState.showPlay) R.drawable.ic_play_arrow else R.drawable.ic_pause),
+                    contentDescription = if (playPauseState.showPlay) "Play" else "Pause",
+                    tint = LocalContentColor.current,
+                    modifier = Modifier.size(32.dp),
+                )
             }
         }
     }
