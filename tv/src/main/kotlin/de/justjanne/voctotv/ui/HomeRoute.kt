@@ -15,6 +15,7 @@ import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.Text
@@ -26,9 +27,7 @@ import de.justjanne.voctotv.viewmodel.HomeViewModel
 @Composable
 fun HomeRoute(
     viewModel: HomeViewModel,
-    openConference: (String) -> Unit,
-    openLecture: (String) -> Unit,
-    openPlayer: (String) -> Unit,
+    navigate: (NavKey) -> Unit,
 ) {
     val conferences by viewModel.conferences.collectAsState()
     val recent by viewModel.recent.collectAsState()
@@ -60,7 +59,7 @@ fun HomeRoute(
         }
 
         item("featured") {
-            FeaturedCarousel(featuredLectures, openPlayer, Modifier.focusRequester(focusRequester))
+            FeaturedCarousel(featuredLectures, navigate, Modifier.focusRequester(focusRequester))
         }
 
         item("recent-lectures") {
@@ -73,7 +72,7 @@ fun HomeRoute(
                 modifier = Modifier.focusRestorer(focusRequester)
             ) {
                 itemsIndexed(recent, key = { _, lecture -> lecture.guid }) { index, lecture ->
-                    LectureCard(lecture, openPlayer, if (index == 0) Modifier.focusRequester(focusRequester) else Modifier)
+                    LectureCard(lecture, navigate, if (index == 0) Modifier.focusRequester(focusRequester) else Modifier)
                 }
             }
         }
@@ -89,7 +88,7 @@ fun HomeRoute(
                     ConferenceKind.OTHER -> "Other"
                 }
             }
-            ConferenceRow(title, it.value, openConference)
+            ConferenceRow(title, it.value, navigate)
         }
     }
 }

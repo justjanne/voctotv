@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel(assistedFactory = ConferenceViewModel.Factory::class)
 class ConferenceViewModel @AssistedInject constructor(
-    @Assisted conferenceId: String,
+    @Assisted val conferenceId: String,
     api: VoctowebApi,
 ) : ViewModel() {
     val conference = flow {
@@ -23,6 +23,10 @@ class ConferenceViewModel @AssistedInject constructor(
 
     val featured = conference.map { conference ->
         conference?.lectures?.filter { it.promoted }?.sortedByDescending { it.releaseDate }.orEmpty()
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+
+    val allItems = conference.map { conference ->
+        conference?.lectures?.sortedByDescending { it.releaseDate }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val itemsByTrack = conference.map { conference ->

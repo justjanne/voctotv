@@ -8,9 +8,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.ui.PlayerView
 import androidx.media3.ui.compose.ContentFrame
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
+import de.justjanne.voctotv.ui.player.PlayerOverlay
+import de.justjanne.voctotv.ui.player.SubtitleDisplay
 import de.justjanne.voctotv.viewmodel.PlayerViewModel
 
 @OptIn(UnstableApi::class)
@@ -44,8 +48,7 @@ fun PlayerRoute(
             surfaceType = SURFACE_TYPE_SURFACE_VIEW,
         )
 
-        //SubtitleDisplay(viewModel)
-
-        //PlayerOverlay(viewModel, lecture)
+        SubtitleDisplay(viewModel)
+        PlayerOverlay(viewModel, lecture)
     }
 }

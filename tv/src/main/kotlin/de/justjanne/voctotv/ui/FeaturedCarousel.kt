@@ -5,7 +5,17 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.PlayArrow
 import androidx.compose.material3.MaterialTheme
@@ -26,15 +36,25 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastJoinToString
-import androidx.tv.material3.*
+import androidx.navigation3.runtime.NavKey
+import androidx.tv.material3.Button
+import androidx.tv.material3.ButtonDefaults
+import androidx.tv.material3.Card
+import androidx.tv.material3.CardDefaults
+import androidx.tv.material3.Carousel
+import androidx.tv.material3.ExperimentalTvMaterial3Api
+import androidx.tv.material3.Icon
+import androidx.tv.material3.ShapeDefaults
+import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
+import de.justjanne.voctotv.Routes
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
 fun FeaturedCarousel(
     lectures: List<LectureModel>,
-    openLecture: (String) -> Unit,
+    navigate: (NavKey) -> Unit,
     modifier: Modifier = Modifier,
     showConference: Boolean = true,
 ) {
@@ -67,7 +87,7 @@ fun FeaturedCarousel(
             val lecture = lectures[index]
 
             Card(
-                onClick = { openLecture(lecture.guid) }, colors = CardDefaults.colors(
+                onClick = { navigate(Routes.Player(lecture.guid)) }, colors = CardDefaults.colors(
                     containerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
                     focusedContainerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
                     pressedContainerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
@@ -82,7 +102,7 @@ fun FeaturedCarousel(
                         lecture,
                         modifier = Modifier.fillMaxSize(),
                         showConference = showConference,
-                        openLecture = openLecture,
+                        navigate = navigate,
                     )
                 }
             }
@@ -95,7 +115,7 @@ private fun CarouselItemForeground(
     lecture: LectureModel,
     modifier: Modifier = Modifier,
     showConference: Boolean = true,
-    openLecture: (String) -> Unit,
+    navigate: (NavKey) -> Unit,
 ) {
     Box(
         modifier = modifier, contentAlignment = Alignment.BottomStart
@@ -160,7 +180,7 @@ private fun CarouselItemForeground(
                 )
             }
             WatchNowButton(onClick = {
-                openLecture(lecture.guid)
+                navigate(Routes.Player(lecture.guid))
             })
         }
     }

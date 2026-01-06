@@ -8,6 +8,9 @@ object Routes {
     data object Home : NavKey
 
     @Serializable
+    data object ConferenceList : NavKey
+
+    @Serializable
     data class Conference(val id: String) : NavKey
 
     @Serializable

@@ -1,92 +1,111 @@
 package de.justjanne.voctotv.ui
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.focusRestorer
-import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
 import de.justjanne.voctotv.R
+import de.justjanne.voctotv.Routes
 import de.justjanne.voctotv.viewmodel.ConferenceKind
 import de.justjanne.voctotv.viewmodel.HomeViewModel
+import de.justjanne.voctotv.viewmodel.kind
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeRoute(
     viewModel: HomeViewModel,
-    openConference: (String) -> Unit,
-    openLecture: (String) -> Unit,
-    openPlayer: (String) -> Unit,
+    navigate: (NavKey) -> Unit,
 ) {
-    val conferences by viewModel.conferences.collectAsState()
-    val recent by viewModel.recent.collectAsState()
-
-    val focusRequester = remember { FocusRequester() }
-
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+    val allConferences = viewModel.allConferences.collectAsState()
+    val conferences = viewModel.conferences.collectAsState()
+    val currentFilter = remember { mutableStateOf<ConferenceKind?>(null) }
+    val filteredItems = remember {
+        derivedStateOf {
+            currentFilter.value?.let { filter -> conferences.value.firstOrNull { it.key == filter } }?.value
+                ?: allConferences.value
+        }
     }
 
-    LazyColumn(
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        item("header") {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp)
-            ) {
-                Image(
-                    painterResource(R.drawable.ic_mediacccde),
-                    contentDescription = null,
-                    modifier = Modifier.height(32.dp),
-                    colorFilter = ColorFilter.tint(LocalContentColor.current),
-                )
-            }
-        }
-
-        item("recent-lectures") {
-            Text("Recent", modifier = Modifier.padding(horizontal = 20.dp))
-
-            val focusRequester = remember { FocusRequester() }
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(20.dp),
-                contentPadding = PaddingValues(20.dp),
-                modifier = Modifier.focusRestorer(focusRequester)
-            ) {
-                itemsIndexed(recent, key = { _, lecture -> lecture.guid }) { index, lecture ->
-                    LectureCard(
-                        lecture,
-                        openPlayer,
-                        if (index == 0) Modifier.focusRequester(focusRequester) else Modifier
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Image(
+                        painterResource(R.drawable.ic_mediacccde),
+                        contentDescription = "media.ccc.de",
+                        modifier = Modifier.height(with (LocalDensity.current) { LocalTextStyle.current.lineHeight.toDp() })
                     )
                 }
-            }
+            )
         }
-
-        items(conferences, key = { it.key }) {
-            val title = remember(it) {
-                when (it.key) {
-                    ConferenceKind.CONGRESS -> "Congress"
-                    ConferenceKind.GPN -> "GPN"
-                    ConferenceKind.CONFERENCE -> "Conferences"
-                    ConferenceKind.DOCUMENTATIONS -> "Documentaries"
-                    ConferenceKind.ERFA -> "Erfas"
-                    ConferenceKind.OTHER -> "Other"
+    ) { contentPadding ->
+        LazyColumn(
+            contentPadding = contentPadding,
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            item("filter") {
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
+                    contentPadding = PaddingValues(horizontal = 16.dp)
+                ) {
+                    item(null) {
+                        FilterChip(
+                            selected = currentFilter.value == null,
+                            onClick = { currentFilter.value = null },
+                            label = { Text("Everything") },
+                        )
+                    }
+                    items(ConferenceKind.entries) { filter ->
+                        FilterChip(
+                            selected = currentFilter.value == filter,
+                            onClick = { currentFilter.value = filter },
+                            label = {
+                                Text(
+                                    when (filter) {
+                                        ConferenceKind.CONGRESS -> "Congress"
+                                        ConferenceKind.GPN -> "GPN"
+                                        ConferenceKind.CONFERENCE -> "Conferences"
+                                        ConferenceKind.DOCUMENTATIONS -> "Documentaries"
+                                        ConferenceKind.ERFA -> "Erfas"
+                                        ConferenceKind.OTHER -> "Other"
+                                    }
+                                )
+                            },
+                        )
+                    }
                 }
             }
-            ConferenceRow(title, it.value, openConference)
+
+            items(filteredItems.value, key = { it.acronym }) { item ->
+                ConferenceItem(
+                    item = item,
+                    showYear = item.kind() != ConferenceKind.ERFA,
+                    onClick = {
+                        navigate(Routes.Conference(item.acronym))
+                    }
+                )
+            }
         }
     }
 }

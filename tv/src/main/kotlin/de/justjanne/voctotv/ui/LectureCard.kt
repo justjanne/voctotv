@@ -2,7 +2,13 @@ package de.justjanne.voctotv.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,20 +20,30 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastJoinToString
-import androidx.tv.material3.*
+import androidx.navigation3.runtime.NavKey
+import androidx.tv.material3.Card
+import androidx.tv.material3.CardBorder
+import androidx.tv.material3.CardColors
+import androidx.tv.material3.CardDefaults
+import androidx.tv.material3.CardGlow
+import androidx.tv.material3.CardScale
+import androidx.tv.material3.CardShape
+import androidx.tv.material3.ProvideTextStyle
+import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
+import de.justjanne.voctotv.Routes
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.util.formatTime
 
 @Composable
 fun LectureCard(
     lecture: LectureModel,
-    openLecture: (String) -> Unit,
+    navigate: (NavKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     CompactCard(
         onClick = {
-            openLecture(lecture.guid)
+            navigate(Routes.Player(lecture.guid))
         },
         modifier = modifier
             .width(268.dp)

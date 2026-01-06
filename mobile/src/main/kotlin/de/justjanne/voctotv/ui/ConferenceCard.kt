@@ -22,12 +22,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.mediacccde.model.LectureModel
-import de.justjanne.voctotv.util.formatTime
+import de.justjanne.voctotv.mediacccde.model.ConferenceModel
 
 @Composable
-fun LectureItem(
-    item: LectureModel,
+fun ConferenceItem(
+    item: ConferenceModel,
+    showYear: Boolean = true,
     onClick: () -> Unit = {},
 ) {
     Row(
@@ -40,43 +40,42 @@ fun LectureItem(
         Box(
             modifier = Modifier
                 .align(Alignment.CenterVertically)
-                .width(160.dp)
+                .width(120.dp)
                 .aspectRatio(16f / 9f)
                 .clip(MaterialTheme.shapes.extraSmall)
-                .background(Color.Black)
+                .background(Color.White)
         ) {
             AsyncImage(
-                model = item.thumbUrl,
+                model = item.logoUrl,
                 contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-            )
-            Text(
-                text = formatTime(item.duration * 1000),
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(6.dp)
-                    .background(Color.Black, shape = MaterialTheme.shapes.extraSmall)
-                    .padding(horizontal = 6.dp, vertical = 2.dp),
-                style = MaterialTheme.typography.labelLarge.copy(
-                    color = Color.White,
-                ),
+                modifier = Modifier.fillMaxSize().padding(8.dp),
             )
         }
-        Column(Modifier.padding(vertical = 12.dp)) {
-            Text(
-                text = item.title,
-                style = MaterialTheme.typography.titleMedium,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-                text = item.persons.joinToString(" · "),
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    color = LocalContentColor.current.copy(alpha = 0.6f)
-                ),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
+        Column(Modifier.align(Alignment.CenterVertically), verticalArrangement = Arrangement.Center) {
+            val year = item.eventLastReleasedAt?.year?.toString()
+            if (year == null || !showYear) {
+                Text(
+                    text = item.title,
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            } else {
+                Text(
+                    text = item.title.removeSuffix(" $year"),
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    text = year,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = LocalContentColor.current.copy(alpha = 0.6f)
+                    ),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
         }
     }
 }

@@ -1,8 +1,13 @@
 package de.justjanne.voctotv.ui
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -12,10 +17,12 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.Card
 import androidx.tv.material3.StandardCardContainer
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
+import de.justjanne.voctotv.Routes
 import de.justjanne.voctotv.mediacccde.model.ConferenceModel
 import de.justjanne.voctotv.ui.theme.VoctoTvTheme
 
@@ -23,7 +30,7 @@ import de.justjanne.voctotv.ui.theme.VoctoTvTheme
 fun ConferenceRow(
     title: String,
     featured: List<ConferenceModel>,
-    openConference: (String) -> Unit,
+    navigate: (NavKey) -> Unit,
 ) {
     val focusRequester = remember { FocusRequester() }
 
@@ -42,7 +49,7 @@ fun ConferenceRow(
                     imageCard = { interactionSource ->
                         VoctoTvTheme(isInDarkTheme = false) {
                             Card(
-                                onClick = { openConference(conference.acronym) },
+                                onClick = { navigate(Routes.Conference(conference.acronym)) },
                                 modifier = Modifier
                                     .aspectRatio(16f / 9),
                                 interactionSource = interactionSource,
@@ -50,7 +57,8 @@ fun ConferenceRow(
                                 AsyncImage(
                                     model = conference.logoUrl,
                                     contentDescription = conference.title,
-                                    modifier = Modifier.fillMaxSize(),
+                                    modifier = Modifier.fillMaxSize()
+                                        .padding(8.dp),
                                 )
                             }
                         }
