@@ -23,3 +23,4 @@ rootProject.name = "voctotv"
 include(":mobile")
 include(":tv")
 include(":api")
+include(":viewmodel")
