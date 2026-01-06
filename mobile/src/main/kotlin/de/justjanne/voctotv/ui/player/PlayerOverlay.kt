@@ -47,6 +47,7 @@ fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
     contentPadding: PaddingValues,
+    back: () -> Unit,
 ) {
     val layoutDirection = LocalLayoutDirection.current
 
@@ -136,26 +137,35 @@ fun PlayerOverlay(
             exit = fadeOut() + slideOutVertically(targetOffsetY = { -it / 2 }),
             modifier = Modifier.align(Alignment.TopStart),
         ) {
-            lecture
-                ?.let {
-                    Row(
-                        modifier = Modifier
-                            .background(
-                                Brush.verticalGradient(
-                                    listOf(
-                                        Color(red = 28, green = 27, blue = 31, alpha = 204),
-                                        Color(red = 28, green = 27, blue = 31, alpha = 0),
-                                    )
-                                )
+            Row(
+                modifier = Modifier
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(
+                                Color(red = 28, green = 27, blue = 31, alpha = 204),
+                                Color(red = 28, green = 27, blue = 31, alpha = 0),
                             )
-                            .padding(32.dp)
-                            .padding(
-                                start = contentPadding.calculateStartPadding(layoutDirection),
-                                end = contentPadding.calculateEndPadding(layoutDirection),
-                                top = contentPadding.calculateTopPadding()
-                            )
-                            .fillMaxWidth()
-                    ) {
+                        )
+                    )
+                    .padding(32.dp)
+                    .padding(
+                        start = contentPadding.calculateStartPadding(layoutDirection),
+                        end = contentPadding.calculateEndPadding(layoutDirection),
+                        top = contentPadding.calculateTopPadding()
+                    )
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                IconButton(
+                    onClick = back,
+                ) {
+                    Icon(
+                        painterResource(R.drawable.ic_arrow_back),
+                        contentDescription = "Back",
+                    )
+                }
+                lecture
+                    ?.let {
                         Column(
                             modifier = Modifier.weight(1f)
                         ) {
@@ -193,7 +203,7 @@ fun PlayerOverlay(
                             AudioSelection(viewModel.mediaSession.player, playPauseState, lecture)
                         }
                     }
-                }
+            }
         }
 
         AnimatedVisibility(

@@ -23,6 +23,9 @@ fun AppRouter() {
     val navigate: (NavKey) -> Unit = remember(backStack) {
         { backStack.add(it) }
     }
+    val back: () -> Unit = remember(backStack) {
+        { backStack.removeAt(backStack.lastIndex) }
+    }
 
     NavDisplay(
         backStack = backStack,
@@ -39,7 +42,7 @@ fun AppRouter() {
                 val viewModel = hiltViewModel<ConferenceViewModel, ConferenceViewModel.Factory> { factory ->
                     factory.create(key.id)
                 }
-                ConferenceRoute(viewModel, navigate, back = { backStack.removeAt(backStack.lastIndex) })
+                ConferenceRoute(viewModel, navigate, back)
             }
             entry<Routes.Lecture> { key ->
                 Text("Lecture")
@@ -48,7 +51,7 @@ fun AppRouter() {
                 val viewModel = hiltViewModel<PlayerViewModel, PlayerViewModel.Factory> { factory ->
                     factory.create(key.id)
                 }
-                PlayerRoute(viewModel)
+                PlayerRoute(viewModel, back)
             }
         }
     )

@@ -21,6 +21,7 @@ import de.justjanne.voctotv.viewmodel.PlayerViewModel
 @Composable
 fun PlayerRoute(
     viewModel: PlayerViewModel,
+    back: () -> Unit,
 ) {
     val mediaItem by viewModel.mediaItem.collectAsState()
     val lecture by viewModel.lecture.collectAsState()
@@ -49,6 +50,6 @@ fun PlayerRoute(
         )
 
         SubtitleDisplay(viewModel, contentPadding)
-        PlayerOverlay(viewModel, lecture, contentPadding)
+        PlayerOverlay(viewModel, lecture, contentPadding, back)
     }
 }
