@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2026. Janne Mareike Koschinski
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+ * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
 package de.justjanne.voctotv.tv.ui
 
 import androidx.compose.foundation.layout.Arrangement
@@ -46,7 +53,9 @@ fun ConferenceRoute(
             item("header") {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp),
                 ) {
                     Text(
                         text = conference.title,
@@ -79,7 +88,11 @@ fun ConferenceRoute(
                 modifier = Modifier.focusRestorer(focusRequester),
             ) {
                 itemsIndexed(items, key = { _, lecture -> lecture.guid }) { index, lecture ->
-                    LectureCard(lecture, navigate, if (index == 0) Modifier.focusRequester(focusRequester) else Modifier)
+                    LectureCard(
+                        lecture,
+                        navigate,
+                        if (index == 0) Modifier.focusRequester(focusRequester) else Modifier
+                    )
                 }
             }
         }

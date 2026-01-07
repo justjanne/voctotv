@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2026. Janne Mareike Koschinski
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+ * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
 package de.justjanne.voctotv.common.player
 
 import androidx.compose.runtime.Composable
@@ -30,16 +37,17 @@ class PlayerState {
 
     private val castingState = mutableStateOf(false)
 
-    val status: Status get() =
-        when (playbackState.intValue) {
-            Player.STATE_IDLE, Player.STATE_BUFFERING -> Status.BUFFERING
-            Player.STATE_ENDED -> Status.ENDED
-            else ->
-                when {
-                    playingState.value -> Status.PLAYING
-                    else -> Status.PAUSED
-                }
-        }
+    val status: Status
+        get() =
+            when (playbackState.intValue) {
+                Player.STATE_IDLE, Player.STATE_BUFFERING -> Status.BUFFERING
+                Player.STATE_ENDED -> Status.ENDED
+                else ->
+                    when {
+                        playingState.value -> Status.PLAYING
+                        else -> Status.PAUSED
+                    }
+            }
     val loading: Boolean get() = status == Status.BUFFERING
 
     val bufferedMs: Long get() = bufferedState.longValue

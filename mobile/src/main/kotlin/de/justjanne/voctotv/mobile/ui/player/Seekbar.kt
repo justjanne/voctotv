@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2026. Janne Mareike Koschinski
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+ * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
 package de.justjanne.voctotv.mobile.ui.player
 
 import androidx.annotation.OptIn
@@ -66,7 +73,8 @@ fun Seekbar(
                             playerState.commitSeek(player)
                         },
                     )
-                }.draggable(
+                }
+                .draggable(
                     state = dragState,
                     orientation = Orientation.Horizontal,
                     startDragImmediately = playerState.seeking,
@@ -76,9 +84,11 @@ fun Seekbar(
                     onDragStopped = {
                         playerState.commitSeek(player)
                     },
-                ).onLayoutRectChanged {
+                )
+                .onLayoutRectChanged {
                     scaleFactor.value = playerState.durationMs.toFloat() / it.width.toFloat()
-                }.drawBehind {
+                }
+                .drawBehind {
                     val thumb = thumb.toPx()
                     val focusedHeight = focusedHeight.toPx()
                     val unfocusedHeight = unfocusedHeight.toPx()

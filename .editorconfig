@@ -5,6 +5,9 @@ charset = utf-8
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[*.xml]
+indent_size = 2
+
 [*.{kt,kts}]
 indent_size = 4
 

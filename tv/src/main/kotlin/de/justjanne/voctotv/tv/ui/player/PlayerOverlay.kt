@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2026. Janne Mareike Koschinski
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+ * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
 package de.justjanne.voctotv.tv.ui.player
 
 import android.view.WindowManager
@@ -133,7 +140,8 @@ fun PlayerOverlay(
                 .fillMaxSize()
                 .clickable(mainInteractionSource, indication = null, enabled = !uiVisible.value) {
                     uiVisible.value = true
-                }.onPreviewKeyEvent {
+                }
+                .onPreviewKeyEvent {
                     if (it.type == KeyEventType.KeyDown) {
                         when (it.key) {
                             Key.MediaPlayPause -> {
@@ -190,7 +198,7 @@ fun PlayerOverlay(
                             Key.DirectionDownLeft,
                             Key.DirectionUpRight,
                             Key.DirectionDownRight,
-                            -> {
+                                -> {
                                 if (!uiVisible.value) {
                                     showUi()
                                     true
@@ -235,7 +243,8 @@ fun PlayerOverlay(
                                         Color(red = 28, green = 27, blue = 31, alpha = 204),
                                     ),
                                 ),
-                            ).fillMaxWidth(),
+                            )
+                            .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Row(Modifier.padding(start = 32.dp, end = 32.dp, top = 32.dp)) {

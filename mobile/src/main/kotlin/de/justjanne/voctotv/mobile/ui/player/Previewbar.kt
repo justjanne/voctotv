@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2026. Janne Mareike Koschinski
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+ * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
 package de.justjanne.voctotv.mobile.ui.player
 
 import androidx.annotation.OptIn
@@ -77,7 +84,9 @@ fun Previewbar(
                 shape = RoundedCornerShape(8.dp),
                 border = BorderStroke(width = 3.dp, color = Color(red = 28, green = 27, blue = 31, alpha = 204)),
             ) {
-                Box(Modifier.height(144.dp).aspectRatio(16f / 9f)) {
+                Box(Modifier
+                    .height(144.dp)
+                    .aspectRatio(16f / 9f)) {
                     AsyncImage(
                         model = currentThumbnail.value,
                         contentDescription = null,

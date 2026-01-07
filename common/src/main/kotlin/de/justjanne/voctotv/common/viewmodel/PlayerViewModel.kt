@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2026. Janne Mareike Koschinski
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+ * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
 package de.justjanne.voctotv.common.viewmodel
 
 import android.annotation.SuppressLint
@@ -25,88 +32,88 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnsafeOptInUsageError")
 @HiltViewModel(assistedFactory = PlayerViewModel.Factory::class)
 class PlayerViewModel
-    @AssistedInject
-    constructor(
-        @Assisted lectureId: String,
-        api: VoctowebApi,
-        previewLoader: PreviewLoader,
-        private val previewPreloader: PreviewPreloader,
-        val mediaSession: MediaSession,
-    ) : ViewModel() {
-        val lecture =
-            flow {
-                emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
+@AssistedInject
+constructor(
+    @Assisted lectureId: String,
+    api: VoctowebApi,
+    previewLoader: PreviewLoader,
+    private val previewPreloader: PreviewPreloader,
+    val mediaSession: MediaSession,
+) : ViewModel() {
+    val lecture =
+        flow {
+            emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
+        }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    val previews =
+        lecture
+            .map { it?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
+            .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
+    val mediaItem =
+        lecture
+            .map { lecture ->
+                lecture?.let { lecture ->
+                    val track =
+                        lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
+                            ?: lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
+                    track?.let {
+                        MediaItem
+                            .Builder()
+                            .setUri(it.recordingUrl)
+                            .setMediaId(it.filename)
+                            .setSubtitleConfigurations(
+                                buildList {
+                                    lecture.resources?.filter { it.mimeType == MimeTypes.TEXT_VTT }?.forEach {
+                                        add(
+                                            MediaItem.SubtitleConfiguration
+                                                .Builder(
+                                                    it.recordingUrl
+                                                        .replace(
+                                                            "https://cdn.media.ccc.de/",
+                                                            "https://static.media.ccc.de/media/",
+                                                        ).toUri(),
+                                                ).setMimeType(it.mimeType)
+                                                .setRoleFlags(C.ROLE_FLAG_CAPTION)
+                                                .setLabel(it.language)
+                                                .setLanguage(it.language)
+                                                .setSelectionFlags(0)
+                                                .build(),
+                                        )
+                                    }
+                                    lecture.resources?.filter { it.mimeType == MimeTypes.APPLICATION_SUBRIP }?.forEach {
+                                        add(
+                                            MediaItem.SubtitleConfiguration
+                                                .Builder(it.recordingUrl.toUri())
+                                                .setMimeType(it.mimeType)
+                                                .setRoleFlags(C.ROLE_FLAG_CAPTION)
+                                                .setLabel(it.language)
+                                                .setLanguage(it.language)
+                                                .setSelectionFlags(0)
+                                                .build(),
+                                        )
+                                    }
+                                },
+                            ).build()
+                    }
+                }
             }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-        val previews =
-            lecture
-                .map { it?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
-                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
-
-        val mediaItem =
-            lecture
-                .map { lecture ->
-                    lecture?.let { lecture ->
-                        val track =
-                            lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
-                                ?: lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
-                        track?.let {
-                            MediaItem
-                                .Builder()
-                                .setUri(it.recordingUrl)
-                                .setMediaId(it.filename)
-                                .setSubtitleConfigurations(
-                                    buildList {
-                                        lecture.resources?.filter { it.mimeType == MimeTypes.TEXT_VTT }?.forEach {
-                                            add(
-                                                MediaItem.SubtitleConfiguration
-                                                    .Builder(
-                                                        it.recordingUrl
-                                                            .replace(
-                                                                "https://cdn.media.ccc.de/",
-                                                                "https://static.media.ccc.de/media/",
-                                                            ).toUri(),
-                                                    ).setMimeType(it.mimeType)
-                                                    .setRoleFlags(C.ROLE_FLAG_CAPTION)
-                                                    .setLabel(it.language)
-                                                    .setLanguage(it.language)
-                                                    .setSelectionFlags(0)
-                                                    .build(),
-                                            )
-                                        }
-                                        lecture.resources?.filter { it.mimeType == MimeTypes.APPLICATION_SUBRIP }?.forEach {
-                                            add(
-                                                MediaItem.SubtitleConfiguration
-                                                    .Builder(it.recordingUrl.toUri())
-                                                    .setMimeType(it.mimeType)
-                                                    .setRoleFlags(C.ROLE_FLAG_CAPTION)
-                                                    .setLabel(it.language)
-                                                    .setLanguage(it.language)
-                                                    .setSelectionFlags(0)
-                                                    .build(),
-                                            )
-                                        }
-                                    },
-                                ).build()
-                        }
-                    }
-                }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
-
-        init {
-            viewModelScope.launch {
-                previews.collectLatest {
-                    previewPreloader.preload(it)
-                }
+    init {
+        viewModelScope.launch {
+            previews.collectLatest {
+                previewPreloader.preload(it)
             }
         }
-
-        override fun onCleared() {
-            mediaSession.player.release()
-            mediaSession.release()
-        }
-
-        @AssistedFactory
-        interface Factory {
-            fun create(lectureId: String): PlayerViewModel
-        }
     }
+
+    override fun onCleared() {
+        mediaSession.player.release()
+        mediaSession.release()
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(lectureId: String): PlayerViewModel
+    }
+}

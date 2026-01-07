@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2026. Janne Mareike Koschinski
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+ * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
 package de.justjanne.voctotv.tv.ui.player
 
 import androidx.annotation.OptIn
@@ -70,7 +77,8 @@ fun Previewbar(
                     Modifier
                         .graphicsLayer {
                             val thumb = thumb.toPx()
-                            val progress = progressState.currentPositionMs.toFloat() / progressState.durationMs.toFloat()
+                            val progress =
+                                progressState.currentPositionMs.toFloat() / progressState.durationMs.toFloat()
                             val currentWidth = constraints.maxWidth - thumb
                             val translation = (progress * currentWidth + thumb / 2) - size.width / 2
                             translationX = translation.coerceIn(0f, currentWidth - size.width)
@@ -78,9 +86,16 @@ fun Previewbar(
                             alpha = if (isFocused.value) 1f else 0f
                         },
                 shape = RoundedCornerShape(8.dp),
-                border = Border(BorderStroke(width = 3.dp, color = Color(red = 28, green = 27, blue = 31, alpha = 204))),
+                border = Border(
+                    BorderStroke(
+                        width = 3.dp,
+                        color = Color(red = 28, green = 27, blue = 31, alpha = 204)
+                    )
+                ),
             ) {
-                Box(Modifier.height(90.dp).aspectRatio(16f / 9f)) {
+                Box(Modifier
+                    .height(90.dp)
+                    .aspectRatio(16f / 9f)) {
                     AsyncImage(
                         model = currentThumbnail.value,
                         contentDescription = null,
