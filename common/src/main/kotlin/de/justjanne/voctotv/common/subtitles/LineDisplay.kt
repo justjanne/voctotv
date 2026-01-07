@@ -24,30 +24,34 @@ fun ColumnScope.LineDisplay(
     lineHeight: TextUnit,
 ) {
     LaunchedEffect(cue) {
-        println("Cue(text=${cue.text}, textAlignment=${cue.textAlignment}, multiRowAlignment=${cue.multiRowAlignment}, bitmap=${cue.bitmap == null}, line=${cue.line}, lineType=${cue.lineType}, lineAnchor=${cue.lineAnchor}, position=${cue.position}, positionAnchor=${cue.positionAnchor}, textSizeType=${cue.textSizeType}, textSize=${cue.textSize}, size=${cue.size}, bitmapHeight=${cue.bitmapHeight}, windowColorSet=${cue.windowColorSet}, windowColor=${cue.windowColor}, verticalType=${cue.verticalType}, shearDegrees=${cue.shearDegrees}, zIndex=${cue.zIndex})")
+        println(
+            "Cue(text=${cue.text}, textAlignment=${cue.textAlignment}, multiRowAlignment=${cue.multiRowAlignment}, bitmap=${cue.bitmap == null}, line=${cue.line}, lineType=${cue.lineType}, lineAnchor=${cue.lineAnchor}, position=${cue.position}, positionAnchor=${cue.positionAnchor}, textSizeType=${cue.textSizeType}, textSize=${cue.textSize}, size=${cue.size}, bitmapHeight=${cue.bitmapHeight}, windowColorSet=${cue.windowColorSet}, windowColor=${cue.windowColor}, verticalType=${cue.verticalType}, shearDegrees=${cue.shearDegrees}, zIndex=${cue.zIndex})",
+        )
     }
 
     cue.text?.let { text ->
         Surface(
-            modifier = Modifier.align(
-                when (cue.positionAnchor) {
-                    Cue.ANCHOR_TYPE_START -> Alignment.Start
-                    Cue.ANCHOR_TYPE_END -> Alignment.End
-                    else -> Alignment.CenterHorizontally
-                }
-            ),
+            modifier =
+                Modifier.align(
+                    when (cue.positionAnchor) {
+                        Cue.ANCHOR_TYPE_START -> Alignment.Start
+                        Cue.ANCHOR_TYPE_END -> Alignment.End
+                        else -> Alignment.CenterHorizontally
+                    },
+                ),
             color = Color.Black.copy(alpha = 0.8f),
             contentColor = Color.White,
         ) {
             Text(
                 text = text.toString(),
                 modifier = Modifier.padding(horizontal = 4.dp),
-                textAlign = when (cue.textAlignment) {
-                    Layout.Alignment.ALIGN_CENTER -> TextAlign.Center
-                    Layout.Alignment.ALIGN_NORMAL -> TextAlign.Start
-                    Layout.Alignment.ALIGN_OPPOSITE -> TextAlign.End
-                    null -> TextAlign.Start
-                },
+                textAlign =
+                    when (cue.textAlignment) {
+                        Layout.Alignment.ALIGN_CENTER -> TextAlign.Center
+                        Layout.Alignment.ALIGN_NORMAL -> TextAlign.Start
+                        Layout.Alignment.ALIGN_OPPOSITE -> TextAlign.End
+                        null -> TextAlign.Start
+                    },
                 fontSize = lineHeight / 1.25,
                 lineHeight = lineHeight,
             )

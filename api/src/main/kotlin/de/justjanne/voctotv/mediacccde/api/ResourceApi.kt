@@ -11,7 +11,9 @@ interface ResourceApi {
     suspend fun list(): ResourceResult
 
     @GET("public/recordings/{id}")
-    suspend fun get(@Path("id") id: String): ResourceModel?
+    suspend fun get(
+        @Path("id") id: String,
+    ): ResourceModel?
 
     @Serializable
     data class ResourceResult(

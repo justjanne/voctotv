@@ -19,39 +19,45 @@ import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 @Composable
 fun AppRouter() {
     val backStack = rememberNavBackStack(_root_ide_package_.de.justjanne.voctotv.mobile.Routes.Home)
-    val navigate: (NavKey) -> Unit = remember(backStack) {
-        { backStack.add(it) }
-    }
-    val back: () -> Unit = remember(backStack) {
-        { backStack.removeAt(backStack.lastIndex) }
-    }
+    val navigate: (NavKey) -> Unit =
+        remember(backStack) {
+            { backStack.add(it) }
+        }
+    val back: () -> Unit =
+        remember(backStack) {
+            { backStack.removeAt(backStack.lastIndex) }
+        }
 
     NavDisplay(
         backStack = backStack,
-        entryDecorators = listOf(
-            rememberSaveableStateHolderNavEntryDecorator(),
-            rememberViewModelStoreNavEntryDecorator()
-        ),
-        entryProvider = entryProvider {
-            entry<de.justjanne.voctotv.mobile.Routes.Home> {
-                val viewModel = hiltViewModel<HomeViewModel>()
-                HomeRoute(viewModel, navigate)
-            }
-            entry<de.justjanne.voctotv.mobile.Routes.Conference> { key ->
-                val viewModel = hiltViewModel<ConferenceViewModel, ConferenceViewModel.Factory> { factory ->
-                    factory.create(key.id)
+        entryDecorators =
+            listOf(
+                rememberSaveableStateHolderNavEntryDecorator(),
+                rememberViewModelStoreNavEntryDecorator(),
+            ),
+        entryProvider =
+            entryProvider {
+                entry<de.justjanne.voctotv.mobile.Routes.Home> {
+                    val viewModel = hiltViewModel<HomeViewModel>()
+                    HomeRoute(viewModel, navigate)
                 }
-                ConferenceRoute(viewModel, navigate, back)
-            }
-            entry<de.justjanne.voctotv.mobile.Routes.Lecture> { key ->
-                Text("Lecture")
-            }
-            entry<de.justjanne.voctotv.mobile.Routes.Player> { key ->
-                val viewModel = hiltViewModel<PlayerViewModel, PlayerViewModel.Factory> { factory ->
-                    factory.create(key.id)
+                entry<de.justjanne.voctotv.mobile.Routes.Conference> { key ->
+                    val viewModel =
+                        hiltViewModel<ConferenceViewModel, ConferenceViewModel.Factory> { factory ->
+                            factory.create(key.id)
+                        }
+                    ConferenceRoute(viewModel, navigate, back)
                 }
-                PlayerRoute(viewModel, back)
-            }
-        }
+                entry<de.justjanne.voctotv.mobile.Routes.Lecture> { key ->
+                    Text("Lecture")
+                }
+                entry<de.justjanne.voctotv.mobile.Routes.Player> { key ->
+                    val viewModel =
+                        hiltViewModel<PlayerViewModel, PlayerViewModel.Factory> { factory ->
+                            factory.create(key.id)
+                        }
+                    PlayerRoute(viewModel, back)
+                }
+            },
     )
 }

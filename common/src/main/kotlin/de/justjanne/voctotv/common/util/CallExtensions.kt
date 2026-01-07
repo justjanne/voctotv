@@ -8,14 +8,23 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-suspend fun Call.await(): Response = suspendCoroutine { continuation ->
-    enqueue(object : Callback {
-        override fun onFailure(call: Call, e: IOException) {
-            continuation.resumeWithException(e)
-        }
+suspend fun Call.await(): Response =
+    suspendCoroutine { continuation ->
+        enqueue(
+            object : Callback {
+                override fun onFailure(
+                    call: Call,
+                    e: IOException,
+                ) {
+                    continuation.resumeWithException(e)
+                }
 
-        override fun onResponse(call: Call, response: Response) {
-            continuation.resume(response)
-        }
-    })
-}
+                override fun onResponse(
+                    call: Call,
+                    response: Response,
+                ) {
+                    continuation.resume(response)
+                }
+            },
+        )
+    }

@@ -2,7 +2,15 @@ package de.justjanne.voctotv.mobile.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,19 +31,21 @@ fun ConferenceItem(
     onClick: () -> Unit = {},
 ) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(16.dp, 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onClick)
+                .padding(16.dp, 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Box(
-            modifier = Modifier
-                .align(Alignment.CenterVertically)
-                .width(120.dp)
-                .aspectRatio(16f / 9f)
-                .clip(MaterialTheme.shapes.extraSmall)
-                .background(Color.White)
+            modifier =
+                Modifier
+                    .align(Alignment.CenterVertically)
+                    .width(120.dp)
+                    .aspectRatio(16f / 9f)
+                    .clip(MaterialTheme.shapes.extraSmall)
+                    .background(Color.White),
         ) {
             AsyncImage(
                 model = item.logoUrl,
@@ -61,9 +71,10 @@ fun ConferenceItem(
                 )
                 Text(
                     text = year,
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = LocalContentColor.current.copy(alpha = 0.6f)
-                    ),
+                    style =
+                        MaterialTheme.typography.bodyMedium.copy(
+                            color = LocalContentColor.current.copy(alpha = 0.6f),
+                        ),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )

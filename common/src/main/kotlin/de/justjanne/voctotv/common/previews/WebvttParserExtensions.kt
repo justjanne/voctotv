@@ -9,9 +9,10 @@ import androidx.media3.extractor.text.webvtt.WebvttParser
 @OptIn(UnstableApi::class)
 fun WebvttParser.parse(
     data: ByteArray,
-    options: SubtitleParser.OutputOptions
-): List<CuesWithTiming> = buildList {
-    parse(data, options) {
-        add(it)
+    options: SubtitleParser.OutputOptions,
+): List<CuesWithTiming> =
+    buildList {
+        parse(data, options) {
+            add(it)
+        }
     }
-}

@@ -11,7 +11,9 @@ interface ConferenceApi {
     suspend fun list(): ConferenceResult
 
     @GET("public/conferences/{id}")
-    suspend fun get(@Path("id") id: String): ConferenceModel?
+    suspend fun get(
+        @Path("id") id: String,
+    ): ConferenceModel?
 
     @Serializable
     data class ConferenceResult(

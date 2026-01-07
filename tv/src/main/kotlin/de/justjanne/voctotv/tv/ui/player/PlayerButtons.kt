@@ -4,26 +4,13 @@ import androidx.annotation.OptIn
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.FilledIconButton
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.ui.compose.state.PlayPauseButtonState
-import androidx.tv.material3.IconButton
-import androidx.tv.material3.IconButtonDefaults
-import androidx.tv.material3.LocalContentColor
 import de.justjanne.voctotv.common.player.PlayerState
-import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 
 @OptIn(UnstableApi::class)
@@ -42,7 +29,6 @@ fun PlayerButtons(
             modifier = Modifier.weight(1f),
             horizontalArrangement = Arrangement.Start,
         ) {
-
         }
 
         PlayPauseButton(
@@ -52,7 +38,7 @@ fun PlayerButtons(
             onReplay = {
                 player.seekToDefaultPosition()
                 player.play()
-            }
+            },
         )
 
         Row(

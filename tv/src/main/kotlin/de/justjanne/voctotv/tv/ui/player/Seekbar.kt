@@ -18,7 +18,11 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.*
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
@@ -47,58 +51,62 @@ fun Seekbar(
     }
 
     Box(
-        modifier = Modifier
-            .focusRequester(focusRequester)
-            .padding(horizontal = 32.dp)
-            .height(20.dp)
-            .fillMaxWidth()
-            .onKeyEvent {
-                if (it.type == KeyEventType.KeyDown) {
-                    when (it.key) {
-                        Key.DirectionRight -> {
-                            seekForward()
-                            true
-                        }
+        modifier =
+            Modifier
+                .focusRequester(focusRequester)
+                .padding(horizontal = 32.dp)
+                .height(20.dp)
+                .fillMaxWidth()
+                .onKeyEvent {
+                    if (it.type == KeyEventType.KeyDown) {
+                        when (it.key) {
+                            Key.DirectionRight -> {
+                                seekForward()
+                                true
+                            }
 
-                        Key.DirectionLeft -> {
-                            seekBack()
-                            true
-                        }
+                            Key.DirectionLeft -> {
+                                seekBack()
+                                true
+                            }
 
-                        else -> false
+                            else -> false
+                        }
+                    } else {
+                        false
                     }
-                } else false
-            }
-            .clickable(interactionSource = interactionSource, indication = null) {
-                if (player.isPlaying) player.pause()
-                else player.play()
-            }
-            .drawBehind {
-                val thumb = thumb.toPx()
-                val focusedHeight = focusedHeight.toPx()
-                val unfocusedHeight = unfocusedHeight.toPx()
+                }.clickable(interactionSource = interactionSource, indication = null) {
+                    if (player.isPlaying) {
+                        player.pause()
+                    } else {
+                        player.play()
+                    }
+                }.drawBehind {
+                    val thumb = thumb.toPx()
+                    val focusedHeight = focusedHeight.toPx()
+                    val unfocusedHeight = unfocusedHeight.toPx()
 
-                val buffered = progressState.bufferedPositionMs.toFloat() / progressState.durationMs.toFloat()
-                val progress = progressState.currentPositionMs.toFloat() / progressState.durationMs.toFloat()
+                    val buffered = progressState.bufferedPositionMs.toFloat() / progressState.durationMs.toFloat()
+                    val progress = progressState.currentPositionMs.toFloat() / progressState.durationMs.toFloat()
 
-                val currentHeight = if (isFocused.value) focusedHeight else unfocusedHeight
+                    val currentHeight = if (isFocused.value) focusedHeight else unfocusedHeight
 
-                val currentWidth = size.width - thumb
+                    val currentWidth = size.width - thumb
 
-                val barOffset = Offset((size.width - currentWidth) / 2, (size.height - currentHeight) / 2)
-                val thumbOffset = Offset(progress * currentWidth + thumb / 2, size.height / 2)
+                    val barOffset = Offset((size.width - currentWidth) / 2, (size.height - currentHeight) / 2)
+                    val thumbOffset = Offset(progress * currentWidth + thumb / 2, size.height / 2)
 
-                drawRect(Color.DarkGray, size = Size(currentWidth, currentHeight), topLeft = barOffset)
-                drawRect(
-                    Color.LightGray,
-                    size = Size(buffered * currentWidth, currentHeight),
-                    topLeft = barOffset
-                )
-                drawRect(Primary, size = Size(progress * currentWidth, currentHeight), topLeft = barOffset)
-                if (isFocused.value) {
-                    drawCircle(Color.White, radius = thumb / 2, center = thumbOffset)
-                }
-            }
+                    drawRect(Color.DarkGray, size = Size(currentWidth, currentHeight), topLeft = barOffset)
+                    drawRect(
+                        Color.LightGray,
+                        size = Size(buffered * currentWidth, currentHeight),
+                        topLeft = barOffset,
+                    )
+                    drawRect(Primary, size = Size(progress * currentWidth, currentHeight), topLeft = barOffset)
+                    if (isFocused.value) {
+                        drawCircle(Color.White, radius = thumb / 2, center = thumbOffset)
+                    }
+                },
     ) {
     }
 }

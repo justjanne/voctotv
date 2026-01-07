@@ -18,10 +18,14 @@ interface LectureApi {
     suspend fun listRecent(): LectureResult
 
     @GET("public/events/{id}")
-    suspend fun get(@Path("id") id: String): LectureModel?
+    suspend fun get(
+        @Path("id") id: String,
+    ): LectureModel?
 
     @GET("public/events/search")
-    suspend fun search(@Query("q") query: String): LectureResult
+    suspend fun search(
+        @Query("q") query: String,
+    ): LectureResult
 
     @Serializable
     data class LectureResult(

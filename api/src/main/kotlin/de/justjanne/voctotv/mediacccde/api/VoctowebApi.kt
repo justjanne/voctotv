@@ -9,11 +9,12 @@ interface VoctowebApi {
     val resource: ResourceApi
 
     companion object {
-        fun build(retrofit: Retrofit): VoctowebApi = VoctowebApiImpl(
-            retrofit.create<ConferenceApi>(),
-            retrofit.create<LectureApi>(),
-            retrofit.create<ResourceApi>(),
-        )
+        fun build(retrofit: Retrofit): VoctowebApi =
+            VoctowebApiImpl(
+                retrofit.create<ConferenceApi>(),
+                retrofit.create<LectureApi>(),
+                retrofit.create<ResourceApi>(),
+            )
     }
 }
 

@@ -1,5 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import java.util.*
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ktlint)
 }
 
 configure<BasePluginExtension> {
@@ -19,7 +20,8 @@ android {
     compileSdk = 36
 
     fun Project.git(vararg command: String): Provider<String> =
-        providers.exec { commandLine("git", *command) }
+        providers
+            .exec { commandLine("git", *command) }
             .standardOutput
             .asText
             .map { it.trim() }
@@ -32,7 +34,7 @@ android {
         versionName = git("describe", "--always", "--tags", "HEAD").getOrElse("0.1.0")
 
         configure<BasePluginExtension> {
-            archivesName.set("${rootProject.name}-$name-${versionName}")
+            archivesName.set("${rootProject.name}-$name-$versionName")
         }
     }
 
@@ -44,7 +46,7 @@ android {
         val storeFile: String,
         val storePassword: String,
         val keyAlias: String,
-        val keyPassword: String
+        val keyPassword: String,
     )
 
     fun signingData(properties: Properties?): SigningData? {
@@ -59,7 +61,8 @@ android {
     }
 
     fun Project.properties(fileName: String): Provider<Properties> =
-        providers.fileContents(rootProject.layout.projectDirectory.file(fileName))
+        providers
+            .fileContents(rootProject.layout.projectDirectory.file(fileName))
             .asBytes
             .map { Properties().apply { load(it.inputStream()) } }
 

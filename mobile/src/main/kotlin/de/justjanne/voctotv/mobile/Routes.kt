@@ -11,11 +11,17 @@ object Routes {
     data object ConferenceList : NavKey
 
     @Serializable
-    data class Conference(val id: String) : NavKey
+    data class Conference(
+        val id: String,
+    ) : NavKey
 
     @Serializable
-    data class Lecture(val id: String) : NavKey
+    data class Lecture(
+        val id: String,
+    ) : NavKey
 
     @Serializable
-    data class Player(val id: String) : NavKey
+    data class Player(
+        val id: String,
+    ) : NavKey
 }

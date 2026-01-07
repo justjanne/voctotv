@@ -2,8 +2,19 @@ package de.justjanne.voctotv.mobile.ui.player
 
 import androidx.annotation.OptIn
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconToggleButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -41,14 +52,16 @@ fun AudioSelection(
             onDismissRequest = { popupOpen.value = false },
             tonalElevation = 16.dp,
         ) {
-            val audioTracks = player.currentTracks.groups
-                .filter { it.type == C.TRACK_TYPE_AUDIO }
+            val audioTracks =
+                player.currentTracks.groups
+                    .filter { it.type == C.TRACK_TYPE_AUDIO }
 
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = 48.dp)
-                    .padding(horizontal = 12.dp),
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 48.dp)
+                        .padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
@@ -78,7 +91,8 @@ fun AudioSelection(
                                 onClick = {
                                     popupOpen.value = false
                                     player.trackSelectionParameters =
-                                        player.trackSelectionParameters.buildUpon()
+                                        player.trackSelectionParameters
+                                            .buildUpon()
                                             .setPreferredAudioLanguages(language)
                                             .build()
                                 },
@@ -88,7 +102,8 @@ fun AudioSelection(
                         onClick = {
                             popupOpen.value = false
                             player.trackSelectionParameters =
-                                player.trackSelectionParameters.buildUpon()
+                                player.trackSelectionParameters
+                                    .buildUpon()
                                     .setPreferredAudioLanguages(language)
                                     .build()
                         },

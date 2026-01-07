@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.ContentFrame
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
-import de.justjanne.voctotv.common.subtitles.SubtitleDisplay
 import de.justjanne.voctotv.common.player.rememberPlayerState
+import de.justjanne.voctotv.common.subtitles.SubtitleDisplay
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.mobile.ui.player.PlayerOverlay
 
@@ -30,10 +30,12 @@ fun PlayerRoute(
     LaunchedEffect(viewModel.mediaSession.player, lecture, mediaItem) {
         viewModel.mediaSession.player.apply {
             clearMediaItems()
-            trackSelectionParameters = trackSelectionParameters.buildUpon()
-                .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
-                .setPreferredTextLanguages()
-                .build()
+            trackSelectionParameters =
+                trackSelectionParameters
+                    .buildUpon()
+                    .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
+                    .setPreferredTextLanguages()
+                    .build()
             mediaItem?.let {
                 setMediaItem(it)
             }
@@ -47,14 +49,14 @@ fun PlayerRoute(
 
     Scaffold { contentPadding ->
         Box(Modifier.fillMaxSize()) {
-        ContentFrame(
-            player = viewModel.mediaSession.player,
-            modifier = Modifier.fillMaxSize().padding(contentPadding),
-            surfaceType = SURFACE_TYPE_SURFACE_VIEW,
-        )
+            ContentFrame(
+                player = viewModel.mediaSession.player,
+                modifier = Modifier.fillMaxSize().padding(contentPadding),
+                surfaceType = SURFACE_TYPE_SURFACE_VIEW,
+            )
 
-        SubtitleDisplay(viewModel.mediaSession.player, contentPadding)
-        PlayerOverlay(viewModel, lecture, playerState, contentPadding, back)
-	}
+            SubtitleDisplay(viewModel.mediaSession.player, contentPadding)
+            PlayerOverlay(viewModel, lecture, playerState, contentPadding, back)
+        }
     }
 }

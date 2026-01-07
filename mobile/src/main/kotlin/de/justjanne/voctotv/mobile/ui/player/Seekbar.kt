@@ -39,10 +39,11 @@ fun Seekbar(
     playerState: PlayerState,
 ) {
     val scaleFactor = remember { mutableStateOf(0f) }
-    val dragState = rememberDraggableState {
-        val start = if (playerState.seeking) playerState.seekingMs else playerState.progressMs
-        playerState.seek((start + it * scaleFactor.value).toLong())
-    }
+    val dragState =
+        rememberDraggableState {
+            val start = if (playerState.seeking) playerState.seekingMs else playerState.progressMs
+            playerState.seek((start + it * scaleFactor.value).toLong())
+        }
 
     val focusRequester = remember { FocusRequester() }
 
@@ -51,61 +52,59 @@ fun Seekbar(
     }
 
     Box(
-        modifier = Modifier
-            .focusRequester(focusRequester)
-            .padding(start = 32.dp, end = 32.dp, bottom = 20.dp)
-            .minimumInteractiveComponentSize()
-            .fillMaxWidth()
-            .pointerInput(Unit) {
-                detectTapGestures(
-                    onPress = {},
-                    onTap = {
+        modifier =
+            Modifier
+                .focusRequester(focusRequester)
+                .padding(start = 32.dp, end = 32.dp, bottom = 20.dp)
+                .minimumInteractiveComponentSize()
+                .fillMaxWidth()
+                .pointerInput(Unit) {
+                    detectTapGestures(
+                        onPress = {},
+                        onTap = {
+                            playerState.seek((it.x * scaleFactor.value).toLong())
+                            playerState.commitSeek(player)
+                        },
+                    )
+                }.draggable(
+                    state = dragState,
+                    orientation = Orientation.Horizontal,
+                    startDragImmediately = playerState.seeking,
+                    onDragStarted = {
                         playerState.seek((it.x * scaleFactor.value).toLong())
+                    },
+                    onDragStopped = {
                         playerState.commitSeek(player)
                     },
-                )
-            }
-            .draggable(
-                state = dragState,
-                orientation = Orientation.Horizontal,
-                startDragImmediately = playerState.seeking,
-                onDragStarted = {
-                    playerState.seek((it.x * scaleFactor.value).toLong())
+                ).onLayoutRectChanged {
+                    scaleFactor.value = playerState.durationMs.toFloat() / it.width.toFloat()
+                }.drawBehind {
+                    val thumb = thumb.toPx()
+                    val focusedHeight = focusedHeight.toPx()
+                    val unfocusedHeight = unfocusedHeight.toPx()
+
+                    val buffered = playerState.bufferedMs.toFloat() / playerState.durationMs.toFloat()
+                    val progress = playerState.progressMs.toFloat() / playerState.durationMs.toFloat()
+
+                    val currentTimestamp = if (playerState.seeking) playerState.seekingMs else playerState.progressMs
+                    val seekProgress = currentTimestamp.toFloat() / playerState.durationMs.toFloat()
+
+                    val currentHeight = if (playerState.seeking) focusedHeight else unfocusedHeight
+
+                    val currentWidth = size.width - thumb
+
+                    val barOffset = Offset((size.width - currentWidth) / 2, (size.height - currentHeight) / 2)
+                    val thumbOffset = Offset(seekProgress * currentWidth + thumb / 2, size.height / 2)
+
+                    drawRect(Color.DarkGray, size = Size(currentWidth, currentHeight), topLeft = barOffset)
+                    drawRect(
+                        Color.LightGray,
+                        size = Size(buffered * currentWidth, currentHeight),
+                        topLeft = barOffset,
+                    )
+                    drawRect(Primary, size = Size(progress * currentWidth, currentHeight), topLeft = barOffset)
+                    drawCircle(Color.White, radius = thumb / 2, center = thumbOffset)
                 },
-                onDragStopped = {
-                    playerState.commitSeek(player)
-                }
-            )
-            .onLayoutRectChanged {
-                scaleFactor.value = playerState.durationMs.toFloat() / it.width.toFloat()
-            }
-            .drawBehind {
-                val thumb = thumb.toPx()
-                val focusedHeight = focusedHeight.toPx()
-                val unfocusedHeight = unfocusedHeight.toPx()
-
-                val buffered = playerState.bufferedMs.toFloat() / playerState.durationMs.toFloat()
-                val progress = playerState.progressMs.toFloat() / playerState.durationMs.toFloat()
-
-                val currentTimestamp = if (playerState.seeking) playerState.seekingMs else playerState.progressMs
-                val seekProgress = currentTimestamp.toFloat() / playerState.durationMs.toFloat()
-
-                val currentHeight = if (playerState.seeking) focusedHeight else unfocusedHeight
-
-                val currentWidth = size.width - thumb
-
-                val barOffset = Offset((size.width - currentWidth) / 2, (size.height - currentHeight) / 2)
-                val thumbOffset = Offset(seekProgress * currentWidth + thumb / 2, size.height / 2)
-
-                drawRect(Color.DarkGray, size = Size(currentWidth, currentHeight), topLeft = barOffset)
-                drawRect(
-                    Color.LightGray,
-                    size = Size(buffered * currentWidth, currentHeight),
-                    topLeft = barOffset
-                )
-                drawRect(Primary, size = Size(progress * currentWidth, currentHeight), topLeft = barOffset)
-                drawCircle(Color.White, radius = thumb / 2, center = thumbOffset)
-            }
     ) {
     }
 }

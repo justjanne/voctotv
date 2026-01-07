@@ -25,11 +25,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
-import de.justjanne.voctotv.mobile.R
-import de.justjanne.voctotv.mobile.Routes
 import de.justjanne.voctotv.common.viewmodel.ConferenceKind
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
 import de.justjanne.voctotv.common.viewmodel.kind
+import de.justjanne.voctotv.mobile.R
+import de.justjanne.voctotv.mobile.Routes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -40,12 +40,13 @@ fun HomeRoute(
     val allConferences = viewModel.allConferences.collectAsState()
     val conferences = viewModel.conferences.collectAsState()
     val currentFilter = remember { mutableStateOf<ConferenceKind?>(null) }
-    val filteredItems = remember {
-        derivedStateOf {
-            currentFilter.value?.let { filter -> conferences.value.firstOrNull { it.key == filter } }?.value
-                ?: allConferences.value
+    val filteredItems =
+        remember {
+            derivedStateOf {
+                currentFilter.value?.let { filter -> conferences.value.firstOrNull { it.key == filter } }?.value
+                    ?: allConferences.value
+            }
         }
-    }
 
     Scaffold(
         topBar = {
@@ -54,11 +55,11 @@ fun HomeRoute(
                     Image(
                         painterResource(R.drawable.ic_mediacccde),
                         contentDescription = "media.ccc.de",
-                        modifier = Modifier.height(with (LocalDensity.current) { LocalTextStyle.current.lineHeight.toDp() })
+                        modifier = Modifier.height(with(LocalDensity.current) { LocalTextStyle.current.lineHeight.toDp() }),
                     )
-                }
+                },
             )
-        }
+        },
     ) { contentPadding ->
         LazyColumn(
             contentPadding = contentPadding,
@@ -67,7 +68,7 @@ fun HomeRoute(
             item("filter") {
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
-                    contentPadding = PaddingValues(horizontal = 16.dp)
+                    contentPadding = PaddingValues(horizontal = 16.dp),
                 ) {
                     item(null) {
                         FilterChip(
@@ -89,7 +90,7 @@ fun HomeRoute(
                                         ConferenceKind.DOCUMENTATIONS -> "Documentaries"
                                         ConferenceKind.ERFA -> "Erfas"
                                         ConferenceKind.OTHER -> "Other"
-                                    }
+                                    },
                                 )
                             },
                         )
@@ -103,7 +104,7 @@ fun HomeRoute(
                     showYear = item.kind() != ConferenceKind.ERFA,
                     onClick = {
                         navigate(Routes.Conference(item.acronym))
-                    }
+                    },
                 )
             }
         }

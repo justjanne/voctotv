@@ -27,7 +27,7 @@ fun PlayPauseButton(
                 PlayerState.Status.ENDED -> onReplay()
             }
         },
-        modifier = Modifier.requiredSize(androidx.tv.material3.IconButtonDefaults.LargeButtonSize)
+        modifier = Modifier.requiredSize(androidx.tv.material3.IconButtonDefaults.LargeButtonSize),
     ) {
         when (status) {
             PlayerState.Status.BUFFERING ->

@@ -12,7 +12,10 @@ class SpritesheetTransformation(
 ) : Transformation() {
     override val cacheKey: String = "spritesheet-$w-$h-$x-$y"
 
-    override suspend fun transform(input: Bitmap, size: Size): Bitmap {
+    override suspend fun transform(
+        input: Bitmap,
+        size: Size,
+    ): Bitmap {
         val cropped = Bitmap.createBitmap(input, x, y, w, h)
         input.recycle()
         return cropped

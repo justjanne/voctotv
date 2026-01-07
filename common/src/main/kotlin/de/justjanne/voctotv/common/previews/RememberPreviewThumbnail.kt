@@ -18,7 +18,8 @@ fun rememberPreviewThumbnail(url: State<HttpUrl?>): State<ImageRequest?> {
         derivedStateOf {
             url.value?.let { url ->
                 try {
-                    ImageRequest.Builder(context)
+                    ImageRequest
+                        .Builder(context)
                         .spritesheetUrl(url)
                         .placeholder(previousThumbnail.value)
                         .listener(onSuccess = { _, result ->

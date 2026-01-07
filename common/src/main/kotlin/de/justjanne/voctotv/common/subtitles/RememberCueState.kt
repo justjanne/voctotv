@@ -12,11 +12,12 @@ import androidx.media3.common.text.CueGroup
 fun rememberCueState(player: Player): List<Cue> {
     val currentCue = remember { mutableStateOf<List<Cue>>(emptyList()) }
     DisposableEffect(player) {
-        val listener = object : Player.Listener {
-            override fun onCues(cueGroup: CueGroup) {
-                currentCue.value = cueGroup.cues
+        val listener =
+            object : Player.Listener {
+                override fun onCues(cueGroup: CueGroup) {
+                    currentCue.value = cueGroup.cues
+                }
             }
-        }
 
         player.addListener(listener)
         onDispose {

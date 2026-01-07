@@ -1,6 +1,12 @@
 package de.justjanne.voctotv.common.player
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.util.fastCoerceIn
 import androidx.media3.common.DeviceInfo
 import androidx.media3.common.Player
@@ -11,7 +17,7 @@ class PlayerState {
         BUFFERING,
         PLAYING,
         PAUSED,
-        ENDED
+        ENDED,
     }
 
     private val playbackState = mutableIntStateOf(Player.STATE_IDLE)
@@ -24,14 +30,16 @@ class PlayerState {
 
     private val castingState = mutableStateOf(false)
 
-    val status: Status get() = when (playbackState.intValue) {
-        Player.STATE_IDLE, Player.STATE_BUFFERING -> Status.BUFFERING
-        Player.STATE_ENDED -> Status.ENDED
-        else -> when {
-            playingState.value -> Status.PLAYING
-            else -> Status.PAUSED
+    val status: Status get() =
+        when (playbackState.intValue) {
+            Player.STATE_IDLE, Player.STATE_BUFFERING -> Status.BUFFERING
+            Player.STATE_ENDED -> Status.ENDED
+            else ->
+                when {
+                    playingState.value -> Status.PLAYING
+                    else -> Status.PAUSED
+                }
         }
-    }
     val loading: Boolean get() = status == Status.BUFFERING
 
     val bufferedMs: Long get() = bufferedState.longValue
@@ -68,7 +76,7 @@ class PlayerState {
     val listener: Player.Listener = Listener(this)
 
     class Listener(
-        private val state: PlayerState
+        private val state: PlayerState,
     ) : Player.Listener {
         override fun onDeviceInfoChanged(deviceInfo: DeviceInfo) {
             state.castingState.value = deviceInfo.playbackType == DeviceInfo.PLAYBACK_TYPE_REMOTE

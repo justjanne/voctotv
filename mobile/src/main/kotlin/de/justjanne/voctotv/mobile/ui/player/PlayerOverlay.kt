@@ -48,10 +48,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.media3.cast.MediaRouteButton
 import androidx.media3.common.util.UnstableApi
 import de.justjanne.voctotv.common.player.PlayerState
+import de.justjanne.voctotv.common.util.formatTime
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.mobile.R
-import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.common.util.formatTime
 import kotlinx.coroutines.Job
 
 @OptIn(UnstableApi::class)
@@ -66,11 +66,12 @@ fun PlayerOverlay(
     val layoutDirection = LocalLayoutDirection.current
 
     val uiVisible = remember { mutableStateOf(false) }
-    val uiForced = remember {
-        derivedStateOf {
-            playerState.casting || playerState.loading
+    val uiForced =
+        remember {
+            derivedStateOf {
+                playerState.casting || playerState.loading
+            }
         }
-    }
 
     val mainInteractionSource = remember { MutableInteractionSource() }
 
@@ -80,12 +81,13 @@ fun PlayerOverlay(
 
     val hideJob = remember { mutableStateOf<Job?>(null) }
     val hideScope = rememberCoroutineScope()
-    val showUi = remember {
-        {
-            hideJob.value?.cancel()
-            uiVisible.value = true
+    val showUi =
+        remember {
+            {
+                hideJob.value?.cancel()
+                uiVisible.value = true
+            }
         }
-    }
 
     val context = LocalActivity.current
     DisposableEffect(context, playerState.casting) {
@@ -94,7 +96,8 @@ fun PlayerOverlay(
                 requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
             }
             context?.window?.apply {
-                WindowCompat.getInsetsController(this, decorView)
+                WindowCompat
+                    .getInsetsController(this, decorView)
                     .hide(WindowInsetsCompat.Type.systemBars())
             }
             onDispose {
@@ -102,7 +105,8 @@ fun PlayerOverlay(
                     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 }
                 context?.window?.apply {
-                    WindowCompat.getInsetsController(this, decorView)
+                    WindowCompat
+                        .getInsetsController(this, decorView)
                         .show(WindowInsetsCompat.Type.systemBars())
                 }
             }
@@ -112,17 +116,19 @@ fun PlayerOverlay(
     }
 
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .clickable(mainInteractionSource, indication = null, enabled = !uiForced.value) {
-                if (uiVisible.value) {
-                    context?.window?.apply {
-                        WindowCompat.getInsetsController(this, decorView)
-                            .hide(WindowInsetsCompat.Type.systemBars())
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .clickable(mainInteractionSource, indication = null, enabled = !uiForced.value) {
+                    if (uiVisible.value) {
+                        context?.window?.apply {
+                            WindowCompat
+                                .getInsetsController(this, decorView)
+                                .hide(WindowInsetsCompat.Type.systemBars())
+                        }
                     }
-                }
-                uiVisible.value = !uiVisible.value
-            }
+                    uiVisible.value = !uiVisible.value
+                },
     ) {
         AnimatedVisibility(
             uiVisible.value || uiForced.value,
@@ -131,22 +137,21 @@ fun PlayerOverlay(
             modifier = Modifier.align(Alignment.TopStart),
         ) {
             Row(
-                modifier = Modifier
-                    .background(
-                        Brush.verticalGradient(
-                            listOf(
-                                Color(red = 28, green = 27, blue = 31, alpha = 204),
-                                Color(red = 28, green = 27, blue = 31, alpha = 0),
-                            )
-                        )
-                    )
-                    .padding(32.dp)
-                    .padding(
-                        start = contentPadding.calculateStartPadding(layoutDirection),
-                        end = contentPadding.calculateEndPadding(layoutDirection),
-                        top = contentPadding.calculateTopPadding()
-                    )
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    Color(red = 28, green = 27, blue = 31, alpha = 204),
+                                    Color(red = 28, green = 27, blue = 31, alpha = 0),
+                                ),
+                            ),
+                        ).padding(32.dp)
+                        .padding(
+                            start = contentPadding.calculateStartPadding(layoutDirection),
+                            end = contentPadding.calculateEndPadding(layoutDirection),
+                            top = contentPadding.calculateTopPadding(),
+                        ).fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 IconButton(
@@ -160,30 +165,34 @@ fun PlayerOverlay(
                 lecture
                     ?.let {
                         Column(
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1f),
                         ) {
                             Text(
                                 text = lecture.conferenceTitle,
-                                style = MaterialTheme.typography.bodyMedium.copy(
-                                    color = Color.White.copy(alpha = 0.65f),
-                                    shadow = Shadow(
-                                        color = Color.Black.copy(alpha = 0.5f),
-                                        offset = Offset(x = 2f, y = 4f),
-                                        blurRadius = 2f
-                                    )
-                                ),
+                                style =
+                                    MaterialTheme.typography.bodyMedium.copy(
+                                        color = Color.White.copy(alpha = 0.65f),
+                                        shadow =
+                                            Shadow(
+                                                color = Color.Black.copy(alpha = 0.5f),
+                                                offset = Offset(x = 2f, y = 4f),
+                                                blurRadius = 2f,
+                                            ),
+                                    ),
                                 maxLines = 1,
                             )
                             Text(
                                 text = lecture.title,
-                                style = MaterialTheme.typography.titleLarge.copy(
-                                    color = Color.White,
-                                    shadow = Shadow(
-                                        color = Color.Black.copy(alpha = 0.5f),
-                                        offset = Offset(x = 2f, y = 4f),
-                                        blurRadius = 2f
-                                    )
-                                ),
+                                style =
+                                    MaterialTheme.typography.titleLarge.copy(
+                                        color = Color.White,
+                                        shadow =
+                                            Shadow(
+                                                color = Color.Black.copy(alpha = 0.5f),
+                                                offset = Offset(x = 2f, y = 4f),
+                                                blurRadius = 2f,
+                                            ),
+                                    ),
                                 maxLines = 2,
                             )
                         }
@@ -204,53 +213,59 @@ fun PlayerOverlay(
             uiVisible.value || uiForced.value,
             enter = fadeIn() + slideInVertically(initialOffsetY = { it / 2 }),
             exit = fadeOut() + slideOutVertically(targetOffsetY = { it / 2 }),
-            modifier = Modifier.align(Alignment.BottomCenter)
+            modifier = Modifier.align(Alignment.BottomCenter),
         ) {
             Column(
-                modifier = Modifier
-                    .background(
-                        Brush.verticalGradient(
-                            listOf(
-                                Color(red = 28, green = 27, blue = 31, alpha = 0),
-                                Color(red = 28, green = 27, blue = 31, alpha = 204)
-                            )
-                        )
-                    )
-                    .padding(
-                        top = 32.dp,
-                        start = contentPadding.calculateStartPadding(layoutDirection),
-                        end = contentPadding.calculateEndPadding(layoutDirection),
-                        bottom = contentPadding.calculateBottomPadding(),
-                    ),
+                modifier =
+                    Modifier
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    Color(red = 28, green = 27, blue = 31, alpha = 0),
+                                    Color(red = 28, green = 27, blue = 31, alpha = 204),
+                                ),
+                            ),
+                        ).padding(
+                            top = 32.dp,
+                            start = contentPadding.calculateStartPadding(layoutDirection),
+                            end = contentPadding.calculateEndPadding(layoutDirection),
+                            bottom = contentPadding.calculateBottomPadding(),
+                        ),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Bottom,
             ) {
                 Box(contentAlignment = Alignment.BottomCenter) {
-                    Previewbar(viewModel, playerState,)
+                    Previewbar(viewModel, playerState)
                     Row(
-                        modifier = Modifier.padding(start = 32.dp, end = 32.dp, top = 16.dp)
-                            .graphicsLayer { alpha = if (playerState.seeking) 0f else 1f }
+                        modifier =
+                            Modifier
+                                .padding(start = 32.dp, end = 32.dp, top = 16.dp)
+                                .graphicsLayer { alpha = if (playerState.seeking) 0f else 1f },
                     ) {
                         Text(
                             text = formatTime(playerState.progressMs),
-                            style = MaterialTheme.typography.labelLarge.copy(
-                                shadow = Shadow(
-                                    color = Color.Black.copy(alpha = 0.5f),
-                                    offset = Offset(x = 2f, y = 4f),
-                                    blurRadius = 2f
-                                )
-                            ),
+                            style =
+                                MaterialTheme.typography.labelLarge.copy(
+                                    shadow =
+                                        Shadow(
+                                            color = Color.Black.copy(alpha = 0.5f),
+                                            offset = Offset(x = 2f, y = 4f),
+                                            blurRadius = 2f,
+                                        ),
+                                ),
                         )
                         Spacer(Modifier.weight(1f))
                         Text(
                             text = formatTime(playerState.durationMs),
-                            style = MaterialTheme.typography.labelLarge.copy(
-                                shadow = Shadow(
-                                    color = Color.Black.copy(alpha = 0.5f),
-                                    offset = Offset(x = 2f, y = 4f),
-                                    blurRadius = 2f
-                                )
-                            ),
+                            style =
+                                MaterialTheme.typography.labelLarge.copy(
+                                    shadow =
+                                        Shadow(
+                                            color = Color.Black.copy(alpha = 0.5f),
+                                            offset = Offset(x = 2f, y = 4f),
+                                            blurRadius = 2f,
+                                        ),
+                                ),
                         )
                     }
                 }
@@ -262,7 +277,7 @@ fun PlayerOverlay(
             (uiVisible.value || uiForced.value) && !playerState.seeking,
             enter = fadeIn(),
             exit = fadeOut(),
-            modifier = Modifier.align(Alignment.Center)
+            modifier = Modifier.align(Alignment.Center),
         ) {
             PlayPauseButton(
                 playerState.status,
@@ -271,7 +286,7 @@ fun PlayerOverlay(
                 onReplay = {
                     viewModel.mediaSession.player.seekToDefaultPosition()
                     viewModel.mediaSession.player.play()
-                }
+                },
             )
         }
     }

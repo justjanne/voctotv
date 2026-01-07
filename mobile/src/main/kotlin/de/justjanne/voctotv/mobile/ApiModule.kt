@@ -6,8 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import de.justjanne.voctotv.mediacccde.api.VoctowebApi
 import de.justjanne.voctotv.common.util.UserAgentInterceptor
+import de.justjanne.voctotv.mediacccde.api.VoctowebApi
 import kotlinx.serialization.json.Json
 import okhttp3.Cache
 import okhttp3.MediaType.Companion.toMediaType
@@ -20,27 +20,30 @@ import java.io.File
 @InstallIn(SingletonComponent::class)
 internal object ApiModule {
     @Provides
-    fun provideApi(
-        client: OkHttpClient,
-    ): VoctowebApi {
+    fun provideApi(client: OkHttpClient): VoctowebApi {
         val contentType = "application/json".toMediaType()
-        val retrofit = Retrofit.Builder().baseUrl("https://api.media.ccc.de/")
-            .addConverterFactory(Json.asConverterFactory(contentType)).client(client).build()
+        val retrofit =
+            Retrofit
+                .Builder()
+                .baseUrl("https://api.media.ccc.de/")
+                .addConverterFactory(Json.asConverterFactory(contentType))
+                .client(client)
+                .build()
         return VoctowebApi.build(retrofit)
     }
 
     @Provides
-    fun provideClient(@ApplicationContext context: Context): OkHttpClient {
-        return OkHttpClient.Builder()
+    fun provideClient(
+        @ApplicationContext context: Context,
+    ): OkHttpClient =
+        OkHttpClient
+            .Builder()
             .addNetworkInterceptor(
-                UserAgentInterceptor("${BuildConfig.APPLICATION_ID}/${BuildConfig.VERSION_NAME}")
-            )
-            .cache(
+                UserAgentInterceptor("${BuildConfig.APPLICATION_ID}/${BuildConfig.VERSION_NAME}"),
+            ).cache(
                 Cache(
                     directory = File(context.cacheDir, "http_cache"),
                     maxSize = 50L * 1024L * 1024L,
-                )
-            )
-            .build()
-    }
+                ),
+            ).build()
 }

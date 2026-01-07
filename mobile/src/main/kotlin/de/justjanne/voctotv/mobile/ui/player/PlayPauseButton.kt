@@ -34,14 +34,17 @@ fun PlayPauseButton(
                 PlayerState.Status.ENDED -> onReplay()
             }
         },
-        colors = IconButtonDefaults.filledIconButtonColors(
-            containerColor = Color.White,
-            disabledContainerColor = Color.White,
-            contentColor = Color.Black,
-            disabledContentColor = Color.Black,
-        ),
-        modifier = Modifier.requiredSize(ContainerSize)
-            .shadow(elevation = 8.dp, shape = CircleShape),
+        colors =
+            IconButtonDefaults.filledIconButtonColors(
+                containerColor = Color.White,
+                disabledContainerColor = Color.White,
+                contentColor = Color.Black,
+                disabledContentColor = Color.Black,
+            ),
+        modifier =
+            Modifier
+                .requiredSize(ContainerSize)
+                .shadow(elevation = 8.dp, shape = CircleShape),
     ) {
         when (status) {
             PlayerState.Status.BUFFERING ->

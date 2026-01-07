@@ -43,31 +43,34 @@ fun Previewbar(
 ) {
     val allCues = viewModel.previews.collectAsState()
 
-    val currentCue = remember {
-        derivedStateOf {
-            val seekingUs = playerState.seekingMs * 1000L
-            allCues.value.firstOrNull { it.startUs <= seekingUs && it.endUs >= seekingUs }?.data
+    val currentCue =
+        remember {
+            derivedStateOf {
+                val seekingUs = playerState.seekingMs * 1000L
+                allCues.value.firstOrNull { it.startUs <= seekingUs && it.endUs >= seekingUs }?.data
+            }
         }
-    }
 
     val currentThumbnail = rememberPreviewThumbnail(currentCue)
 
     BoxWithConstraints(
-        modifier = modifier
-            .padding(horizontal = 32.dp)
-            .fillMaxWidth()
+        modifier =
+            modifier
+                .padding(horizontal = 32.dp)
+                .fillMaxWidth(),
     ) {
         Column(
-            modifier = Modifier
-                .graphicsLayer {
-                    val thumb = ThumbSize.toPx()
-                    val currentTimestamp = playerState.seekingMs
-                    val progress = currentTimestamp.toFloat() / playerState.durationMs.toFloat()
-                    val currentWidth = constraints.maxWidth - thumb
-                    val translation = (progress * currentWidth + thumb / 2) - size.width / 2
-                    translationX = translation.coerceIn(0f, currentWidth - size.width)
-                    alpha = if (playerState.seeking) 1f else 0f
-                },
+            modifier =
+                Modifier
+                    .graphicsLayer {
+                        val thumb = ThumbSize.toPx()
+                        val currentTimestamp = playerState.seekingMs
+                        val progress = currentTimestamp.toFloat() / playerState.durationMs.toFloat()
+                        val currentWidth = constraints.maxWidth - thumb
+                        val translation = (progress * currentWidth + thumb / 2) - size.width / 2
+                        translationX = translation.coerceIn(0f, currentWidth - size.width)
+                        alpha = if (playerState.seeking) 1f else 0f
+                    },
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Surface(
@@ -78,19 +81,21 @@ fun Previewbar(
                     AsyncImage(
                         model = currentThumbnail.value,
                         contentDescription = null,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize(),
                     )
                 }
             }
             Text(
                 text = formatTime(playerState.seekingMs),
-                style = MaterialTheme.typography.labelLarge.copy(
-                    shadow = Shadow(
-                        color = Color.Black.copy(alpha = 0.5f),
-                        offset = Offset(x = 2f, y = 4f),
-                        blurRadius = 2f
-                    )
-                ),
+                style =
+                    MaterialTheme.typography.labelLarge.copy(
+                        shadow =
+                            Shadow(
+                                color = Color.Black.copy(alpha = 0.5f),
+                                offset = Offset(x = 2f, y = 4f),
+                                blurRadius = 2f,
+                            ),
+                    ),
             )
         }
     }

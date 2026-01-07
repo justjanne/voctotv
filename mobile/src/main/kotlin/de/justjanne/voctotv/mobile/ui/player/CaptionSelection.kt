@@ -31,12 +31,11 @@ import androidx.media3.common.util.UnstableApi
 import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.mobile.R
 
-fun getLanguages(tracks: Tracks): List<String?> {
-    return tracks.groups
+fun getLanguages(tracks: Tracks): List<String?> =
+    tracks.groups
         .filter { it.type == C.TRACK_TYPE_TEXT }
         .mapNotNull { it.getTrackFormat(0).language }
         .let { listOf(null).plus(it) }
-}
 
 @OptIn(UnstableApi::class)
 @Composable
@@ -52,16 +51,18 @@ fun CaptionSelection(
         }
     }
 
-    val languages = remember {
-        mutableStateOf(getLanguages(player.currentTracks))
-    }
+    val languages =
+        remember {
+            mutableStateOf(getLanguages(player.currentTracks))
+        }
 
     DisposableEffect(player) {
-        val listener = object : Player.Listener {
-            override fun onTracksChanged(tracks: Tracks) {
-                languages.value = getLanguages(tracks)
+        val listener =
+            object : Player.Listener {
+                override fun onTracksChanged(tracks: Tracks) {
+                    languages.value = getLanguages(tracks)
+                }
             }
-        }
         player.addListener(listener)
         onDispose {
             player.removeListener(listener)
@@ -74,10 +75,11 @@ fun CaptionSelection(
             onDismissRequest = { popupOpen.value = false },
         ) {
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = 48.dp)
-                    .padding(horizontal = 12.dp),
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 48.dp)
+                        .padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
@@ -104,15 +106,15 @@ fun CaptionSelection(
                             onClick = {
                                 popupOpen.value = false
                                 player.trackSelectionParameters =
-                                    player.trackSelectionParameters.buildUpon()
+                                    player.trackSelectionParameters
+                                        .buildUpon()
                                         .let {
                                             if (language == null) {
                                                 it.setPreferredTextLanguages()
                                             } else {
                                                 it.setPreferredTextLanguages(language)
                                             }
-                                        }
-                                        .build()
+                                        }.build()
                             },
                         )
                     },
@@ -120,15 +122,15 @@ fun CaptionSelection(
                     onClick = {
                         popupOpen.value = false
                         player.trackSelectionParameters =
-                            player.trackSelectionParameters.buildUpon()
+                            player.trackSelectionParameters
+                                .buildUpon()
                                 .let {
                                     if (language == null) {
                                         it.setPreferredTextLanguages()
                                     } else {
                                         it.setPreferredTextLanguages(language)
                                     }
-                                }
-                                .build()
+                                }.build()
                     },
                 )
             }

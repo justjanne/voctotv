@@ -11,26 +11,26 @@ import androidx.compose.ui.Modifier
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.ContentFrame
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
-import de.justjanne.voctotv.common.subtitles.SubtitleDisplay
 import de.justjanne.voctotv.common.player.rememberPlayerState
+import de.justjanne.voctotv.common.subtitles.SubtitleDisplay
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.tv.ui.player.PlayerOverlay
 
 @OptIn(UnstableApi::class)
 @Composable
-fun PlayerRoute(
-    viewModel: PlayerViewModel,
-) {
+fun PlayerRoute(viewModel: PlayerViewModel) {
     val mediaItem by viewModel.mediaItem.collectAsState()
     val lecture by viewModel.lecture.collectAsState()
 
     LaunchedEffect(viewModel.mediaSession.player, lecture, mediaItem) {
         viewModel.mediaSession.player.apply {
             clearMediaItems()
-            trackSelectionParameters = trackSelectionParameters.buildUpon()
-                .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
-                .setPreferredTextLanguages()
-                .build()
+            trackSelectionParameters =
+                trackSelectionParameters
+                    .buildUpon()
+                    .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
+                    .setPreferredTextLanguages()
+                    .build()
             mediaItem?.let {
                 setMediaItem(it)
             }

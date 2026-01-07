@@ -19,22 +19,20 @@ internal object PlayerModule {
     @OptIn(UnstableApi::class)
     @Provides
     fun providePlayer(
-        @ApplicationContext context: Context
-    ): Player {
-        return ExoPlayer.Builder(context)
+        @ApplicationContext context: Context,
+    ): Player =
+        ExoPlayer
+            .Builder(context)
             .setScrubbingModeParameters(
-                ScrubbingModeParameters.DEFAULT.buildUpon()
+                ScrubbingModeParameters.DEFAULT
+                    .buildUpon()
                     .setDisabledTrackTypes(emptySet())
-                    .build()
-            )
-            .build()
-    }
+                    .build(),
+            ).build()
 
     @Provides
     fun provideMediaSession(
         @ApplicationContext context: Context,
         player: Player,
-    ): MediaSession {
-        return MediaSession.Builder(context, player).build()
-    }
+    ): MediaSession = MediaSession.Builder(context, player).build()
 }

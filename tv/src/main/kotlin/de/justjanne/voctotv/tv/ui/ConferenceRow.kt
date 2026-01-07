@@ -22,8 +22,8 @@ import androidx.tv.material3.Card
 import androidx.tv.material3.StandardCardContainer
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.mediacccde.model.ConferenceModel
+import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.tv.ui.theme.VoctoTvTheme
 
 @Composable
@@ -38,7 +38,7 @@ fun ConferenceRow(
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(20.dp),
         contentPadding = PaddingValues(20.dp),
-        modifier = Modifier.focusRestorer(focusRequester)
+        modifier = Modifier.focusRestorer(focusRequester),
     ) {
         itemsIndexed(featured, key = { _, item -> item.acronym }) { index, conference ->
             val modifier = if (index == 0) Modifier.focusRequester(focusRequester) else Modifier
@@ -50,15 +50,18 @@ fun ConferenceRow(
                         VoctoTvTheme(isInDarkTheme = false) {
                             Card(
                                 onClick = { navigate(Routes.Conference(conference.acronym)) },
-                                modifier = Modifier
-                                    .aspectRatio(16f / 9),
+                                modifier =
+                                    Modifier
+                                        .aspectRatio(16f / 9),
                                 interactionSource = interactionSource,
                             ) {
                                 AsyncImage(
                                     model = conference.logoUrl,
                                     contentDescription = conference.title,
-                                    modifier = Modifier.fillMaxSize()
-                                        .padding(8.dp),
+                                    modifier =
+                                        Modifier
+                                            .fillMaxSize()
+                                            .padding(8.dp),
                                 )
                             }
                         }

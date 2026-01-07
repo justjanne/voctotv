@@ -10,20 +10,21 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import javax.inject.Inject
 
-
-class PreviewLoader @Inject constructor(
-    private val client: OkHttpClient,
-) {
-    @OptIn(UnstableApi::class)
-    suspend fun load(url: String): List<TimedCue>? {
-        val baseUrl = url.toHttpUrlOrNull() ?: return null
-        val parser = WebvttParser()
-        val response = client.newCall(Request.Builder().url(url).build()).await()
-        val data = response.body?.bytes() ?: return null
-        return parser.parse(data, SubtitleParser.OutputOptions.allCues()).mapNotNull {
-            it.cues.firstOrNull()?.text?.let { baseUrl.resolve(it.toString()) }?.let { url ->
-                TimedCue(it.startTimeUs, it.endTimeUs, url)
+class PreviewLoader
+    @Inject
+    constructor(
+        private val client: OkHttpClient,
+    ) {
+        @OptIn(UnstableApi::class)
+        suspend fun load(url: String): List<TimedCue>? {
+            val baseUrl = url.toHttpUrlOrNull() ?: return null
+            val parser = WebvttParser()
+            val response = client.newCall(Request.Builder().url(url).build()).await()
+            val data = response.body?.bytes() ?: return null
+            return parser.parse(data, SubtitleParser.OutputOptions.allCues()).mapNotNull {
+                it.cues.firstOrNull()?.text?.let { baseUrl.resolve(it.toString()) }?.let { url ->
+                    TimedCue(it.startTimeUs, it.endTimeUs, url)
+                }
             }
         }
     }
-}

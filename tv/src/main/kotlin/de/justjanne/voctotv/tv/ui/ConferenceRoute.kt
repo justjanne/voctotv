@@ -46,17 +46,19 @@ fun ConferenceRoute(
             item("header") {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp)
+                    modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp),
                 ) {
                     Text(
                         text = conference.title,
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            shadow = Shadow(
-                                color = Color.Black.copy(alpha = 0.5f),
-                                offset = Offset(x = 2f, y = 4f),
-                                blurRadius = 2f
-                            )
-                        ),
+                        style =
+                            MaterialTheme.typography.titleLarge.copy(
+                                shadow =
+                                    Shadow(
+                                        color = Color.Black.copy(alpha = 0.5f),
+                                        offset = Offset(x = 2f, y = 4f),
+                                        blurRadius = 2f,
+                                    ),
+                            ),
                         maxLines = 2,
                     )
                 }
@@ -74,7 +76,7 @@ fun ConferenceRoute(
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(20.dp),
                 contentPadding = PaddingValues(20.dp),
-                modifier = Modifier.focusRestorer(focusRequester)
+                modifier = Modifier.focusRestorer(focusRequester),
             ) {
                 itemsIndexed(items, key = { _, lecture -> lecture.guid }) { index, lecture ->
                     LectureCard(lecture, navigate, if (index == 0) Modifier.focusRequester(focusRequester) else Modifier)

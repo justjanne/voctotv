@@ -31,9 +31,12 @@ import androidx.tv.material3.CardShape
 import androidx.tv.material3.ProvideTextStyle
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
+import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.tv.Routes
-import de.justjanne.voctotv.common.util.formatTime
+
+private const val SubtitleAlpha = 0.6f
+private const val DescriptionAlpha = 0.8f
 
 @Composable
 fun LectureCard(
@@ -45,9 +48,10 @@ fun LectureCard(
         onClick = {
             navigate(Routes.Player(lecture.guid))
         },
-        modifier = modifier
-            .width(268.dp)
-            .aspectRatio(16f / 9),
+        modifier =
+            modifier
+                .width(268.dp)
+                .aspectRatio(16f / 9),
         title = {
             Text(
                 text = lecture.title,
@@ -74,16 +78,18 @@ fun LectureCard(
         badge = {
             Text(
                 text = formatTime(lecture.duration * 1000),
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(6.dp)
-                    .background(Color.Black, shape = MaterialTheme.shapes.extraSmall)
-                    .padding(horizontal = 6.dp, vertical = 2.dp),
-                style = MaterialTheme.typography.labelLarge.copy(
-                    color = Color.White,
-                ),
+                modifier =
+                    Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(6.dp)
+                        .background(Color.Black, shape = MaterialTheme.shapes.extraSmall)
+                        .padding(horizontal = 6.dp, vertical = 2.dp),
+                style =
+                    MaterialTheme.typography.labelLarge.copy(
+                        color = Color.White,
+                    ),
             )
-        }
+        },
     )
 }
 
@@ -103,7 +109,7 @@ private fun CompactCard(
     border: CardBorder = CardDefaults.border(),
     glow: CardGlow = CardDefaults.glow(),
     scrimBrush: Brush = CardDefaults.ScrimBrush,
-    interactionSource: MutableInteractionSource? = null
+    interactionSource: MutableInteractionSource? = null,
 ) {
     Card(
         onClick = onClick,
@@ -114,7 +120,7 @@ private fun CompactCard(
         colors = colors,
         scale = scale,
         border = border,
-        glow = glow
+        glow = glow,
     ) {
         Box(contentAlignment = Alignment.BottomStart) {
             Box(
@@ -126,7 +132,7 @@ private fun CompactCard(
                         }
                     },
                 contentAlignment = Alignment.Center,
-                content = image
+                content = image,
             )
             Column { CardContent(title = title, subtitle = subtitle, description = description) }
             badge()
@@ -138,7 +144,7 @@ private fun CompactCard(
 private fun CardContent(
     title: @Composable () -> Unit,
     subtitle: @Composable () -> Unit = {},
-    description: @Composable () -> Unit = {}
+    description: @Composable () -> Unit = {},
 ) {
     ProvideTextStyle(MaterialTheme.typography.titleMedium) { title.invoke() }
     ProvideTextStyle(MaterialTheme.typography.bodySmall) {
@@ -148,6 +154,3 @@ private fun CardContent(
         Box(Modifier.graphicsLayer { alpha = DescriptionAlpha }) { description.invoke() }
     }
 }
-
-private const val SubtitleAlpha = 0.6f
-private const val DescriptionAlpha = 0.8f

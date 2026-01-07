@@ -12,22 +12,23 @@ fun VoctoTvTheme(
     isInDarkTheme: Boolean = true,
     content: @Composable () -> Unit,
 ) {
-    val colorScheme = if (isInDarkTheme) {
-        darkColorScheme(
-            primary = Primary,
-            secondary = PurpleGrey80,
-            tertiary = Pink80
-        )
-    } else {
-        lightColorScheme(
-            primary = Primary,
-            secondary = PurpleGrey40,
-            tertiary = Pink40
-        )
-    }
+    val colorScheme =
+        if (isInDarkTheme) {
+            darkColorScheme(
+                primary = Primary,
+                secondary = PurpleGrey80,
+                tertiary = Pink80,
+            )
+        } else {
+            lightColorScheme(
+                primary = Primary,
+                secondary = PurpleGrey40,
+                tertiary = Pink40,
+            )
+        }
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        content = content
+        content = content,
     )
 }

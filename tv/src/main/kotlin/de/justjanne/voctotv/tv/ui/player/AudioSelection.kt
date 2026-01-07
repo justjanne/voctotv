@@ -18,8 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.C
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import androidx.tv.material3.*
+import androidx.tv.material3.IconButton
+import androidx.tv.material3.ListItem
 import androidx.tv.material3.LocalContentColor
+import androidx.tv.material3.MaterialTheme
+import androidx.tv.material3.RadioButton
+import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.tv.R
@@ -38,13 +42,14 @@ fun AudioSelection(
             val focusRequester = remember { FocusRequester() }
 
             Column(Modifier.padding(20.dp)) {
-                val audioTracks = player.currentTracks.groups
-                    .filter { it.type == C.TRACK_TYPE_AUDIO }
+                val audioTracks =
+                    player.currentTracks.groups
+                        .filter { it.type == C.TRACK_TYPE_AUDIO }
 
                 Text(
                     "Language",
                     style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 12.dp)
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 12.dp),
                 )
 
                 for (audioTrack in audioTracks) {
@@ -55,14 +60,15 @@ fun AudioSelection(
                             selected = audioTrack.isSelected,
                             onClick = {
                                 player.trackSelectionParameters =
-                                    player.trackSelectionParameters.buildUpon()
+                                    player.trackSelectionParameters
+                                        .buildUpon()
                                         .setPreferredAudioLanguages(language)
                                         .build()
                                 popupOpen.value = false
                             },
                             headlineContent = {
                                 if (lecture?.originalLanguage?.startsWith(language) == true) {
-                                    Text("${language} (Original)")
+                                    Text("$language (Original)")
                                 } else {
                                     Text(language)
                                 }
@@ -75,11 +81,14 @@ fun AudioSelection(
                                 )
                             },
                             interactionSource = interactionSource,
-                            modifier = Modifier.let {
-                                if (audioTrack.isSelected) {
-                                    it.focusRequester(focusRequester)
-                                } else it
-                            }
+                            modifier =
+                                Modifier.let {
+                                    if (audioTrack.isSelected) {
+                                        it.focusRequester(focusRequester)
+                                    } else {
+                                        it
+                                    }
+                                },
                         )
 
                         LaunchedEffect(focusRequester, audioTrack.isSelected) {
@@ -101,7 +110,7 @@ fun AudioSelection(
             Icon(
                 painter = painterResource(R.drawable.ic_translate),
                 contentDescription = "Language",
-		tint = LocalContentColor.current,
+                tint = LocalContentColor.current,
             )
         }
     }

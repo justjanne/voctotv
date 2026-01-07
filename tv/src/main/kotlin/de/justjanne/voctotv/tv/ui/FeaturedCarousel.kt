@@ -47,8 +47,8 @@ import androidx.tv.material3.Icon
 import androidx.tv.material3.ShapeDefaults
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.tv.Routes
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
@@ -59,39 +59,47 @@ fun FeaturedCarousel(
     showConference: Boolean = true,
 ) {
     val isCarouselFocused = remember { mutableStateOf(false) }
-    val alpha = if (isCarouselFocused.value) {
-        1f
-    } else {
-        0f
-    }
+    val alpha =
+        if (isCarouselFocused.value) {
+            1f
+        } else {
+            0f
+        }
 
     if (lectures.isNotEmpty()) {
         Carousel(
             itemCount = lectures.size,
-            modifier = modifier.height(361.dp)
-                .fillMaxWidth()
-                .padding(start = 32.dp, end = 32.dp, bottom = 20.dp).border(
-                    width = 3.dp,
-                    color = Color.White.copy(alpha = alpha),
-                    shape = ShapeDefaults.Medium,
-                ).clip(ShapeDefaults.Medium)
-                .onFocusChanged {
-                    // Because the carousel itself never gets the focus
-                    isCarouselFocused.value = it.hasFocus
-                },
-            contentTransformStartToEnd = fadeIn(tween(durationMillis = 1000))
-                .togetherWith(fadeOut(tween(durationMillis = 1000))),
-            contentTransformEndToStart = fadeIn(tween(durationMillis = 1000))
-                .togetherWith(fadeOut(tween(durationMillis = 1000))),
+            modifier =
+                modifier
+                    .height(361.dp)
+                    .fillMaxWidth()
+                    .padding(start = 32.dp, end = 32.dp, bottom = 20.dp)
+                    .border(
+                        width = 3.dp,
+                        color = Color.White.copy(alpha = alpha),
+                        shape = ShapeDefaults.Medium,
+                    ).clip(ShapeDefaults.Medium)
+                    .onFocusChanged {
+                        // Because the carousel itself never gets the focus
+                        isCarouselFocused.value = it.hasFocus
+                    },
+            contentTransformStartToEnd =
+                fadeIn(tween(durationMillis = 1000))
+                    .togetherWith(fadeOut(tween(durationMillis = 1000))),
+            contentTransformEndToStart =
+                fadeIn(tween(durationMillis = 1000))
+                    .togetherWith(fadeOut(tween(durationMillis = 1000))),
         ) { index ->
             val lecture = lectures[index]
 
             Card(
-                onClick = { navigate(Routes.Player(lecture.guid)) }, colors = CardDefaults.colors(
-                    containerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
-                    focusedContainerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
-                    pressedContainerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
-                )
+                onClick = { navigate(Routes.Player(lecture.guid)) },
+                colors =
+                    CardDefaults.colors(
+                        containerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
+                        focusedContainerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
+                        pressedContainerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
+                    ),
             ) {
                 Box {
                     CarouselItemBackground(
@@ -118,65 +126,74 @@ private fun CarouselItemForeground(
     navigate: (NavKey) -> Unit,
 ) {
     Box(
-        modifier = modifier, contentAlignment = Alignment.BottomStart
+        modifier = modifier,
+        contentAlignment = Alignment.BottomStart,
     ) {
         Column(
             modifier = Modifier.fillMaxHeight().width(418.dp).padding(32.dp),
-            verticalArrangement = Arrangement.Bottom
+            verticalArrangement = Arrangement.Bottom,
         ) {
             if (showConference) {
                 Text(
                     text = lecture.conferenceTitle,
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.White.copy(alpha = 0.6f),
-                        shadow = Shadow(
-                            color = Color.Black.copy(alpha = 0.5f),
-                            offset = Offset(x = 2f, y = 4f),
-                            blurRadius = 2f
-                        )
-                    ),
+                    style =
+                        MaterialTheme.typography.bodyMedium.copy(
+                            color = Color.White.copy(alpha = 0.6f),
+                            shadow =
+                                Shadow(
+                                    color = Color.Black.copy(alpha = 0.5f),
+                                    offset = Offset(x = 2f, y = 4f),
+                                    blurRadius = 2f,
+                                ),
+                        ),
                     maxLines = 1,
-                    modifier = Modifier.padding(bottom = 4.dp)
+                    modifier = Modifier.padding(bottom = 4.dp),
                 )
             }
             Text(
                 text = lecture.title,
-                style = MaterialTheme.typography.titleLarge.copy(
-                    shadow = Shadow(
-                        color = Color.Black.copy(alpha = 0.5f),
-                        offset = Offset(x = 2f, y = 4f),
-                        blurRadius = 2f
-                    )
-                ),
+                style =
+                    MaterialTheme.typography.titleLarge.copy(
+                        shadow =
+                            Shadow(
+                                color = Color.Black.copy(alpha = 0.5f),
+                                offset = Offset(x = 2f, y = 4f),
+                                blurRadius = 2f,
+                            ),
+                    ),
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 2,
             )
             Text(
                 text = lecture.persons.fastJoinToString(" · "),
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    color = Color.White.copy(alpha = 0.6f),
-                    shadow = Shadow(
-                        color = Color.Black.copy(alpha = 0.5f),
-                        offset = Offset(x = 2f, y = 4f),
-                        blurRadius = 2f
-                    )
-                ),
-                modifier = Modifier.padding(bottom = 4.dp)
+                style =
+                    MaterialTheme.typography.bodyMedium.copy(
+                        color = Color.White.copy(alpha = 0.6f),
+                        shadow =
+                            Shadow(
+                                color = Color.Black.copy(alpha = 0.5f),
+                                offset = Offset(x = 2f, y = 4f),
+                                blurRadius = 2f,
+                            ),
+                    ),
+                modifier = Modifier.padding(bottom = 4.dp),
             )
             lecture.description?.let {
                 Text(
                     text = it.replace(Regex("\n\n+"), "\n"),
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.White.copy(alpha = 0.8f),
-                        shadow = Shadow(
-                            color = Color.Black.copy(alpha = 0.5f),
-                            offset = Offset(x = 2f, y = 4f),
-                            blurRadius = 2f
-                        )
-                    ),
+                    style =
+                        MaterialTheme.typography.bodyMedium.copy(
+                            color = Color.White.copy(alpha = 0.8f),
+                            shadow =
+                                Shadow(
+                                    color = Color.Black.copy(alpha = 0.5f),
+                                    offset = Offset(x = 2f, y = 4f),
+                                    blurRadius = 2f,
+                                ),
+                        ),
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.padding(top = 8.dp)
+                    modifier = Modifier.padding(top = 8.dp),
                 )
             }
             WatchNowButton(onClick = {
@@ -187,42 +204,46 @@ private fun CarouselItemForeground(
 }
 
 @Composable
-private fun CarouselItemBackground(lecture: LectureModel, modifier: Modifier = Modifier) {
+private fun CarouselItemBackground(
+    lecture: LectureModel,
+    modifier: Modifier = Modifier,
+) {
     AsyncImage(
         model = lecture.posterUrl,
         contentDescription = lecture.title,
-        modifier = modifier.drawWithContent {
-            drawContent()
-            drawRect(
-                Brush.radialGradient(
-                    center = Offset(Float.POSITIVE_INFINITY, 0f),
-                    colors = listOf(
-                        Color(red = 28, green = 27, blue = 31, alpha = 0),
-                        Color(red = 28, green = 27, blue = 31, alpha = 204)
+        modifier =
+            modifier.drawWithContent {
+                drawContent()
+                drawRect(
+                    Brush.radialGradient(
+                        center = Offset(Float.POSITIVE_INFINITY, 0f),
+                        colors =
+                            listOf(
+                                Color(red = 28, green = 27, blue = 31, alpha = 0),
+                                Color(red = 28, green = 27, blue = 31, alpha = 204),
+                            ),
+                        radius = size.maxDimension,
                     ),
-                    radius = size.maxDimension,
-                ),
-                size = size,
-            )
-        },
-        contentScale = ContentScale.Crop
+                    size = size,
+                )
+            },
+        contentScale = ContentScale.Crop,
     )
 }
 
 @Composable
-private fun WatchNowButton(
-    onClick: () -> Unit,
-) {
+private fun WatchNowButton(onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier.padding(top = 20.dp),
         contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
-        colors = ButtonDefaults.colors(
-            containerColor = MaterialTheme.colorScheme.onSurface,
-            contentColor = MaterialTheme.colorScheme.surface,
-            focusedContentColor = MaterialTheme.colorScheme.surface,
-        ),
-        scale = ButtonDefaults.scale(scale = 1f)
+        colors =
+            ButtonDefaults.colors(
+                containerColor = MaterialTheme.colorScheme.onSurface,
+                contentColor = MaterialTheme.colorScheme.surface,
+                focusedContentColor = MaterialTheme.colorScheme.surface,
+            ),
+        scale = ButtonDefaults.scale(scale = 1f),
     ) {
         Icon(
             imageVector = Icons.Outlined.PlayArrow,
@@ -231,7 +252,7 @@ private fun WatchNowButton(
         Spacer(Modifier.size(8.dp))
         Text(
             text = "Watch now",
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.titleSmall,
         )
     }
 }

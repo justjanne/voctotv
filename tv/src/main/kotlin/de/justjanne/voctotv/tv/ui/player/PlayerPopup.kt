@@ -24,13 +24,13 @@ fun PlayerPopup(
         Popup(
             alignment = Alignment.BottomCenter,
             offset = IntOffset(0, with(LocalDensity.current) { -48.dp.toPx() }.fastRoundToInt()),
-            properties = PopupProperties(
-                dismissOnBackPress = true,
-                focusable = true,
-            ),
+            properties =
+                PopupProperties(
+                    dismissOnBackPress = true,
+                    focusable = true,
+                ),
             onDismissRequest = { onClose() },
         ) {
-
             Surface(
                 modifier = Modifier.wrapContentHeight().width(244.dp),
                 shape = MaterialTheme.shapes.large,

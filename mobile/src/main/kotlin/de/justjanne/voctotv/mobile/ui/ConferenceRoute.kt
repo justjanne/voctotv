@@ -30,10 +30,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
+import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
-import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,42 +46,45 @@ fun ConferenceRoute(
     val allItems = viewModel.allItems.collectAsState()
     val itemsByTrack = viewModel.itemsByTrack.collectAsState()
     val currentFilter = remember { mutableStateOf<String?>(null) }
-    val filters = remember {
-        derivedStateOf {
-            itemsByTrack.value.map { it.key }.sorted()
+    val filters =
+        remember {
+            derivedStateOf {
+                itemsByTrack.value.map { it.key }.sorted()
+            }
         }
-    }
-    val filteredItems: State<List<LectureModel>> = remember {
-        derivedStateOf {
-            currentFilter.value?.let { filter -> itemsByTrack.value[filter] }
-                ?: allItems.value.orEmpty()
+    val filteredItems: State<List<LectureModel>> =
+        remember {
+            derivedStateOf {
+                currentFilter.value?.let { filter -> itemsByTrack.value[filter] }
+                    ?: allItems.value.orEmpty()
+            }
         }
-    }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(conference?.title ?: "Conference") },
                 navigationIcon = {
-                    IconButton(onClick = { back() } ) {
+                    IconButton(onClick = { back() }) {
                         Icon(
                             painterResource(R.drawable.ic_arrow_back),
                             contentDescription = "Back",
                         )
                     }
-                }
+                },
             )
-        }
-    ){ contentPadding ->
+        },
+    ) { contentPadding ->
         if (conference == null) {
             Box(Modifier.fillMaxSize()) {
                 Column(Modifier.align(Alignment.Center)) {
                     CircularProgressIndicator()
                     Text(
                         text = "Loading",
-                        style = MaterialTheme.typography.bodyMedium.copy(
-                            color = LocalContentColor.current.copy(alpha = 0.6f)
-                        ),
+                        style =
+                            MaterialTheme.typography.bodyMedium.copy(
+                                color = LocalContentColor.current.copy(alpha = 0.6f),
+                            ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
@@ -95,7 +98,7 @@ fun ConferenceRoute(
                 item("filters") {
                     LazyRow(
                         horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
-                        contentPadding = PaddingValues(horizontal = 16.dp)
+                        contentPadding = PaddingValues(horizontal = 16.dp),
                     ) {
                         item(null) {
                             FilterChip(
@@ -119,7 +122,7 @@ fun ConferenceRoute(
                         item = item,
                         onClick = {
                             navigate(Routes.Player(item.guid))
-                        }
+                        },
                     )
                 }
             }

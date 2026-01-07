@@ -1,6 +1,10 @@
 package de.justjanne.voctotv.tv.ui.player
 
-import androidx.compose.animation.*
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
@@ -21,7 +25,7 @@ import de.justjanne.voctotv.mediacccde.model.LectureModel
 @Composable
 fun BoxScope.TitleOverlay(
     visible: Boolean,
-    lecture: LectureModel?
+    lecture: LectureModel?,
 ) {
     AnimatedVisibility(
         visible,
@@ -31,40 +35,44 @@ fun BoxScope.TitleOverlay(
     ) {
         lecture?.let {
             Column(
-                modifier = Modifier
-                    .background(
-                        Brush.verticalGradient(
-                            listOf(
-                                Color(red = 28, green = 27, blue = 31, alpha = 204),
-                                Color(red = 28, green = 27, blue = 31, alpha = 0),
-                            )
-                        )
-                    )
-                    .padding(32.dp)
-                    .fillMaxWidth()
+                modifier =
+                    Modifier
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    Color(red = 28, green = 27, blue = 31, alpha = 204),
+                                    Color(red = 28, green = 27, blue = 31, alpha = 0),
+                                ),
+                            ),
+                        ).padding(32.dp)
+                        .fillMaxWidth(),
             ) {
                 Text(
                     text = lecture.conferenceTitle,
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.White.copy(alpha = 0.65f),
-                        shadow = Shadow(
-                            color = Color.Black.copy(alpha = 0.5f),
-                            offset = Offset(x = 2f, y = 4f),
-                            blurRadius = 2f
-                        )
-                    ),
+                    style =
+                        MaterialTheme.typography.bodyMedium.copy(
+                            color = Color.White.copy(alpha = 0.65f),
+                            shadow =
+                                Shadow(
+                                    color = Color.Black.copy(alpha = 0.5f),
+                                    offset = Offset(x = 2f, y = 4f),
+                                    blurRadius = 2f,
+                                ),
+                        ),
                     maxLines = 1,
                 )
                 Text(
                     text = lecture.title,
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        color = Color.White,
-                        shadow = Shadow(
-                            color = Color.Black.copy(alpha = 0.5f),
-                            offset = Offset(x = 2f, y = 4f),
-                            blurRadius = 2f
-                        )
-                    ),
+                    style =
+                        MaterialTheme.typography.titleLarge.copy(
+                            color = Color.White,
+                            shadow =
+                                Shadow(
+                                    color = Color.Black.copy(alpha = 0.5f),
+                                    offset = Offset(x = 2f, y = 4f),
+                                    blurRadius = 2f,
+                                ),
+                        ),
                     maxLines = 2,
                 )
             }

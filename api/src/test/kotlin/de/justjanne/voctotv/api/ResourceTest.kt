@@ -11,28 +11,31 @@ import org.junit.jupiter.api.assertThrows
 import retrofit2.HttpException
 import kotlin.test.Test
 
-
 @OptIn(ExperimentalSerializationApi::class)
 class ResourceTest {
     private val api: VoctowebApi = TestUtil.buildApi()
 
     @Test
-    fun parseResource() = runTest {
-        println(Json.decodeFromStream<ResourceModel>(TestUtil.load("recordings_94376.json")))
-    }
+    fun parseResource() =
+        runTest {
+            println(Json.decodeFromStream<ResourceModel>(TestUtil.load("recordings_94376.json")))
+        }
 
     @Test
-    fun parseResourceList() = runTest {
-        println(Json.decodeFromStream<ResourceApi.ResourceResult>(TestUtil.load("recordings.json")))
-    }
+    fun parseResourceList() =
+        runTest {
+            println(Json.decodeFromStream<ResourceApi.ResourceResult>(TestUtil.load("recordings.json")))
+        }
 
     @Test
-    fun loadResource() = runTest {
-        println(api.resource.get("94736"))
-    }
+    fun loadResource() =
+        runTest {
+            println(api.resource.get("94736"))
+        }
 
     @Test
-    fun loadResourceMissing() = runTest {
-        assertThrows<HttpException> { api.lecture.get("0") }
-    }
+    fun loadResourceMissing() =
+        runTest {
+            assertThrows<HttpException> { api.lecture.get("0") }
+        }
 }

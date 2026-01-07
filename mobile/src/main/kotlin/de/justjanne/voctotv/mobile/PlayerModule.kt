@@ -20,18 +20,22 @@ internal object PlayerModule {
     @OptIn(UnstableApi::class)
     @Provides
     fun providePlayer(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): Player {
-        val exoPlayer = ExoPlayer.Builder(context)
-            .setScrubbingModeParameters(
-                ScrubbingModeParameters.DEFAULT.buildUpon()
-                    .setDisabledTrackTypes(emptySet())
-                    .build()
-            )
-            .build()
-        val castPlayer = CastPlayer.Builder(context)
-            .setLocalPlayer(exoPlayer)
-            .build()
+        val exoPlayer =
+            ExoPlayer
+                .Builder(context)
+                .setScrubbingModeParameters(
+                    ScrubbingModeParameters.DEFAULT
+                        .buildUpon()
+                        .setDisabledTrackTypes(emptySet())
+                        .build(),
+                ).build()
+        val castPlayer =
+            CastPlayer
+                .Builder(context)
+                .setLocalPlayer(exoPlayer)
+                .build()
         return castPlayer
     }
 
@@ -39,7 +43,5 @@ internal object PlayerModule {
     fun provideMediaSession(
         @ApplicationContext context: Context,
         player: Player,
-    ): MediaSession {
-        return MediaSession.Builder(context, player).build()
-    }
+    ): MediaSession = MediaSession.Builder(context, player).build()
 }

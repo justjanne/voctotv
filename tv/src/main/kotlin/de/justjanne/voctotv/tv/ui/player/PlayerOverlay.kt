@@ -39,19 +39,16 @@ import androidx.compose.ui.input.key.type
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.ui.compose.state.rememberPlayPauseButtonState
-import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.player.PlayerState
-import de.justjanne.voctotv.mediacccde.model.LectureModel
-import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.common.util.formatTime
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.mediacccde.model.LectureModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.seconds
-
 
 @OptIn(UnstableApi::class)
 @Composable
@@ -71,12 +68,13 @@ fun PlayerOverlay(
 
     val hideJob = remember { mutableStateOf<Job?>(null) }
     val hideScope = rememberCoroutineScope()
-    val showUi = remember {
-        {
-            hideJob.value?.cancel()
-            uiVisible.value = true
+    val showUi =
+        remember {
+            {
+                hideJob.value?.cancel()
+                uiVisible.value = true
+            }
         }
-    }
 
     val seeking = remember { mutableStateOf(false) }
     LaunchedEffect(uiVisible.value) {
@@ -84,40 +82,44 @@ fun PlayerOverlay(
             seeking.value = false
         }
     }
-    val seekBack = remember {
-        {
-            viewModel.mediaSession.player.pause()
-            viewModel.mediaSession.player.seekBack()
-            seeking.value = true
-            showUi()
+    val seekBack =
+        remember {
+            {
+                viewModel.mediaSession.player.pause()
+                viewModel.mediaSession.player.seekBack()
+                seeking.value = true
+                showUi()
+            }
         }
-    }
-    val seekForward = remember {
-        {
-            viewModel.mediaSession.player.pause()
-            viewModel.mediaSession.player.seekForward()
-            seeking.value = true
-            showUi()
+    val seekForward =
+        remember {
+            {
+                viewModel.mediaSession.player.pause()
+                viewModel.mediaSession.player.seekForward()
+                seeking.value = true
+                showUi()
+            }
         }
-    }
 
     val context = LocalActivity.current
     DisposableEffect(viewModel.mediaSession.player, hideJob, uiVisible) {
-        val listener = object : Player.Listener {
-            override fun onIsPlayingChanged(isPlaying: Boolean) {
-                if (isPlaying) {
-                    context?.window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                    hideJob.value?.cancel()
-                    hideJob.value = hideScope.launch {
-                        delay(5.seconds)
-                        uiVisible.value = false
+        val listener =
+            object : Player.Listener {
+                override fun onIsPlayingChanged(isPlaying: Boolean) {
+                    if (isPlaying) {
+                        context?.window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                        hideJob.value?.cancel()
+                        hideJob.value =
+                            hideScope.launch {
+                                delay(5.seconds)
+                                uiVisible.value = false
+                            }
+                    } else {
+                        context?.window?.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                        showUi()
                     }
-                } else {
-                    context?.window?.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                    showUi()
                 }
             }
-        }
 
         viewModel.mediaSession.player.addListener(listener)
         onDispose {
@@ -126,80 +128,94 @@ fun PlayerOverlay(
     }
 
     Box(
-        modifier = Modifier.fillMaxSize()
-            .clickable(mainInteractionSource, indication = null, enabled = !uiVisible.value) {
-                uiVisible.value = true
-            }.onPreviewKeyEvent {
-                if (it.type == KeyEventType.KeyDown) {
-                    when (it.key) {
-                        Key.MediaPlayPause -> {
-                            if (viewModel.mediaSession.player.isPlaying) viewModel.mediaSession.player.pause()
-                            else viewModel.mediaSession.player.play()
-                            true
-                        }
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .clickable(mainInteractionSource, indication = null, enabled = !uiVisible.value) {
+                    uiVisible.value = true
+                }.onPreviewKeyEvent {
+                    if (it.type == KeyEventType.KeyDown) {
+                        when (it.key) {
+                            Key.MediaPlayPause -> {
+                                if (viewModel.mediaSession.player.isPlaying) {
+                                    viewModel.mediaSession.player.pause()
+                                } else {
+                                    viewModel.mediaSession.player.play()
+                                }
+                                true
+                            }
 
-                        Key.MediaPlay -> {
-                            viewModel.mediaSession.player.play()
-                            true
-                        }
+                            Key.MediaPlay -> {
+                                viewModel.mediaSession.player.play()
+                                true
+                            }
 
-                        Key.MediaPause -> {
-                            viewModel.mediaSession.player.pause()
-                            true
-                        }
+                            Key.MediaPause -> {
+                                viewModel.mediaSession.player.pause()
+                                true
+                            }
 
-                        Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward -> {
-                            seekForward()
-                            true
-                        }
-
-                        Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward -> {
-                            seekBack()
-                            true
-                        }
-
-                        Key.DirectionRight -> {
-                            if (!uiVisible.value) {
+                            Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward -> {
                                 seekForward()
                                 true
-                            } else false
-                        }
+                            }
 
-                        Key.DirectionLeft -> {
-                            if (!uiVisible.value) {
+                            Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward -> {
                                 seekBack()
                                 true
-                            } else false
-                        }
+                            }
 
-                        Key.DirectionUp,
-                        Key.DirectionDown,
-                        Key.DirectionCenter,
-                        Key.DirectionUpLeft,
-                        Key.DirectionDownLeft,
-                        Key.DirectionUpRight,
-                        Key.DirectionDownRight -> {
-                            if (!uiVisible.value) {
-                                showUi()
-                                true
-                            } else false
-                        }
+                            Key.DirectionRight -> {
+                                if (!uiVisible.value) {
+                                    seekForward()
+                                    true
+                                } else {
+                                    false
+                                }
+                            }
 
-                        else -> false
+                            Key.DirectionLeft -> {
+                                if (!uiVisible.value) {
+                                    seekBack()
+                                    true
+                                } else {
+                                    false
+                                }
+                            }
+
+                            Key.DirectionUp,
+                            Key.DirectionDown,
+                            Key.DirectionCenter,
+                            Key.DirectionUpLeft,
+                            Key.DirectionDownLeft,
+                            Key.DirectionUpRight,
+                            Key.DirectionDownRight,
+                            -> {
+                                if (!uiVisible.value) {
+                                    showUi()
+                                    true
+                                } else {
+                                    false
+                                }
+                            }
+
+                            else -> false
+                        }
+                    } else {
+                        false
                     }
-                } else false
-            }
+                },
     ) {
         TitleOverlay(
             uiVisible.value,
-            lecture
+            lecture,
         )
 
         AnimatedVisibility(
             uiVisible.value,
             enter = fadeIn() + slideInVertically(initialOffsetY = { it / 2 }),
             exit = fadeOut() + slideOutVertically(targetOffsetY = { it / 2 }),
-            modifier = Modifier.align(Alignment.BottomCenter)
+            modifier = Modifier.align(Alignment.BottomCenter),
         ) {
             Box {
                 Previewbar(
@@ -207,42 +223,46 @@ fun PlayerOverlay(
                     viewModel.mediaSession.player,
                     seekbarInteractionSource,
                     seeking,
-                    modifier = Modifier.align(Alignment.TopCenter)
+                    modifier = Modifier.align(Alignment.TopCenter),
                 )
                 Column(
-                    modifier = Modifier
-                        .background(
-                            Brush.verticalGradient(
-                                listOf(
-                                    Color(red = 28, green = 27, blue = 31, alpha = 0),
-                                    Color(red = 28, green = 27, blue = 31, alpha = 204)
-                                )
-                            )
-                        )
-                        .fillMaxWidth(),
+                    modifier =
+                        Modifier
+                            .background(
+                                Brush.verticalGradient(
+                                    listOf(
+                                        Color(red = 28, green = 27, blue = 31, alpha = 0),
+                                        Color(red = 28, green = 27, blue = 31, alpha = 204),
+                                    ),
+                                ),
+                            ).fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Row(Modifier.padding(start = 32.dp, end = 32.dp, top = 32.dp)) {
                         Text(
                             text = formatTime(playerState.progressMs),
-                            style = MaterialTheme.typography.labelLarge.copy(
-                                shadow = Shadow(
-                                    color = Color.Black.copy(alpha = 0.5f),
-                                    offset = Offset(x = 2f, y = 4f),
-                                    blurRadius = 2f
-                                )
-                            ),
+                            style =
+                                MaterialTheme.typography.labelLarge.copy(
+                                    shadow =
+                                        Shadow(
+                                            color = Color.Black.copy(alpha = 0.5f),
+                                            offset = Offset(x = 2f, y = 4f),
+                                            blurRadius = 2f,
+                                        ),
+                                ),
                         )
                         Spacer(Modifier.weight(1f))
                         Text(
                             text = formatTime(playerState.durationMs),
-                            style = MaterialTheme.typography.labelLarge.copy(
-                                shadow = Shadow(
-                                    color = Color.Black.copy(alpha = 0.5f),
-                                    offset = Offset(x = 2f, y = 4f),
-                                    blurRadius = 2f
-                                )
-                            ),
+                            style =
+                                MaterialTheme.typography.labelLarge.copy(
+                                    shadow =
+                                        Shadow(
+                                            color = Color.Black.copy(alpha = 0.5f),
+                                            offset = Offset(x = 2f, y = 4f),
+                                            blurRadius = 2f,
+                                        ),
+                                ),
                         )
                     }
                     Seekbar(viewModel.mediaSession.player, seekbarInteractionSource, seekBack, seekForward)
