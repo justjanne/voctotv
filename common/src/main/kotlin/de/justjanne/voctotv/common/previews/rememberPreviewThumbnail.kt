@@ -8,7 +8,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import coil3.Image
 import coil3.request.ImageRequest
-import de.justjanne.voctotv.mobile.util.spritesheetUrl
 import okhttp3.HttpUrl
 
 @Composable

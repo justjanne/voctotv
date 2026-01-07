@@ -25,6 +25,7 @@ import androidx.compose.ui.layout.onLayoutRectChanged
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
+import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.mobile.ui.theme.Primary
 
 private val thumb = 16.dp

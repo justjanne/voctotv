@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
 import coil3.compose.AsyncImage
+import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.common.previews.rememberPreviewThumbnail
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel

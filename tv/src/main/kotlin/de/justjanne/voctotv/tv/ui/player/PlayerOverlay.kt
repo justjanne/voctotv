@@ -43,6 +43,7 @@ import androidx.media3.ui.compose.state.rememberPlayPauseButtonState
 import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
+import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.common.util.formatTime
@@ -57,10 +58,8 @@ import kotlin.time.Duration.Companion.seconds
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
+    playerState: PlayerState,
 ) {
-    val progressState = rememberProgressStateWithTickInterval(viewModel.mediaSession.player)
-    val playPauseState = rememberPlayPauseButtonState(viewModel.mediaSession.player)
-
     val uiVisible = remember { mutableStateOf(false) }
 
     val mainInteractionSource = remember { MutableInteractionSource() }
@@ -225,7 +224,7 @@ fun PlayerOverlay(
                 ) {
                     Row(Modifier.padding(start = 32.dp, end = 32.dp, top = 32.dp)) {
                         Text(
-                            text = formatTime(progressState.currentPositionMs),
+                            text = formatTime(playerState.progressMs),
                             style = MaterialTheme.typography.labelLarge.copy(
                                 shadow = Shadow(
                                     color = Color.Black.copy(alpha = 0.5f),
@@ -236,7 +235,7 @@ fun PlayerOverlay(
                         )
                         Spacer(Modifier.weight(1f))
                         Text(
-                            text = formatTime(progressState.durationMs),
+                            text = formatTime(playerState.durationMs),
                             style = MaterialTheme.typography.labelLarge.copy(
                                 shadow = Shadow(
                                     color = Color.Black.copy(alpha = 0.5f),
@@ -247,7 +246,7 @@ fun PlayerOverlay(
                         )
                     }
                     Seekbar(viewModel.mediaSession.player, seekbarInteractionSource, seekBack, seekForward)
-                    PlayerButtons(viewModel.mediaSession.player, playPauseState, lecture)
+                    PlayerButtons(viewModel.mediaSession.player, playerState, lecture)
                 }
             }
         }

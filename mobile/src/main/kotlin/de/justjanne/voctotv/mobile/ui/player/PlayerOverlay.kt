@@ -47,6 +47,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.media3.cast.MediaRouteButton
 import androidx.media3.common.util.UnstableApi
+import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
@@ -58,12 +59,12 @@ import kotlinx.coroutines.Job
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
+    playerState: PlayerState,
     contentPadding: PaddingValues,
     back: () -> Unit,
 ) {
     val layoutDirection = LocalLayoutDirection.current
 
-    val playerState = rememberPlayerState(viewModel.mediaSession.player)
     val uiVisible = remember { mutableStateOf(false) }
     val uiForced = remember {
         derivedStateOf {

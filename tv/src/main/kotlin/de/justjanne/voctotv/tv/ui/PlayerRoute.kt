@@ -11,9 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.ContentFrame
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
-import de.justjanne.voctotv.tv.ui.player.PlayerOverlay
-import de.justjanne.voctotv.tv.ui.player.SubtitleDisplay
+import de.justjanne.voctotv.common.subtitles.SubtitleDisplay
+import de.justjanne.voctotv.common.player.rememberPlayerState
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.tv.ui.player.PlayerOverlay
 
 @OptIn(UnstableApi::class)
 @Composable
@@ -23,7 +24,7 @@ fun PlayerRoute(
     val mediaItem by viewModel.mediaItem.collectAsState()
     val lecture by viewModel.lecture.collectAsState()
 
-    LaunchedEffect(viewModel.mediaSession.player, lecture,mediaItem) {
+    LaunchedEffect(viewModel.mediaSession.player, lecture, mediaItem) {
         viewModel.mediaSession.player.apply {
             clearMediaItems()
             trackSelectionParameters = trackSelectionParameters.buildUpon()
@@ -39,6 +40,8 @@ fun PlayerRoute(
         }
     }
 
+    val playerState = rememberPlayerState(viewModel.mediaSession.player)
+
     Box(Modifier.fillMaxSize()) {
         ContentFrame(
             player = viewModel.mediaSession.player,
@@ -46,8 +49,7 @@ fun PlayerRoute(
             surfaceType = SURFACE_TYPE_SURFACE_VIEW,
         )
 
-        SubtitleDisplay(viewModel)
-
-        PlayerOverlay(viewModel, lecture)
+        SubtitleDisplay(viewModel.mediaSession.player)
+        PlayerOverlay(viewModel, lecture, playerState)
     }
 }

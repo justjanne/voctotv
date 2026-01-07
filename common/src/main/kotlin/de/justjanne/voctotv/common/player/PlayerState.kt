@@ -1,17 +1,10 @@
-package de.justjanne.voctotv.mobile.ui.player
+package de.justjanne.voctotv.common.player
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableLongStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.util.fastCoerceIn
 import androidx.media3.common.DeviceInfo
 import androidx.media3.common.Player
 import kotlinx.coroutines.delay
-import kotlin.coroutines.suspendCoroutine
 
 class PlayerState {
     enum class Status {

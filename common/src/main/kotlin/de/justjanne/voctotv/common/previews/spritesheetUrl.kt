@@ -1,9 +1,8 @@
-package de.justjanne.voctotv.mobile.util
+package de.justjanne.voctotv.common.previews
 
 import coil3.request.ImageRequest
 import coil3.request.transformations
 import coil3.size.SizeResolver
-import de.justjanne.voctotv.common.previews.SpritesheetTransformation
 import okhttp3.HttpUrl
 
 fun ImageRequest.Builder.spritesheetUrl(url: HttpUrl): ImageRequest.Builder {

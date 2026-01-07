@@ -16,11 +16,12 @@ import androidx.media3.common.C
 import androidx.media3.common.Player
 import androidx.media3.common.Tracks
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.ui.compose.state.PlayPauseButtonState
 import androidx.tv.material3.*
+import androidx.tv.material3.LocalContentColor
+import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.tv.R
 
-fun getLanguages(tracks: Tracks): List<String?> {
+private fun getLanguages(tracks: Tracks): List<String?> {
     return tracks.groups
         .filter { it.type == C.TRACK_TYPE_TEXT }
         .mapNotNull { it.getTrackFormat(0).language }
@@ -31,7 +32,7 @@ fun getLanguages(tracks: Tracks): List<String?> {
 @Composable
 fun CaptionSelection(
     player: Player,
-    playPauseState: PlayPauseButtonState,
+    playerState: PlayerState,
 ) {
     val languages = remember {
         mutableStateOf(getLanguages(player.currentTracks))
@@ -110,7 +111,7 @@ fun CaptionSelection(
         }
 
         IconButton(
-            enabled = playPauseState.isEnabled,
+            enabled = !playerState.loading,
             onClick = {
                 popupOpen.value = true
             },

@@ -1,22 +1,15 @@
-package de.justjanne.voctotv.mobile.ui.player
+package de.justjanne.voctotv.tv.ui.player
 
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
+import androidx.tv.material3.IconButton
+import androidx.tv.material3.LocalContentColor
 import de.justjanne.voctotv.common.player.PlayerState
-import de.justjanne.voctotv.mobile.R
-
-private val ConsentSize = 32.dp
-private val ContainerSize = 96.dp
+import de.justjanne.voctotv.tv.R
 
 @Composable
 fun PlayPauseButton(
@@ -25,7 +18,7 @@ fun PlayPauseButton(
     onPause: () -> Unit,
     onReplay: () -> Unit,
 ) {
-    FilledIconButton(
+    IconButton(
         onClick = {
             when (status) {
                 PlayerState.Status.BUFFERING -> Unit
@@ -34,39 +27,30 @@ fun PlayPauseButton(
                 PlayerState.Status.ENDED -> onReplay()
             }
         },
-        colors = IconButtonDefaults.filledIconButtonColors(
-            containerColor = Color.White,
-            disabledContainerColor = Color.White,
-            contentColor = Color.Black,
-            disabledContentColor = Color.Black,
-        ),
-        modifier = Modifier.requiredSize(ContainerSize)
-            .shadow(elevation = 8.dp, shape = CircleShape),
+        modifier = Modifier.requiredSize(androidx.tv.material3.IconButtonDefaults.LargeButtonSize)
     ) {
         when (status) {
             PlayerState.Status.BUFFERING ->
-                CircularProgressIndicator(
-                    modifier = Modifier.requiredSize(ConsentSize),
-                )
+                CircularProgressIndicator()
 
             PlayerState.Status.PLAYING ->
                 Icon(
                     painter = painterResource(R.drawable.ic_pause),
                     contentDescription = "Pause",
-                    modifier = Modifier.requiredSize(ConsentSize),
+                    tint = LocalContentColor.current,
                 )
 
             PlayerState.Status.PAUSED ->
                 Icon(
                     painter = painterResource(R.drawable.ic_play_arrow),
                     contentDescription = "Play",
-                    modifier = Modifier.requiredSize(ConsentSize),
+                    tint = LocalContentColor.current,
                 )
             PlayerState.Status.ENDED ->
                 Icon(
                     painter = painterResource(R.drawable.ic_replay),
                     contentDescription = "Play Again",
-                    modifier = Modifier.requiredSize(ConsentSize),
+                    tint = LocalContentColor.current,
                 )
         }
     }

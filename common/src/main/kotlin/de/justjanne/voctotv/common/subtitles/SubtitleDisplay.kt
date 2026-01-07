@@ -1,41 +1,51 @@
-package de.justjanne.voctotv.mobile.ui.player
+package de.justjanne.voctotv.common.subtitles
 
-import android.text.Layout
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
+import androidx.media3.common.VideoSize
 import androidx.media3.common.text.Cue
 import androidx.media3.common.text.CueGroup
-import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import androidx.compose.runtime.LaunchedEffect
 
 @Composable
-fun SubtitleDisplay(viewModel: PlayerViewModel, contentPadding: PaddingValues) {
+fun BoxScope.SubtitleDisplay(
+    player: Player,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
+) {
+    val aspectRatio = remember { mutableFloatStateOf(16f / 9f) }
     val currentCue = remember { mutableStateOf<CueGroup?>(null) }
-    DisposableEffect(viewModel.mediaSession.player) {
+    DisposableEffect(player) {
         val listener = object : Player.Listener {
             override fun onCues(cueGroup: CueGroup) {
                 currentCue.value = cueGroup
             }
+
+            override fun onVideoSizeChanged(videoSize: VideoSize) {
+                aspectRatio.floatValue = videoSize.width.toFloat() / videoSize.height.toFloat() * videoSize.pixelWidthHeightRatio
+            }
         }
-        viewModel.mediaSession.player.addListener(listener)
+        player.addListener(listener)
         onDispose {
-            viewModel.mediaSession.player.removeListener(listener)
+            player.removeListener(listener)
         }
     }
 
-    BoxWithConstraints(Modifier.fillMaxSize().padding(contentPadding)) {
+    BoxWithConstraints(
+        modifier = Modifier
+	    .align(Alignment.Center)
+            .aspectRatio(aspectRatio.floatValue)
+            .fillMaxSize()
+            .padding(contentPadding),
+    ) {
         val lineSize = constraints.maxHeight / 20f
         val padding = with(LocalDensity.current) { lineSize.toDp() }
         val lineHeight = with(LocalDensity.current) { lineSize.toSp() }
@@ -54,38 +64,6 @@ fun SubtitleDisplay(viewModel: PlayerViewModel, contentPadding: PaddingValues) {
             currentCue.value?.cues
                 ?.filter { it.lineAnchor == Cue.ANCHOR_TYPE_END || it.line < 0 }
                 ?.forEach { LineDisplay(it, lineHeight) }
-        }
-    }
-}
-
-@Composable
-fun ColumnScope.LineDisplay(
-    cue: Cue,
-    lineHeight: TextUnit,
-) {
-    cue.text?.let { text ->
-        Surface(
-            modifier = Modifier
-                .align(when (cue.positionAnchor) {
-                    Cue.ANCHOR_TYPE_START -> Alignment.Start
-                    Cue.ANCHOR_TYPE_END -> Alignment.End
-                    else -> Alignment.CenterHorizontally
-                }),
-            color = Color.Black.copy(alpha = 0.8f),
-            contentColor = Color.White,
-        ) {
-            Text(
-                text = text.toString(),
-                modifier = Modifier.padding(horizontal = 4.dp),
-                textAlign = when (cue.textAlignment) {
-                    Layout.Alignment.ALIGN_CENTER -> TextAlign.Center
-                    Layout.Alignment.ALIGN_NORMAL -> TextAlign.Start
-                    Layout.Alignment.ALIGN_OPPOSITE -> TextAlign.End
-                    null -> TextAlign.Start
-                },
-                fontSize = lineHeight / 1.25,
-                lineHeight = lineHeight,
-            )
         }
     }
 }

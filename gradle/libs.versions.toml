@@ -5,6 +5,8 @@ ksp = "2.3.4"
 coreKtx = "1.17.0"
 daggerHilt = "2.57.1"
 
+ktlint = "14.0.1"
+
 junitJupiter = "5.11.0"
 junitPlatform = "1.14.1"
 
@@ -96,3 +98,4 @@ kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerHilt" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

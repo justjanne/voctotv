@@ -18,16 +18,17 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.C
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.ui.compose.state.PlayPauseButtonState
 import androidx.tv.material3.*
-import de.justjanne.voctotv.tv.R
+import androidx.tv.material3.LocalContentColor
+import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.tv.R
 
 @OptIn(UnstableApi::class)
 @Composable
 fun AudioSelection(
     player: Player,
-    playPauseState: PlayPauseButtonState,
+    playerState: PlayerState,
     lecture: LectureModel?,
 ) {
     Box {
@@ -92,7 +93,7 @@ fun AudioSelection(
         }
 
         IconButton(
-            enabled = playPauseState.isEnabled,
+            enabled = !playerState.loading,
             onClick = {
                 popupOpen.value = true
             },
@@ -100,7 +101,7 @@ fun AudioSelection(
             Icon(
                 painter = painterResource(R.drawable.ic_translate),
                 contentDescription = "Language",
-                tint = LocalContentColor.current,
+		tint = LocalContentColor.current,
             )
         }
     }
