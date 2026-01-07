@@ -57,9 +57,10 @@ fun ConferenceItem(
             AsyncImage(
                 model = item.logoUrl,
                 contentDescription = null,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp),
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .padding(8.dp),
             )
         }
         Column(Modifier.align(Alignment.CenterVertically), verticalArrangement = Arrangement.Center) {

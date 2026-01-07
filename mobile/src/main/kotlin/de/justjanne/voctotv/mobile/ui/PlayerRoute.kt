@@ -58,9 +58,10 @@ fun PlayerRoute(
         Box(Modifier.fillMaxSize()) {
             ContentFrame(
                 player = viewModel.mediaSession.player,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(contentPadding),
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .padding(contentPadding),
                 surfaceType = SURFACE_TYPE_SURFACE_VIEW,
             )
 

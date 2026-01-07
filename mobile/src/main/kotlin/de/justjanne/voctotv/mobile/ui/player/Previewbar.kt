@@ -84,9 +84,11 @@ fun Previewbar(
                 shape = RoundedCornerShape(8.dp),
                 border = BorderStroke(width = 3.dp, color = Color(red = 28, green = 27, blue = 31, alpha = 204)),
             ) {
-                Box(Modifier
-                    .height(144.dp)
-                    .aspectRatio(16f / 9f)) {
+                Box(
+                    Modifier
+                        .height(144.dp)
+                        .aspectRatio(16f / 9f),
+                ) {
                     AsyncImage(
                         model = currentThumbnail.value,
                         contentDescription = null,

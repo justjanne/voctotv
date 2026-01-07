@@ -51,8 +51,7 @@ fun BoxScope.TitleOverlay(
                                     Color(red = 28, green = 27, blue = 31, alpha = 0),
                                 ),
                             ),
-                        )
-                        .padding(32.dp)
+                        ).padding(32.dp)
                         .fillMaxWidth(),
             ) {
                 Text(

@@ -82,15 +82,13 @@ fun Seekbar(
                     } else {
                         false
                     }
-                }
-                .clickable(interactionSource = interactionSource, indication = null) {
+                }.clickable(interactionSource = interactionSource, indication = null) {
                     if (player.isPlaying) {
                         player.pause()
                     } else {
                         player.play()
                     }
-                }
-                .drawBehind {
+                }.drawBehind {
                     val thumb = thumb.toPx()
                     val focusedHeight = focusedHeight.toPx()
                     val unfocusedHeight = unfocusedHeight.toPx()

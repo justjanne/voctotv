@@ -64,9 +64,10 @@ fun HomeRoute(
         item("header") {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp),
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp),
             ) {
                 Image(
                     painterResource(R.drawable.ic_mediacccde),
@@ -94,7 +95,7 @@ fun HomeRoute(
                     LectureCard(
                         lecture,
                         navigate,
-                        if (index == 0) Modifier.focusRequester(focusRequester) else Modifier
+                        if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
                     )
                 }
             }

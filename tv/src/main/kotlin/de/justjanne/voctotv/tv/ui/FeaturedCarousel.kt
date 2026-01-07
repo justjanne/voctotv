@@ -85,8 +85,7 @@ fun FeaturedCarousel(
                         width = 3.dp,
                         color = Color.White.copy(alpha = alpha),
                         shape = ShapeDefaults.Medium,
-                    )
-                    .clip(ShapeDefaults.Medium)
+                    ).clip(ShapeDefaults.Medium)
                     .onFocusChanged {
                         // Because the carousel itself never gets the focus
                         isCarouselFocused.value = it.hasFocus
@@ -105,26 +104,29 @@ fun FeaturedCarousel(
                 colors =
                     CardDefaults.colors(
                         containerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
-                        focusedContainerColor = Color(
-                            red = 28,
-                            green = 27,
-                            blue = 31,
-                            alpha = 204
-                        ).compositeOver(Color.Black),
-                        pressedContainerColor = Color(
-                            red = 28,
-                            green = 27,
-                            blue = 31,
-                            alpha = 204
-                        ).compositeOver(Color.Black),
+                        focusedContainerColor =
+                            Color(
+                                red = 28,
+                                green = 27,
+                                blue = 31,
+                                alpha = 204,
+                            ).compositeOver(Color.Black),
+                        pressedContainerColor =
+                            Color(
+                                red = 28,
+                                green = 27,
+                                blue = 31,
+                                alpha = 204,
+                            ).compositeOver(Color.Black),
                     ),
             ) {
                 Box {
                     CarouselItemBackground(
                         lecture,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(start = 288.dp),
+                        modifier =
+                            Modifier
+                                .fillMaxSize()
+                                .padding(start = 288.dp),
                     )
                     CarouselItemForeground(
                         lecture,
@@ -150,10 +152,11 @@ private fun CarouselItemForeground(
         contentAlignment = Alignment.BottomStart,
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .width(418.dp)
-                .padding(32.dp),
+            modifier =
+                Modifier
+                    .fillMaxHeight()
+                    .width(418.dp)
+                    .padding(32.dp),
             verticalArrangement = Arrangement.Bottom,
         ) {
             if (showConference) {

@@ -32,88 +32,88 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnsafeOptInUsageError")
 @HiltViewModel(assistedFactory = PlayerViewModel.Factory::class)
 class PlayerViewModel
-@AssistedInject
-constructor(
-    @Assisted lectureId: String,
-    api: VoctowebApi,
-    previewLoader: PreviewLoader,
-    private val previewPreloader: PreviewPreloader,
-    val mediaSession: MediaSession,
-) : ViewModel() {
-    val lecture =
-        flow {
-            emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
-        }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
-
-    val previews =
-        lecture
-            .map { it?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
-
-    val mediaItem =
-        lecture
-            .map { lecture ->
-                lecture?.let { lecture ->
-                    val track =
-                        lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
-                            ?: lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
-                    track?.let {
-                        MediaItem
-                            .Builder()
-                            .setUri(it.recordingUrl)
-                            .setMediaId(it.filename)
-                            .setSubtitleConfigurations(
-                                buildList {
-                                    lecture.resources?.filter { it.mimeType == MimeTypes.TEXT_VTT }?.forEach {
-                                        add(
-                                            MediaItem.SubtitleConfiguration
-                                                .Builder(
-                                                    it.recordingUrl
-                                                        .replace(
-                                                            "https://cdn.media.ccc.de/",
-                                                            "https://static.media.ccc.de/media/",
-                                                        ).toUri(),
-                                                ).setMimeType(it.mimeType)
-                                                .setRoleFlags(C.ROLE_FLAG_CAPTION)
-                                                .setLabel(it.language)
-                                                .setLanguage(it.language)
-                                                .setSelectionFlags(0)
-                                                .build(),
-                                        )
-                                    }
-                                    lecture.resources?.filter { it.mimeType == MimeTypes.APPLICATION_SUBRIP }?.forEach {
-                                        add(
-                                            MediaItem.SubtitleConfiguration
-                                                .Builder(it.recordingUrl.toUri())
-                                                .setMimeType(it.mimeType)
-                                                .setRoleFlags(C.ROLE_FLAG_CAPTION)
-                                                .setLabel(it.language)
-                                                .setLanguage(it.language)
-                                                .setSelectionFlags(0)
-                                                .build(),
-                                        )
-                                    }
-                                },
-                            ).build()
-                    }
-                }
+    @AssistedInject
+    constructor(
+        @Assisted lectureId: String,
+        api: VoctowebApi,
+        previewLoader: PreviewLoader,
+        private val previewPreloader: PreviewPreloader,
+        val mediaSession: MediaSession,
+    ) : ViewModel() {
+        val lecture =
+            flow {
+                emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
             }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    init {
-        viewModelScope.launch {
-            previews.collectLatest {
-                previewPreloader.preload(it)
+        val previews =
+            lecture
+                .map { it?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
+        val mediaItem =
+            lecture
+                .map { lecture ->
+                    lecture?.let { lecture ->
+                        val track =
+                            lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
+                                ?: lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
+                        track?.let {
+                            MediaItem
+                                .Builder()
+                                .setUri(it.recordingUrl)
+                                .setMediaId(it.filename)
+                                .setSubtitleConfigurations(
+                                    buildList {
+                                        lecture.resources?.filter { it.mimeType == MimeTypes.TEXT_VTT }?.forEach {
+                                            add(
+                                                MediaItem.SubtitleConfiguration
+                                                    .Builder(
+                                                        it.recordingUrl
+                                                            .replace(
+                                                                "https://cdn.media.ccc.de/",
+                                                                "https://static.media.ccc.de/media/",
+                                                            ).toUri(),
+                                                    ).setMimeType(it.mimeType)
+                                                    .setRoleFlags(C.ROLE_FLAG_CAPTION)
+                                                    .setLabel(it.language)
+                                                    .setLanguage(it.language)
+                                                    .setSelectionFlags(0)
+                                                    .build(),
+                                            )
+                                        }
+                                        lecture.resources?.filter { it.mimeType == MimeTypes.APPLICATION_SUBRIP }?.forEach {
+                                            add(
+                                                MediaItem.SubtitleConfiguration
+                                                    .Builder(it.recordingUrl.toUri())
+                                                    .setMimeType(it.mimeType)
+                                                    .setRoleFlags(C.ROLE_FLAG_CAPTION)
+                                                    .setLabel(it.language)
+                                                    .setLanguage(it.language)
+                                                    .setSelectionFlags(0)
+                                                    .build(),
+                                            )
+                                        }
+                                    },
+                                ).build()
+                        }
+                    }
+                }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+        init {
+            viewModelScope.launch {
+                previews.collectLatest {
+                    previewPreloader.preload(it)
+                }
             }
         }
-    }
 
-    override fun onCleared() {
-        mediaSession.player.release()
-        mediaSession.release()
-    }
+        override fun onCleared() {
+            mediaSession.player.release()
+            mediaSession.release()
+        }
 
-    @AssistedFactory
-    interface Factory {
-        fun create(lectureId: String): PlayerViewModel
+        @AssistedFactory
+        interface Factory {
+            fun create(lectureId: String): PlayerViewModel
+        }
     }
-}

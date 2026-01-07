@@ -153,14 +153,12 @@ fun PlayerOverlay(
                                     Color(red = 28, green = 27, blue = 31, alpha = 0),
                                 ),
                             ),
-                        )
-                        .padding(32.dp)
+                        ).padding(32.dp)
                         .padding(
                             start = contentPadding.calculateStartPadding(layoutDirection),
                             end = contentPadding.calculateEndPadding(layoutDirection),
                             top = contentPadding.calculateTopPadding(),
-                        )
-                        .fillMaxWidth(),
+                        ).fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 IconButton(
@@ -234,8 +232,7 @@ fun PlayerOverlay(
                                     Color(red = 28, green = 27, blue = 31, alpha = 204),
                                 ),
                             ),
-                        )
-                        .padding(
+                        ).padding(
                             top = 32.dp,
                             start = contentPadding.calculateStartPadding(layoutDirection),
                             end = contentPadding.calculateEndPadding(layoutDirection),

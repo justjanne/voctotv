@@ -73,8 +73,7 @@ fun Seekbar(
                             playerState.commitSeek(player)
                         },
                     )
-                }
-                .draggable(
+                }.draggable(
                     state = dragState,
                     orientation = Orientation.Horizontal,
                     startDragImmediately = playerState.seeking,
@@ -84,11 +83,9 @@ fun Seekbar(
                     onDragStopped = {
                         playerState.commitSeek(player)
                     },
-                )
-                .onLayoutRectChanged {
+                ).onLayoutRectChanged {
                     scaleFactor.value = playerState.durationMs.toFloat() / it.width.toFloat()
-                }
-                .drawBehind {
+                }.drawBehind {
                     val thumb = thumb.toPx()
                     val focusedHeight = focusedHeight.toPx()
                     val unfocusedHeight = unfocusedHeight.toPx()

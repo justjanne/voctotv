@@ -140,8 +140,7 @@ fun PlayerOverlay(
                 .fillMaxSize()
                 .clickable(mainInteractionSource, indication = null, enabled = !uiVisible.value) {
                     uiVisible.value = true
-                }
-                .onPreviewKeyEvent {
+                }.onPreviewKeyEvent {
                     if (it.type == KeyEventType.KeyDown) {
                         when (it.key) {
                             Key.MediaPlayPause -> {
@@ -198,7 +197,7 @@ fun PlayerOverlay(
                             Key.DirectionDownLeft,
                             Key.DirectionUpRight,
                             Key.DirectionDownRight,
-                                -> {
+                            -> {
                                 if (!uiVisible.value) {
                                     showUi()
                                     true
@@ -243,8 +242,7 @@ fun PlayerOverlay(
                                         Color(red = 28, green = 27, blue = 31, alpha = 204),
                                     ),
                                 ),
-                            )
-                            .fillMaxWidth(),
+                            ).fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Row(Modifier.padding(start = 32.dp, end = 32.dp, top = 32.dp)) {

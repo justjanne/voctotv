@@ -39,9 +39,10 @@ fun PlayerPopup(
             onDismissRequest = { onClose() },
         ) {
             Surface(
-                modifier = Modifier
-                    .wrapContentHeight()
-                    .width(244.dp),
+                modifier =
+                    Modifier
+                        .wrapContentHeight()
+                        .width(244.dp),
                 shape = MaterialTheme.shapes.large,
             ) {
                 content()

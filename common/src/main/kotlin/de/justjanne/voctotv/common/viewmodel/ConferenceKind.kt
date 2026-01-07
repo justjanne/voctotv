@@ -21,19 +21,19 @@ enum class ConferenceKind {
 fun ConferenceModel.kind() =
     when {
         slug.startsWith("congress/")
-            -> ConferenceKind.CONGRESS
+        -> ConferenceKind.CONGRESS
 
         slug.startsWith("conferences/gpn/")
-            -> ConferenceKind.GPN
+        -> ConferenceKind.GPN
 
         slug.startsWith("conferences/") || slug.startsWith("events/")
-            -> ConferenceKind.CONFERENCE
+        -> ConferenceKind.CONFERENCE
 
         slug.startsWith("erfas/")
-            -> ConferenceKind.ERFA
+        -> ConferenceKind.ERFA
 
         slug.startsWith("documentations/")
-            -> ConferenceKind.DOCUMENTATIONS
+        -> ConferenceKind.DOCUMENTATIONS
 
         else -> ConferenceKind.OTHER
     }

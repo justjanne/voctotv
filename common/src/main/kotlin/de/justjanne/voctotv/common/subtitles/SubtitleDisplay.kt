@@ -65,25 +65,31 @@ fun BoxScope.SubtitleDisplay(
         val padding = with(LocalDensity.current) { lineSize.toDp() }
         val lineHeight = with(LocalDensity.current) { lineSize.toSp() }
 
-        Column(Modifier
-            .align(Alignment.TopCenter)
-            .padding(top = padding, start = padding, end = padding)) {
+        Column(
+            Modifier
+                .align(Alignment.TopCenter)
+                .padding(top = padding, start = padding, end = padding),
+        ) {
             currentCue.value
                 ?.cues
                 ?.filter { it.lineAnchor == Cue.ANCHOR_TYPE_START && it.line >= 0 }
                 ?.forEach { LineDisplay(it, lineHeight) }
         }
-        Column(Modifier
-            .align(Alignment.Center)
-            .padding(start = padding, end = padding)) {
+        Column(
+            Modifier
+                .align(Alignment.Center)
+                .padding(start = padding, end = padding),
+        ) {
             currentCue.value
                 ?.cues
                 ?.filter { it.lineAnchor == Cue.ANCHOR_TYPE_MIDDLE && it.line >= 0 }
                 ?.forEach { LineDisplay(it, lineHeight) }
         }
-        Column(Modifier
-            .align(Alignment.BottomCenter)
-            .padding(bottom = padding, start = padding, end = padding)) {
+        Column(
+            Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = padding, start = padding, end = padding),
+        ) {
             currentCue.value
                 ?.cues
                 ?.filter { it.lineAnchor == Cue.ANCHOR_TYPE_END || it.line < 0 }
