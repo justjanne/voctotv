@@ -18,7 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -45,11 +45,11 @@ fun Seekbar(
     player: Player,
     playerState: PlayerState,
 ) {
-    val scaleFactor = remember { mutableStateOf(0f) }
+    val scaleFactor = remember { mutableFloatStateOf(0f) }
     val dragState =
         rememberDraggableState {
             val start = if (playerState.seeking) playerState.seekingMs else playerState.progressMs
-            playerState.seek((start + it * scaleFactor.value).toLong())
+            playerState.seek((start + it * scaleFactor.floatValue).toLong())
         }
 
     val focusRequester = remember { FocusRequester() }
@@ -69,7 +69,7 @@ fun Seekbar(
                     detectTapGestures(
                         onPress = {},
                         onTap = {
-                            playerState.seek((it.x * scaleFactor.value).toLong())
+                            playerState.seek((it.x * scaleFactor.floatValue).toLong())
                             playerState.commitSeek(player)
                         },
                     )
@@ -78,13 +78,13 @@ fun Seekbar(
                     orientation = Orientation.Horizontal,
                     startDragImmediately = playerState.seeking,
                     onDragStarted = {
-                        playerState.seek((it.x * scaleFactor.value).toLong())
+                        playerState.seek((it.x * scaleFactor.floatValue).toLong())
                     },
                     onDragStopped = {
                         playerState.commitSeek(player)
                     },
                 ).onLayoutRectChanged {
-                    scaleFactor.value = playerState.durationMs.toFloat() / it.width.toFloat()
+                    scaleFactor.floatValue = playerState.durationMs.toFloat() / it.width.toFloat()
                 }.drawBehind {
                     val thumb = thumb.toPx()
                     val focusedHeight = focusedHeight.toPx()

@@ -2,7 +2,7 @@
   <style name="Theme.VoctoTV" parent="Theme.Material3.Dark.NoActionBar"/>
   <style name="Theme.VoctoTV.Splashscreen" parent="Theme.SplashScreen">
     <item name="postSplashScreenTheme">@style/Theme.VoctoTV</item>
-    <item name="android:windowSplashScreenBackground">@color/ic_splash_background</item>
-    <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+    <item name="windowSplashScreenBackground">@color/ic_splash_background</item>
+    <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
   </style>
 </resources>
