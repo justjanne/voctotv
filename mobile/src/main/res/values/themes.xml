@@ -1,3 +1,3 @@
 <resources>
-  <style name="Theme.VoctoTv" parent="Theme.Material3.Dark.NoActionBar"/>
+  <style name="Theme.VoctoTV" parent="Theme.Material3.Dark.NoActionBar"/>
 </resources>

@@ -19,7 +19,7 @@
      android:label="@string/app_name"
      android:supportsRtl="true"
      android:name=".tv.VoctoTV"
-     android:theme="@style/Theme.VoctoTv">
+     android:theme="@style/Theme.VoctoTV">
     <activity
        android:name=".tv.MainActivity"
        android:launchMode="singleTask"

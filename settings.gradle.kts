@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "voctotv"
+rootProject.name = "VoctoTV"
 include(":mobile")
 include(":tv")
 include(":api")

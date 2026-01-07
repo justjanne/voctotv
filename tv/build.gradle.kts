@@ -30,6 +30,10 @@ android {
         targetSdk = 36
         versionCode = git("rev-list", "--count", "HEAD", "--tags").orNull?.toIntOrNull() ?: 1
         versionName = git("describe", "--always", "--tags", "HEAD").getOrElse("0.1.0")
+
+        configure<BasePluginExtension> {
+            archivesName.set("${rootProject.name}-$name-${versionName}")
+        }
     }
 
     buildFeatures {
