@@ -58,7 +58,7 @@ fun BoxScope.TitleOverlay(
                     text = lecture.conferenceTitle,
                     style =
                         MaterialTheme.typography.bodyMedium.copy(
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.65f),
+                            color = Color.White.copy(alpha = 0.65f),
                             shadow =
                                 Shadow(
                                     color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
@@ -72,7 +72,7 @@ fun BoxScope.TitleOverlay(
                     text = lecture.title,
                     style =
                         MaterialTheme.typography.titleLarge.copy(
-                            color = MaterialTheme.colorScheme.onSurface,
+                            color = Color.White,
                             shadow =
                                 Shadow(
                                     color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),

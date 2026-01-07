@@ -83,9 +83,10 @@ fun FeaturedCarousel(
                     .padding(start = 32.dp, end = 32.dp, bottom = 20.dp)
                     .border(
                         width = 3.dp,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha),
+                        color = Color.White.copy(alpha = alpha),
                         shape = ShapeDefaults.Medium,
-                    ).clip(ShapeDefaults.Medium)
+                    )
+                    .clip(ShapeDefaults.Medium)
                     .onFocusChanged {
                         // Because the carousel itself never gets the focus
                         isCarouselFocused.value = it.hasFocus
@@ -104,26 +105,14 @@ fun FeaturedCarousel(
                 colors =
                     CardDefaults.colors(
                         containerColor =
-                            Color(
-                                red = 28,
-                                green = 27,
-                                blue = 31,
-                                alpha = 204,
-                            ).compositeOver(MaterialTheme.colorScheme.surface),
+                            Color(red = 28, green = 27, blue = 31, alpha = 204)
+                                .compositeOver(MaterialTheme.colorScheme.scrim),
                         focusedContainerColor =
-                            Color(
-                                red = 28,
-                                green = 27,
-                                blue = 31,
-                                alpha = 204,
-                            ).compositeOver(MaterialTheme.colorScheme.surface),
+                            Color(red = 28, green = 27, blue = 31, alpha = 204)
+                                .compositeOver(MaterialTheme.colorScheme.scrim),
                         pressedContainerColor =
-                            Color(
-                                red = 28,
-                                green = 27,
-                                blue = 31,
-                                alpha = 204,
-                            ).compositeOver(MaterialTheme.colorScheme.surface),
+                            Color(red = 28, green = 27, blue = 31, alpha = 204)
+                                .compositeOver(MaterialTheme.colorScheme.scrim),
                     ),
             ) {
                 Box {
@@ -170,7 +159,7 @@ private fun CarouselItemForeground(
                     text = lecture.conferenceTitle,
                     style =
                         MaterialTheme.typography.bodyMedium.copy(
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                            color = Color.White.copy(alpha = 0.6f),
                             shadow =
                                 Shadow(
                                     color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
@@ -200,7 +189,7 @@ private fun CarouselItemForeground(
                 text = lecture.persons.fastJoinToString(" · "),
                 style =
                     MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                        color = Color.White.copy(alpha = 0.6f),
                         shadow =
                             Shadow(
                                 color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
@@ -215,7 +204,7 @@ private fun CarouselItemForeground(
                     text = it.replace(Regex("\n\n+"), "\n"),
                     style =
                         MaterialTheme.typography.bodyMedium.copy(
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+                            color = Color.White.copy(alpha = 0.8f),
                             shadow =
                                 Shadow(
                                     color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),

@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -88,11 +89,11 @@ fun LectureCard(
                     Modifier
                         .align(Alignment.TopEnd)
                         .padding(6.dp)
-                        .background(MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.extraSmall)
+                        .background(MaterialTheme.colorScheme.scrim, shape = MaterialTheme.shapes.extraSmall)
                         .padding(horizontal = 6.dp, vertical = 2.dp),
                 style =
                     MaterialTheme.typography.labelLarge.copy(
-                        color = MaterialTheme.colorScheme.onSurface,
+                        color = Color.White,
                     ),
             )
         },
