@@ -128,6 +128,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(libs.androidx.splashscreen)
+
     implementation(libs.androidx.material3)
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
