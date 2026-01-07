@@ -144,7 +144,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 
     implementation(project(":api"))
-    implementation(project(":viewmodel"))
+    implementation(project(":common"))
 
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.kotlinx.serialization)

@@ -11,6 +11,7 @@ import androidx.compose.ui.util.fastCoerceIn
 import androidx.media3.common.DeviceInfo
 import androidx.media3.common.Player
 import kotlinx.coroutines.delay
+import kotlin.coroutines.suspendCoroutine
 
 class PlayerState {
     enum class Status {
@@ -96,11 +97,9 @@ fun rememberPlayerState(player: Player): PlayerState {
 
     LaunchedEffect(player, state.status) {
         state.updateProgress(player)
-        if (state.status == PlayerState.Status.PLAYING) {
-            while (true) {
-                delay(50)
-                state.updateProgress(player)
-            }
+        while (state.status == PlayerState.Status.PLAYING) {
+            delay(50)
+            state.updateProgress(player)
         }
     }
 

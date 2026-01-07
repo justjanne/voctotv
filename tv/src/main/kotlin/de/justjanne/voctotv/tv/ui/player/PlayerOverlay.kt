@@ -44,8 +44,8 @@ import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.mediacccde.model.LectureModel
-import de.justjanne.voctotv.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.viewmodel.util.formatTime
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.util.formatTime
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

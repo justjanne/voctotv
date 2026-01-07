@@ -13,7 +13,7 @@ import androidx.media3.ui.compose.ContentFrame
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
 import de.justjanne.voctotv.tv.ui.player.PlayerOverlay
 import de.justjanne.voctotv.tv.ui.player.SubtitleDisplay
-import de.justjanne.voctotv.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 
 @OptIn(UnstableApi::class)
 @Composable

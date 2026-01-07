@@ -1,4 +1,4 @@
-package de.justjanne.voctotv.mobile.ui.player
+package de.justjanne.voctotv.common.previews
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State

@@ -7,7 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import de.justjanne.voctotv.mediacccde.api.VoctowebApi
-import de.justjanne.voctotv.viewmodel.util.UserAgentInterceptor
+import de.justjanne.voctotv.common.util.UserAgentInterceptor
 import kotlinx.serialization.json.Json
 import okhttp3.Cache
 import okhttp3.MediaType.Companion.toMediaType

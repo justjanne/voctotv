@@ -26,7 +26,7 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.Text
-import de.justjanne.voctotv.viewmodel.ConferenceViewModel
+import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 
 @Composable
 fun ConferenceRoute(

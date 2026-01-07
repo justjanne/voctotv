@@ -1,4 +1,4 @@
-package de.justjanne.voctotv.viewmodel
+package de.justjanne.voctotv.common.viewmodel
 
 import de.justjanne.voctotv.mediacccde.model.ConferenceModel
 

@@ -28,7 +28,7 @@ import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
 import androidx.tv.material3.Border
 import androidx.tv.material3.Surface
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 
 private val thumb = 16.dp
 

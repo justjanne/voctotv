@@ -33,7 +33,7 @@ import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.tv.Routes
-import de.justjanne.voctotv.viewmodel.util.formatTime
+import de.justjanne.voctotv.common.util.formatTime
 
 @Composable
 fun LectureCard(

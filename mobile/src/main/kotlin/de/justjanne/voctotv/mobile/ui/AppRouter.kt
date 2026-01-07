@@ -11,9 +11,9 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import de.justjanne.voctotv.viewmodel.ConferenceViewModel
-import de.justjanne.voctotv.viewmodel.HomeViewModel
-import de.justjanne.voctotv.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
+import de.justjanne.voctotv.common.viewmodel.HomeViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

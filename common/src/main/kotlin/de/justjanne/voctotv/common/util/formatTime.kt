@@ -1,4 +1,4 @@
-package de.justjanne.voctotv.viewmodel.util
+package de.justjanne.voctotv.common.util
 
 import androidx.compose.ui.util.fastCoerceAtLeast
 import java.util.*

@@ -1,4 +1,4 @@
-package de.justjanne.voctotv.viewmodel.util
+package de.justjanne.voctotv.common.previews
 
 import android.content.Context
 import coil3.imageLoader

@@ -49,8 +49,8 @@ import androidx.media3.cast.MediaRouteButton
 import androidx.media3.common.util.UnstableApi
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.mobile.R
-import de.justjanne.voctotv.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.viewmodel.util.formatTime
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.util.formatTime
 import kotlinx.coroutines.Job
 
 @OptIn(UnstableApi::class)
@@ -275,4 +275,3 @@ fun PlayerOverlay(
         }
     }
 }
-

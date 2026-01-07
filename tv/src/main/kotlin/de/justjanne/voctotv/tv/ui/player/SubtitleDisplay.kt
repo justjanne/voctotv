@@ -23,7 +23,7 @@ import androidx.media3.common.text.CueGroup
 import androidx.tv.material3.Surface
 import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
-import de.justjanne.voctotv.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 
 @Composable
 fun SubtitleDisplay(viewModel: PlayerViewModel) {

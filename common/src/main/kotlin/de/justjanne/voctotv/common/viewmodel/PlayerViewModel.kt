@@ -1,4 +1,4 @@
-package de.justjanne.voctotv.viewmodel
+package de.justjanne.voctotv.common.viewmodel
 
 import android.annotation.SuppressLint
 import androidx.core.net.toUri
@@ -13,17 +13,14 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.justjanne.voctotv.mediacccde.api.VoctowebApi
-import de.justjanne.voctotv.viewmodel.util.PreviewLoader
-import de.justjanne.voctotv.viewmodel.util.PreviewPreloader
+import de.justjanne.voctotv.common.previews.PreviewLoader
+import de.justjanne.voctotv.common.previews.PreviewPreloader
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import retrofit2.http.Url
-import java.net.URI
-import java.net.URL
 
 @SuppressLint("UnsafeOptInUsageError")
 @HiltViewModel(assistedFactory = PlayerViewModel.Factory::class)

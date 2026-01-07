@@ -1,4 +1,4 @@
-package de.justjanne.voctotv.viewmodel.util
+package de.justjanne.voctotv.common.util
 
 import okhttp3.Call
 import okhttp3.Callback

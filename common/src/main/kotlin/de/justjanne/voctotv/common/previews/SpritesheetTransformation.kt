@@ -1,4 +1,4 @@
-package de.justjanne.voctotv.viewmodel.util
+package de.justjanne.voctotv.common.previews
 
 import android.graphics.Bitmap
 import coil3.size.Size

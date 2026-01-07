@@ -20,8 +20,8 @@ import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.tv.R
-import de.justjanne.voctotv.viewmodel.ConferenceKind
-import de.justjanne.voctotv.viewmodel.HomeViewModel
+import de.justjanne.voctotv.common.viewmodel.ConferenceKind
+import de.justjanne.voctotv.common.viewmodel.HomeViewModel
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable

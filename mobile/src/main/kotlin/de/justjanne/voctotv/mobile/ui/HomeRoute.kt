@@ -27,9 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
-import de.justjanne.voctotv.viewmodel.ConferenceKind
-import de.justjanne.voctotv.viewmodel.HomeViewModel
-import de.justjanne.voctotv.viewmodel.kind
+import de.justjanne.voctotv.common.viewmodel.ConferenceKind
+import de.justjanne.voctotv.common.viewmodel.HomeViewModel
+import de.justjanne.voctotv.common.viewmodel.kind
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

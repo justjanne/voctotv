@@ -33,7 +33,7 @@ import androidx.navigation3.runtime.NavKey
 import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
-import de.justjanne.voctotv.viewmodel.ConferenceViewModel
+import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

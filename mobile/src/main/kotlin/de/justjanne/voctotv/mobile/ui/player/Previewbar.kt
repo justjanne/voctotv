@@ -27,10 +27,11 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.viewmodel.util.formatTime
+import de.justjanne.voctotv.common.previews.rememberPreviewThumbnail
+import de.justjanne.voctotv.common.util.formatTime
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 
-private val thumb = 16.dp
+private val ThumbSize = 16.dp
 
 @OptIn(UnstableApi::class)
 @Composable
@@ -43,7 +44,7 @@ fun Previewbar(
 
     val currentCue = remember {
         derivedStateOf {
-            val seekingUs = playerState.seekingMs * 1000
+            val seekingUs = playerState.seekingMs * 1000L
             allCues.value.firstOrNull { it.startUs <= seekingUs && it.endUs >= seekingUs }?.data
         }
     }
@@ -58,7 +59,7 @@ fun Previewbar(
         Column(
             modifier = Modifier
                 .graphicsLayer {
-                    val thumb = thumb.toPx()
+                    val thumb = ThumbSize.toPx()
                     val currentTimestamp = playerState.seekingMs
                     val progress = currentTimestamp.toFloat() / playerState.durationMs.toFloat()
                     val currentWidth = constraints.maxWidth - thumb

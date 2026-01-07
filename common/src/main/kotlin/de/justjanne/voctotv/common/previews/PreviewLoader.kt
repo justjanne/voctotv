@@ -1,9 +1,10 @@
-package de.justjanne.voctotv.viewmodel.util
+package de.justjanne.voctotv.common.previews
 
 import androidx.annotation.OptIn
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.extractor.text.SubtitleParser
 import androidx.media3.extractor.text.webvtt.WebvttParser
+import de.justjanne.voctotv.common.util.await
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request

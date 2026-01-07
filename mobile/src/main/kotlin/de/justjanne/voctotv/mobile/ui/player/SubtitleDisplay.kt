@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.text.Cue
 import androidx.media3.common.text.CueGroup
-import de.justjanne.voctotv.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 
 @Composable
 fun SubtitleDisplay(viewModel: PlayerViewModel, contentPadding: PaddingValues) {
