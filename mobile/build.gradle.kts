@@ -15,7 +15,7 @@ configure<BasePluginExtension> {
 }
 
 android {
-    namespace = "de.justjanne.voctotv"
+    namespace = "de.justjanne.voctotv.mobile"
     compileSdk = 36
 
     fun Project.git(vararg command: String): Provider<String> =
@@ -132,6 +132,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.cast)
     implementation(libs.androidx.media3.session)
     implementation(libs.androidx.media3.extractor)
     implementation(libs.androidx.media3.compose)

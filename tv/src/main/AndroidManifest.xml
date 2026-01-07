@@ -18,10 +18,10 @@
      android:roundIcon="@mipmap/ic_launcher_round"
      android:label="@string/app_name"
      android:supportsRtl="true"
-     android:name=".VoctoTV"
+     android:name=".tv.VoctoTV"
      android:theme="@style/Theme.VoctoTv">
     <activity
-       android:name=".MainActivity"
+       android:name=".tv.MainActivity"
        android:launchMode="singleTask"
        android:exported="true">
       <intent-filter>

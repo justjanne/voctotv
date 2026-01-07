@@ -15,7 +15,7 @@ configure<BasePluginExtension> {
 }
 
 android {
-    namespace = "de.justjanne.voctotv"
+    namespace = "de.justjanne.voctotv.tv"
     compileSdk = 36
 
     fun Project.git(vararg command: String): Provider<String> =
