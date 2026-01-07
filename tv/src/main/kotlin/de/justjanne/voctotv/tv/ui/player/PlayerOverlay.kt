@@ -114,6 +114,8 @@ fun PlayerOverlay(
             object : Player.Listener {
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
                     if (isPlaying) {
+                        seeking.value = false
+
                         context?.window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
                         hideJob.value?.cancel()
                         hideJob.value =
