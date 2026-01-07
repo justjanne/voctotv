@@ -28,7 +28,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
@@ -64,7 +63,7 @@ fun ConferenceRoute(
                             MaterialTheme.typography.titleLarge.copy(
                                 shadow =
                                     Shadow(
-                                        color = Color.Black.copy(alpha = 0.5f),
+                                        color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                         offset = Offset(x = 2f, y = 4f),
                                         blurRadius = 2f,
                                     ),

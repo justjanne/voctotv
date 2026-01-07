@@ -178,10 +178,10 @@ fun PlayerOverlay(
                                 text = lecture.conferenceTitle,
                                 style =
                                     MaterialTheme.typography.bodyMedium.copy(
-                                        color = Color.White.copy(alpha = 0.65f),
+                                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.65f),
                                         shadow =
                                             Shadow(
-                                                color = Color.Black.copy(alpha = 0.5f),
+                                                color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                                 offset = Offset(x = 2f, y = 4f),
                                                 blurRadius = 2f,
                                             ),
@@ -192,10 +192,10 @@ fun PlayerOverlay(
                                 text = lecture.title,
                                 style =
                                     MaterialTheme.typography.titleLarge.copy(
-                                        color = Color.White,
+                                        color = MaterialTheme.colorScheme.onSurface,
                                         shadow =
                                             Shadow(
-                                                color = Color.Black.copy(alpha = 0.5f),
+                                                color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                                 offset = Offset(x = 2f, y = 4f),
                                                 blurRadius = 2f,
                                             ),
@@ -255,7 +255,7 @@ fun PlayerOverlay(
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow =
                                         Shadow(
-                                            color = Color.Black.copy(alpha = 0.5f),
+                                            color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                             offset = Offset(x = 2f, y = 4f),
                                             blurRadius = 2f,
                                         ),
@@ -268,7 +268,7 @@ fun PlayerOverlay(
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow =
                                         Shadow(
-                                            color = Color.Black.copy(alpha = 0.5f),
+                                            color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                             offset = Offset(x = 2f, y = 4f),
                                             blurRadius = 2f,
                                         ),

@@ -83,7 +83,7 @@ fun FeaturedCarousel(
                     .padding(start = 32.dp, end = 32.dp, bottom = 20.dp)
                     .border(
                         width = 3.dp,
-                        color = Color.White.copy(alpha = alpha),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha),
                         shape = ShapeDefaults.Medium,
                     ).clip(ShapeDefaults.Medium)
                     .onFocusChanged {
@@ -103,21 +103,27 @@ fun FeaturedCarousel(
                 onClick = { navigate(Routes.Player(lecture.guid)) },
                 colors =
                     CardDefaults.colors(
-                        containerColor = Color(red = 28, green = 27, blue = 31, alpha = 204).compositeOver(Color.Black),
+                        containerColor =
+                            Color(
+                                red = 28,
+                                green = 27,
+                                blue = 31,
+                                alpha = 204,
+                            ).compositeOver(MaterialTheme.colorScheme.surface),
                         focusedContainerColor =
                             Color(
                                 red = 28,
                                 green = 27,
                                 blue = 31,
                                 alpha = 204,
-                            ).compositeOver(Color.Black),
+                            ).compositeOver(MaterialTheme.colorScheme.surface),
                         pressedContainerColor =
                             Color(
                                 red = 28,
                                 green = 27,
                                 blue = 31,
                                 alpha = 204,
-                            ).compositeOver(Color.Black),
+                            ).compositeOver(MaterialTheme.colorScheme.surface),
                     ),
             ) {
                 Box {
@@ -164,10 +170,10 @@ private fun CarouselItemForeground(
                     text = lecture.conferenceTitle,
                     style =
                         MaterialTheme.typography.bodyMedium.copy(
-                            color = Color.White.copy(alpha = 0.6f),
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                             shadow =
                                 Shadow(
-                                    color = Color.Black.copy(alpha = 0.5f),
+                                    color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                     offset = Offset(x = 2f, y = 4f),
                                     blurRadius = 2f,
                                 ),
@@ -182,7 +188,7 @@ private fun CarouselItemForeground(
                     MaterialTheme.typography.titleLarge.copy(
                         shadow =
                             Shadow(
-                                color = Color.Black.copy(alpha = 0.5f),
+                                color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                 offset = Offset(x = 2f, y = 4f),
                                 blurRadius = 2f,
                             ),
@@ -194,10 +200,10 @@ private fun CarouselItemForeground(
                 text = lecture.persons.fastJoinToString(" · "),
                 style =
                     MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.White.copy(alpha = 0.6f),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                         shadow =
                             Shadow(
-                                color = Color.Black.copy(alpha = 0.5f),
+                                color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                 offset = Offset(x = 2f, y = 4f),
                                 blurRadius = 2f,
                             ),
@@ -209,10 +215,10 @@ private fun CarouselItemForeground(
                     text = it.replace(Regex("\n\n+"), "\n"),
                     style =
                         MaterialTheme.typography.bodyMedium.copy(
-                            color = Color.White.copy(alpha = 0.8f),
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
                             shadow =
                                 Shadow(
-                                    color = Color.Black.copy(alpha = 0.5f),
+                                    color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                     offset = Offset(x = 2f, y = 4f),
                                     blurRadius = 2f,
                                 ),

@@ -9,10 +9,10 @@ package de.justjanne.voctotv.tv.ui.player
 
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.tv.material3.Icon
 import androidx.tv.material3.IconButton
 import androidx.tv.material3.LocalContentColor
 import de.justjanne.voctotv.common.player.PlayerState
@@ -38,7 +38,9 @@ fun PlayPauseButton(
     ) {
         when (status) {
             PlayerState.Status.BUFFERING ->
-                CircularProgressIndicator()
+                CircularProgressIndicator(
+                    color = LocalContentColor.current,
+                )
 
             PlayerState.Status.PLAYING ->
                 Icon(

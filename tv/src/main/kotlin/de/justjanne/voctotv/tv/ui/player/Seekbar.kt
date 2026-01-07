@@ -24,7 +24,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
@@ -34,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.rememberProgressStateWithTickInterval
-import de.justjanne.voctotv.tv.ui.theme.Primary
+import androidx.tv.material3.MaterialTheme
 
 private val thumb = 16.dp
 private val focusedHeight = 6.dp
@@ -56,6 +55,11 @@ fun Seekbar(
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
     }
+
+    val progressColor = MaterialTheme.colorScheme.primaryContainer
+    val bufferedColor = MaterialTheme.colorScheme.border
+    val backgroundColor = MaterialTheme.colorScheme.borderVariant
+    val thumbColor = MaterialTheme.colorScheme.inverseSurface
 
     Box(
         modifier =
@@ -103,15 +107,15 @@ fun Seekbar(
                     val barOffset = Offset((size.width - currentWidth) / 2, (size.height - currentHeight) / 2)
                     val thumbOffset = Offset(progress * currentWidth + thumb / 2, size.height / 2)
 
-                    drawRect(Color.DarkGray, size = Size(currentWidth, currentHeight), topLeft = barOffset)
+                    drawRect(backgroundColor, size = Size(currentWidth, currentHeight), topLeft = barOffset)
                     drawRect(
-                        Color.LightGray,
+                        bufferedColor,
                         size = Size(buffered * currentWidth, currentHeight),
                         topLeft = barOffset,
                     )
-                    drawRect(Primary, size = Size(progress * currentWidth, currentHeight), topLeft = barOffset)
+                    drawRect(progressColor, size = Size(progress * currentWidth, currentHeight), topLeft = barOffset)
                     if (isFocused.value) {
-                        drawCircle(Color.White, radius = thumb / 2, center = thumbOffset)
+                        drawCircle(thumbColor, radius = thumb / 2, center = thumbOffset)
                     }
                 },
     ) {

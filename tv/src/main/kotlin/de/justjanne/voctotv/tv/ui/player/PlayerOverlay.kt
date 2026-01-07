@@ -254,7 +254,7 @@ fun PlayerOverlay(
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow =
                                         Shadow(
-                                            color = Color.Black.copy(alpha = 0.5f),
+                                            color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                             offset = Offset(x = 2f, y = 4f),
                                             blurRadius = 2f,
                                         ),
@@ -267,7 +267,7 @@ fun PlayerOverlay(
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow =
                                         Shadow(
-                                            color = Color.Black.copy(alpha = 0.5f),
+                                            color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                             offset = Offset(x = 2f, y = 4f),
                                             blurRadius = 2f,
                                         ),

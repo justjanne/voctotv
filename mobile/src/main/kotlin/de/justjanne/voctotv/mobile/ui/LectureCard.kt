@@ -25,7 +25,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
@@ -52,7 +51,7 @@ fun LectureItem(
                     .width(160.dp)
                     .aspectRatio(16f / 9f)
                     .clip(MaterialTheme.shapes.extraSmall)
-                    .background(Color.Black),
+                    .background(MaterialTheme.colorScheme.surface),
         ) {
             AsyncImage(
                 model = item.thumbUrl,
@@ -65,11 +64,11 @@ fun LectureItem(
                     Modifier
                         .align(Alignment.BottomEnd)
                         .padding(6.dp)
-                        .background(Color.Black, shape = MaterialTheme.shapes.extraSmall)
+                        .background(MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.extraSmall)
                         .padding(horizontal = 6.dp, vertical = 2.dp),
                 style =
                     MaterialTheme.typography.labelLarge.copy(
-                        color = Color.White,
+                        color = MaterialTheme.colorScheme.onSurface,
                     ),
             )
         }
