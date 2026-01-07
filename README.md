@@ -2,11 +2,6 @@
 
 A stylish new AndroidTV client for media.ccc.de.
 
-<a href=".github/readme/screenshot_home.png"><img src=".github/readme/screenshot_home.png" width="640"></a>
-
-<a href=".github/readme/screenshot_seeking.png"><img src=".github/readme/screenshot_seeking.png" width="320"></a>
-<a href=".github/readme/screenshot_audioselection.png"><img src=".github/readme/screenshot_audioselection.png" width="320"></a>
-
 ## Features
 
 - Browse conferences, talks, documentaries and more.
@@ -18,7 +13,23 @@ A stylish new AndroidTV client for media.ccc.de.
 
 - Schedule integration (in the style of "Sendung verpasst?")
 - Sort by popularity/genre
-- Smartphone version (maybe?)
+
+## Screenshots
+
+### TV
+
+<a href="metadata/screenshots/tv/home.png"><img src="metadata/screenshots/tv/home.png" width="640"></a>
+
+<a href="metadata/screenshots/tv/seeking.png"><img src="metadata/screenshots/tv/seeking.png" width="320"></a>
+<a href="metadata/screenshots/tv/audioselection.png"><img src="metadata/screenshots/tv/audioselection.png" width="320"></a>
+
+### Smartphone
+
+<a href="metadata/screenshots/phone/seeking.png"><img src="metadata/screenshots/phone/seeking.png" width="640"></a>
+<a href="metadata/screenshots/phone/audioselection.png"><img src="metadata/screenshots/phone/audioselection.png" width="640"></a>
+
+<a href="metadata/screenshots/phone/home.png"><img src="metadata/screenshots/phone/home.png" width="320"></a>
+<a href="metadata/screenshots/phone/conference.png"><img src="metadata/screenshots/phone/conference.png" width="320"></a>
 
 ## License
 
