@@ -8,7 +8,6 @@
 package de.justjanne.voctotv.common.player
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
@@ -17,9 +16,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.util.fastCoerceIn
 import androidx.media3.common.DeviceInfo
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.ui.compose.state.observeState
 import kotlinx.coroutines.delay
 
-class PlayerState {
+class PlayerState(
+    private val player: Player,
+) {
     enum class Status {
         BUFFERING,
         PLAYING,
@@ -37,10 +40,10 @@ class PlayerState {
 
     private val castingState = mutableStateOf(false)
 
-    val status: Status
-        get() =
+    val status get() =
+        if (castingState.value) {
             when (playbackState.intValue) {
-                Player.STATE_IDLE, Player.STATE_BUFFERING -> Status.BUFFERING
+                Player.STATE_BUFFERING -> Status.BUFFERING
                 Player.STATE_ENDED -> Status.ENDED
                 else ->
                     when {
@@ -48,6 +51,18 @@ class PlayerState {
                         else -> Status.PAUSED
                     }
             }
+        } else {
+            when (playbackState.intValue) {
+                Player.STATE_BUFFERING -> Status.BUFFERING
+                Player.STATE_ENDED -> Status.ENDED
+                else ->
+                    when {
+                        playingState.value -> Status.PLAYING
+                        else -> Status.PAUSED
+                    }
+            }
+        }
+
     val loading: Boolean get() = status == Status.BUFFERING
 
     val bufferedMs: Long get() = bufferedState.longValue
@@ -58,19 +73,13 @@ class PlayerState {
     val casting: Boolean get() = castingState.value
     val seeking: Boolean get() = seekingState.longValue >= 0
 
-    fun updateProgress(player: Player) {
-        bufferedState.longValue = player.bufferedPosition
-        progressState.longValue = player.currentPosition
-        durationState.longValue = player.duration
-    }
-
     fun seek(ms: Long) {
         if (durationMs > 0) {
             seekingState.longValue = ms.fastCoerceIn(0L, durationMs)
         }
     }
 
-    fun commitSeek(player: Player) {
+    fun commitSeek() {
         val timestamp = seekingState.longValue
         if (timestamp > 0) {
             player.seekTo(timestamp)
@@ -81,42 +90,49 @@ class PlayerState {
         }
     }
 
-    val listener: Player.Listener = Listener(this)
-
-    class Listener(
-        private val state: PlayerState,
-    ) : Player.Listener {
-        override fun onDeviceInfoChanged(deviceInfo: DeviceInfo) {
-            state.castingState.value = deviceInfo.playbackType == DeviceInfo.PLAYBACK_TYPE_REMOTE
+    @UnstableApi
+    private val playerStateObserver =
+        player.observeState(
+            Player.EVENT_IS_PLAYING_CHANGED,
+            Player.EVENT_PLAYBACK_STATE_CHANGED,
+            Player.EVENT_PLAY_WHEN_READY_CHANGED,
+            Player.EVENT_AVAILABLE_COMMANDS_CHANGED,
+            Player.EVENT_DEVICE_INFO_CHANGED,
+            Player.EVENT_IS_LOADING_CHANGED,
+        ) {
+            updateProgress()
         }
 
-        override fun onIsPlayingChanged(isPlaying: Boolean) {
-            state.playingState.value = isPlaying
-        }
+    fun updateProgress() {
+        playbackState.intValue = player.playbackState
+        playingState.value = player.isPlaying
 
-        override fun onPlaybackStateChanged(playbackState: Int) {
-            state.playbackState.intValue = playbackState
-        }
+        bufferedState.longValue = player.bufferedPosition
+        progressState.longValue = player.currentPosition
+        durationState.longValue = player.duration
+
+        castingState.value = player.deviceInfo.playbackType == DeviceInfo.PLAYBACK_TYPE_REMOTE
     }
+
+    @UnstableApi
+    suspend fun observe(): Nothing = playerStateObserver.observe()
 }
 
+@UnstableApi
 @Composable
 fun rememberPlayerState(player: Player): PlayerState {
-    val state = remember { PlayerState() }
+    val state = remember(player) { PlayerState(player) }
 
-    LaunchedEffect(player, state.status) {
-        state.updateProgress(player)
+    LaunchedEffect(state, state.status) {
+        state.updateProgress()
         while (state.status == PlayerState.Status.PLAYING) {
             delay(50)
-            state.updateProgress(player)
+            state.updateProgress()
         }
     }
 
-    DisposableEffect(player) {
-        player.addListener(state.listener)
-        onDispose {
-            player.removeListener(state.listener)
-        }
+    LaunchedEffect(state) {
+        state.observe()
     }
 
     return state

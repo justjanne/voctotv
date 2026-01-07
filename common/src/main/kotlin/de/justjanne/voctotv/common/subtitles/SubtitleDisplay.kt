@@ -43,8 +43,12 @@ fun BoxScope.SubtitleDisplay(
                 }
 
                 override fun onVideoSizeChanged(videoSize: VideoSize) {
-                    aspectRatio.floatValue =
-                        videoSize.width.toFloat() / videoSize.height.toFloat() * videoSize.pixelWidthHeightRatio
+                    if (videoSize.width > 0 && videoSize.height > 0 && videoSize.pixelWidthHeightRatio > 0) {
+                        aspectRatio.floatValue =
+                            videoSize.width.toFloat() / videoSize.height.toFloat() * videoSize.pixelWidthHeightRatio
+                    } else {
+                        aspectRatio.floatValue = 16f / 9f
+                    }
                 }
             }
         player.addListener(listener)

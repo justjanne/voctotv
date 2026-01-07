@@ -30,7 +30,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onLayoutRectChanged
 import androidx.compose.ui.unit.dp
-import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import de.justjanne.voctotv.common.player.PlayerState
 
@@ -40,15 +39,13 @@ private val unfocusedHeight = 3.dp
 
 @OptIn(UnstableApi::class)
 @Composable
-fun Seekbar(
-    player: Player,
-    playerState: PlayerState,
-) {
-    val scaleFactor = remember { mutableFloatStateOf(0f) }
+fun Seekbar(playerState: PlayerState) {
+    val layoutWidth = remember { mutableFloatStateOf(0f) }
     val dragState =
         rememberDraggableState {
             val start = if (playerState.seeking) playerState.seekingMs else playerState.progressMs
-            playerState.seek((start + it * scaleFactor.floatValue).toLong())
+            val scaleFactor = playerState.durationMs.toFloat() / layoutWidth.floatValue
+            playerState.seek((start + it * scaleFactor).toLong())
         }
 
     val focusRequester = remember { FocusRequester() }
@@ -73,8 +70,9 @@ fun Seekbar(
                     detectTapGestures(
                         onPress = {},
                         onTap = {
-                            playerState.seek((it.x * scaleFactor.floatValue).toLong())
-                            playerState.commitSeek(player)
+                            val scaleFactor = playerState.durationMs.toFloat() / layoutWidth.floatValue
+                            playerState.seek((it.x * scaleFactor).toLong())
+                            playerState.commitSeek()
                         },
                     )
                 }.draggable(
@@ -82,13 +80,14 @@ fun Seekbar(
                     orientation = Orientation.Horizontal,
                     startDragImmediately = playerState.seeking,
                     onDragStarted = {
-                        playerState.seek((it.x * scaleFactor.floatValue).toLong())
+                        val scaleFactor = playerState.durationMs.toFloat() / layoutWidth.floatValue
+                        playerState.seek((it.x * scaleFactor).toLong())
                     },
                     onDragStopped = {
-                        playerState.commitSeek(player)
+                        playerState.commitSeek()
                     },
                 ).onLayoutRectChanged {
-                    scaleFactor.floatValue = playerState.durationMs.toFloat() / it.width.toFloat()
+                    layoutWidth.floatValue = it.width.toFloat()
                 }.drawBehind {
                     val thumb = thumb.toPx()
                     val focusedHeight = focusedHeight.toPx()

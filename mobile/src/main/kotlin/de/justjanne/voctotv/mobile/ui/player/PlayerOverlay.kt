@@ -276,7 +276,7 @@ fun PlayerOverlay(
                         )
                     }
                 }
-                Seekbar(viewModel.mediaSession.player, playerState)
+                Seekbar(playerState)
             }
         }
 
