@@ -10,8 +10,8 @@ package de.justjanne.voctotv.common.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import de.justjanne.voctotv.mediacccde.api.VoctowebApi
-import de.justjanne.voctotv.mediacccde.model.ConferenceModel
+import de.justjanne.voctotv.voctoweb.api.VoctowebApi
+import de.justjanne.voctotv.voctoweb.model.ConferenceModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow

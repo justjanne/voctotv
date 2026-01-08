@@ -7,9 +7,9 @@
 
 @file:OptIn(ExperimentalUuidApi::class)
 
-package de.justjanne.voctotv.mediacccde.api
+package de.justjanne.voctotv.voctoweb.api
 
-import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import retrofit2.http.GET

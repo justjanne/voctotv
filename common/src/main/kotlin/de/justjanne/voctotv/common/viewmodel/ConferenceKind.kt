@@ -7,7 +7,7 @@
 
 package de.justjanne.voctotv.common.viewmodel
 
-import de.justjanne.voctotv.mediacccde.model.ConferenceModel
+import de.justjanne.voctotv.voctoweb.model.ConferenceModel
 
 enum class ConferenceKind {
     CONGRESS,

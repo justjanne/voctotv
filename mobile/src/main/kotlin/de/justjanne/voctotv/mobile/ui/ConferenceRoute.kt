@@ -38,9 +38,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
-import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

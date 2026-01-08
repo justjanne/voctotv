@@ -54,8 +54,8 @@ import androidx.tv.material3.Icon
 import androidx.tv.material3.ShapeDefaults
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.tv.Routes
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable

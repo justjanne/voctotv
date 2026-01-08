@@ -7,7 +7,7 @@
 
 package de.justjanne.voctotv.api
 
-import de.justjanne.voctotv.mediacccde.api.VoctowebApi
+import de.justjanne.voctotv.voctoweb.api.VoctowebApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

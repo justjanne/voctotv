@@ -51,7 +51,7 @@ import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

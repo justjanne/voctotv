@@ -29,7 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.common.util.formatTime
-import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @Composable
 fun LectureItem(

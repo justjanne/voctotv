@@ -7,9 +7,9 @@
 
 package de.justjanne.voctotv.api
 
-import de.justjanne.voctotv.mediacccde.api.LectureApi
-import de.justjanne.voctotv.mediacccde.api.VoctowebApi
-import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.voctoweb.api.LectureApi
+import de.justjanne.voctotv.voctoweb.api.VoctowebApi
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json

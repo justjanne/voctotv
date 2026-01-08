@@ -29,9 +29,9 @@ import androidx.tv.material3.Card
 import androidx.tv.material3.StandardCardContainer
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.mediacccde.model.ConferenceModel
 import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.tv.ui.theme.VoctoTvTheme
+import de.justjanne.voctotv.voctoweb.model.ConferenceModel
 
 @Composable
 fun ConferenceRow(

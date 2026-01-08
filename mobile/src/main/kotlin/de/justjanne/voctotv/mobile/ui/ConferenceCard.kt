@@ -28,7 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.mediacccde.model.ConferenceModel
+import de.justjanne.voctotv.voctoweb.model.ConferenceModel
 
 @Composable
 fun ConferenceItem(

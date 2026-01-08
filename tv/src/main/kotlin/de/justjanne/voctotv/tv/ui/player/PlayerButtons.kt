@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import de.justjanne.voctotv.common.player.PlayerState
-import de.justjanne.voctotv.mediacccde.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @OptIn(UnstableApi::class)
 @Composable

@@ -21,7 +21,7 @@ import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.justjanne.voctotv.common.previews.PreviewLoader
 import de.justjanne.voctotv.common.previews.PreviewPreloader
-import de.justjanne.voctotv.mediacccde.api.VoctowebApi
+import de.justjanne.voctotv.voctoweb.api.VoctowebApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow

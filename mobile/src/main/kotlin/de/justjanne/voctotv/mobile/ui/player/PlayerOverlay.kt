@@ -57,8 +57,8 @@ import androidx.media3.common.util.UnstableApi
 import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.mobile.R
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 import kotlinx.coroutines.Job
 
 @OptIn(UnstableApi::class)

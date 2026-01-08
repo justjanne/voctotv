@@ -32,8 +32,8 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.RadioButton
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.player.PlayerState
-import de.justjanne.voctotv.mediacccde.model.LectureModel
 import de.justjanne.voctotv.tv.R
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @OptIn(UnstableApi::class)
 @Composable
