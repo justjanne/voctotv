@@ -85,8 +85,7 @@ fun FeaturedCarousel(
                         width = 3.dp,
                         color = Color.White.copy(alpha = alpha),
                         shape = ShapeDefaults.Medium,
-                    )
-                    .clip(ShapeDefaults.Medium)
+                    ).clip(ShapeDefaults.Medium)
                     .onFocusChanged {
                         // Because the carousel itself never gets the focus
                         isCarouselFocused.value = it.hasFocus

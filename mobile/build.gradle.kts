@@ -26,7 +26,11 @@ android {
         applicationId = "de.justjanne.voctotv"
         minSdk = 26
         targetSdk = 36
-        versionCode = git("rev-list", "--count", "HEAD", "--tags").orNull?.toIntOrNull()?.times(2)?.plus(1) ?: 1
+        versionCode = git("rev-list", "--count", "HEAD", "--tags")
+            .orNull
+            ?.toIntOrNull()
+            ?.times(2)
+            ?.plus(1) ?: 1
         versionName = git("describe", "--always", "--tags", "HEAD").getOrElse("0.1.0")
 
         configure<BasePluginExtension> {
