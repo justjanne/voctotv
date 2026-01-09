@@ -11,13 +11,13 @@ import android.text.Layout
 import androidx.annotation.OptIn
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -29,6 +29,8 @@ import androidx.media3.common.util.UnstableApi
 fun ColumnScope.LineDisplay(
     cue: Cue,
     lineHeight: TextUnit,
+    containerColor: Color,
+    contentColor: Color,
 ) {
     LaunchedEffect(cue) {
         println(
@@ -46,8 +48,8 @@ fun ColumnScope.LineDisplay(
                         else -> Alignment.CenterHorizontally
                     },
                 ),
-            color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.8f),
-            contentColor = MaterialTheme.colorScheme.onSurface,
+            color = containerColor,
+            contentColor = contentColor,
         ) {
             Text(
                 text = text.toString(),

@@ -21,6 +21,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
@@ -32,6 +33,8 @@ import androidx.media3.common.text.CueGroup
 fun BoxScope.SubtitleDisplay(
     player: Player,
     contentPadding: PaddingValues = PaddingValues(0.dp),
+    containerColor: Color = Color.Black.copy(alpha = 0.8f),
+    contentColor: Color = Color.White,
 ) {
     val aspectRatio = remember { mutableFloatStateOf(16f / 9f) }
     val currentCue = remember { mutableStateOf<CueGroup?>(null) }
@@ -77,7 +80,7 @@ fun BoxScope.SubtitleDisplay(
             currentCue.value
                 ?.cues
                 ?.filter { it.lineAnchor == Cue.ANCHOR_TYPE_START && it.line >= 0 }
-                ?.forEach { LineDisplay(it, lineHeight) }
+                ?.forEach { LineDisplay(it, lineHeight, containerColor, contentColor) }
         }
         Column(
             Modifier
@@ -87,7 +90,7 @@ fun BoxScope.SubtitleDisplay(
             currentCue.value
                 ?.cues
                 ?.filter { it.lineAnchor == Cue.ANCHOR_TYPE_MIDDLE && it.line >= 0 }
-                ?.forEach { LineDisplay(it, lineHeight) }
+                ?.forEach { LineDisplay(it, lineHeight, containerColor, contentColor) }
         }
         Column(
             Modifier
@@ -97,7 +100,7 @@ fun BoxScope.SubtitleDisplay(
             currentCue.value
                 ?.cues
                 ?.filter { it.lineAnchor == Cue.ANCHOR_TYPE_END || it.line < 0 }
-                ?.forEach { LineDisplay(it, lineHeight) }
+                ?.forEach { LineDisplay(it, lineHeight, containerColor, contentColor) }
         }
     }
 }
