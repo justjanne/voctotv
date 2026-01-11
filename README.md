@@ -2,13 +2,9 @@
 
 A stylish new AndroidTV client for media.ccc.de.
 
-<a href="https://play.google.com/store/apps/details?id=de.justjanne.voctotv" class="Button--secondary Button btn btn-default gl-button">
-<span class="Button-content"><span class="Button-label gl-button-text">Google Play</span></span>
-</a>
+[Google Play](https://play.google.com/store/apps/details?id=de.justjanne.voctotv)
 &nbsp;·&nbsp;
-<a href="https://github.com/justjanne/voctotv/releases/latest/" class="Button--secondary Button btn btn-default gl-button">
-<span class="Button-content"><span class="Button-label gl-button-text">APK</span></span>
-</a>
+[APK](https://github.com/justjanne/voctotv/releases/latest/)
 
 ## Features
 
