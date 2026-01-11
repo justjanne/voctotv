@@ -2,6 +2,14 @@
 
 A stylish new AndroidTV client for media.ccc.de.
 
+<a href="https://play.google.com/store/apps/details?id=de.justjanne.voctotv" class="Button--secondary Button btn btn-default gl-button">
+<span class="Button-content"><span class="Button-label gl-button-text">Google Play</span></span>
+</a>
+&nbsp;·&nbsp;
+<a href="https://github.com/justjanne/voctotv/releases/latest/" class="Button--secondary Button btn btn-default gl-button">
+<span class="Button-content"><span class="Button-label gl-button-text">APK</span></span>
+</a>
+
 ## Features
 
 - Browse conferences, talks, documentaries and more.
@@ -33,5 +41,5 @@ A stylish new AndroidTV client for media.ccc.de.
 
 ## License
 
-> This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.  
+> This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 > If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
