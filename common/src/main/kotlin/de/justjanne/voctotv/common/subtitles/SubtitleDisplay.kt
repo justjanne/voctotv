@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -25,33 +24,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
-import androidx.media3.common.VideoSize
 import androidx.media3.common.text.Cue
 import androidx.media3.common.text.CueGroup
+import de.justjanne.voctotv.common.player.PlayerState
 
 @Composable
 fun BoxScope.SubtitleDisplay(
     player: Player,
+    playerState: PlayerState,
     contentPadding: PaddingValues = PaddingValues(0.dp),
     containerColor: Color = Color.Black.copy(alpha = 0.8f),
     contentColor: Color = Color.White,
 ) {
-    val aspectRatio = remember { mutableFloatStateOf(16f / 9f) }
     val currentCue = remember { mutableStateOf<CueGroup?>(null) }
     DisposableEffect(player) {
         val listener =
             object : Player.Listener {
                 override fun onCues(cueGroup: CueGroup) {
                     currentCue.value = cueGroup
-                }
-
-                override fun onVideoSizeChanged(videoSize: VideoSize) {
-                    if (videoSize.width > 0 && videoSize.height > 0 && videoSize.pixelWidthHeightRatio > 0) {
-                        aspectRatio.floatValue =
-                            videoSize.width.toFloat() / videoSize.height.toFloat() * videoSize.pixelWidthHeightRatio
-                    } else {
-                        aspectRatio.floatValue = 16f / 9f
-                    }
                 }
             }
         player.addListener(listener)
@@ -60,11 +50,15 @@ fun BoxScope.SubtitleDisplay(
         }
     }
 
+    val aspectRatioModifier =
+        if (playerState.aspectRatio > 0f) Modifier.aspectRatio(playerState.aspectRatio)
+        else Modifier
+
     BoxWithConstraints(
         modifier =
             Modifier
                 .align(Alignment.Center)
-                .aspectRatio(aspectRatio.floatValue)
+                .then(aspectRatioModifier)
                 .fillMaxSize()
                 .padding(contentPadding),
     ) {

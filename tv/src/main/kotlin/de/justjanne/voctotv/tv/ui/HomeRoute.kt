@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -78,42 +77,51 @@ fun HomeRoute(
             }
         }
 
-        item("featured") {
-            FeaturedCarousel(featuredLectures, navigate, Modifier.focusRequester(focusRequester))
+        if (featuredLectures.isNotEmpty()) {
+            item("featured") {
+                FeaturedCarousel(featuredLectures, navigate, Modifier.focusRequester(focusRequester))
+            }
         }
 
-        item("recent-lectures") {
-            Text("Recent", modifier = Modifier.padding(horizontal = 20.dp))
+        if (recent.isNotEmpty()) {
+            item("recent-lectures") {
+                Text("Recent", modifier = Modifier.padding(horizontal = 20.dp))
 
-            val focusRequester = remember { FocusRequester() }
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(20.dp),
-                contentPadding = PaddingValues(20.dp),
-                modifier = Modifier.focusRestorer(focusRequester),
-            ) {
-                itemsIndexed(recent, key = { _, lecture -> lecture.guid }) { index, lecture ->
-                    LectureCard(
-                        lecture,
-                        navigate,
-                        if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
-                    )
+                val focusRequester = remember { FocusRequester() }
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(20.dp),
+                    contentPadding = PaddingValues(20.dp),
+                    modifier = Modifier.focusRestorer(focusRequester),
+                ) {
+                    itemsIndexed(recent, key = { _, lecture -> lecture.guid }) { index, lecture ->
+                        LectureCard(
+                            lecture,
+                            navigate,
+                            if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                        )
+                    }
                 }
             }
         }
 
-        items(conferences, key = { it.key }) {
-            val title =
-                remember(it) {
-                    when (it.key) {
-                        ConferenceKind.CONGRESS -> "Congress"
-                        ConferenceKind.GPN -> "GPN"
-                        ConferenceKind.CONFERENCE -> "Conferences"
-                        ConferenceKind.DOCUMENTATIONS -> "Documentaries"
-                        ConferenceKind.ERFA -> "Erfas"
-                        ConferenceKind.OTHER -> "Other"
-                    }
+        for (kind in ConferenceKind.entries) {
+            val lectures = conferences[kind].orEmpty()
+            if (lectures.isNotEmpty()) {
+                item(kind) {
+                    ConferenceRow(
+                        when (kind) {
+                            ConferenceKind.CONGRESS -> "Congress"
+                            ConferenceKind.GPN -> "GPN"
+                            ConferenceKind.CONFERENCE -> "Conferences"
+                            ConferenceKind.DOCUMENTARIES -> "Documentaries"
+                            ConferenceKind.ERFA -> "Erfas"
+                            ConferenceKind.OTHER -> "Other"
+                        },
+                        lectures,
+                        navigate,
+                    )
                 }
-            ConferenceRow(title, it.value, navigate)
+            }
         }
     }
 }

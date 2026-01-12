@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -31,42 +30,34 @@ fun PlayerRoute(
     viewModel: PlayerViewModel,
     back: () -> Unit,
 ) {
-    val mediaItem by viewModel.mediaItem.collectAsState()
     val lecture by viewModel.lecture.collectAsState()
-
-    LaunchedEffect(viewModel.mediaSession.player, lecture, mediaItem) {
-        viewModel.mediaSession.player.apply {
-            clearMediaItems()
-            trackSelectionParameters =
-                trackSelectionParameters
-                    .buildUpon()
-                    .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
-                    .setPreferredTextLanguages()
-                    .build()
-            mediaItem?.let {
-                setMediaItem(it)
-            }
-            prepare()
-            playWhenReady = true
-            play()
-        }
-    }
-
-    val playerState = rememberPlayerState(viewModel.mediaSession.player)
+    rememberPlayerState(viewModel)
 
     Scaffold { contentPadding ->
         Box(Modifier.fillMaxSize()) {
-            ContentFrame(
-                player = viewModel.mediaSession.player,
-                modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .padding(contentPadding),
-                surfaceType = SURFACE_TYPE_SURFACE_VIEW,
-            )
+            // Workaround to reset surface after cast switch
+            if (viewModel.playerState.casting) {
+                ContentFrame(
+                    player = viewModel.mediaSession.player,
+                    modifier =
+                        Modifier
+                            .fillMaxSize()
+                            .padding(contentPadding),
+                    surfaceType = SURFACE_TYPE_SURFACE_VIEW,
+                )
+            } else {
+                ContentFrame(
+                    player = viewModel.mediaSession.player,
+                    modifier =
+                        Modifier
+                            .fillMaxSize()
+                            .padding(contentPadding),
+                    surfaceType = SURFACE_TYPE_SURFACE_VIEW,
+                )
+            }
 
-            SubtitleDisplay(viewModel.mediaSession.player, contentPadding)
-            PlayerOverlay(viewModel, lecture, playerState, contentPadding, back)
+            SubtitleDisplay(viewModel.mediaSession.player, viewModel.playerState, contentPadding)
+            PlayerOverlay(viewModel, lecture, contentPadding, back)
         }
     }
 }

@@ -21,11 +21,12 @@ import androidx.navigation3.ui.NavDisplay
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.mobile.Routes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppRouter() {
-    val backStack = rememberNavBackStack(_root_ide_package_.de.justjanne.voctotv.mobile.Routes.Home)
+    val backStack = rememberNavBackStack(Routes.Home)
     val navigate: (NavKey) -> Unit =
         remember(backStack) {
             { backStack.add(it) }
@@ -44,21 +45,21 @@ fun AppRouter() {
             ),
         entryProvider =
             entryProvider {
-                entry<de.justjanne.voctotv.mobile.Routes.Home> {
+                entry<Routes.Home> {
                     val viewModel = hiltViewModel<HomeViewModel>()
                     HomeRoute(viewModel, navigate)
                 }
-                entry<de.justjanne.voctotv.mobile.Routes.Conference> { key ->
+                entry<Routes.Conference> { key ->
                     val viewModel =
                         hiltViewModel<ConferenceViewModel, ConferenceViewModel.Factory> { factory ->
                             factory.create(key.id)
                         }
                     ConferenceRoute(viewModel, navigate, back)
                 }
-                entry<de.justjanne.voctotv.mobile.Routes.Lecture> { key ->
+                entry<Routes.Lecture> { key ->
                     Text("Lecture")
                 }
-                entry<de.justjanne.voctotv.mobile.Routes.Player> { key ->
+                entry<Routes.Player> { key ->
                     val viewModel =
                         hiltViewModel<PlayerViewModel, PlayerViewModel.Factory> { factory ->
                             factory.create(key.id)

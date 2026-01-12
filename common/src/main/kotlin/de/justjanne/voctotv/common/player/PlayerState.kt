@@ -7,18 +7,16 @@
 
 package de.justjanne.voctotv.common.player
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.util.fastCoerceIn
 import androidx.media3.common.DeviceInfo
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.state.observeState
-import kotlinx.coroutines.delay
+import de.justjanne.voctotv.common.util.calculateAspectRatio
 
 class PlayerState(
     private val player: Player,
@@ -40,28 +38,35 @@ class PlayerState(
 
     private val castingState = mutableStateOf(false)
 
-    val status get() =
-        if (castingState.value) {
-            when (playbackState.intValue) {
-                Player.STATE_BUFFERING -> Status.BUFFERING
-                Player.STATE_ENDED -> Status.ENDED
-                else ->
-                    when {
-                        playingState.value -> Status.PLAYING
-                        else -> Status.PAUSED
-                    }
+    private val aspectRatioState = mutableFloatStateOf(0f)
+
+    init {
+        update()
+    }
+
+    val status
+        get() =
+            if (castingState.value) {
+                when (playbackState.intValue) {
+                    Player.STATE_BUFFERING -> Status.BUFFERING
+                    Player.STATE_ENDED -> Status.ENDED
+                    else ->
+                        when {
+                            playingState.value -> Status.PLAYING
+                            else -> Status.PAUSED
+                        }
+                }
+            } else {
+                when (playbackState.intValue) {
+                    Player.STATE_BUFFERING -> Status.BUFFERING
+                    Player.STATE_ENDED -> Status.ENDED
+                    else ->
+                        when {
+                            playingState.value -> Status.PLAYING
+                            else -> Status.PAUSED
+                        }
+                }
             }
-        } else {
-            when (playbackState.intValue) {
-                Player.STATE_BUFFERING -> Status.BUFFERING
-                Player.STATE_ENDED -> Status.ENDED
-                else ->
-                    when {
-                        playingState.value -> Status.PLAYING
-                        else -> Status.PAUSED
-                    }
-            }
-        }
 
     val loading: Boolean get() = status == Status.BUFFERING
 
@@ -72,6 +77,8 @@ class PlayerState(
 
     val casting: Boolean get() = castingState.value
     val seeking: Boolean get() = seekingState.longValue >= 0
+
+    val aspectRatio: Float get() = aspectRatioState.floatValue
 
     fun seek(ms: Long) {
         if (durationMs > 0) {
@@ -93,6 +100,7 @@ class PlayerState(
     @UnstableApi
     private val playerStateObserver =
         player.observeState(
+            Player.EVENT_VIDEO_SIZE_CHANGED,
             Player.EVENT_IS_PLAYING_CHANGED,
             Player.EVENT_PLAYBACK_STATE_CHANGED,
             Player.EVENT_PLAY_WHEN_READY_CHANGED,
@@ -100,10 +108,12 @@ class PlayerState(
             Player.EVENT_DEVICE_INFO_CHANGED,
             Player.EVENT_IS_LOADING_CHANGED,
         ) {
-            updateProgress()
+            update()
         }
 
-    fun updateProgress() {
+    fun update() {
+        aspectRatioState.floatValue = calculateAspectRatio(player.videoSize)
+
         playbackState.intValue = player.playbackState
         playingState.value = player.isPlaying
 
@@ -116,24 +126,4 @@ class PlayerState(
 
     @UnstableApi
     suspend fun observe(): Nothing = playerStateObserver.observe()
-}
-
-@UnstableApi
-@Composable
-fun rememberPlayerState(player: Player): PlayerState {
-    val state = remember(player) { PlayerState(player) }
-
-    LaunchedEffect(state, state.status) {
-        state.updateProgress()
-        while (state.status == PlayerState.Status.PLAYING) {
-            delay(50)
-            state.updateProgress()
-        }
-    }
-
-    LaunchedEffect(state) {
-        state.observe()
-    }
-
-    return state
 }

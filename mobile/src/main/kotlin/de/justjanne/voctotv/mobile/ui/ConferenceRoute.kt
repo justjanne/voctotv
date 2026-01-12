@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -26,13 +28,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -40,7 +39,6 @@ import androidx.navigation3.runtime.NavKey
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
-import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,22 +48,9 @@ fun ConferenceRoute(
     back: () -> Unit,
 ) {
     val conference = viewModel.conference.collectAsState().value
-    val allItems = viewModel.allItems.collectAsState()
-    val itemsByTrack = viewModel.itemsByTrack.collectAsState()
-    val currentFilter = remember { mutableStateOf<String?>(null) }
-    val filters =
-        remember {
-            derivedStateOf {
-                itemsByTrack.value.map { it.key }.sorted()
-            }
-        }
-    val filteredItems: State<List<LectureModel>> =
-        remember {
-            derivedStateOf {
-                currentFilter.value?.let { filter -> itemsByTrack.value[filter] }
-                    ?: allItems.value.orEmpty()
-            }
-        }
+    val currentFilter = viewModel.currentFilter.collectAsState().value
+    val filterOptions = viewModel.filterOptions.collectAsState().value
+    val filteredItems = viewModel.filteredItems.collectAsState().value
 
     Scaffold(
         topBar = {
@@ -98,39 +83,49 @@ fun ConferenceRoute(
                 }
             }
         } else {
-            LazyColumn(
-                contentPadding = contentPadding,
-                modifier = Modifier.fillMaxSize(),
-            ) {
-                item("filters") {
-                    LazyRow(
-                        horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
-                        contentPadding = PaddingValues(horizontal = 16.dp),
-                    ) {
-                        item(null) {
-                            FilterChip(
-                                selected = currentFilter.value == null,
-                                onClick = { currentFilter.value = null },
-                                label = { Text("Everything") },
-                            )
-                        }
-                        items(filters.value) { filter ->
-                            FilterChip(
-                                selected = currentFilter.value == filter,
-                                onClick = { currentFilter.value = filter },
-                                label = { Text(filter) },
-                            )
-                        }
+            Column {
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
+                    contentPadding = PaddingValues(
+                        start = 16.dp,
+                        end = 16.dp,
+                        top = contentPadding.calculateTopPadding(),
+                        bottom = 8.dp,
+                    ),
+                ) {
+                    item(null) {
+                        FilterChip(
+                            selected = currentFilter == null,
+                            onClick = { viewModel.currentFilter.value = null },
+                            label = { Text("Everything") },
+                        )
+                    }
+                    items(filterOptions) { filter ->
+                        FilterChip(
+                            selected = currentFilter == filter,
+                            onClick = { viewModel.currentFilter.value = filter },
+                            label = { Text(filter) },
+                        )
                     }
                 }
 
-                items(filteredItems.value, key = { it.guid }) { item ->
-                    LectureItem(
-                        item = item,
-                        onClick = {
-                            navigate(Routes.Player(item.guid))
-                        },
-                    )
+                val direction = LocalLayoutDirection.current
+                LazyColumn(
+                    contentPadding = PaddingValues(
+                        start = contentPadding.calculateStartPadding(direction),
+                        end = contentPadding.calculateEndPadding(direction),
+                        bottom = contentPadding.calculateBottomPadding()
+                    ),
+                    modifier = Modifier.fillMaxSize(),
+                ) {
+                    items(filteredItems, key = { it.guid }) { item ->
+                        LectureItem(
+                            item = item,
+                            onClick = {
+                                navigate(Routes.Player(item.guid))
+                            },
+                        )
+                    }
                 }
             }
         }

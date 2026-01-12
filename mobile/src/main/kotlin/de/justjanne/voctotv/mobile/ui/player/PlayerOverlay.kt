@@ -39,7 +39,6 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -54,19 +53,16 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.media3.cast.MediaRouteButton
 import androidx.media3.common.util.UnstableApi
-import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.voctoweb.model.LectureModel
-import kotlinx.coroutines.Job
 
 @OptIn(UnstableApi::class)
 @Composable
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
-    playerState: PlayerState,
     contentPadding: PaddingValues,
     back: () -> Unit,
 ) {
@@ -76,7 +72,7 @@ fun PlayerOverlay(
     val uiForced =
         remember {
             derivedStateOf {
-                playerState.casting || playerState.loading
+                viewModel.playerState.casting || viewModel.playerState.loading
             }
         }
 
@@ -86,36 +82,30 @@ fun PlayerOverlay(
         uiVisible.value = false
     }
 
-    val hideJob = remember { mutableStateOf<Job?>(null) }
-    val hideScope = rememberCoroutineScope()
-    val showUi =
-        remember {
-            {
-                hideJob.value?.cancel()
-                uiVisible.value = true
-            }
+    val isLandscape = remember {
+        derivedStateOf {
+            viewModel.playerState.aspectRatio > 1f
         }
+    }
 
     val context = LocalActivity.current
-    DisposableEffect(context, playerState.casting) {
-        if (!playerState.casting) {
-            context?.apply {
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+    DisposableEffect(context, viewModel.playerState.casting, isLandscape.value) {
+        if (!viewModel.playerState.casting && context != null) {
+            val isLandscape = isLandscape.value
+            if (isLandscape) {
+                context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
             }
-            context?.window?.apply {
-                WindowCompat
-                    .getInsetsController(this, decorView)
-                    .hide(WindowInsetsCompat.Type.systemBars())
-            }
+            WindowCompat
+                .getInsetsController(context.window, context.window.decorView)
+                .hide(WindowInsetsCompat.Type.systemBars())
+
             onDispose {
-                context?.apply {
-                    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+                if (isLandscape) {
+                    context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 }
-                context?.window?.apply {
-                    WindowCompat
-                        .getInsetsController(this, decorView)
-                        .show(WindowInsetsCompat.Type.systemBars())
-                }
+                WindowCompat
+                    .getInsetsController(context.window, context.window.decorView)
+                    .show(WindowInsetsCompat.Type.systemBars())
             }
         } else {
             onDispose {}
@@ -127,13 +117,6 @@ fun PlayerOverlay(
             Modifier
                 .fillMaxSize()
                 .clickable(mainInteractionSource, indication = null, enabled = !uiForced.value) {
-                    if (uiVisible.value) {
-                        context?.window?.apply {
-                            WindowCompat
-                                .getInsetsController(this, decorView)
-                                .hide(WindowInsetsCompat.Type.systemBars())
-                        }
-                    }
                     uiVisible.value = !uiVisible.value
                 },
     ) {
@@ -208,8 +191,8 @@ fun PlayerOverlay(
                             modifier = Modifier,
                             horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
                         ) {
-                            CaptionSelection(viewModel.mediaSession.player, playerState)
-                            AudioSelection(viewModel.mediaSession.player, playerState, lecture)
+                            CaptionSelection(viewModel.mediaSession.player, viewModel.playerState)
+                            AudioSelection(viewModel.mediaSession.player, viewModel.playerState, lecture)
                             MediaRouteButton()
                         }
                     }
@@ -242,15 +225,15 @@ fun PlayerOverlay(
                 verticalArrangement = Arrangement.Bottom,
             ) {
                 Box(contentAlignment = Alignment.BottomCenter) {
-                    Previewbar(viewModel, playerState)
+                    Previewbar(viewModel, viewModel.playerState)
                     Row(
                         modifier =
                             Modifier
                                 .padding(start = 32.dp, end = 32.dp, top = 16.dp)
-                                .graphicsLayer { alpha = if (playerState.seeking) 0f else 1f },
+                                .graphicsLayer { alpha = if (viewModel.playerState.seeking) 0f else 1f },
                     ) {
                         Text(
-                            text = formatTime(playerState.progressMs),
+                            text = formatTime(viewModel.playerState.progressMs),
                             style =
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow =
@@ -263,7 +246,7 @@ fun PlayerOverlay(
                         )
                         Spacer(Modifier.weight(1f))
                         Text(
-                            text = formatTime(playerState.durationMs),
+                            text = formatTime(viewModel.playerState.durationMs),
                             style =
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow =
@@ -276,18 +259,18 @@ fun PlayerOverlay(
                         )
                     }
                 }
-                Seekbar(playerState)
+                Seekbar(viewModel.playerState)
             }
         }
 
         AnimatedVisibility(
-            (uiVisible.value || uiForced.value) && !playerState.seeking,
+            (uiVisible.value || uiForced.value) && !viewModel.playerState.seeking,
             enter = fadeIn(),
             exit = fadeOut(),
             modifier = Modifier.align(Alignment.Center),
         ) {
             PlayPauseButton(
-                playerState.status,
+                viewModel.playerState.status,
                 onPlay = viewModel.mediaSession.player::play,
                 onPause = viewModel.mediaSession.player::pause,
                 onReplay = {

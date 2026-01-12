@@ -62,7 +62,6 @@ import kotlin.time.Duration.Companion.seconds
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
-    playerState: PlayerState,
 ) {
     val uiVisible = remember { mutableStateOf(false) }
 
@@ -249,7 +248,7 @@ fun PlayerOverlay(
                 ) {
                     Row(Modifier.padding(start = 32.dp, end = 32.dp, top = 32.dp)) {
                         Text(
-                            text = formatTime(playerState.progressMs),
+                            text = formatTime(viewModel.playerState.progressMs),
                             style =
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow =
@@ -262,7 +261,7 @@ fun PlayerOverlay(
                         )
                         Spacer(Modifier.weight(1f))
                         Text(
-                            text = formatTime(playerState.durationMs),
+                            text = formatTime(viewModel.playerState.durationMs),
                             style =
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow =
@@ -275,7 +274,7 @@ fun PlayerOverlay(
                         )
                     }
                     Seekbar(viewModel.mediaSession.player, seekbarInteractionSource, seekBack, seekForward)
-                    PlayerButtons(viewModel.mediaSession.player, playerState, lecture)
+                    PlayerButtons(viewModel.mediaSession.player, viewModel.playerState, lecture)
                 }
             }
         }

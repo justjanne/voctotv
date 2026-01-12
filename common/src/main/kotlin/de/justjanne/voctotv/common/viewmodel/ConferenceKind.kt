@@ -13,7 +13,7 @@ enum class ConferenceKind {
     CONGRESS,
     GPN,
     CONFERENCE,
-    DOCUMENTATIONS,
+    DOCUMENTARIES,
     ERFA,
     OTHER,
 }
@@ -33,7 +33,7 @@ fun ConferenceModel.kind() =
         -> ConferenceKind.ERFA
 
         slug.startsWith("documentations/")
-        -> ConferenceKind.DOCUMENTATIONS
+        -> ConferenceKind.DOCUMENTARIES
 
         else -> ConferenceKind.OTHER
     }

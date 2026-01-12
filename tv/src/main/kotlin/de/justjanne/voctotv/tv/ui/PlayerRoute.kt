@@ -11,7 +11,6 @@ import androidx.annotation.OptIn
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -26,28 +25,9 @@ import de.justjanne.voctotv.tv.ui.player.PlayerOverlay
 @OptIn(UnstableApi::class)
 @Composable
 fun PlayerRoute(viewModel: PlayerViewModel) {
-    val mediaItem by viewModel.mediaItem.collectAsState()
     val lecture by viewModel.lecture.collectAsState()
 
-    LaunchedEffect(viewModel.mediaSession.player, lecture, mediaItem) {
-        viewModel.mediaSession.player.apply {
-            clearMediaItems()
-            trackSelectionParameters =
-                trackSelectionParameters
-                    .buildUpon()
-                    .setPreferredAudioLanguages(lecture?.originalLanguage ?: "")
-                    .setPreferredTextLanguages()
-                    .build()
-            mediaItem?.let {
-                setMediaItem(it)
-            }
-            prepare()
-            playWhenReady = true
-            play()
-        }
-    }
-
-    val playerState = rememberPlayerState(viewModel.mediaSession.player)
+    rememberPlayerState(viewModel)
 
     Box(Modifier.fillMaxSize()) {
         ContentFrame(
@@ -56,7 +36,7 @@ fun PlayerRoute(viewModel: PlayerViewModel) {
             surfaceType = SURFACE_TYPE_SURFACE_VIEW,
         )
 
-        SubtitleDisplay(viewModel.mediaSession.player)
-        PlayerOverlay(viewModel, lecture, playerState)
+        SubtitleDisplay(viewModel.mediaSession.player, viewModel.playerState)
+        PlayerOverlay(viewModel, lecture)
     }
 }

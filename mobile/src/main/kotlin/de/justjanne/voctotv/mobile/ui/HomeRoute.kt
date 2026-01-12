@@ -9,7 +9,10 @@ package de.justjanne.voctotv.mobile.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,12 +26,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
@@ -44,16 +45,8 @@ fun HomeRoute(
     viewModel: HomeViewModel,
     navigate: (NavKey) -> Unit,
 ) {
-    val allConferences = viewModel.allConferences.collectAsState()
-    val conferences = viewModel.conferences.collectAsState()
-    val currentFilter = remember { mutableStateOf<ConferenceKind?>(null) }
-    val filteredItems =
-        remember {
-            derivedStateOf {
-                currentFilter.value?.let { filter -> conferences.value.firstOrNull { it.key == filter } }?.value
-                    ?: allConferences.value
-            }
-        }
+    val currentFilter = viewModel.currentFilter.collectAsState().value
+    val filteredItems = viewModel.filteredItems.collectAsState().value
 
     Scaffold(
         topBar = {
@@ -68,51 +61,61 @@ fun HomeRoute(
             )
         },
     ) { contentPadding ->
-        LazyColumn(
-            contentPadding = contentPadding,
-            modifier = Modifier.fillMaxSize(),
-        ) {
-            item("filter") {
-                LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
-                    contentPadding = PaddingValues(horizontal = 16.dp),
-                ) {
-                    item(null) {
-                        FilterChip(
-                            selected = currentFilter.value == null,
-                            onClick = { currentFilter.value = null },
-                            label = { Text("Everything") },
-                        )
-                    }
-                    items(ConferenceKind.entries) { filter ->
-                        FilterChip(
-                            selected = currentFilter.value == filter,
-                            onClick = { currentFilter.value = filter },
-                            label = {
-                                Text(
-                                    when (filter) {
-                                        ConferenceKind.CONGRESS -> "Congress"
-                                        ConferenceKind.GPN -> "GPN"
-                                        ConferenceKind.CONFERENCE -> "Conferences"
-                                        ConferenceKind.DOCUMENTATIONS -> "Documentaries"
-                                        ConferenceKind.ERFA -> "Erfas"
-                                        ConferenceKind.OTHER -> "Other"
-                                    },
-                                )
-                            },
-                        )
-                    }
+        Column {
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
+                contentPadding = PaddingValues(
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = contentPadding.calculateTopPadding(),
+                    bottom = 8.dp,
+                ),
+            ) {
+                item(null) {
+                    FilterChip(
+                        selected = currentFilter == null,
+                        onClick = { viewModel.currentFilter.value = null },
+                        label = { Text("Everything") },
+                    )
+                }
+                items(ConferenceKind.entries) { filter ->
+                    FilterChip(
+                        selected = currentFilter == filter,
+                        onClick = { viewModel.currentFilter.value = filter },
+                        label = {
+                            Text(
+                                when (filter) {
+                                    ConferenceKind.CONGRESS -> "Congress"
+                                    ConferenceKind.GPN -> "GPN"
+                                    ConferenceKind.CONFERENCE -> "Conferences"
+                                    ConferenceKind.DOCUMENTARIES -> "Documentaries"
+                                    ConferenceKind.ERFA -> "Erfas"
+                                    ConferenceKind.OTHER -> "Other"
+                                },
+                            )
+                        },
+                    )
                 }
             }
 
-            items(filteredItems.value, key = { it.acronym }) { item ->
-                ConferenceItem(
-                    item = item,
-                    showYear = item.kind() != ConferenceKind.ERFA,
-                    onClick = {
-                        navigate(Routes.Conference(item.acronym))
-                    },
-                )
+            val direction = LocalLayoutDirection.current
+            LazyColumn(
+                contentPadding = PaddingValues(
+                    start = contentPadding.calculateStartPadding(direction),
+                    end = contentPadding.calculateEndPadding(direction),
+                    bottom = contentPadding.calculateBottomPadding()
+                ),
+                modifier = Modifier.fillMaxSize(),
+            ) {
+                items(filteredItems, key = { it.acronym }) { item ->
+                    ConferenceItem(
+                        item = item,
+                        showYear = item.kind() != ConferenceKind.ERFA,
+                        onClick = {
+                            navigate(Routes.Conference(item.acronym))
+                        },
+                    )
+                }
             }
         }
     }
