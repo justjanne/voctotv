@@ -86,12 +86,13 @@ fun ConferenceRoute(
             Column {
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
-                    contentPadding = PaddingValues(
-                        start = 16.dp,
-                        end = 16.dp,
-                        top = contentPadding.calculateTopPadding(),
-                        bottom = 8.dp,
-                    ),
+                    contentPadding =
+                        PaddingValues(
+                            start = 16.dp,
+                            end = 16.dp,
+                            top = contentPadding.calculateTopPadding(),
+                            bottom = 8.dp,
+                        ),
                 ) {
                     item(null) {
                         FilterChip(
@@ -111,11 +112,12 @@ fun ConferenceRoute(
 
                 val direction = LocalLayoutDirection.current
                 LazyColumn(
-                    contentPadding = PaddingValues(
-                        start = contentPadding.calculateStartPadding(direction),
-                        end = contentPadding.calculateEndPadding(direction),
-                        bottom = contentPadding.calculateBottomPadding()
-                    ),
+                    contentPadding =
+                        PaddingValues(
+                            start = contentPadding.calculateStartPadding(direction),
+                            end = contentPadding.calculateEndPadding(direction),
+                            bottom = contentPadding.calculateBottomPadding(),
+                        ),
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     items(filteredItems, key = { it.guid }) { item ->

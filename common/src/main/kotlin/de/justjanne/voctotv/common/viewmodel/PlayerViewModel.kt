@@ -31,69 +31,69 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnsafeOptInUsageError")
 @HiltViewModel(assistedFactory = PlayerViewModel.Factory::class)
 class PlayerViewModel
-@AssistedInject
-constructor(
-    @Assisted lectureId: String,
-    api: VoctowebApi,
-    previewLoader: PreviewLoader,
-    private val previewPreloader: PreviewPreloader,
-    val mediaSession: MediaSession,
-) : ViewModel() {
-    val lecture =
-        flow {
-            emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
-        }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+    @AssistedInject
+    constructor(
+        @Assisted lectureId: String,
+        api: VoctowebApi,
+        previewLoader: PreviewLoader,
+        private val previewPreloader: PreviewPreloader,
+        val mediaSession: MediaSession,
+    ) : ViewModel() {
+        val lecture =
+            flow {
+                emit(runCatching { api.lecture.get(lectureId) }.getOrNull())
+            }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    val previews =
-        lecture
-            .map { it?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+        val previews =
+            lecture
+                .map { it?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val playerState = PlayerState(mediaSession.player)
+        val playerState = PlayerState(mediaSession.player)
 
-    init {
-        viewModelScope.launch {
-            previews.collectLatest {
-                previewPreloader.preload(it)
+        init {
+            viewModelScope.launch {
+                previews.collectLatest {
+                    previewPreloader.preload(it)
+                }
             }
-        }
-        viewModelScope.launch {
-            playerState.observe()
-        }
-        viewModelScope.launch {
-            lecture.collectLatest { lecture ->
-                mediaSession.player.clearMediaItems()
+            viewModelScope.launch {
+                playerState.observe()
+            }
+            viewModelScope.launch {
+                lecture.collectLatest { lecture ->
+                    mediaSession.player.clearMediaItems()
 
-                if (lecture != null) {
-                    val track =
-                        lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
-                            ?: lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
-                    if (track != null) {
-                        mediaSession.player.apply {
-                            trackSelectionParameters =
-                                trackSelectionParameters
-                                    .buildUpon()
-                                    .setPreferredAudioLanguages(lecture.originalLanguage ?: "")
-                                    .setPreferredTextLanguages()
-                                    .build()
-                            setMediaItem(buildMediaItem(lecture, track))
-                            prepare()
-                            playWhenReady = true
-                            play()
+                    if (lecture != null) {
+                        val track =
+                            lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
+                                ?: lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
+                        if (track != null) {
+                            mediaSession.player.apply {
+                                trackSelectionParameters =
+                                    trackSelectionParameters
+                                        .buildUpon()
+                                        .setPreferredAudioLanguages(lecture.originalLanguage ?: "")
+                                        .setPreferredTextLanguages()
+                                        .build()
+                                setMediaItem(buildMediaItem(lecture, track))
+                                prepare()
+                                playWhenReady = true
+                                play()
+                            }
                         }
                     }
                 }
             }
         }
-    }
 
-    override fun onCleared() {
-        mediaSession.player.release()
-        mediaSession.release()
-    }
+        override fun onCleared() {
+            mediaSession.player.release()
+            mediaSession.release()
+        }
 
-    @AssistedFactory
-    interface Factory {
-        fun create(lectureId: String): PlayerViewModel
+        @AssistedFactory
+        interface Factory {
+            fun create(lectureId: String): PlayerViewModel
+        }
     }
-}

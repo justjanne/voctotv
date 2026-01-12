@@ -7,8 +7,11 @@ import androidx.media3.common.MimeTypes
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 import de.justjanne.voctotv.voctoweb.model.ResourceModel
 
-fun buildMediaItem(lecture: LectureModel, track: ResourceModel): MediaItem {
-    return MediaItem
+fun buildMediaItem(
+    lecture: LectureModel,
+    track: ResourceModel,
+): MediaItem =
+    MediaItem
         .Builder()
         .setUri(track.recordingUrl)
         .setMediaId(track.filename)
@@ -45,4 +48,3 @@ fun buildMediaItem(lecture: LectureModel, track: ResourceModel): MediaItem {
                 }
             },
         ).build()
-}

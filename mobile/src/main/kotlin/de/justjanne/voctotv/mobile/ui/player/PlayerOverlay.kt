@@ -82,11 +82,12 @@ fun PlayerOverlay(
         uiVisible.value = false
     }
 
-    val isLandscape = remember {
-        derivedStateOf {
-            viewModel.playerState.aspectRatio > 1f
+    val isLandscape =
+        remember {
+            derivedStateOf {
+                viewModel.playerState.aspectRatio > 1f
+            }
         }
-    }
 
     val context = LocalActivity.current
     DisposableEffect(context, viewModel.playerState.casting, isLandscape.value) {

@@ -51,8 +51,11 @@ fun BoxScope.SubtitleDisplay(
     }
 
     val aspectRatioModifier =
-        if (playerState.aspectRatio > 0f) Modifier.aspectRatio(playerState.aspectRatio)
-        else Modifier
+        if (playerState.aspectRatio > 0f) {
+            Modifier.aspectRatio(playerState.aspectRatio)
+        } else {
+            Modifier
+        }
 
     BoxWithConstraints(
         modifier =

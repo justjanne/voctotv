@@ -8,7 +8,7 @@ import kotlinx.coroutines.delay
 
 @UnstableApi
 @Composable
-fun rememberPlayerState(viewModel: PlayerViewModel) {
+fun UsePlayerState(viewModel: PlayerViewModel) {
     LaunchedEffect(viewModel.playerState, viewModel.playerState.status) {
         viewModel.playerState.update()
         while (viewModel.playerState.status == PlayerState.Status.PLAYING) {
