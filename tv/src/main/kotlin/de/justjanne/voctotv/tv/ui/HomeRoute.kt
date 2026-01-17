@@ -46,7 +46,7 @@ fun HomeRoute(
     navigate: (NavKey) -> Unit,
 ) {
     val conferences by viewModel.conferences.collectAsState()
-    val recent by viewModel.recent.collectAsState()
+    val recent by viewModel.recentResult.collectAsState()
     val featuredLectures by viewModel.featuredLectures.collectAsState()
 
     val focusRequester = remember { FocusRequester() }

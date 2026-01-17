@@ -24,6 +24,9 @@ interface LectureApi {
     @GET("public/events/recent")
     suspend fun listRecent(): LectureResult
 
+    @GET("public/events/promoted")
+    suspend fun listPromoted(): LectureResult
+
     @GET("public/events/{id}")
     suspend fun get(
         @Path("id") id: String,

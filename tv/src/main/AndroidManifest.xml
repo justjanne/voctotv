@@ -19,7 +19,8 @@
     android:label="@string/app_name"
     android:supportsRtl="true"
     android:name=".VoctoTV"
-    android:theme="@style/Theme.VoctoTV">
+    android:theme="@style/Theme.VoctoTV"
+    android:usesCleartextTraffic="true">
     <activity
       android:name=".MainActivity"
       android:launchMode="singleTask"

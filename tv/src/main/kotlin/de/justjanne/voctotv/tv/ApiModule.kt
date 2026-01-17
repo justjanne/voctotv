@@ -10,6 +10,7 @@ package de.justjanne.voctotv.tv
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
@@ -22,17 +23,24 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import java.io.File
+import javax.inject.Named
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal object ApiModule {
     @Provides
-    fun provideApi(client: OkHttpClient): VoctowebApi {
+    @Named("apiEndpoint")
+    fun provideApiEndpoint(@ApplicationContext context: Context): String =
+        context.resources.getString(R.string.api_url)
+
+    @Provides
+    @Reusable
+    fun provideApi(client: OkHttpClient, @Named("apiEndpoint") apiEndpoint: String): VoctowebApi {
         val contentType = "application/json".toMediaType()
         val retrofit =
             Retrofit
                 .Builder()
-                .baseUrl("https://api.media.ccc.de/")
+                .baseUrl(apiEndpoint)
                 .addConverterFactory(Json.asConverterFactory(contentType))
                 .client(client)
                 .build()
@@ -40,6 +48,7 @@ internal object ApiModule {
     }
 
     @Provides
+    @Reusable
     fun provideClient(
         @ApplicationContext context: Context,
     ): OkHttpClient =

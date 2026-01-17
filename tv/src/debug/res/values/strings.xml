@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">VoctoTV Debug</string>
+  <string name="api_url">https://media.test.c3voc.de/</string>
 </resources>

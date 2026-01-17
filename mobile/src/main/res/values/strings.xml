@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">VoctoTV</string>
+  <string name="api_url">https://api.media.ccc.de/</string>
 </resources>
