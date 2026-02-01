@@ -12,7 +12,7 @@ junitPlatform = "1.14.1"
 
 appcompat = "1.7.1"
 splashscreen = "1.2.0"
-composeBom = "2025.12.01"
+composeBom = "2026.01.01"
 lifecycle = "2.10.0"
 activityCompose = "1.12.2"
 

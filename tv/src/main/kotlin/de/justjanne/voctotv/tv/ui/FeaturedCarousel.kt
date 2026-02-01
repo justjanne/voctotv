@@ -269,7 +269,7 @@ private fun WatchNowButton(onClick: () -> Unit) {
             imageVector = Icons.Outlined.PlayArrow,
             contentDescription = null,
         )
-        Spacer(Modifier.size(8.dp))
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text(
             text = "Watch now",
             style = MaterialTheme.typography.titleSmall,
