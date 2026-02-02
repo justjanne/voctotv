@@ -49,13 +49,12 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.media3.cast.MediaRouteButton
 import androidx.media3.common.util.UnstableApi
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.mobile.R
+import de.justjanne.voctotv.mobile.ui.util.rememberSystemBarState
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @OptIn(UnstableApi::class)
@@ -78,6 +77,8 @@ fun PlayerOverlay(
 
     val mainInteractionSource = remember { MutableInteractionSource() }
 
+    val systemBarState = rememberSystemBarState()
+
     BackHandler(uiVisible.value && !uiForced.value) {
         uiVisible.value = false
     }
@@ -90,23 +91,24 @@ fun PlayerOverlay(
         }
 
     val context = LocalActivity.current
+    // Set Orientation
     DisposableEffect(context, viewModel.playerState.casting, isLandscape.value) {
-        if (!viewModel.playerState.casting && context != null) {
-            val isLandscape = isLandscape.value
-            if (isLandscape) {
-                context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-            }
-            WindowCompat
-                .getInsetsController(context.window, context.window.decorView)
-                .hide(WindowInsetsCompat.Type.systemBars())
+        if (!viewModel.playerState.casting && context != null && isLandscape.value) {
+            context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
 
             onDispose {
-                if (isLandscape) {
-                    context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-                }
-                WindowCompat
-                    .getInsetsController(context.window, context.window.decorView)
-                    .show(WindowInsetsCompat.Type.systemBars())
+                context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            }
+        } else {
+            onDispose {}
+        }
+    }
+    // Hide System Bars
+    DisposableEffect(systemBarState, viewModel.playerState.casting) {
+        if (!viewModel.playerState.casting) {
+            systemBarState?.hide()
+            onDispose {
+                systemBarState?.show()
             }
         } else {
             onDispose {}
@@ -118,6 +120,9 @@ fun PlayerOverlay(
             Modifier
                 .fillMaxSize()
                 .clickable(mainInteractionSource, indication = null, enabled = !uiForced.value) {
+                    if (uiVisible.value && !viewModel.playerState.casting) {
+                        systemBarState?.hide()
+                    }
                     uiVisible.value = !uiVisible.value
                 },
     ) {
@@ -272,7 +277,12 @@ fun PlayerOverlay(
         ) {
             PlayPauseButton(
                 viewModel.playerState.status,
-                onPlay = viewModel.mediaSession.player::play,
+                onPlay = {
+                    viewModel.mediaSession.player.play()
+                    if (!viewModel.playerState.casting) {
+                        systemBarState?.hide()
+                    }
+                },
                 onPause = viewModel.mediaSession.player::pause,
                 onReplay = {
                     viewModel.mediaSession.player.seekToDefaultPosition()
