@@ -88,7 +88,7 @@ class PlayerState(
 
     fun commitSeek() {
         val timestamp = seekingState.longValue
-        if (timestamp > 0) {
+        if (timestamp >= 0) {
             player.seekTo(timestamp)
             if (casting && status == Status.PAUSED) {
                 player.play()
