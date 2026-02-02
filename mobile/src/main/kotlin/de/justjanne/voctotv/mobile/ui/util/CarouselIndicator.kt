@@ -5,7 +5,7 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-package de.justjanne.voctotv.mobile.ui
+package de.justjanne.voctotv.mobile.ui.util
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,15 +25,15 @@ import androidx.compose.ui.unit.dp
 fun CarouselIndicator(
     itemCount: Int,
     activeItemIndex: Int,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     spacing: Dp = 8.dp,
-    alignment: Alignment.Horizontal = Alignment.Companion.Start,
+    alignment: Alignment.Horizontal = Alignment.Start,
     indicator: @Composable (isActive: Boolean) -> Unit = { isActive ->
-        val activeColor = Color.Companion.White
+        val activeColor = Color.White
         val inactiveColor = activeColor.copy(alpha = 0.3f)
         Box(
             modifier =
-                Modifier.Companion.size(8.dp)
+                Modifier.size(8.dp)
                     .background(
                         color = if (isActive) activeColor else inactiveColor,
                         shape = CircleShape,
@@ -43,7 +43,7 @@ fun CarouselIndicator(
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(spacing, alignment = alignment),
-        verticalAlignment = Alignment.Companion.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically,
         modifier = modifier,
     ) {
         repeat(itemCount) {

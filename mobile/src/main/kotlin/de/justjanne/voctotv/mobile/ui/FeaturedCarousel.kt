@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import coil3.compose.rememberAsyncImagePainter
 import de.justjanne.voctotv.mobile.Routes
+import de.justjanne.voctotv.mobile.ui.util.CarouselIndicator
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @Composable
