@@ -25,9 +25,10 @@ import de.justjanne.voctotv.mobile.Routes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-// FIXME: startRoute should be abel to be something different than Player
-fun AppRouter(startRoute: Routes.Player? = null) {
-    val backStack = rememberNavBackStack(startRoute ?: Routes.Home)
+fun AppRouter(startRoute: NavKey? = null) {
+    val startPath = startRoute?.let { arrayOf(Routes.Home, startRoute) } ?: arrayOf(Routes.Home)
+    val backStack = rememberNavBackStack(*startPath)
+
     val navigate: (NavKey) -> Unit =
         remember(backStack) {
             { backStack.add(it) }
