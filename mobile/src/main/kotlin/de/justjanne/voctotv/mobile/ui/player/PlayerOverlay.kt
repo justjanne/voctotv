@@ -51,10 +51,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.cast.MediaRouteButton
 import androidx.media3.common.util.UnstableApi
+import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.mobile.R
-import de.justjanne.voctotv.mobile.ui.util.rememberSystemBarState
+import de.justjanne.voctotv.mobile.ui.util.rememberWindowState
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @OptIn(UnstableApi::class)
@@ -77,20 +78,19 @@ fun PlayerOverlay(
 
     val mainInteractionSource = remember { MutableInteractionSource() }
 
-    val systemBarState = rememberSystemBarState()
+    val windowState = rememberWindowState()
 
     BackHandler(uiVisible.value && !uiForced.value) {
         uiVisible.value = false
     }
 
-    val isLandscape =
-        remember {
-            derivedStateOf {
-                viewModel.playerState.aspectRatio > 1f
-            }
-        }
-
     val context = LocalActivity.current
+
+    val isLandscape = remember {
+        derivedStateOf {
+            viewModel.playerState.aspectRatio > 1f
+        }
+    }
     // Set Orientation
     DisposableEffect(context, viewModel.playerState.casting, isLandscape.value) {
         if (!viewModel.playerState.casting && context != null && isLandscape.value) {
@@ -103,12 +103,33 @@ fun PlayerOverlay(
             onDispose {}
         }
     }
+
     // Hide System Bars
-    DisposableEffect(systemBarState, viewModel.playerState.casting) {
+    DisposableEffect(windowState, viewModel.playerState.casting) {
         if (!viewModel.playerState.casting) {
-            systemBarState?.hide()
+            windowState?.hideSystemUi()
             onDispose {
-                systemBarState?.show()
+                windowState?.showSystemUi()
+            }
+        } else {
+            onDispose {}
+        }
+    }
+
+    val activelyPlaying = remember {
+        derivedStateOf {
+            when (viewModel.playerState.status) {
+                PlayerState.Status.BUFFERING, PlayerState.Status.PLAYING -> !viewModel.playerState.casting
+                PlayerState.Status.PAUSED, PlayerState.Status.ENDED -> false
+            }
+        }
+    }
+    // Keep Screen On
+    DisposableEffect(windowState, activelyPlaying.value) {
+        if (activelyPlaying.value) {
+            windowState?.disableSleep()
+            onDispose {
+                windowState?.enableSleep()
             }
         } else {
             onDispose {}
@@ -121,7 +142,7 @@ fun PlayerOverlay(
                 .fillMaxSize()
                 .clickable(mainInteractionSource, indication = null, enabled = !uiForced.value) {
                     if (uiVisible.value && !viewModel.playerState.casting) {
-                        systemBarState?.hide()
+                        windowState?.hideSystemUi()
                     }
                     uiVisible.value = !uiVisible.value
                 },
@@ -280,7 +301,7 @@ fun PlayerOverlay(
                 onPlay = {
                     viewModel.mediaSession.player.play()
                     if (!viewModel.playerState.casting) {
-                        systemBarState?.hide()
+                        windowState?.hideSystemUi()
                     }
                 },
                 onPause = viewModel.mediaSession.player::pause,

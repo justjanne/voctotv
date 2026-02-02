@@ -10,6 +10,7 @@ package de.justjanne.voctotv.mobile
 import android.content.Context
 import androidx.annotation.OptIn
 import androidx.media3.cast.CastPlayer
+import androidx.media3.common.C.WAKE_MODE_NETWORK
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
@@ -37,7 +38,9 @@ internal object PlayerModule {
                         .buildUpon()
                         .setDisabledTrackTypes(emptySet())
                         .build(),
-                ).build()
+                )
+                .setWakeMode(WAKE_MODE_NETWORK)
+                .build()
         val castPlayer =
             CastPlayer
                 .Builder(context)
