@@ -30,12 +30,16 @@ import javax.inject.Named
 internal object ApiModule {
     @Provides
     @Named("apiEndpoint")
-    fun provideApiEndpoint(@ApplicationContext context: Context): String =
-        context.resources.getString(R.string.api_url)
+    fun provideApiEndpoint(
+        @ApplicationContext context: Context,
+    ): String = context.resources.getString(R.string.api_url)
 
     @Provides
     @Reusable
-    fun provideApi(client: OkHttpClient, @Named("apiEndpoint") apiEndpoint: String): VoctowebApi {
+    fun provideApi(
+        client: OkHttpClient,
+        @Named("apiEndpoint") apiEndpoint: String,
+    ): VoctowebApi {
         val contentType = "application/json".toMediaType()
         val retrofit =
             Retrofit

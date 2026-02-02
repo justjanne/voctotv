@@ -16,6 +16,7 @@ data class WindowState(
             .getInsetsController(context.window, context.window.decorView)
             .show(WindowInsetsCompat.Type.systemBars())
     }
+
     fun hideSystemUi() {
         WindowCompat
             .getInsetsController(context.window, context.window.decorView)

@@ -43,32 +43,35 @@ fun FeaturedCarouselItem(
     background: Painter,
     title: String,
     persons: List<String>,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
 ) {
-    Column(horizontalAlignment = Alignment.Companion.CenterHorizontally) {
-        Box(Modifier.Companion.fillMaxWidth()) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Box(Modifier.fillMaxWidth()) {
             val scrimBrush = MaterialTheme.colorScheme.scrimBrush
             Image(
                 painter = background,
                 contentDescription = null,
-                modifier = Modifier.Companion.fillMaxWidth()
-                    .aspectRatio(16f / 9f)
-                    .drawWithContent {
-                        drawContent()
-                        drawRect(scrimBrush)
-                    },
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(16f / 9f)
+                        .drawWithContent {
+                            drawContent()
+                            drawRect(scrimBrush)
+                        },
             )
             Column(
-                modifier = modifier.align(Alignment.Companion.BottomCenter).padding(horizontal = 16.dp),
+                modifier = modifier.align(Alignment.BottomCenter).padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.Bottom,
-                horizontalAlignment = Alignment.Companion.CenterHorizontally,
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.titleLarge
-                        .copy(lineBreak = LineBreak.Companion.Heading),
-                    overflow = TextOverflow.Companion.Ellipsis,
-                    textAlign = TextAlign.Companion.Center,
+                    style =
+                        MaterialTheme.typography.titleLarge
+                            .copy(lineBreak = LineBreak.Heading),
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center,
                     maxLines = 2,
                 )
                 Text(
@@ -76,7 +79,7 @@ fun FeaturedCarouselItem(
                     maxLines = 1,
                     style = MaterialTheme.typography.bodyMedium,
                     color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
-                    textAlign = TextAlign.Companion.Center,
+                    textAlign = TextAlign.Center,
                 )
             }
         }
@@ -90,7 +93,7 @@ private fun WatchNowButton(onClick: () -> Unit) {
     Button(
         onClick = onClick,
         contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
-        modifier = Modifier.Companion.padding(top = 12.dp),
+        modifier = Modifier.padding(top = 12.dp),
         colors =
             ButtonDefaults.filledTonalButtonColors(
                 containerColor = MaterialTheme.colorScheme.onSurface,
@@ -101,7 +104,7 @@ private fun WatchNowButton(onClick: () -> Unit) {
             painter = painterResource(R.drawable.ic_play_arrow),
             contentDescription = null,
         )
-        Spacer(Modifier.Companion.size(ButtonDefaults.IconSpacing))
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text(
             text = "Watch now",
             style = MaterialTheme.typography.titleSmall,

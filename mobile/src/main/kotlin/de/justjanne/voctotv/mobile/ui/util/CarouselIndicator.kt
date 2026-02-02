@@ -33,13 +33,14 @@ fun CarouselIndicator(
         val inactiveColor = activeColor.copy(alpha = 0.3f)
         Box(
             modifier =
-                Modifier.size(8.dp)
+                Modifier
+                    .size(8.dp)
                     .background(
                         color = if (isActive) activeColor else inactiveColor,
                         shape = CircleShape,
                     ),
         )
-    }
+    },
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(spacing, alignment = alignment),

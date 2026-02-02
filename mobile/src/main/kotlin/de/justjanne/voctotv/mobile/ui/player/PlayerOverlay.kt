@@ -86,11 +86,12 @@ fun PlayerOverlay(
 
     val context = LocalActivity.current
 
-    val isLandscape = remember {
-        derivedStateOf {
-            viewModel.playerState.aspectRatio > 1f
+    val isLandscape =
+        remember {
+            derivedStateOf {
+                viewModel.playerState.aspectRatio > 1f
+            }
         }
-    }
     // Set Orientation
     DisposableEffect(context, viewModel.playerState.casting, isLandscape.value) {
         if (!viewModel.playerState.casting && context != null && isLandscape.value) {
@@ -116,14 +117,15 @@ fun PlayerOverlay(
         }
     }
 
-    val activelyPlaying = remember {
-        derivedStateOf {
-            when (viewModel.playerState.status) {
-                PlayerState.Status.BUFFERING, PlayerState.Status.PLAYING -> !viewModel.playerState.casting
-                PlayerState.Status.PAUSED, PlayerState.Status.ENDED -> false
+    val activelyPlaying =
+        remember {
+            derivedStateOf {
+                when (viewModel.playerState.status) {
+                    PlayerState.Status.BUFFERING, PlayerState.Status.PLAYING -> !viewModel.playerState.casting
+                    PlayerState.Status.PAUSED, PlayerState.Status.ENDED -> false
+                }
             }
         }
-    }
     // Keep Screen On
     DisposableEffect(windowState, activelyPlaying.value) {
         if (activelyPlaying.value) {

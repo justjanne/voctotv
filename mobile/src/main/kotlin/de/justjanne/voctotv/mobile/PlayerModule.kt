@@ -38,8 +38,7 @@ internal object PlayerModule {
                         .buildUpon()
                         .setDisabledTrackTypes(emptySet())
                         .build(),
-                )
-                .setWakeMode(WAKE_MODE_NETWORK)
+                ).setWakeMode(WAKE_MODE_NETWORK)
                 .build()
         val castPlayer =
             CastPlayer
