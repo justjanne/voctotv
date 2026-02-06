@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Surface
 import dagger.hilt.android.AndroidEntryPoint
-import de.justjanne.voctotv.tv.ui.AppRouter
+import de.justjanne.voctotv.tv.route.AppRouter
 import de.justjanne.voctotv.tv.ui.theme.VoctoTvTheme
 
 @AndroidEntryPoint

@@ -7,12 +7,10 @@
 
 package de.justjanne.voctotv.mobile.ui.theme
 
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Brush
 
 private val lightScheme =
     lightColorScheme(
@@ -94,15 +92,6 @@ private val darkScheme =
 
 const val SubtitleAlpha = 0.6f
 const val DescriptionAlpha = 0.8f
-
-val ColorScheme.scrimBrush: Brush
-    @Composable get() =
-        Brush.verticalGradient(
-            listOf(
-                MaterialTheme.colorScheme.background.copy(alpha = 0f),
-                MaterialTheme.colorScheme.background,
-            ),
-        )
 
 @Composable
 fun VoctoTvTheme(

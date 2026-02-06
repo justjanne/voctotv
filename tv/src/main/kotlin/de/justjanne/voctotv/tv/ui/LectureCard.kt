@@ -40,10 +40,9 @@ import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.tv.Routes
+import de.justjanne.voctotv.tv.ui.theme.DescriptionAlpha
+import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.voctoweb.model.LectureModel
-
-private const val SubtitleAlpha = 0.6f
-private const val DescriptionAlpha = 0.8f
 
 @Composable
 fun LectureCard(

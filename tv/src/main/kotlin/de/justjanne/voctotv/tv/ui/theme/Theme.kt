@@ -78,6 +78,9 @@ private val darkScheme =
         surfaceTint = primaryContainerLight,
     )
 
+const val SubtitleAlpha = 0.6f
+const val DescriptionAlpha = 0.8f
+
 @Composable
 fun VoctoTvTheme(
     isInDarkTheme: Boolean = true,

@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.util.fastCoerceIn
+import androidx.media3.common.C
 import androidx.media3.common.DeviceInfo
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
@@ -39,6 +40,8 @@ class PlayerState(
     private val castingState = mutableStateOf(false)
 
     private val aspectRatioState = mutableFloatStateOf(0f)
+
+    private val captionTrackState = mutableStateOf(emptyList<String>())
 
     init {
         update()
@@ -80,6 +83,8 @@ class PlayerState(
 
     val aspectRatio: Float get() = aspectRatioState.floatValue
 
+    val captionTracks: List<String> get() = captionTrackState.value
+
     fun seek(ms: Long) {
         if (durationMs > 0) {
             seekingState.longValue = ms.fastCoerceIn(0L, durationMs)
@@ -107,6 +112,7 @@ class PlayerState(
             Player.EVENT_AVAILABLE_COMMANDS_CHANGED,
             Player.EVENT_DEVICE_INFO_CHANGED,
             Player.EVENT_IS_LOADING_CHANGED,
+            Player.EVENT_TRACKS_CHANGED,
         ) {
             update()
         }
@@ -122,6 +128,10 @@ class PlayerState(
         durationState.longValue = player.duration
 
         castingState.value = player.deviceInfo.playbackType == DeviceInfo.PLAYBACK_TYPE_REMOTE
+
+        captionTrackState.value = player.currentTracks.groups
+            .filter { it.type == C.TRACK_TYPE_TEXT }
+            .mapNotNull { it.getTrackFormat(0).language }
     }
 
     @UnstableApi

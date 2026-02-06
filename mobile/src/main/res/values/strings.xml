@@ -1,4 +1,8 @@
 <resources>
   <string name="app_name">VoctoTV</string>
   <string name="api_url">https://api.media.ccc.de/</string>
+
+  <string name="player_audio_language">Language</string>
+  <string name="player_captions">Captions</string>
+  <string name="player_captions_none">None</string>
 </resources>
