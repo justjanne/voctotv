@@ -17,7 +17,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.tv.material3.Carousel
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 
-
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
 fun HeroCarousel(
@@ -37,7 +36,7 @@ fun HeroCarousel(
                     .padding(HeroCarouselDefaults.ContainerPadding)
                     .border(
                         HeroCarouselDefaults.border(isCarouselFocused.value),
-                        HeroCarouselDefaults.Shape
+                        HeroCarouselDefaults.Shape,
                     ).clip(HeroCarouselDefaults.Shape)
                     .onFocusChanged {
                         // Because the carousel itself never gets the focus

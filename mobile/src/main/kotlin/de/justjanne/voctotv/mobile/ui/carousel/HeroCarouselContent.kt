@@ -54,8 +54,10 @@ fun HeroCarouselContent(
                         },
             )
             Column(
-                modifier = modifier.align(Alignment.BottomCenter)
-                    .padding(horizontal = HeroCarouselDefaults.HorizontalPadding),
+                modifier =
+                    modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(horizontal = HeroCarouselDefaults.HorizontalPadding),
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
@@ -63,7 +65,7 @@ fun HeroCarouselContent(
                     MaterialTheme.typography.titleLarge.copy(
                         lineBreak = LineBreak.Heading,
                         textAlign = TextAlign.Center,
-                    )
+                    ),
                 ) {
                     title()
                 }
@@ -71,7 +73,7 @@ fun HeroCarouselContent(
                     MaterialTheme.typography.bodyMedium.copy(
                         color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
                         textAlign = TextAlign.Center,
-                    )
+                    ),
                 ) {
                     description()
                 }

@@ -111,7 +111,7 @@ fun HomeRoute(
                                 WatchNowButton(onClick = {
                                     navigate(Player(lecture.guid))
                                 })
-                            }
+                            },
                         )
                     }
                 }

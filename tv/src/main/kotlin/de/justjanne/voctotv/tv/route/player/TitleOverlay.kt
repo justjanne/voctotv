@@ -24,8 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.tv.ui.theme.PlayerScrimTop
+import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.tv.ui.theme.textShadow
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 

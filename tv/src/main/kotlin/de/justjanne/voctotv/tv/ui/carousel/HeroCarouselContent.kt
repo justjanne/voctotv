@@ -58,7 +58,7 @@ fun HeroCarouselContent(
                                 colors = HeroCarouselDefaults.BackgroundGradient,
                                 radius = size.maxDimension,
                             ),
-                            size = size
+                            size = size,
                         )
                     },
             contentScale = ContentScale.Crop,
@@ -79,7 +79,7 @@ fun HeroCarouselContent(
                     MaterialTheme.typography.bodyMedium.copy(
                         color = Color.White.copy(alpha = SubtitleAlpha),
                         shadow = MaterialTheme.colorScheme.textShadow,
-                    )
+                    ),
                 ) {
                     label()
                 }
@@ -87,7 +87,7 @@ fun HeroCarouselContent(
                 ProvideTextStyle(
                     MaterialTheme.typography.titleLarge.copy(
                         shadow = MaterialTheme.colorScheme.textShadow,
-                    )
+                    ),
                 ) {
                     title()
                 }
@@ -96,7 +96,7 @@ fun HeroCarouselContent(
                     MaterialTheme.typography.bodyMedium.copy(
                         color = Color.White.copy(alpha = SubtitleAlpha),
                         shadow = MaterialTheme.colorScheme.textShadow,
-                    )
+                    ),
                 ) {
                     byline()
                 }
@@ -105,7 +105,7 @@ fun HeroCarouselContent(
                     MaterialTheme.typography.bodyMedium.copy(
                         color = Color.White.copy(alpha = DescriptionAlpha),
                         shadow = MaterialTheme.colorScheme.textShadow,
-                    )
+                    ),
                 ) {
                     description()
                 }

@@ -41,8 +41,9 @@ fun AudioSelection(
 
     Box {
         PlayerPopup(popupOpen.value, { popupOpen.value = false }) {
-            val audioTracks = player.currentTracks.groups
-                .filter { it.type == C.TRACK_TYPE_AUDIO }
+            val audioTracks =
+                player.currentTracks.groups
+                    .filter { it.type == C.TRACK_TYPE_AUDIO }
 
             Column(Modifier.padding(20.dp)) {
                 DropdownMenuSubheader {
@@ -67,7 +68,7 @@ fun AudioSelection(
                                         .buildUpon()
                                         .setPreferredAudioLanguages(language)
                                         .build()
-                            }
+                            },
                         )
                     }
                 }

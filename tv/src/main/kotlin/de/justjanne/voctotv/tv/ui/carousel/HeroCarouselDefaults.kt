@@ -23,12 +23,10 @@ object HeroCarouselDefaults {
 
     val BackgroundColor = SoftScrim.compositeOver(Color.Black)
 
-
     val ActiveBorder = BorderStroke(3.dp, Color.White)
     val InactiveBorder = BorderStroke(3.dp, Color.Transparent)
 
-    fun border(active: Boolean) =
-        if (active) ActiveBorder else InactiveBorder
+    fun border(active: Boolean) = if (active) ActiveBorder else InactiveBorder
 
     val Shape = ShapeDefaults.Medium
 }

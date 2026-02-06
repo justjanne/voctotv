@@ -10,9 +10,7 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.ProvideTextStyle
 
 @Composable
-fun DropdownMenuSubheader(
-    text: @Composable () -> Unit,
-) {
+fun DropdownMenuSubheader(text: @Composable () -> Unit) {
     Row(
         modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 12.dp),
         verticalAlignment = Alignment.CenterVertically,

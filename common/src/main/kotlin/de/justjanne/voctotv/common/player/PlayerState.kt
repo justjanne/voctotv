@@ -129,9 +129,10 @@ class PlayerState(
 
         castingState.value = player.deviceInfo.playbackType == DeviceInfo.PLAYBACK_TYPE_REMOTE
 
-        captionTrackState.value = player.currentTracks.groups
-            .filter { it.type == C.TRACK_TYPE_TEXT }
-            .mapNotNull { it.getTrackFormat(0).language }
+        captionTrackState.value =
+            player.currentTracks.groups
+                .filter { it.type == C.TRACK_TYPE_TEXT }
+                .mapNotNull { it.getTrackFormat(0).language }
     }
 
     @UnstableApi

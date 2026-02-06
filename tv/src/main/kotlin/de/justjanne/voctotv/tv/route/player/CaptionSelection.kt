@@ -52,11 +52,12 @@ fun CaptionSelection(
                     },
                     onClick = {
                         popupOpen.value = false
-                        player.trackSelectionParameters = player.trackSelectionParameters
-                            .buildUpon()
-                            .setPreferredTextLanguages()
-                            .build()
-                    }
+                        player.trackSelectionParameters =
+                            player.trackSelectionParameters
+                                .buildUpon()
+                                .setPreferredTextLanguages()
+                                .build()
+                    },
                 )
 
                 for (language in playerState.captionTracks) {
@@ -67,11 +68,12 @@ fun CaptionSelection(
                         },
                         onClick = {
                             popupOpen.value = false
-                            player.trackSelectionParameters = player.trackSelectionParameters
-                                .buildUpon()
-                                .setPreferredTextLanguages(language)
-                                .build()
-                        }
+                            player.trackSelectionParameters =
+                                player.trackSelectionParameters
+                                    .buildUpon()
+                                    .setPreferredTextLanguages(language)
+                                    .build()
+                        },
                     )
                 }
             }

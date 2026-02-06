@@ -52,9 +52,9 @@ import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.ui.rememberWindowState
-import de.justjanne.voctotv.mobile.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.mobile.ui.theme.PlayerScrimBottom
 import de.justjanne.voctotv.mobile.ui.theme.PlayerScrimTop
+import de.justjanne.voctotv.mobile.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.mobile.ui.theme.textShadow
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 

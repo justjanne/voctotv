@@ -13,9 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DropdownMenuSubheader(
-    text: @Composable () -> Unit,
-) {
+fun DropdownMenuSubheader(text: @Composable () -> Unit) {
     Row(
         modifier =
             Modifier

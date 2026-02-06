@@ -73,11 +73,12 @@ fun AudioSelection(
                         selected = audioTrack.isSelected,
                         onClick = {
                             popupOpen.value = false
-                            player.trackSelectionParameters = player.trackSelectionParameters
-                                .buildUpon()
-                                .setPreferredAudioLanguages(language)
-                                .build()
-                        }
+                            player.trackSelectionParameters =
+                                player.trackSelectionParameters
+                                    .buildUpon()
+                                    .setPreferredAudioLanguages(language)
+                                    .build()
+                        },
                     )
                 }
             }

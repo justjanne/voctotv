@@ -8,7 +8,6 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.tv.material3.ColorScheme
 import androidx.tv.material3.MaterialTheme
 
-
 val SoftScrim: Color
     get() = Color(red = 28, green = 27, blue = 31, alpha = 204)
 

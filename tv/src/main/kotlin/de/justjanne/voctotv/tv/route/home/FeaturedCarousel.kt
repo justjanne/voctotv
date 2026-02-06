@@ -36,11 +36,12 @@ fun FeaturedCarousel(
 
         Card(
             onClick = { navigate(Routes.Player(lecture.guid)) },
-            colors = CardDefaults.colors(
-                containerColor = HeroCarouselDefaults.BackgroundColor,
-                focusedContainerColor = HeroCarouselDefaults.BackgroundColor,
-                pressedContainerColor = HeroCarouselDefaults.BackgroundColor,
-            ),
+            colors =
+                CardDefaults.colors(
+                    containerColor = HeroCarouselDefaults.BackgroundColor,
+                    focusedContainerColor = HeroCarouselDefaults.BackgroundColor,
+                    pressedContainerColor = HeroCarouselDefaults.BackgroundColor,
+                ),
         ) {
             val background = rememberAsyncImagePainter(lecture.posterUrl)
             HeroCarouselContent(
@@ -76,7 +77,7 @@ fun FeaturedCarousel(
                     WatchNowButton(onClick = {
                         navigate(Routes.Player(lecture.guid))
                     })
-                }
+                },
             )
         }
     }

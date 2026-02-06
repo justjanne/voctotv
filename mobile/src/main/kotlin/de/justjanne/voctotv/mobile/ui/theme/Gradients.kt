@@ -8,7 +8,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 
-
 val ColorScheme.scrimBrush: Brush
     @Composable get() =
         Brush.verticalGradient(
