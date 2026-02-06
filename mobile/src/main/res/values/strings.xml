@@ -3,6 +3,27 @@
   <string name="api_url">https://api.media.ccc.de/</string>
 
   <string name="player_audio_language">Language</string>
+  <string name="player_audio_original">%s (Original)</string>
+
   <string name="player_captions">Captions</string>
   <string name="player_captions_none">None</string>
+
+  <string name="filter_everything">Everything</string>
+
+  <string name="placeholder_loading">Loading</string>
+  <string name="placeholder_conference">Conference</string>
+
+  <string name="action_watchnow">Watch now</string>
+  <string name="action_back">Back</string>
+  <string name="action_pause">Pause</string>
+  <string name="action_play">Play</string>
+  <string name="action_restart">Play Again</string>
+
+  <string name="category_congress">Congress</string>
+  <string name="category_gpn">GPN</string>
+  <string name="category_conference">Conferences</string>
+  <string name="category_documentary">Documentaries</string>
+  <string name="category_erfa">Erfas</string>
+  <string name="category_other">Other</string>
+  <string name="category_recent">Recent</string>
 </resources>

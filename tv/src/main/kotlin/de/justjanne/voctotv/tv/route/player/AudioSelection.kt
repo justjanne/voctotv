@@ -17,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.C
 import androidx.media3.common.Player
@@ -47,7 +48,7 @@ fun AudioSelection(
 
             Column(Modifier.padding(20.dp)) {
                 DropdownMenuSubheader {
-                    Text("Language")
+                    Text(stringResource(R.string.player_audio_language))
                 }
 
                 for (audioTrack in audioTracks) {
@@ -56,7 +57,7 @@ fun AudioSelection(
                             selected = audioTrack.isSelected,
                             text = {
                                 if (lecture?.originalLanguage?.startsWith(language) == true) {
-                                    Text("$language (Original)")
+                                    Text(stringResource(R.string.player_audio_original, language))
                                 } else {
                                     Text(language)
                                 }
@@ -83,7 +84,7 @@ fun AudioSelection(
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_translate),
-                contentDescription = "Language",
+                contentDescription = stringResource(R.string.player_audio_original),
                 tint = LocalContentColor.current,
             )
         }

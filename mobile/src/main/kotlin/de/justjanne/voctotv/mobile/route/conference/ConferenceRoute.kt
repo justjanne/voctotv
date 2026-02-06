@@ -33,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
@@ -56,12 +57,12 @@ fun ConferenceRoute(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(conference?.title ?: "Conference") },
+                title = { Text(conference?.title ?: stringResource(R.string.placeholder_conference)) },
                 navigationIcon = {
                     IconButton(onClick = { back() }) {
                         Icon(
                             painterResource(R.drawable.ic_arrow_back),
-                            contentDescription = "Back",
+                            contentDescription = stringResource(R.string.action_back),
                         )
                     }
                 },
@@ -73,7 +74,7 @@ fun ConferenceRoute(
                 Column(Modifier.align(Alignment.Center)) {
                     CircularProgressIndicator()
                     Text(
-                        text = "Loading",
+                        text = stringResource(R.string.placeholder_loading),
                         style =
                             MaterialTheme.typography.bodyMedium.copy(
                                 color = LocalContentColor.current.copy(alpha = 0.6f),
@@ -99,7 +100,7 @@ fun ConferenceRoute(
                         FilterChip(
                             selected = currentFilter == null,
                             onClick = { viewModel.currentFilter.value = null },
-                            label = { Text("Everything") },
+                            label = { Text(stringResource(R.string.filter_everything)) },
                         )
                     }
                     items(filterOptions) { filter ->

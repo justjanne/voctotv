@@ -65,7 +65,7 @@ fun AudioSelection(
                     DropdownMenuRadioItem(
                         text = {
                             if (lecture?.originalLanguage?.startsWith(language) == true) {
-                                Text("$language (Original)")
+                                Text(stringResource(R.string.player_audio_original, language))
                             } else {
                                 Text(language)
                             }

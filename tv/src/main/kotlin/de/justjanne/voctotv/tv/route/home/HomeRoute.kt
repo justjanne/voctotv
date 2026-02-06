@@ -30,6 +30,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.ExperimentalTvMaterial3Api
@@ -86,7 +87,7 @@ fun HomeRoute(
 
         if (recent.isNotEmpty()) {
             item("recent-lectures") {
-                Text("Recent", modifier = Modifier.padding(horizontal = 20.dp))
+                Text(stringResource(R.string.category_recent), modifier = Modifier.padding(horizontal = 20.dp))
 
                 val focusRequester = remember { FocusRequester() }
                 LazyRow(
@@ -111,12 +112,12 @@ fun HomeRoute(
                 item(kind) {
                     ConferenceRow(
                         when (kind) {
-                            ConferenceKind.CONGRESS -> "Congress"
-                            ConferenceKind.GPN -> "GPN"
-                            ConferenceKind.CONFERENCE -> "Conferences"
-                            ConferenceKind.DOCUMENTARIES -> "Documentaries"
-                            ConferenceKind.ERFA -> "Erfas"
-                            ConferenceKind.OTHER -> "Other"
+                            ConferenceKind.CONGRESS -> stringResource(R.string.category_congress)
+                            ConferenceKind.GPN -> stringResource(R.string.category_gpn)
+                            ConferenceKind.CONFERENCE -> stringResource(R.string.category_conference)
+                            ConferenceKind.DOCUMENTARIES -> stringResource(R.string.category_documentary)
+                            ConferenceKind.ERFA -> stringResource(R.string.category_erfa)
+                            ConferenceKind.OTHER -> stringResource(R.string.category_other)
                         },
                         lectures,
                         navigate,

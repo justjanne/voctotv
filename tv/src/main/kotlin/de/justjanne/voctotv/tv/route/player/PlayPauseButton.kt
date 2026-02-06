@@ -12,6 +12,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.tv.material3.Icon
 import androidx.tv.material3.IconButton
 import androidx.tv.material3.IconButtonDefaults
@@ -46,21 +47,21 @@ fun PlayPauseButton(
             PlayerState.Status.PLAYING ->
                 Icon(
                     painter = painterResource(R.drawable.ic_pause),
-                    contentDescription = "Pause",
+                    contentDescription = stringResource(R.string.action_pause),
                     tint = LocalContentColor.current,
                 )
 
             PlayerState.Status.PAUSED ->
                 Icon(
                     painter = painterResource(R.drawable.ic_play_arrow),
-                    contentDescription = "Play",
+                    contentDescription = stringResource(R.string.action_play),
                     tint = LocalContentColor.current,
                 )
 
             PlayerState.Status.ENDED ->
                 Icon(
                     painter = painterResource(R.drawable.ic_replay),
-                    contentDescription = "Play Again",
+                    contentDescription = stringResource(R.string.action_replay),
                     tint = LocalContentColor.current,
                 )
         }

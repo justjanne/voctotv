@@ -18,6 +18,7 @@ import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
 import coil3.compose.rememberAsyncImagePainter
 import de.justjanne.voctotv.tv.Routes
+import de.justjanne.voctotv.tv.ui.WatchNowButton
 import de.justjanne.voctotv.tv.ui.carousel.HeroCarousel
 import de.justjanne.voctotv.tv.ui.carousel.HeroCarouselContent
 import de.justjanne.voctotv.tv.ui.carousel.HeroCarouselDefaults

@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastJoinToString
@@ -127,7 +128,7 @@ fun HomeRoute(
                             FilterChip(
                                 selected = currentFilter == null,
                                 onClick = { viewModel.currentFilter.value = null },
-                                label = { Text("Everything") },
+                                label = { Text(stringResource(R.string.filter_everything)) },
                             )
                         }
                         items(ConferenceKind.entries) { filter ->
@@ -137,12 +138,12 @@ fun HomeRoute(
                                 label = {
                                     Text(
                                         when (filter) {
-                                            ConferenceKind.CONGRESS -> "Congress"
-                                            ConferenceKind.GPN -> "GPN"
-                                            ConferenceKind.CONFERENCE -> "Conferences"
-                                            ConferenceKind.DOCUMENTARIES -> "Documentaries"
-                                            ConferenceKind.ERFA -> "Erfas"
-                                            ConferenceKind.OTHER -> "Other"
+                                            ConferenceKind.CONGRESS -> stringResource(R.string.category_congress)
+                                            ConferenceKind.GPN -> stringResource(R.string.category_gpn)
+                                            ConferenceKind.CONFERENCE -> stringResource(R.string.category_conference)
+                                            ConferenceKind.DOCUMENTARIES -> stringResource(R.string.category_documentary)
+                                            ConferenceKind.ERFA -> stringResource(R.string.category_erfa)
+                                            ConferenceKind.OTHER -> stringResource(R.string.category_other)
                                         },
                                     )
                                 },

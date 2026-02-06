@@ -1,4 +1,4 @@
-package de.justjanne.voctotv.tv.route.home
+package de.justjanne.voctotv.tv.ui
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
@@ -6,11 +6,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.tv.material3.Button
 import androidx.tv.material3.ButtonDefaults
 import androidx.tv.material3.Icon
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
+import de.justjanne.voctotv.tv.R
 
 @Composable
 fun WatchNowButton(onClick: () -> Unit) {
@@ -31,7 +33,7 @@ fun WatchNowButton(onClick: () -> Unit) {
         )
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text(
-            text = "Watch now",
+            text = stringResource(R.string.action_watchnow),
             style = MaterialTheme.typography.titleSmall,
         )
     }
