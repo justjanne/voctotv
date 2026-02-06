@@ -20,8 +20,8 @@ test:
   stage: "test"
   script:
     - "./gradlew assembleRelease bundleRelease -x lintRelease -x lintVitalRelease"
-    - "cp tv/build/outputs/apk/release/*.apk ."
-    - "cp tv/build/outputs/bundle/release/*.aab ."
+    - "cp */build/outputs/apk/release/*.apk ."
+    - "cp */build/outputs/bundle/release/*.aab ."
     - "./gradlew check -x connectedCheck"
   artifacts:
     paths:
