@@ -33,7 +33,6 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.tv.R
-import de.justjanne.voctotv.tv.route.home.FeaturedCarousel
 import de.justjanne.voctotv.tv.ui.LectureCard
 import de.justjanne.voctotv.tv.ui.theme.GridGutter
 import de.justjanne.voctotv.tv.ui.theme.GridPadding

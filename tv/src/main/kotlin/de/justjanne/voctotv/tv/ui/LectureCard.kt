@@ -9,7 +9,6 @@ package de.justjanne.voctotv.tv.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
@@ -156,13 +155,13 @@ private fun CompactCard(
                     ) {
                         ProvideTextStyle(
                             MaterialTheme.typography.bodySmall.copy(
-                                color = LocalContentColor.current.copy(alpha = SubtitleAlpha)
+                                color = LocalContentColor.current.copy(alpha = SubtitleAlpha),
                             ),
                             content = subtitle,
                         )
                         ProvideTextStyle(
                             MaterialTheme.typography.bodySmall.copy(
-                                color = LocalContentColor.current.copy(alpha = DescriptionAlpha)
+                                color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
                             ),
                             content = description,
                         )
@@ -173,4 +172,3 @@ private fun CompactCard(
         }
     }
 }
-

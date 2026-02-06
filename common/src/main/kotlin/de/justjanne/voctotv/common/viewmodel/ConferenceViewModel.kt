@@ -26,71 +26,71 @@ import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel(assistedFactory = ConferenceViewModel.Factory::class)
 class ConferenceViewModel
-@AssistedInject
-constructor(
-    @Assisted val conferenceId: String,
-    conferenceService: VoctowebConferenceService,
-) : ViewModel() {
-    val conference =
-        flow { emit(conferenceService.getConference(conferenceId)) }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+    @AssistedInject
+    constructor(
+        @Assisted val conferenceId: String,
+        conferenceService: VoctowebConferenceService,
+    ) : ViewModel() {
+        val conference =
+            flow { emit(conferenceService.getConference(conferenceId)) }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    val popular =
-        conference
-            .map { conference ->
-                conference
-                    ?.lectures
-                    ?.filter { it.viewCount > 1 }
-                    ?.sortedByDescending { it.viewCount }
-                    .orEmpty()
-            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+        val popular =
+            conference
+                .map { conference ->
+                    conference
+                        ?.lectures
+                        ?.filter { it.viewCount > 1 }
+                        ?.sortedByDescending { it.viewCount }
+                        .orEmpty()
+                }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val recent =
-        conference
-            .map { conference ->
-                conference
-                    ?.lectures
-                    ?.sortedByDescending { it.releaseDate }
-                    .orEmpty()
-            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+        val recent =
+            conference
+                .map { conference ->
+                    conference
+                        ?.lectures
+                        ?.sortedByDescending { it.releaseDate }
+                        .orEmpty()
+                }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val allItems: StateFlow<List<LectureModel>> =
-        conference
-            .map { conference ->
-                conference?.lectures?.sortedByDescending { it.releaseDate }.orEmpty()
-            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+        val allItems: StateFlow<List<LectureModel>> =
+            conference
+                .map { conference ->
+                    conference?.lectures?.sortedByDescending { it.releaseDate }.orEmpty()
+                }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val itemsByTrack: StateFlow<Map<String, List<LectureModel>>> =
-        conference
-            .map { conference ->
-                buildMap {
-                    conference?.lectures?.forEach { lecture ->
-                        val tracks = calculateTracks(conference, lecture)
-                        for (track in tracks) {
-                            getOrPut(track, ::mutableListOf).add(lecture)
+        val itemsByTrack: StateFlow<Map<String, List<LectureModel>>> =
+            conference
+                .map { conference ->
+                    buildMap {
+                        conference?.lectures?.forEach { lecture ->
+                            val tracks = calculateTracks(conference, lecture)
+                            for (track in tracks) {
+                                getOrPut(track, ::mutableListOf).add(lecture)
+                            }
+                        }
+                        for (value in values) {
+                            value.sortByDescending { it.releaseDate }
                         }
                     }
-                    for (value in values) {
-                        value.sortByDescending { it.releaseDate }
-                    }
-                }
-            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyMap())
+                }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyMap())
 
-    val currentFilter = MutableStateFlow<String?>(null)
+        val currentFilter = MutableStateFlow<String?>(null)
 
-    val filterOptions =
-        itemsByTrack
-            .map { items ->
-                items.keys.toList().sorted()
+        val filterOptions =
+            itemsByTrack
+                .map { items ->
+                    items.keys.toList().sorted()
+                }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+
+        val filteredItems: StateFlow<List<LectureModel>> =
+            combine(currentFilter, allItems, itemsByTrack) { filter, all, items ->
+                if (filter == null) all else items[filter].orEmpty()
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val filteredItems: StateFlow<List<LectureModel>> =
-        combine(currentFilter, allItems, itemsByTrack) { filter, all, items ->
-            if (filter == null) all else items[filter].orEmpty()
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
-
-    @AssistedFactory
-    interface Factory {
-        fun create(conferenceId: String): ConferenceViewModel
+        @AssistedFactory
+        interface Factory {
+            fun create(conferenceId: String): ConferenceViewModel
+        }
     }
-}
