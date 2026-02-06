@@ -30,6 +30,8 @@ import androidx.tv.material3.StandardCardContainer
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.tv.Routes
+import de.justjanne.voctotv.tv.ui.theme.GridGutter
+import de.justjanne.voctotv.tv.ui.theme.GridPadding
 import de.justjanne.voctotv.tv.ui.theme.VoctoTvTheme
 import de.justjanne.voctotv.voctoweb.model.ConferenceModel
 
@@ -41,10 +43,10 @@ fun ConferenceRow(
 ) {
     val focusRequester = remember { FocusRequester() }
 
-    Text(title, modifier = Modifier.padding(horizontal = 20.dp))
+    Text(title, modifier = Modifier.padding(horizontal = GridGutter))
     LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(20.dp),
-        contentPadding = PaddingValues(20.dp),
+        horizontalArrangement = Arrangement.spacedBy(GridPadding),
+        contentPadding = PaddingValues(vertical = GridPadding, horizontal = GridGutter),
         modifier = Modifier.focusRestorer(focusRequester),
     ) {
         itemsIndexed(featured, key = { _, item -> item.acronym }) { index, conference ->
@@ -52,7 +54,7 @@ fun ConferenceRow(
 
             Column {
                 StandardCardContainer(
-                    modifier = modifier.width(196.dp),
+                    modifier = modifier.width(124.dp),
                     imageCard = { interactionSource ->
                         VoctoTvTheme(isInDarkTheme = false) {
                             Card(

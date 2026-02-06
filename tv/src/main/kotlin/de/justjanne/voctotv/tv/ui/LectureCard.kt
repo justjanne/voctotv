@@ -9,11 +9,14 @@ package de.justjanne.voctotv.tv.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
@@ -23,7 +26,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastJoinToString
@@ -35,6 +37,7 @@ import androidx.tv.material3.CardDefaults
 import androidx.tv.material3.CardGlow
 import androidx.tv.material3.CardScale
 import androidx.tv.material3.CardShape
+import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.ProvideTextStyle
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
@@ -61,7 +64,7 @@ fun LectureCard(
         title = {
             Text(
                 text = lecture.title,
-                modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 6.dp),
+                modifier = Modifier.padding(start = 8.dp, end = 8.dp),
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -69,7 +72,7 @@ fun LectureCard(
         subtitle = {
             Text(
                 text = lecture.persons.fastJoinToString(" · "),
-                modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 12.dp),
+                modifier = Modifier.padding(start = 8.dp, end = 8.dp),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -86,8 +89,7 @@ fun LectureCard(
                 text = formatTime(lecture.duration * 1000),
                 modifier =
                     Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(6.dp)
+                        .padding(end = 6.dp)
                         .background(MaterialTheme.colorScheme.scrim, shape = MaterialTheme.shapes.extraSmall)
                         .padding(horizontal = 6.dp, vertical = 2.dp),
                 style =
@@ -108,7 +110,7 @@ private fun CompactCard(
     onLongClick: (() -> Unit)? = null,
     subtitle: @Composable () -> Unit = {},
     description: @Composable () -> Unit = {},
-    badge: @Composable BoxScope.() -> Unit = {},
+    badge: @Composable () -> Unit = {},
     shape: CardShape = CardDefaults.shape(),
     colors: CardColors = CardDefaults.compactCardColors(),
     scale: CardScale = CardDefaults.scale(),
@@ -140,23 +142,35 @@ private fun CompactCard(
                 contentAlignment = Alignment.Center,
                 content = image,
             )
-            Column { CardContent(title = title, subtitle = subtitle, description = description) }
-            badge()
+            Column {
+                ProvideTextStyle(
+                    MaterialTheme.typography.titleMedium,
+                    content = title,
+                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp),
+                ) {
+                    Column(
+                        Modifier.weight(1f, true),
+                    ) {
+                        ProvideTextStyle(
+                            MaterialTheme.typography.bodySmall.copy(
+                                color = LocalContentColor.current.copy(alpha = SubtitleAlpha)
+                            ),
+                            content = subtitle,
+                        )
+                        ProvideTextStyle(
+                            MaterialTheme.typography.bodySmall.copy(
+                                color = LocalContentColor.current.copy(alpha = DescriptionAlpha)
+                            ),
+                            content = description,
+                        )
+                    }
+                    badge()
+                }
+            }
         }
     }
 }
 
-@Composable
-private fun CardContent(
-    title: @Composable () -> Unit,
-    subtitle: @Composable () -> Unit = {},
-    description: @Composable () -> Unit = {},
-) {
-    ProvideTextStyle(MaterialTheme.typography.titleMedium) { title.invoke() }
-    ProvideTextStyle(MaterialTheme.typography.bodySmall) {
-        Box(Modifier.graphicsLayer { alpha = SubtitleAlpha }) { subtitle.invoke() }
-    }
-    ProvideTextStyle(MaterialTheme.typography.bodySmall) {
-        Box(Modifier.graphicsLayer { alpha = DescriptionAlpha }) { description.invoke() }
-    }
-}

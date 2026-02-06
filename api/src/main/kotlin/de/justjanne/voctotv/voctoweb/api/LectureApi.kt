@@ -24,6 +24,11 @@ interface LectureApi {
     @GET("public/events/recent")
     suspend fun listRecent(): LectureResult
 
+    @GET("public/events/popular")
+    suspend fun listPopular(
+        @Query("year") year: Int,
+    ): LectureResult
+
     @GET("public/events/promoted")
     suspend fun listPromoted(): LectureResult
 

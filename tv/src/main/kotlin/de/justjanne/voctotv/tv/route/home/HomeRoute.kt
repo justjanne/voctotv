@@ -40,6 +40,8 @@ import de.justjanne.voctotv.common.viewmodel.ConferenceKind
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
 import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.ui.LectureCard
+import de.justjanne.voctotv.tv.ui.theme.GridGutter
+import de.justjanne.voctotv.tv.ui.theme.GridPadding
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
@@ -49,6 +51,7 @@ fun HomeRoute(
 ) {
     val conferences by viewModel.conferences.collectAsState()
     val recent by viewModel.recentResult.collectAsState()
+    val popular by viewModel.popularResult.collectAsState()
     val featuredLectures by viewModel.featuredLectures.collectAsState()
 
     val focusRequester = remember { FocusRequester() }
@@ -68,7 +71,7 @@ fun HomeRoute(
                 modifier =
                     Modifier
                         .fillMaxWidth()
-                        .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp),
+                        .padding(start = GridGutter, end = GridGutter, top = 32.dp, bottom = GridPadding),
             ) {
                 Image(
                     painterResource(R.drawable.ic_mediacccde),
@@ -87,15 +90,42 @@ fun HomeRoute(
 
         if (recent.isNotEmpty()) {
             item("recent-lectures") {
-                Text(stringResource(R.string.category_recent), modifier = Modifier.padding(horizontal = 20.dp))
+                Text(
+                    stringResource(R.string.category_recent),
+                    modifier = Modifier.padding(horizontal = GridGutter),
+                )
 
-                val focusRequester = remember { FocusRequester() }
+                val focusRequester = remember("recent") { FocusRequester() }
                 LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(20.dp),
-                    contentPadding = PaddingValues(20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(GridPadding),
+                    contentPadding = PaddingValues(vertical = GridPadding, horizontal = GridGutter),
                     modifier = Modifier.focusRestorer(focusRequester),
                 ) {
                     itemsIndexed(recent, key = { _, lecture -> lecture.guid }) { index, lecture ->
+                        LectureCard(
+                            lecture,
+                            navigate,
+                            if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                        )
+                    }
+                }
+            }
+        }
+
+        if (popular.isNotEmpty()) {
+            item("popular-lectures") {
+                Text(
+                    stringResource(R.string.category_popular),
+                    modifier = Modifier.padding(horizontal = GridGutter),
+                )
+
+                val focusRequester = remember("popular") { FocusRequester() }
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(GridPadding),
+                    contentPadding = PaddingValues(vertical = GridPadding, horizontal = GridGutter),
+                    modifier = Modifier.focusRestorer(focusRequester),
+                ) {
+                    itemsIndexed(popular, key = { _, lecture -> lecture.guid }) { index, lecture ->
                         LectureCard(
                             lecture,
                             navigate,

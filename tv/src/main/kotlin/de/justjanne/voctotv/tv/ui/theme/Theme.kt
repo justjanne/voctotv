@@ -8,6 +8,7 @@
 package de.justjanne.voctotv.tv.ui.theme
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.darkColorScheme
 import androidx.tv.material3.lightColorScheme
@@ -80,6 +81,9 @@ private val darkScheme =
 
 const val SubtitleAlpha = 0.6f
 const val DescriptionAlpha = 0.8f
+
+val GridPadding = 20.dp
+val GridGutter = 58.dp
 
 @Composable
 fun VoctoTvTheme(

@@ -26,13 +26,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
+import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.route.home.FeaturedCarousel
 import de.justjanne.voctotv.tv.ui.LectureCard
+import de.justjanne.voctotv.tv.ui.theme.GridGutter
+import de.justjanne.voctotv.tv.ui.theme.GridPadding
 import de.justjanne.voctotv.tv.ui.theme.textShadow
 
 @Composable
@@ -41,7 +45,8 @@ fun ConferenceRoute(
     navigate: (NavKey) -> Unit,
 ) {
     val conference by viewModel.conference.collectAsState()
-    val featured by viewModel.featured.collectAsState()
+    val popular by viewModel.popular.collectAsState()
+    val recent by viewModel.recent.collectAsState()
     val itemsByTrack by viewModel.itemsByTrack.collectAsState()
 
     LazyColumn(
@@ -56,7 +61,7 @@ fun ConferenceRoute(
                     modifier =
                         Modifier
                             .fillMaxWidth()
-                            .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 20.dp),
+                            .padding(start = GridGutter, end = GridGutter, top = 32.dp, bottom = GridPadding),
                 ) {
                     Text(
                         text = conference.title,
@@ -70,17 +75,60 @@ fun ConferenceRoute(
             }
         }
 
-        item("featured") {
-            FeaturedCarousel(featured, navigate, showConference = false)
+        item("recent") {
+            Text(
+                stringResource(R.string.category_recent),
+                modifier = Modifier.padding(horizontal = GridGutter),
+            )
+
+            val focusRequester = remember("recent") { FocusRequester() }
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(GridPadding),
+                contentPadding = PaddingValues(horizontal = GridGutter, vertical = GridPadding),
+                modifier = Modifier.focusRestorer(focusRequester),
+            ) {
+                itemsIndexed(recent, key = { _, lecture -> lecture.guid }) { index, lecture ->
+                    LectureCard(
+                        lecture,
+                        navigate,
+                        if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                    )
+                }
+            }
+        }
+
+        item("popular") {
+            Text(
+                stringResource(R.string.category_popular),
+                modifier = Modifier.padding(horizontal = GridGutter),
+            )
+
+            val focusRequester = remember("popular") { FocusRequester() }
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(GridPadding),
+                contentPadding = PaddingValues(horizontal = GridGutter, vertical = GridPadding),
+                modifier = Modifier.focusRestorer(focusRequester),
+            ) {
+                itemsIndexed(popular, key = { _, lecture -> lecture.guid }) { index, lecture ->
+                    LectureCard(
+                        lecture,
+                        navigate,
+                        if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                    )
+                }
+            }
         }
 
         items(itemsByTrack.entries.sortedBy { it.key }.toList(), key = { it.key }) { (track, items) ->
-            Text(track, modifier = Modifier.padding(horizontal = 20.dp))
+            Text(
+                track,
+                modifier = Modifier.padding(horizontal = GridGutter),
+            )
 
             val focusRequester = remember(track) { FocusRequester() }
             LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(20.dp),
-                contentPadding = PaddingValues(20.dp),
+                horizontalArrangement = Arrangement.spacedBy(GridPadding),
+                contentPadding = PaddingValues(horizontal = GridGutter, vertical = GridPadding),
                 modifier = Modifier.focusRestorer(focusRequester),
             ) {
                 itemsIndexed(items, key = { _, lecture -> lecture.guid }) { index, lecture ->

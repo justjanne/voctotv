@@ -10,7 +10,7 @@ import de.justjanne.voctotv.tv.ui.theme.SoftScrim
 
 object HeroCarouselDefaults {
     val ContainerHeight = 361.dp
-    val ContainerPadding = PaddingValues(start = 32.dp, end = 32.dp, bottom = 20.dp)
+    val ContainerPadding = PaddingValues(start = 58.dp, end = 58.dp, bottom = 20.dp)
 
     val BackgroundPadding = 288.dp
     val ContentWidth = 418.dp
