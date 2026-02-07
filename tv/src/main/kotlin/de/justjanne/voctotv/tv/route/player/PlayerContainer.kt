@@ -31,19 +31,25 @@ fun PlayerContainer(
         sidebarVisible.value = false
     }
 
-    val progress = animateFloatAsState(
-        if (sidebarVisible.value) 1f else 0f,
-        animationSpec = spring(
-            dampingRatio = Spring.DampingRatioNoBouncy,
-            stiffness = Spring.StiffnessMediumLow,
+    val progress =
+        animateFloatAsState(
+            if (sidebarVisible.value) 1f else 0f,
+            animationSpec =
+                spring(
+                    dampingRatio = Spring.DampingRatioNoBouncy,
+                    stiffness = Spring.StiffnessMediumLow,
+                ),
         )
-    )
 
     BoxWithConstraints {
-        val aspectRatio = playerState.aspectRatio.let {
-            if (it == 0f) constraints.maxWidth.toFloat() / constraints.maxHeight.toFloat()
-            else it
-        }
+        val aspectRatio =
+            playerState.aspectRatio.let {
+                if (it == 0f) {
+                    constraints.maxWidth.toFloat() / constraints.maxHeight.toFloat()
+                } else {
+                    it
+                }
+            }
 
         val largeFrameWidth = maxWidth
         val largeFrameHeight = maxHeight
@@ -69,12 +75,13 @@ fun PlayerContainer(
         val contentWidth = if (frameAspect > aspectRatio) frameHeight * aspectRatio else frameWidth
         val contentHeight = if (frameAspect > aspectRatio) frameHeight else frameWidth / aspectRatio
 
-        val scaleModifier = Modifier.graphicsLayer {
-            scaleY = contentWidth / largeTargetWidth
-            scaleX = contentHeight / largeTargetHeight
-            transformOrigin = TransformOrigin(0f, 0.5f)
-            translationX = (frameWidth - contentWidth).toPx() / 2 + padding.toPx()
-        }
+        val scaleModifier =
+            Modifier.graphicsLayer {
+                scaleY = contentWidth / largeTargetWidth
+                scaleX = contentHeight / largeTargetHeight
+                transformOrigin = TransformOrigin(0f, 0.5f)
+                translationX = (frameWidth - contentWidth).toPx() / 2 + padding.toPx()
+            }
 
         Box(
             modifier =

@@ -205,7 +205,7 @@ fun PlayerOverlay(
                             Key.DirectionDownLeft,
                             Key.DirectionUpRight,
                             Key.DirectionDownRight,
-                                -> {
+                            -> {
                                 if (!uiVisible.value) {
                                     showUi()
                                     true

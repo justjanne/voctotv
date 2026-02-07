@@ -61,11 +61,13 @@ fun InfoSideSheet(lecture: LectureModel) {
                 .scrollable(scrollState)
                 .padding(ModalSideSheetDefaults.Padding)
                 .padding(end = 16.dp)
-                .focusRequester(focusRequester).onPreviewKeyEvent {
+                .focusRequester(focusRequester)
+                .onPreviewKeyEvent {
                     if (it.type == KeyEventType.KeyDown) {
                         when (it.key) {
                             Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward,
-                            Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward -> {
+                            Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward,
+                            -> {
                                 true
                             }
 
@@ -78,9 +80,10 @@ fun InfoSideSheet(lecture: LectureModel) {
         ) {
             Text(
                 lecture.title,
-                style = MaterialTheme.typography.titleLarge.copy(
-                    lineBreak = LineBreak.Heading,
-                ),
+                style =
+                    MaterialTheme.typography.titleLarge.copy(
+                        lineBreak = LineBreak.Heading,
+                    ),
             )
 
             if (!lecture.subtitle.isNullOrBlank()) {

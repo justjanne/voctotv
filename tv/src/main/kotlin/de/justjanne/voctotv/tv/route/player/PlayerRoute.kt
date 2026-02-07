@@ -40,7 +40,7 @@ fun PlayerRoute(viewModel: PlayerViewModel) {
         },
         overlay = {
             PlayerOverlay(viewModel, lecture, sidebarVisible)
-        }
+        },
     ) {
         ContentFrame(
             player = viewModel.mediaSession.player,
