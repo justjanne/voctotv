@@ -23,9 +23,11 @@ fun ModalSideSheet(
     content: @Composable () -> Unit,
 ) {
     Surface(
-        modifier = modifier.width(ModalSideSheetDefaults.Width)
-            .fillMaxHeight()
-            .padding(24.dp),
+        modifier =
+            modifier
+                .width(ModalSideSheetDefaults.Width)
+                .fillMaxHeight()
+                .padding(24.dp),
         tonalElevation = ModalSideSheetDefaults.Elevation,
         shape = ModalSideSheetDefaults.Shape,
     ) {

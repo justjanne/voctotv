@@ -19,8 +19,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.fastJoinToString
@@ -28,6 +36,7 @@ import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
+import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.ui.ModalSideSheet
 import de.justjanne.voctotv.tv.ui.ModalSideSheetDefaults
 import de.justjanne.voctotv.tv.ui.scrollable
@@ -52,11 +61,26 @@ fun InfoSideSheet(lecture: LectureModel) {
                 .scrollable(scrollState)
                 .padding(ModalSideSheetDefaults.Padding)
                 .padding(end = 16.dp)
-                .focusRequester(focusRequester)
+                .focusRequester(focusRequester).onPreviewKeyEvent {
+                    if (it.type == KeyEventType.KeyDown) {
+                        when (it.key) {
+                            Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward,
+                            Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward -> {
+                                true
+                            }
+
+                            else -> false
+                        }
+                    } else {
+                        false
+                    }
+                },
         ) {
             Text(
                 lecture.title,
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleLarge.copy(
+                    lineBreak = LineBreak.Heading,
+                ),
             )
 
             if (!lecture.subtitle.isNullOrBlank()) {
@@ -72,18 +96,18 @@ fun InfoSideSheet(lecture: LectureModel) {
 
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        String.format("%,d", lecture.viewCount),
+                        String.format(Locale.current.platformLocale, "%,d", lecture.viewCount),
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 16.sp,
                     )
                     Text(
-                        "Views",
+                        stringResource(R.string.video_info_views),
                         fontSize = 12.sp,
-                        color = LocalContentColor.current.copy(alpha = DescriptionAlpha)
+                        color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
                     )
                 }
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -101,7 +125,7 @@ fun InfoSideSheet(lecture: LectureModel) {
                     Text(
                         lecture.releaseDate.year.toString(),
                         fontSize = 12.sp,
-                        color = LocalContentColor.current.copy(alpha = DescriptionAlpha)
+                        color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
                     )
                 }
             }
@@ -134,7 +158,7 @@ fun InfoSideSheet(lecture: LectureModel) {
                     ) {
                         Box(
                             Modifier.heightIn(min = 32.dp).padding(horizontal = 8.dp),
-                            contentAlignment = Alignment.Center
+                            contentAlignment = Alignment.Center,
                         ) {
                             Text(
                                 tag,

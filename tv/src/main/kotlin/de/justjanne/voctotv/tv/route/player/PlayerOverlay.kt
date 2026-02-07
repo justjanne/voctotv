@@ -29,6 +29,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -65,7 +66,7 @@ import kotlin.time.Duration.Companion.seconds
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
-    showInfo: () -> Unit,
+    sidebarVisible: MutableState<Boolean>,
 ) {
     val uiVisible = remember { mutableStateOf(false) }
 
@@ -128,7 +129,9 @@ fun PlayerOverlay(
                             }
                     } else {
                         windowState?.enableSleep()
-                        showUi()
+                        if (!sidebarVisible.value) {
+                            showUi()
+                        }
                     }
                 }
             }
@@ -143,7 +146,7 @@ fun PlayerOverlay(
         modifier =
             Modifier
                 .fillMaxSize()
-                .clickable(mainInteractionSource, indication = null, enabled = !uiVisible.value) {
+                .clickable(mainInteractionSource, indication = null, enabled = !uiVisible.value && !sidebarVisible.value) {
                     uiVisible.value = true
                 }.onPreviewKeyEvent {
                     if (it.type == KeyEventType.KeyDown) {
@@ -271,7 +274,10 @@ fun PlayerOverlay(
                             modifier = Modifier.weight(1f),
                             horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
                         ) {
-                            IconButton(onClick = showInfo) {
+                            IconButton(onClick = {
+                                sidebarVisible.value = true
+                                uiVisible.value = false
+                            }) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_info),
                                     contentDescription = stringResource(R.string.player_info),

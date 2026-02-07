@@ -37,6 +37,9 @@ fun PlayerRoute(viewModel: PlayerViewModel) {
             if (lecture != null) {
                 InfoSideSheet(lecture)
             }
+        },
+        overlay = {
+            PlayerOverlay(viewModel, lecture, sidebarVisible)
         }
     ) {
         ContentFrame(
@@ -46,8 +49,5 @@ fun PlayerRoute(viewModel: PlayerViewModel) {
         )
 
         SubtitleDisplay(viewModel.mediaSession.player, viewModel.playerState)
-        if (!sidebarVisible.value) {
-            PlayerOverlay(viewModel, lecture, showInfo = { sidebarVisible.value = true })
-        }
     }
 }
