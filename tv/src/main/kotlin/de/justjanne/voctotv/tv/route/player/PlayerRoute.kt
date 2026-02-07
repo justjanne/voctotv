@@ -8,11 +8,11 @@
 package de.justjanne.voctotv.tv.route.player
 
 import androidx.annotation.OptIn
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.ContentFrame
@@ -24,11 +24,21 @@ import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 @OptIn(UnstableApi::class)
 @Composable
 fun PlayerRoute(viewModel: PlayerViewModel) {
-    val lecture by viewModel.lecture.collectAsState()
+    val lecture = viewModel.lecture.collectAsState().value
 
     UsePlayerState(viewModel)
 
-    Box(Modifier.fillMaxSize()) {
+    val sidebarVisible = remember { mutableStateOf(false) }
+
+    PlayerContainer(
+        playerState = viewModel.playerState,
+        sidebarVisible = sidebarVisible,
+        sidebar = {
+            if (lecture != null) {
+                InfoSideSheet(lecture)
+            }
+        }
+    ) {
         ContentFrame(
             player = viewModel.mediaSession.player,
             modifier = Modifier.fillMaxSize(),
@@ -36,6 +46,8 @@ fun PlayerRoute(viewModel: PlayerViewModel) {
         )
 
         SubtitleDisplay(viewModel.mediaSession.player, viewModel.playerState)
-        PlayerOverlay(viewModel, lecture)
+        if (!sidebarVisible.value) {
+            PlayerOverlay(viewModel, lecture, showInfo = { sidebarVisible.value = true })
+        }
     }
 }

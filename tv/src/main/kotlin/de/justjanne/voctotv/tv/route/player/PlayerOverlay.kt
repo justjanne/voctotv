@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -38,13 +39,18 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
+import androidx.tv.material3.IconButton
+import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.ui.rememberWindowState
 import de.justjanne.voctotv.tv.ui.theme.PlayerScrimBottom
 import de.justjanne.voctotv.tv.ui.theme.textShadow
@@ -59,6 +65,7 @@ import kotlin.time.Duration.Companion.seconds
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
+    showInfo: () -> Unit,
 ) {
     val uiVisible = remember { mutableStateOf(false) }
 
@@ -195,7 +202,7 @@ fun PlayerOverlay(
                             Key.DirectionDownLeft,
                             Key.DirectionUpRight,
                             Key.DirectionDownRight,
-                            -> {
+                                -> {
                                 if (!uiVisible.value) {
                                     showUi()
                                     true
@@ -262,8 +269,15 @@ fun PlayerOverlay(
                     ) {
                         Row(
                             modifier = Modifier.weight(1f),
-                            horizontalArrangement = Arrangement.Start,
+                            horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
                         ) {
+                            IconButton(onClick = showInfo) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_info),
+                                    contentDescription = stringResource(R.string.player_info),
+                                    tint = LocalContentColor.current,
+                                )
+                            }
                         }
 
                         PlayPauseButton(

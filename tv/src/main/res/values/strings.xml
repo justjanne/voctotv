@@ -4,9 +4,9 @@
 
   <string name="player_audio_language">Language</string>
   <string name="player_audio_original">%s (Original)</string>
-
   <string name="player_captions">Captions</string>
   <string name="player_captions_none">None</string>
+  <string name="player_info">Info</string>
 
   <string name="filter_everything">Everything</string>
 
