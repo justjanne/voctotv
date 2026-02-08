@@ -29,19 +29,20 @@ object TagChipDefaults {
 }
 
 @Composable
-fun TagChip(
-    content: @Composable () -> Unit,
-) {
+fun TagChip(content: @Composable () -> Unit) {
     Surface(
         shape = TagChipDefaults.Shape,
-        colors = SurfaceDefaults.colors(
-            containerColor = TagChipDefaults.ContainerColor,
-            contentColor = TagChipDefaults.ContentColor,
-        ),
+        colors =
+            SurfaceDefaults.colors(
+                containerColor = TagChipDefaults.ContainerColor,
+                contentColor = TagChipDefaults.ContentColor,
+            ),
     ) {
         Box(
-            modifier = Modifier.heightIn(TagChipDefaults.ContainerHeight)
-                .padding(TagChipDefaults.Padding),
+            modifier =
+                Modifier
+                    .heightIn(TagChipDefaults.ContainerHeight)
+                    .padding(TagChipDefaults.Padding),
             contentAlignment = Alignment.Center,
         ) {
             ProvideTextStyle(TagChipDefaults.TextStyle, content)

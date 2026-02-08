@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
@@ -73,7 +72,7 @@ fun InfoSideSheet(
                         when (it.key) {
                             Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward,
                             Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward,
-                                -> {
+                            -> {
                                 true
                             }
 
@@ -89,9 +88,11 @@ fun InfoSideSheet(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 Box(
-                    modifier = Modifier.heightIn(40.dp)
-                        .minimumInteractiveComponentSize()
-                        .weight(1f, true),
+                    modifier =
+                        Modifier
+                            .heightIn(40.dp)
+                            .minimumInteractiveComponentSize()
+                            .weight(1f, true),
                     contentAlignment = Alignment.CenterStart,
                 ) {
                     Text(

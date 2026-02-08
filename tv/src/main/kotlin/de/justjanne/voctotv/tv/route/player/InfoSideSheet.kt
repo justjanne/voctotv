@@ -65,7 +65,7 @@ fun InfoSideSheet(lecture: LectureModel) {
                         when (it.key) {
                             Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward,
                             Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward,
-                                -> {
+                            -> {
                                 true
                             }
 

@@ -2,7 +2,6 @@ package de.justjanne.voctotv.mobile.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -18,9 +17,10 @@ object ModalSideSheetDefaults {
     val Padding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 24.dp)
     val Shape = RoundedCornerShape(16.dp)
     val ContainerColor: Color
-        @Composable get() = MaterialTheme.colorScheme.surfaceVariant
-            .copy(alpha = 0.25f)
-            .compositeOver(MaterialTheme.colorScheme.surface)
+        @Composable get() =
+            MaterialTheme.colorScheme.surfaceVariant
+                .copy(alpha = 0.25f)
+                .compositeOver(MaterialTheme.colorScheme.surface)
     val ContentColor: Color
         @Composable get() = MaterialTheme.colorScheme.onSurface
 }

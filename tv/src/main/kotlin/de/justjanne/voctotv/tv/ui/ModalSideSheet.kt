@@ -19,9 +19,10 @@ object ModalSideSheetDefaults {
     val Padding = PaddingValues(vertical = 24.dp, horizontal = 16.dp)
     val Shape = RoundedCornerShape(16.dp)
     val ContainerColor: Color
-        @Composable get() = MaterialTheme.colorScheme.surfaceVariant
-            .copy(alpha = 0.25f)
-            .compositeOver(MaterialTheme.colorScheme.surface)
+        @Composable get() =
+            MaterialTheme.colorScheme.surfaceVariant
+                .copy(alpha = 0.25f)
+                .compositeOver(MaterialTheme.colorScheme.surface)
     val ContentColor: Color
         @Composable get() = MaterialTheme.colorScheme.onSurface
 }
@@ -37,10 +38,11 @@ fun ModalSideSheet(
                 .width(ModalSideSheetDefaults.Width)
                 .fillMaxHeight()
                 .padding(24.dp),
-        colors = SurfaceDefaults.colors(
-            containerColor = ModalSideSheetDefaults.ContainerColor,
-            contentColor = ModalSideSheetDefaults.ContentColor,
-        ),
+        colors =
+            SurfaceDefaults.colors(
+                containerColor = ModalSideSheetDefaults.ContainerColor,
+                contentColor = ModalSideSheetDefaults.ContentColor,
+            ),
         shape = ModalSideSheetDefaults.Shape,
     ) {
         content()

@@ -4,25 +4,19 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
@@ -71,12 +65,14 @@ fun PlayerContainer(
         val largeTargetWidth = if (largeFrameAspect > aspectRatio) largeFrameHeight * aspectRatio else largeFrameWidth
         val largeTargetHeight = if (largeFrameAspect > aspectRatio) largeFrameHeight else largeFrameWidth / aspectRatio
 
-        val startPadding = with (LocalDensity.current) {
-            WindowInsets.safeDrawing.getLeft(LocalDensity.current, LocalLayoutDirection.current).toDp()
-        }
-        val endPadding = with (LocalDensity.current) {
-            WindowInsets.safeDrawing.getRight(LocalDensity.current, LocalLayoutDirection.current).toDp()
-        }
+        val startPadding =
+            with(LocalDensity.current) {
+                WindowInsets.safeDrawing.getLeft(LocalDensity.current, LocalLayoutDirection.current).toDp()
+            }
+        val endPadding =
+            with(LocalDensity.current) {
+                WindowInsets.safeDrawing.getRight(LocalDensity.current, LocalLayoutDirection.current).toDp()
+            }
         val modalSheetWidth = ModalSideSheetDefaults.Width + endPadding
 
         val smallFrameWidth = maxWidth - startPadding - modalSheetWidth

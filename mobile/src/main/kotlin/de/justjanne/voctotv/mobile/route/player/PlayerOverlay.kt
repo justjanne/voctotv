@@ -183,11 +183,15 @@ fun PlayerOverlay(
                 lecture
                     ?.let {
                         Column(
-                            modifier = Modifier.weight(1f)
-                                .padding(start = 6.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                                .clickable(enabled = !viewModel.playerState.casting && isLandscape.value) { sidebarVisible.value = true }
-                                .padding(start = 6.dp),
+                            modifier =
+                                Modifier
+                                    .weight(1f)
+                                    .padding(start = 6.dp)
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .clickable(
+                                        enabled = !viewModel.playerState.casting && isLandscape.value,
+                                    ) { sidebarVisible.value = true }
+                                    .padding(start = 6.dp),
                         ) {
                             Text(
                                 text = lecture.conferenceTitle,
