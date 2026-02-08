@@ -1,15 +1,25 @@
-package de.justjanne.voctotv.tv.route.player
+package de.justjanne.voctotv.mobile.route.player
 
 import android.text.format.DateUtils
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -23,28 +33,28 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.fastAny
 import androidx.compose.ui.util.fastJoinToString
-import androidx.tv.material3.LocalContentColor
-import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Text
-import de.justjanne.voctotv.tv.R
-import de.justjanne.voctotv.tv.ui.ModalSideSheet
-import de.justjanne.voctotv.tv.ui.ModalSideSheetDefaults
-import de.justjanne.voctotv.tv.ui.TagChip
-import de.justjanne.voctotv.tv.ui.scrollable
-import de.justjanne.voctotv.tv.ui.scrollbar
-import de.justjanne.voctotv.tv.ui.theme.DescriptionAlpha
-import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
+import de.justjanne.voctotv.mobile.R
+import de.justjanne.voctotv.mobile.ui.ModalSideSheet
+import de.justjanne.voctotv.mobile.ui.ModalSideSheetDefaults
+import de.justjanne.voctotv.mobile.ui.TagChip
+import de.justjanne.voctotv.mobile.ui.theme.DescriptionAlpha
+import de.justjanne.voctotv.mobile.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @Composable
-fun InfoSideSheet(lecture: LectureModel) {
+fun InfoSideSheet(
+    lecture: LectureModel,
+    onClose: () -> Unit,
+) {
     val scrollState = rememberScrollState()
     val focusRequester = remember { FocusRequester() }
 
@@ -55,10 +65,8 @@ fun InfoSideSheet(lecture: LectureModel) {
     ModalSideSheet {
         Column(
             Modifier
-                .scrollbar(scrollState, 16.dp)
-                .scrollable(scrollState)
+                .verticalScroll(scrollState)
                 .padding(ModalSideSheetDefaults.Padding)
-                .padding(end = 16.dp)
                 .focusRequester(focusRequester)
                 .onPreviewKeyEvent {
                     if (it.type == KeyEventType.KeyDown) {
@@ -76,13 +84,31 @@ fun InfoSideSheet(lecture: LectureModel) {
                     }
                 },
         ) {
-            Text(
-                lecture.title,
-                style =
-                    MaterialTheme.typography.titleLarge.copy(
-                        lineBreak = LineBreak.Heading,
-                    ),
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                Box(
+                    modifier = Modifier.heightIn(40.dp)
+                        .minimumInteractiveComponentSize()
+                        .weight(1f, true),
+                    contentAlignment = Alignment.CenterStart,
+                ) {
+                    Text(
+                        lecture.title,
+                        style =
+                            MaterialTheme.typography.titleLarge.copy(
+                                lineBreak = LineBreak.Heading,
+                            ),
+                    )
+                }
+                IconButton(onClick = onClose) {
+                    Icon(
+                        painterResource(R.drawable.ic_close),
+                        contentDescription = stringResource(R.string.action_close),
+                    )
+                }
+            }
 
             if (!lecture.subtitle.isNullOrBlank()) {
                 Spacer(modifier = Modifier.height(4.dp))
@@ -131,20 +157,24 @@ fun InfoSideSheet(lecture: LectureModel) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            if (lecture.persons.fastAny { it.isNotBlank() }) {
+                Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                lecture.persons.fastJoinToString(" · "),
-                style = MaterialTheme.typography.bodyMedium,
-            )
+                Text(
+                    lecture.persons.fastJoinToString(" · "),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            if (!lecture.description.isNullOrBlank()) {
+                Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                lecture.description ?: "",
-                style = MaterialTheme.typography.bodyMedium,
-                color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
-            )
+                Text(
+                    lecture.description ?: "",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
+                )
+            }
 
             Spacer(Modifier.height(16.dp))
 

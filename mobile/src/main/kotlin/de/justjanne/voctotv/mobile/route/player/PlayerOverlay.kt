@@ -30,17 +30,20 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
@@ -64,6 +67,7 @@ import de.justjanne.voctotv.voctoweb.model.LectureModel
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
     lecture: LectureModel?,
+    sidebarVisible: MutableState<Boolean>,
     contentPadding: PaddingValues,
     back: () -> Unit,
 ) {
@@ -102,6 +106,7 @@ fun PlayerOverlay(
                 context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
             }
         } else {
+            sidebarVisible.value = false
             onDispose {}
         }
     }
@@ -166,7 +171,6 @@ fun PlayerOverlay(
                             end = contentPadding.calculateEndPadding(layoutDirection),
                             top = contentPadding.calculateTopPadding(),
                         ).fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 IconButton(
                     onClick = back,
@@ -179,7 +183,11 @@ fun PlayerOverlay(
                 lecture
                     ?.let {
                         Column(
-                            modifier = Modifier.weight(1f),
+                            modifier = Modifier.weight(1f)
+                                .padding(start = 6.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                                .clickable(enabled = !viewModel.playerState.casting && isLandscape.value) { sidebarVisible.value = true }
+                                .padding(start = 6.dp),
                         ) {
                             Text(
                                 text = lecture.conferenceTitle,

@@ -27,5 +27,6 @@
   <string name="category_other">Other</string>
   <string name="category_recent">Recent</string>
   <string name="category_popular">Popular</string>
+
   <string name="video_info_views">Views</string>
 </resources>
