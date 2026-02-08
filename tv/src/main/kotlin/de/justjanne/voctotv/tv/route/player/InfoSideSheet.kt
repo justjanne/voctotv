@@ -35,6 +35,7 @@ import androidx.compose.ui.util.fastJoinToString
 import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
+import androidx.tv.material3.SurfaceDefaults
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.ui.ModalSideSheet
@@ -157,7 +158,10 @@ fun InfoSideSheet(lecture: LectureModel) {
                 for (tag in lecture.tags) {
                     Surface(
                         shape = MaterialTheme.shapes.small,
-                        tonalElevation = 16.dp,
+                        colors = SurfaceDefaults.colors(
+                            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                            contentColor = MaterialTheme.colorScheme.onSurface,
+                        )
                     ) {
                         Box(
                             Modifier.heightIn(min = 32.dp).padding(horizontal = 8.dp),
