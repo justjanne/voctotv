@@ -29,6 +29,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.fastAny
 import androidx.compose.ui.util.fastJoinToString
 import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
@@ -131,20 +132,24 @@ fun InfoSideSheet(lecture: LectureModel) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            if (lecture.persons.fastAny { it.isNotBlank() }) {
+                Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                lecture.persons.fastJoinToString(" · "),
-                style = MaterialTheme.typography.bodyMedium,
-            )
+                Text(
+                    lecture.persons.fastJoinToString(" · "),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            if (!lecture.description.isNullOrBlank()) {
+                Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                lecture.description ?: "",
-                style = MaterialTheme.typography.bodyMedium,
-                color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
-            )
+                Text(
+                    lecture.description ?: "",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
+                )
+            }
 
             Spacer(Modifier.height(16.dp))
 
