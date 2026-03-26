@@ -7,9 +7,13 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -24,14 +28,16 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import de.justjanne.voctotv.common.player.PlayerState
+import de.justjanne.voctotv.mobile.ui.ModalSideSheet
 import de.justjanne.voctotv.mobile.ui.ModalSideSheetDefaults
 
 @Composable
 fun PlayerContainer(
+    contentPadding: PaddingValues,
     playerState: PlayerState,
     sidebarVisible: MutableState<Boolean>,
     sidebar: @Composable () -> Unit,
-    overlay: @Composable () -> Unit,
+    overlay: @Composable (contentPadding: PaddingValues) -> Unit,
     content: @Composable BoxScope.() -> Unit,
 ) {
     BackHandler(sidebarVisible.value) {
@@ -47,6 +53,12 @@ fun PlayerContainer(
                     stiffness = Spring.StiffnessMediumLow,
                 ),
         )
+
+    val localLayoutDirection = LocalLayoutDirection.current
+    val startContentPadding = contentPadding.calculateStartPadding(localLayoutDirection)
+    val endContentPadding = contentPadding.calculateEndPadding(localLayoutDirection)
+    val topContentPadding = contentPadding.calculateTopPadding()
+    val bottomContentPadding = contentPadding.calculateBottomPadding()
 
     BoxWithConstraints(Modifier.fillMaxSize()) {
         val aspectRatio =
@@ -69,11 +81,7 @@ fun PlayerContainer(
             with(LocalDensity.current) {
                 WindowInsets.safeDrawing.getLeft(LocalDensity.current, LocalLayoutDirection.current).toDp()
             }
-        val endPadding =
-            with(LocalDensity.current) {
-                WindowInsets.safeDrawing.getRight(LocalDensity.current, LocalLayoutDirection.current).toDp()
-            }
-        val modalSheetWidth = ModalSideSheetDefaults.Width + endPadding
+        val modalSheetWidth = ModalSideSheetDefaults.Width + endContentPadding
 
         val smallFrameWidth = maxWidth - startPadding - modalSheetWidth
         val smallFrameHeight = maxHeight
@@ -89,6 +97,8 @@ fun PlayerContainer(
         val contentWidth = if (frameAspect > aspectRatio) frameHeight * aspectRatio else frameWidth
         val contentHeight = if (frameAspect > aspectRatio) frameHeight else frameWidth / aspectRatio
 
+        val endContentPadding = lerp(endContentPadding, 0.dp, progress.value)
+
         val scaleModifier =
             Modifier.graphicsLayer {
                 scaleY = contentWidth / largeTargetWidth
@@ -103,11 +113,19 @@ fun PlayerContainer(
                     .align(Alignment.CenterStart)
                     .size(largeTargetWidth, largeTargetHeight)
                     .then(scaleModifier),
-            content = content,
-        )
+        ) {
+            content()
+        }
 
         Box(modifier = Modifier.width(maxWidth - sidebarWidth).fillMaxHeight()) {
-            overlay()
+            overlay(
+                PaddingValues(
+                    start = startContentPadding,
+                    end = endContentPadding,
+                    top = topContentPadding,
+                    bottom = bottomContentPadding,
+                )
+            )
         }
 
         if (sidebarVisible.value || sidebarWidth > 0.dp) {
@@ -117,7 +135,9 @@ fun PlayerContainer(
                         translationX = ModalSideSheetDefaults.Width.toPx() - sidebarWidth.toPx()
                     },
             ) {
-                sidebar()
+                ModalSideSheet(Modifier.padding(top = topContentPadding, bottom = bottomContentPadding)) {
+                    sidebar()
+                }
             }
         }
     }

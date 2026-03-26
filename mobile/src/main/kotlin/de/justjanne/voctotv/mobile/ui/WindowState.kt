@@ -33,7 +33,7 @@ data class WindowState(
 }
 
 @Composable
-fun rememberWindowState(): WindowState? {
+fun useSystemUi(): WindowState? {
     val context = LocalActivity.current
     return remember(context) { context?.let(::WindowState) }
 }

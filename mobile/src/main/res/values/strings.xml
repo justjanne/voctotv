@@ -19,6 +19,8 @@
   <string name="action_pause">Pause</string>
   <string name="action_play">Play</string>
   <string name="action_restart">Play Again</string>
+  <string name="action_fullscreen_enter">Enter Fullscreen</string>
+  <string name="action_fullscreen_exit">Exit Fullscreen</string>
 
   <string name="category_congress">Congress</string>
   <string name="category_gpn">GPN</string>

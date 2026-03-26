@@ -65,7 +65,7 @@ fun Seekbar(playerState: PlayerState) {
         modifier =
             Modifier
                 .focusRequester(focusRequester)
-                .padding(start = 32.dp, end = 32.dp, bottom = 20.dp)
+                .padding(start = 8.dp)
                 .minimumInteractiveComponentSize()
                 .fillMaxWidth()
                 .pointerInput(Unit) {

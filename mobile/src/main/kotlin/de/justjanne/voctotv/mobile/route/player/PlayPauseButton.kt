@@ -24,8 +24,8 @@ import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.mobile.R
 
 object PlayPauseButtonDefaults {
-    val ContentSize = 32.dp
-    val ContainerSize = 96.dp
+    val ContentSize = 24.dp
+    val ContainerSize = 56.dp
 
     val Shape = CircleShape
     val Elevation = 8.dp

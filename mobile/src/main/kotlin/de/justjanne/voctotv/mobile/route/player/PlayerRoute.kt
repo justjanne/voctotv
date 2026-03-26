@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.ContentFrame
@@ -21,6 +19,7 @@ import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
 import de.justjanne.voctotv.common.player.UsePlayerState
 import de.justjanne.voctotv.common.subtitles.SubtitleDisplay
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.mobile.util.AutoUnlockScreenOrientation
 
 @OptIn(UnstableApi::class)
 @Composable
@@ -29,37 +28,25 @@ fun PlayerRoute(
     back: () -> Unit,
 ) {
     val lecture = viewModel.lecture.collectAsState().value
-    UsePlayerState(viewModel)
+    val uiState = rememberPlayerUiState(viewModel.playerState)
 
-    val sidebarVisible = remember { mutableStateOf(false) }
+    UsePlayerState(viewModel)
+    AutoUnlockScreenOrientation()
+    SystemUiController(uiState, viewModel.playerState.casting)
 
     Scaffold { contentPadding ->
-        PlayerContainer(
-            playerState = viewModel.playerState,
-            sidebarVisible = sidebarVisible,
-            sidebar = {
-                if (lecture != null) {
-                    InfoSideSheet(lecture, onClose = { sidebarVisible.value = false })
-                }
-            },
-            overlay = {
-                PlayerOverlay(viewModel, lecture, sidebarVisible, contentPadding, back)
-            },
+        PlayerUi(
+            viewModel = viewModel,
+            contentPadding = contentPadding,
+            uiState = uiState,
+            lecture = lecture,
+            back = back,
         ) {
-            // Workaround to reset surface after cast switch
-            if (viewModel.playerState.casting) {
-                ContentFrame(
-                    player = viewModel.mediaSession.player,
-                    modifier = Modifier.fillMaxSize(),
-                    surfaceType = SURFACE_TYPE_SURFACE_VIEW,
-                )
-            } else {
-                ContentFrame(
-                    player = viewModel.mediaSession.player,
-                    modifier = Modifier.fillMaxSize(),
-                    surfaceType = SURFACE_TYPE_SURFACE_VIEW,
-                )
-            }
+            ContentFrame(
+                player = viewModel.mediaSession.player,
+                modifier = Modifier.fillMaxSize(),
+                surfaceType = SURFACE_TYPE_SURFACE_VIEW,
+            )
 
             SubtitleDisplay(viewModel.mediaSession.player, viewModel.playerState)
         }

@@ -9,6 +9,7 @@ package de.justjanne.voctotv.mobile.route.player
 
 import androidx.annotation.OptIn
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -27,6 +28,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
@@ -50,7 +52,6 @@ object PreviewbarDefaults {
 @Composable
 fun Previewbar(
     viewModel: PlayerViewModel,
-    playerState: PlayerState,
     modifier: Modifier = Modifier,
 ) {
     val allCues = viewModel.previews.collectAsState()
@@ -58,7 +59,7 @@ fun Previewbar(
     val currentCue =
         remember {
             derivedStateOf {
-                val seekingUs = playerState.seekingMs * 1000L
+                val seekingUs = viewModel.playerState.seekingMs * 1000L
                 allCues.value.firstOrNull { it.startUs <= seekingUs && it.endUs >= seekingUs }?.data
             }
         }
@@ -68,7 +69,7 @@ fun Previewbar(
     BoxWithConstraints(
         modifier =
             modifier
-                .padding(horizontal = 32.dp)
+                .padding(horizontal = 22.dp)
                 .fillMaxWidth(),
     ) {
         Column(
@@ -76,12 +77,15 @@ fun Previewbar(
                 Modifier
                     .graphicsLayer {
                         val thumb = PreviewbarDefaults.ThumbSize.toPx()
-                        val currentTimestamp = playerState.seekingMs
-                        val progress = currentTimestamp.toFloat() / playerState.durationMs.toFloat()
-                        val currentWidth = constraints.maxWidth - thumb
-                        val translation = (progress * currentWidth + thumb / 2) - size.width / 2
-                        translationX = translation.coerceIn(0f, currentWidth - size.width)
-                        alpha = if (playerState.seeking) 1f else 0f
+                        val currentTimestamp = viewModel.playerState.seekingMs
+                        val progress = currentTimestamp.toFloat() / viewModel.playerState.durationMs.toFloat()
+                        val padding = 32.dp.toPx()
+                        val currentWidth = constraints.maxWidth - thumb - padding
+
+                        val thumbOffset = progress * currentWidth + thumb / 2
+                        val translation = thumbOffset - size.width / 2 - 4.dp.toPx()
+                        translationX = translation.coerceIn(0f, currentWidth - size.width + thumb + padding)
+                        alpha = if (viewModel.playerState.seeking) 1f else 0f
                     },
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -102,7 +106,7 @@ fun Previewbar(
                 }
             }
             Text(
-                text = formatTime(playerState.seekingMs),
+                text = formatTime(viewModel.playerState.seekingMs),
                 style =
                     MaterialTheme.typography.labelLarge.copy(
                         shadow = MaterialTheme.colorScheme.textShadow,
