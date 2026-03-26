@@ -60,12 +60,8 @@ constructor(
                     if (track != null) {
                         mediaSession.player.apply {
                             trackSelectionParameters =
-                                trackSelectionParameters
-                                    .buildUpon()
-                                    .setPreferredAudioLanguages("")
-                                    .setPreferredTextLanguages()
-                                    .build()
-                            val mediaItem = buildMediaItem(video.room, track)
+                                trackSelectionParameters.buildUpon().build()
+                            val mediaItem = buildMediaItem(video.conference, video.room, stream, track)
                             setMediaItem(mediaItem)
                             println("Setting media item: $track $mediaItem")
                             prepare()
