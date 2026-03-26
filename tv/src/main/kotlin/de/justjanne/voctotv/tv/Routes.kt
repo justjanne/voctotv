@@ -25,7 +25,12 @@ object Routes {
     ) : NavKey
 
     @Serializable
-    data class Player(
+    data class PlayerVod(
+        val id: String,
+    ) : NavKey
+
+    @Serializable
+    data class PlayerLive(
         val id: String,
     ) : NavKey
 }

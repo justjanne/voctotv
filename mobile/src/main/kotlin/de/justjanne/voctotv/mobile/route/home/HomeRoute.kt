@@ -43,7 +43,6 @@ import de.justjanne.voctotv.common.viewmodel.HomeViewModel
 import de.justjanne.voctotv.common.viewmodel.kind
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
-import de.justjanne.voctotv.mobile.Routes.Player
 import de.justjanne.voctotv.mobile.ui.WatchNowButton
 import de.justjanne.voctotv.mobile.ui.carousel.HeroCarousel
 import de.justjanne.voctotv.mobile.ui.carousel.HeroCarouselContent
@@ -57,6 +56,7 @@ fun HomeRoute(
     val currentFilter = viewModel.currentFilter.collectAsState().value
     val filteredItems = viewModel.filteredItems.collectAsState().value
     val featuredLectures = viewModel.featuredLectures.collectAsState().value
+    val rooms = viewModel.rooms.collectAsState().value
 
     Scaffold(
         topBar = {
@@ -110,12 +110,21 @@ fun HomeRoute(
                             },
                             action = {
                                 WatchNowButton(onClick = {
-                                    navigate(Player(lecture.guid))
+                                    navigate(Routes.PlayerVod(lecture.guid))
                                 })
                             },
                         )
                     }
                 }
+            }
+
+            items(rooms, { it.room.guid }) { item ->
+                LiveRoomItem(
+                    item = item,
+                    onClick = {
+                        navigate(Routes.PlayerLive(item.room.guid))
+                    },
+                )
             }
 
             stickyHeader("filter") {

@@ -15,14 +15,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.voctoweb.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @Composable
 fun PlayerUiPortraitFullscreen(
     viewModel: PlayerViewModel,
     contentPadding: PaddingValues,
     uiState: PlayerUiState,
-    lecture: LectureModel?,
+    video: VideoModel?,
     content: @Composable BoxScope.() -> Unit,
 ) {
     val onFullscreen: () -> Unit = remember(uiState) {
@@ -51,7 +51,7 @@ fun PlayerUiPortraitFullscreen(
         PlayerOverlay(
             contentPadding = contentPadding,
             viewModel = viewModel,
-            lecture = lecture,
+            video = video,
             showTitle = false,
             showPreview = false,
             isFullscreen = true,

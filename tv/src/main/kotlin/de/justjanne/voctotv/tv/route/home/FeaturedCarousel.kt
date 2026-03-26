@@ -36,7 +36,7 @@ fun FeaturedCarousel(
         val lecture = lectures[index]
 
         Card(
-            onClick = { navigate(Routes.Player(lecture.guid)) },
+            onClick = { navigate(Routes.PlayerVod(lecture.guid)) },
             colors =
                 CardDefaults.colors(
                     containerColor = HeroCarouselDefaults.BackgroundColor,
@@ -76,7 +76,7 @@ fun FeaturedCarousel(
                 },
                 action = {
                     WatchNowButton(onClick = {
-                        navigate(Routes.Player(lecture.guid))
+                        navigate(Routes.PlayerVod(lecture.guid))
                     })
                 },
             )

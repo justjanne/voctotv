@@ -1,0 +1,292 @@
+[
+  {
+    "conference": "FOSSGIS-Konferenz 2026",
+    "slug": "fossgis2026",
+    "author": "FOSSGIS e.V.",
+    "description": "Die FOSSGIS-Konferenz ist die deutschsprachige Konferenz zu Open-Source-GIS und OpenStreetMap. Sie findet vom 25. bis 28. März 2026 in Göttingen und im Netz statt.",
+    "keywords": "FOSSGIS 2026, OpenStreetMap, GIS, OpenSource, Geo",
+    "schedule": "https://pretalx.com/fossgis2026/schedule/export/schedule.xml",
+    "startsAt": "2026-03-25T00:08:00+0100",
+    "endsAt": "2026-03-28T16:00:00+0100",
+    "isCurrentlyStreaming": true,
+    "groups": [
+      {
+        "group": "Live",
+        "rooms": [
+          {
+            "guid": "524fe067-6644-53c8-acee-89050c42a7d3",
+            "slug": "hs1",
+            "schedulename": "HS1 (ZHG 011)",
+            "thumb": "https://cdn.c3voc.de/thumbnail/s1/thumb.jpeg",
+            "poster": "https://cdn.c3voc.de/thumbnail/s1/poster.jpeg",
+            "link": "https://streaming.media.ccc.de/fossgis2026/hs1",
+            "display": "HS1 (ZHG 011)",
+            "stream": "s1",
+            "talks": {
+              "current": {
+                "fstart": "2026-03-26T18:15:00+01:00",
+                "fend": "2026-03-26T21:00:00+01:00",
+                "tstart": "18:15",
+                "tend": "21:00",
+                "start": 1774545300,
+                "end": 1774555200,
+                "offset": 3600,
+                "duration": 9900,
+                "special": "gap"
+              },
+              "next": {
+                "fstart": "2026-03-27T09:00:00+01:00",
+                "fend": "2026-03-27T09:20:00+01:00",
+                "tstart": "09:00",
+                "tend": "09:20",
+                "start": 1774598400,
+                "end": 1774599600,
+                "offset": 3600,
+                "duration": 1200,
+                "guid": "d3131547-cc62-5ffe-8071-c6c123f1a66a",
+                "code": "NYSASD",
+                "track": "Neuigkeiten und Interessantes aus den Open-Source-Projekten",
+                "title": "Schnellere Karten, kleinere MapLibre Vektorkacheln und weitere Neuerungen",
+                "speaker": "Bart Louwers, Frank Elsinga",
+                "room_known": true,
+                "optout": false,
+                "url": "https://pretalx.com/fossgis2026/talk/NYSASD/"
+              }
+            },
+            "streams": [
+              {
+                "slug": "hls-native",
+                "display": "HS1 (ZHG 011) ",
+                "type": "hls",
+                "isTranslated": false,
+                "videoSize": null,
+                "urls": {}
+              },
+              {
+                "slug": "hd-native",
+                "display": "HS1 (ZHG 011) FullHD Video",
+                "type": "video",
+                "isTranslated": false,
+                "videoSize": [
+                  1920,
+                  1080
+                ],
+                "urls": {
+                  "hls": {
+                    "display": "HLS",
+                    "tech": "1920x1080, h264+AAC im MPEG-TS-Container via HTTP, 3 MBit/s",
+                    "url": "https://cdn.c3voc.de/hls/s1/native_hd.m3u8"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "guid": "15fdae44-0233-5ac1-9b6f-dae6aba11a2e",
+            "slug": "hs2",
+            "schedulename": "HS2 (ZHG 010)",
+            "thumb": "https://cdn.c3voc.de/thumbnail/s2/thumb.jpeg",
+            "poster": "https://cdn.c3voc.de/thumbnail/s2/poster.jpeg",
+            "link": "https://streaming.media.ccc.de/fossgis2026/hs2",
+            "display": "HS2 (ZHG 010)",
+            "stream": "s2",
+            "talks": {
+              "current": {
+                "fstart": "2026-03-26T18:15:00+01:00",
+                "fend": "2026-03-26T21:00:00+01:00",
+                "tstart": "18:15",
+                "tend": "21:00",
+                "start": 1774545300,
+                "end": 1774555200,
+                "offset": 3600,
+                "duration": 9900,
+                "special": "gap"
+              },
+              "next": {
+                "fstart": "2026-03-27T09:00:00+01:00",
+                "fend": "2026-03-27T09:20:00+01:00",
+                "tstart": "09:00",
+                "tend": "09:20",
+                "start": 1774598400,
+                "end": 1774599600,
+                "offset": 3600,
+                "duration": 1200,
+                "guid": "d34be5e1-87bd-52f7-bab5-c7a587135a34",
+                "code": "3WEUVH",
+                "track": "Praxisberichte",
+                "title": "Weinberg digital: Smarte Weinberge mit QGIS & QField",
+                "speaker": "Berit Mohr",
+                "room_known": true,
+                "optout": false,
+                "url": "https://pretalx.com/fossgis2026/talk/3WEUVH/"
+              }
+            },
+            "streams": [
+              {
+                "slug": "hls-native",
+                "display": "HS2 (ZHG 010) ",
+                "type": "hls",
+                "isTranslated": false,
+                "videoSize": null,
+                "urls": {}
+              },
+              {
+                "slug": "hd-native",
+                "display": "HS2 (ZHG 010) FullHD Video",
+                "type": "video",
+                "isTranslated": false,
+                "videoSize": [
+                  1920,
+                  1080
+                ],
+                "urls": {
+                  "hls": {
+                    "display": "HLS",
+                    "tech": "1920x1080, h264+AAC im MPEG-TS-Container via HTTP, 3 MBit/s",
+                    "url": "https://cdn.c3voc.de/hls/s2/native_hd.m3u8"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "guid": "abe2afea-9f28-52d5-9d83-1abff09588f4",
+            "slug": "hs3",
+            "schedulename": "HS3 (ZHG 009)",
+            "thumb": "https://cdn.c3voc.de/thumbnail/s3/thumb.jpeg",
+            "poster": "https://cdn.c3voc.de/thumbnail/s3/poster.jpeg",
+            "link": "https://streaming.media.ccc.de/fossgis2026/hs3",
+            "display": "HS3 (ZHG 009)",
+            "stream": "s3",
+            "talks": {
+              "current": {
+                "fstart": "2026-03-26T18:15:00+01:00",
+                "fend": "2026-03-26T21:00:00+01:00",
+                "tstart": "18:15",
+                "tend": "21:00",
+                "start": 1774545300,
+                "end": 1774555200,
+                "offset": 3600,
+                "duration": 9900,
+                "special": "gap"
+              },
+              "next": {
+                "fstart": "2026-03-27T09:00:00+01:00",
+                "fend": "2026-03-27T09:20:00+01:00",
+                "tstart": "09:00",
+                "tend": "09:20",
+                "start": 1774598400,
+                "end": 1774599600,
+                "offset": 3600,
+                "duration": 1200,
+                "guid": "cd5c37fb-129d-50c0-be4e-6eb499dcbbcc",
+                "code": "PKLL8T",
+                "track": "Routing und Mobilität",
+                "title": "Routing mit MOTIS",
+                "speaker": "Dr. Felix Gündling, Robin Durner",
+                "room_known": true,
+                "optout": false,
+                "url": "https://pretalx.com/fossgis2026/talk/PKLL8T/"
+              }
+            },
+            "streams": [
+              {
+                "slug": "hls-native",
+                "display": "HS3 (ZHG 009) ",
+                "type": "hls",
+                "isTranslated": false,
+                "videoSize": null,
+                "urls": {}
+              },
+              {
+                "slug": "hd-native",
+                "display": "HS3 (ZHG 009) FullHD Video",
+                "type": "video",
+                "isTranslated": false,
+                "videoSize": [
+                  1920,
+                  1080
+                ],
+                "urls": {
+                  "hls": {
+                    "display": "HLS",
+                    "tech": "1920x1080, h264+AAC im MPEG-TS-Container via HTTP, 3 MBit/s",
+                    "url": "https://cdn.c3voc.de/hls/s3/native_hd.m3u8"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "guid": "a1aeb55c-bb50-5197-87d8-5bc80f265f13",
+            "slug": "hs4",
+            "schedulename": "HS4 (ZHG 008)",
+            "thumb": "https://cdn.c3voc.de/thumbnail/s4/thumb.jpeg",
+            "poster": "https://cdn.c3voc.de/thumbnail/s4/poster.jpeg",
+            "link": "https://streaming.media.ccc.de/fossgis2026/hs4",
+            "display": "HS4 (ZHG 008)",
+            "stream": "s4",
+            "talks": {
+              "current": {
+                "fstart": "2026-03-26T18:05:00+01:00",
+                "fend": "2026-03-26T21:00:00+01:00",
+                "tstart": "18:05",
+                "tend": "21:00",
+                "start": 1774544700,
+                "end": 1774555200,
+                "offset": 3600,
+                "duration": 10500,
+                "special": "gap"
+              },
+              "next": {
+                "fstart": "2026-03-27T09:00:00+01:00",
+                "fend": "2026-03-27T09:20:00+01:00",
+                "tstart": "09:00",
+                "tend": "09:20",
+                "start": 1774598400,
+                "end": 1774599600,
+                "offset": 3600,
+                "duration": 1200,
+                "guid": "77a4ecac-c919-540e-9190-53306db9d3d3",
+                "code": "99SFCT",
+                "track": "OpenStreetMap",
+                "title": "Archivierung von OpenStreetMap",
+                "speaker": "Falk Zscheile, Eszter Kiss",
+                "room_known": true,
+                "optout": false,
+                "url": "https://pretalx.com/fossgis2026/talk/99SFCT/"
+              }
+            },
+            "streams": [
+              {
+                "slug": "hls-native",
+                "display": "HS4 (ZHG 008) ",
+                "type": "hls",
+                "isTranslated": false,
+                "videoSize": null,
+                "urls": {}
+              },
+              {
+                "slug": "hd-native",
+                "display": "HS4 (ZHG 008) FullHD Video",
+                "type": "video",
+                "isTranslated": false,
+                "videoSize": [
+                  1920,
+                  1080
+                ],
+                "urls": {
+                  "hls": {
+                    "display": "HLS",
+                    "tech": "1920x1080, h264+AAC im MPEG-TS-Container via HTTP, 3 MBit/s",
+                    "url": "https://cdn.c3voc.de/hls/s4/native_hd.m3u8"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

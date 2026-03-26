@@ -1,6 +1,7 @@
 <resources>
   <string name="app_name">VoctoTV</string>
-  <string name="api_url">https://api.media.ccc.de/</string>
+  <string name="api_url_vod">https://api.media.ccc.de/</string>
+  <string name="api_url_live">https://streaming.media.ccc.de/</string>
 
   <string name="player_audio_language">Language</string>
   <string name="player_audio_original">%s (Original)</string>

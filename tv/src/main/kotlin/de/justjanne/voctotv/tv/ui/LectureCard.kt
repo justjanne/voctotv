@@ -54,7 +54,7 @@ fun LectureCard(
 ) {
     CompactCard(
         onClick = {
-            navigate(Routes.Player(lecture.guid))
+            navigate(Routes.PlayerVod(lecture.guid))
         },
         modifier =
             modifier

@@ -1,0 +1,118 @@
+package de.justjanne.voctotv.tv.route.player
+
+import android.text.format.DateUtils
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.style.LineBreak
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.fastAny
+import androidx.compose.ui.util.fastJoinToString
+import androidx.tv.material3.LocalContentColor
+import androidx.tv.material3.MaterialTheme
+import androidx.tv.material3.Text
+import de.justjanne.voctotv.tv.R
+import de.justjanne.voctotv.tv.ui.TagChip
+import de.justjanne.voctotv.tv.ui.theme.DescriptionAlpha
+import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
+import de.justjanne.voctotv.voctoweb.model.VideoModel
+
+@Composable
+fun VideoDescriptionVod(video: VideoModel.Vod) {
+    Text(
+        video.lecture.title,
+        style =
+            MaterialTheme.typography.titleLarge.copy(
+                lineBreak = LineBreak.Companion.Heading,
+            ),
+    )
+
+    if (!video.lecture.subtitle.isNullOrBlank()) {
+        Spacer(modifier = Modifier.Companion.height(4.dp))
+        Text(
+            video.lecture.subtitle ?: "",
+            style = MaterialTheme.typography.bodyMedium,
+            color = LocalContentColor.current.copy(alpha = SubtitleAlpha),
+        )
+    }
+
+    Spacer(modifier = Modifier.Companion.height(16.dp))
+
+    Row(
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        modifier = Modifier.Companion.fillMaxWidth(),
+    ) {
+        Column(horizontalAlignment = Alignment.Companion.CenterHorizontally) {
+            Text(
+                String.format(Locale.Companion.current.platformLocale, "%,d", video.lecture.viewCount),
+                fontWeight = FontWeight.Companion.SemiBold,
+                fontSize = 16.sp,
+            )
+            Text(
+                stringResource(R.string.video_info_views),
+                fontSize = 12.sp,
+                color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
+            )
+        }
+        Column(horizontalAlignment = Alignment.Companion.CenterHorizontally) {
+            Text(
+                DateUtils.formatDateTime(
+                    LocalContext.current,
+                    video.lecture.releaseDate.toInstant().toEpochMilli(),
+                    DateUtils.FORMAT_SHOW_DATE or
+                            DateUtils.FORMAT_NO_YEAR or
+                            DateUtils.FORMAT_ABBREV_MONTH,
+                ),
+                fontWeight = FontWeight.Companion.SemiBold,
+                fontSize = 16.sp,
+            )
+            Text(
+                video.lecture.releaseDate.year.toString(),
+                fontSize = 12.sp,
+                color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
+            )
+        }
+    }
+
+    if (video.lecture.persons.fastAny { it.isNotBlank() }) {
+        Spacer(modifier = Modifier.Companion.height(16.dp))
+
+        Text(
+            video.lecture.persons.fastJoinToString(" · "),
+            style = MaterialTheme.typography.bodyMedium,
+        )
+    }
+
+    if (!video.lecture.description.isNullOrBlank()) {
+        Spacer(modifier = Modifier.Companion.height(16.dp))
+
+        Text(
+            video.lecture.description ?: "",
+            style = MaterialTheme.typography.bodyMedium,
+            color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
+        )
+    }
+
+    Spacer(Modifier.Companion.height(16.dp))
+
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp, alignment = Alignment.Companion.Start),
+        verticalArrangement = Arrangement.spacedBy(8.dp, alignment = Alignment.Companion.Top),
+    ) {
+        for (tag in video.lecture.tags) {
+            TagChip { Text(tag) }
+        }
+    }
+}

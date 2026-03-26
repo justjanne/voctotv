@@ -24,7 +24,7 @@ import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 @OptIn(UnstableApi::class)
 @Composable
 fun PlayerRoute(viewModel: PlayerViewModel) {
-    val lecture = viewModel.lecture.collectAsState().value
+    val video = viewModel.video.collectAsState().value
 
     UsePlayerState(viewModel)
 
@@ -34,12 +34,12 @@ fun PlayerRoute(viewModel: PlayerViewModel) {
         playerState = viewModel.playerState,
         sidebarVisible = sidebarVisible,
         sidebar = {
-            if (lecture != null) {
-                InfoSideSheet(lecture)
+            if (video != null) {
+                InfoSideSheet(video)
             }
         },
         overlay = {
-            PlayerOverlay(viewModel, lecture, sidebarVisible)
+            PlayerOverlay(viewModel, video, sidebarVisible)
         },
     ) {
         ContentFrame(

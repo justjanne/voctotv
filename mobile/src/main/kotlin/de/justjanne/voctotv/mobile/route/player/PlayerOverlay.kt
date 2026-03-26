@@ -8,7 +8,6 @@
 package de.justjanne.voctotv.mobile.route.player
 
 import androidx.annotation.OptIn
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -36,13 +35,13 @@ import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.ui.theme.textShadow
 import de.justjanne.voctotv.mobile.ui.useSystemUi
-import de.justjanne.voctotv.voctoweb.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @OptIn(UnstableApi::class)
 @Composable
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
-    lecture: LectureModel?,
+    video: VideoModel?,
     showTitle: Boolean,
     showPreview: Boolean,
     isFullscreen: Boolean,
@@ -78,43 +77,45 @@ fun PlayerOverlay(
             Row(Modifier.weight(1f)) {
                 if (showTitle) {
                     VideoTitle(
-                        lecture = lecture,
+                        video = video,
                         onClick = { onDescription(true) },
                     )
                 }
             }
-            PlayerActions(viewModel, lecture)
+            PlayerActions(viewModel, video)
         },
         bottom = {
-            Box(contentAlignment = Alignment.BottomCenter) {
-                if (showPreview) {
-                    Previewbar(viewModel)
-                }
-                Row(
-                    modifier =
-                        Modifier
-                            .padding(horizontal = 22.dp)
-                            .padding(top = 16.dp)
-                            .graphicsLayer { alpha = if (showPreview && viewModel.playerState.seeking) 0f else 1f },
-                ) {
-                    Text(
-                        text = formatTime(
-                            if (!showPreview && viewModel.playerState.seeking) viewModel.playerState.seekingMs
-                            else viewModel.playerState.progressMs
-                        ),
-                        style =
-                            MaterialTheme.typography.labelLarge.copy(
-                                shadow = MaterialTheme.colorScheme.textShadow,
+            if (!viewModel.playerState.isLive) {
+                Box(contentAlignment = Alignment.BottomCenter) {
+                    if (showPreview) {
+                        Previewbar(viewModel)
+                    }
+                    Row(
+                        modifier =
+                            Modifier
+                                .padding(horizontal = 22.dp)
+                                .padding(top = 16.dp)
+                                .graphicsLayer { alpha = if (showPreview && viewModel.playerState.seeking) 0f else 1f },
+                    ) {
+                        Text(
+                            text = formatTime(
+                                if (!showPreview && viewModel.playerState.seeking) viewModel.playerState.seekingMs
+                                else viewModel.playerState.progressMs
                             ),
-                    )
-                    Spacer(Modifier.weight(1f))
-                    Text(
-                        text = formatTime(viewModel.playerState.durationMs),
-                        style =
-                            MaterialTheme.typography.labelLarge.copy(
-                                shadow = MaterialTheme.colorScheme.textShadow,
-                            ),
-                    )
+                            style =
+                                MaterialTheme.typography.labelLarge.copy(
+                                    shadow = MaterialTheme.colorScheme.textShadow,
+                                ),
+                        )
+                        Spacer(Modifier.weight(1f))
+                        Text(
+                            text = formatTime(viewModel.playerState.durationMs),
+                            style =
+                                MaterialTheme.typography.labelLarge.copy(
+                                    shadow = MaterialTheme.colorScheme.textShadow,
+                                ),
+                        )
+                    }
                 }
             }
             Row(
@@ -122,7 +123,24 @@ fun PlayerOverlay(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Box(modifier = Modifier.weight(1f)) {
-                    Seekbar(viewModel.playerState)
+                    if (viewModel.playerState.isLive) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                painterResource(R.drawable.ic_live),
+                                contentDescription = null,
+                                tint = Color.Red,
+                            )
+                            Text(
+                                text = "LIVE",
+                                style =
+                                    MaterialTheme.typography.labelLarge.copy(
+                                        shadow = MaterialTheme.colorScheme.textShadow,
+                                    ),
+                            )
+                        }
+                    } else {
+                        Seekbar(viewModel.playerState)
+                    }
                 }
                 IconButton(onClick = onFullscreen) {
                     Icon(

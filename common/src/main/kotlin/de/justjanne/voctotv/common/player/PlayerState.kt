@@ -43,6 +43,8 @@ class PlayerState(
 
     private val captionTrackState = mutableStateOf(emptyList<String>())
 
+    private val isLiveState = mutableStateOf(false)
+
     init {
         update()
     }
@@ -85,6 +87,8 @@ class PlayerState(
 
     val captionTracks: List<String> get() = captionTrackState.value
 
+    val isLive: Boolean get() = isLiveState.value
+
     fun seek(ms: Long) {
         if (durationMs > 0) {
             seekingState.longValue = ms.fastCoerceIn(0L, durationMs)
@@ -113,6 +117,7 @@ class PlayerState(
             Player.EVENT_DEVICE_INFO_CHANGED,
             Player.EVENT_IS_LOADING_CHANGED,
             Player.EVENT_TRACKS_CHANGED,
+            Player.EVENT_MEDIA_METADATA_CHANGED,
         ) {
             update()
         }
@@ -128,6 +133,8 @@ class PlayerState(
         durationState.longValue = player.duration
 
         castingState.value = player.deviceInfo.playbackType == DeviceInfo.PLAYBACK_TYPE_REMOTE
+
+        isLiveState.value = player.isCurrentMediaItemLive
 
         captionTrackState.value =
             player.currentTracks.groups

@@ -14,13 +14,18 @@ interface VoctowebApi {
     val conference: ConferenceApi
     val lecture: LectureApi
     val resource: ResourceApi
+    val streaming: StreamingApi
 
     companion object {
-        fun build(retrofit: Retrofit): VoctowebApi =
+        fun build(
+            vod: Retrofit,
+            live: Retrofit,
+        ): VoctowebApi =
             VoctowebApiImpl(
-                retrofit.create<ConferenceApi>(),
-                retrofit.create<LectureApi>(),
-                retrofit.create<ResourceApi>(),
+                vod.create<ConferenceApi>(),
+                vod.create<LectureApi>(),
+                vod.create<ResourceApi>(),
+                live.create<StreamingApi>(),
             )
     }
 }
@@ -29,4 +34,5 @@ private data class VoctowebApiImpl(
     override val conference: ConferenceApi,
     override val lecture: LectureApi,
     override val resource: ResourceApi,
+    override val streaming: StreamingApi,
 ) : VoctowebApi

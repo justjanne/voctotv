@@ -19,7 +19,9 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerLiveViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerVodViewModel
 import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.tv.route.conference.ConferenceRoute
 import de.justjanne.voctotv.tv.route.home.HomeRoute
@@ -58,9 +60,16 @@ fun AppRouter() {
                 entry<Routes.Lecture> { key ->
                     Text("Lecture: ${key.id}")
                 }
-                entry<Routes.Player> { key ->
+                entry<Routes.PlayerVod> { key ->
                     val viewModel =
-                        hiltViewModel<PlayerViewModel, PlayerViewModel.Factory> { factory ->
+                        hiltViewModel<PlayerVodViewModel, PlayerVodViewModel.Factory> { factory ->
+                            factory.create(key.id)
+                        }
+                    PlayerRoute(viewModel)
+                }
+                entry<Routes.PlayerLive> { key ->
+                    val viewModel =
+                        hiltViewModel<PlayerLiveViewModel, PlayerLiveViewModel.Factory> { factory ->
                             factory.create(key.id)
                         }
                     PlayerRoute(viewModel)

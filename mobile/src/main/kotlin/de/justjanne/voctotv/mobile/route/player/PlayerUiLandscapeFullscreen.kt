@@ -8,15 +8,15 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.voctoweb.model.VideoModel
 import de.justjanne.voctotv.mobile.util.switchScreenOrientation
-import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @Composable
 fun PlayerUiLandscapeFullscreen(
     viewModel: PlayerViewModel,
     contentPadding: PaddingValues,
     uiState: PlayerUiState,
-    lecture: LectureModel?,
+    video: VideoModel?,
     content: @Composable BoxScope.() -> Unit,
 ) {
     val context = LocalActivity.current
@@ -33,9 +33,9 @@ fun PlayerUiLandscapeFullscreen(
         playerState = viewModel.playerState,
         sidebarVisible = uiState.descriptionVisible,
         sidebar = {
-            if (lecture != null) {
+            if (video != null) {
                 VideoDescription(
-                    lecture = lecture,
+                    video = video,
                     onClose = { uiState.toggleDescription(false) },
                 )
             }
@@ -44,7 +44,7 @@ fun PlayerUiLandscapeFullscreen(
             PlayerOverlay(
                 contentPadding = contentPadding,
                 viewModel = viewModel,
-                lecture = lecture,
+                video = video,
                 showPreview = true,
                 showTitle = !uiState.descriptionVisible.value,
                 isFullscreen = true,

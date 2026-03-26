@@ -29,15 +29,17 @@ import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.ui.dropdown.DropdownMenuRadioItem
 import de.justjanne.voctotv.mobile.ui.dropdown.DropdownMenuSubheader
-import de.justjanne.voctotv.voctoweb.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @OptIn(UnstableApi::class)
 @Composable
 fun AudioSelection(
     player: Player,
     playerState: PlayerState,
-    lecture: LectureModel?,
+    video: VideoModel?,
 ) {
+    val lecture = if (video is VideoModel.Vod) video.lecture else null
+
     val popupOpen = remember { mutableStateOf(false) }
 
     LaunchedEffect(playerState.casting) {

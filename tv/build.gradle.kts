@@ -143,7 +143,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.androidx.hilt.navigation.compose)
 
-    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.exoplayer.core)
     implementation(libs.androidx.media3.session)
     implementation(libs.androidx.media3.extractor)
     implementation(libs.androidx.media3.compose)

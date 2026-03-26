@@ -5,6 +5,8 @@ import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
 import de.justjanne.voctotv.voctoweb.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.LiveResourceModel
+import de.justjanne.voctotv.voctoweb.model.LiveRoomModel
 import de.justjanne.voctotv.voctoweb.model.ResourceModel
 
 fun buildMediaItem(
@@ -48,3 +50,14 @@ fun buildMediaItem(
                 }
             },
         ).build()
+
+fun buildMediaItem(
+    room: LiveRoomModel,
+    track: LiveResourceModel,
+): MediaItem =
+    MediaItem
+        .Builder()
+        .setLiveConfiguration(MediaItem.LiveConfiguration.Builder().build())
+        .setUri(track.url)
+        .setMediaId(track.display)
+        .build()

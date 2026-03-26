@@ -1,0 +1,92 @@
+/*
+ * Copyright (c) 2026. Janne Mareike Koschinski
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+ * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+package de.justjanne.voctotv.tv.route.home
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.focusRestorer
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
+import androidx.tv.material3.Card
+import androidx.tv.material3.StandardCardContainer
+import androidx.tv.material3.Text
+import coil3.compose.AsyncImage
+import de.justjanne.voctotv.tv.Routes
+import de.justjanne.voctotv.tv.ui.theme.GridGutter
+import de.justjanne.voctotv.tv.ui.theme.GridPadding
+import de.justjanne.voctotv.tv.ui.theme.VoctoTvTheme
+import de.justjanne.voctotv.voctoweb.model.ConferenceModel
+import de.justjanne.voctotv.voctoweb.model.VideoModel
+
+@Composable
+fun LiveRow(
+    title: String,
+    rooms: List<VideoModel.Live>,
+    navigate: (NavKey) -> Unit,
+) {
+    val focusRequester = remember { FocusRequester() }
+
+    Text(title, modifier = Modifier.padding(horizontal = GridGutter))
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(GridPadding),
+        contentPadding = PaddingValues(vertical = GridPadding, horizontal = GridGutter),
+        modifier = Modifier.focusRestorer(focusRequester),
+    ) {
+        itemsIndexed(rooms, key = { _, item -> item.room.guid }) { index, item ->
+            val modifier = if (index == 0) Modifier.focusRequester(focusRequester) else Modifier
+
+            Column {
+                StandardCardContainer(
+                    modifier = modifier.width(124.dp),
+                    imageCard = { interactionSource ->
+                        VoctoTvTheme(isInDarkTheme = false) {
+                            Card(
+                                onClick = { navigate(Routes.PlayerLive(item.room.guid)) },
+                                modifier =
+                                    Modifier
+                                        .aspectRatio(16f / 9),
+                                interactionSource = interactionSource,
+                            ) {
+                                AsyncImage(
+                                    model = item.room.poster,
+                                    contentDescription = item.room.display,
+                                    modifier =
+                                        Modifier
+                                            .fillMaxSize()
+                                            .padding(8.dp),
+                                )
+                            }
+                        }
+                    },
+                    title = {
+                        Text(
+                            text = item.room.display,
+                            modifier = Modifier.padding(top = 8.dp, start = 8.dp, end = 8.dp),
+                            minLines = 2,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    },
+                )
+            }
+        }
+    }
+}

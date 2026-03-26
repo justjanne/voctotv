@@ -28,11 +28,12 @@ import de.justjanne.voctotv.tv.ui.theme.PlayerScrimTop
 import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.tv.ui.theme.textShadow
 import de.justjanne.voctotv.voctoweb.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @Composable
 fun BoxScope.TitleOverlay(
     visible: Boolean,
-    lecture: LectureModel?,
+    video: VideoModel?,
 ) {
     AnimatedVisibility(
         visible,
@@ -40,33 +41,6 @@ fun BoxScope.TitleOverlay(
         exit = fadeOut() + slideOutVertically(targetOffsetY = { -it / 2 }),
         modifier = Modifier.align(Alignment.TopStart),
     ) {
-        lecture?.let {
-            Column(
-                modifier =
-                    Modifier
-                        .background(PlayerScrimTop)
-                        .padding(32.dp)
-                        .fillMaxWidth(),
-            ) {
-                Text(
-                    text = lecture.conferenceTitle,
-                    style =
-                        MaterialTheme.typography.bodyMedium.copy(
-                            color = Color.White.copy(alpha = SubtitleAlpha),
-                            shadow = MaterialTheme.colorScheme.textShadow,
-                        ),
-                    maxLines = 1,
-                )
-                Text(
-                    text = lecture.title,
-                    style =
-                        MaterialTheme.typography.titleLarge.copy(
-                            color = Color.White,
-                            shadow = MaterialTheme.colorScheme.textShadow,
-                        ),
-                    maxLines = 2,
-                )
-            }
-        }
+        VideoTitle(video)
     }
 }

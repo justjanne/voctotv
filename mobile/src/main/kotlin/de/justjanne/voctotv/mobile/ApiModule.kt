@@ -29,26 +29,40 @@ import javax.inject.Named
 @InstallIn(SingletonComponent::class)
 internal object ApiModule {
     @Provides
-    @Named("apiEndpoint")
-    fun provideApiEndpoint(
+    @Named("endpointVod")
+    fun provideVodEndpoint(
         @ApplicationContext context: Context,
-    ): String = context.resources.getString(R.string.api_url)
+    ): String = context.resources.getString(R.string.api_url_vod)
+
+    @Provides
+    @Named("endpointLive")
+    fun provideLiveEndpoint(
+        @ApplicationContext context: Context,
+    ): String = context.resources.getString(R.string.api_url_live)
 
     @Provides
     @Reusable
     fun provideApi(
         client: OkHttpClient,
-        @Named("apiEndpoint") apiEndpoint: String,
+        @Named("endpointVod") endpointVod: String,
+        @Named("endpointLive") endpointLive: String,
     ): VoctowebApi {
         val contentType = "application/json".toMediaType()
-        val retrofit =
+        val vod =
             Retrofit
                 .Builder()
-                .baseUrl(apiEndpoint)
+                .baseUrl(endpointVod)
                 .addConverterFactory(Json.asConverterFactory(contentType))
                 .client(client)
                 .build()
-        return VoctowebApi.build(retrofit)
+        val live =
+            Retrofit
+                .Builder()
+                .baseUrl(endpointLive)
+                .addConverterFactory(Json.asConverterFactory(contentType))
+                .client(client)
+                .build()
+        return VoctowebApi.build(vod, live)
     }
 
     @Provides

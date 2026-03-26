@@ -34,14 +34,19 @@ object TestUtil {
                 }.addInterceptor(interceptor)
                 .build()
         val contentType = "application/json".toMediaType()
-        val retrofit =
-            Retrofit
+        val vod = Retrofit
                 .Builder()
                 .baseUrl("https://api.media.ccc.de/")
                 .addConverterFactory(Json.asConverterFactory(contentType))
                 .client(client)
                 .build()
-        return VoctowebApi.build(retrofit)
+        val live = Retrofit
+            .Builder()
+            .baseUrl("https://streaming.media.ccc.de/")
+            .addConverterFactory(Json.asConverterFactory(contentType))
+            .client(client)
+            .build()
+        return VoctowebApi.build(vod, live)
     }
 
     fun load(filename: String): InputStream =

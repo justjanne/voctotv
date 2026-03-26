@@ -20,7 +20,9 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerLiveViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
+import de.justjanne.voctotv.common.viewmodel.PlayerVodViewModel
 import de.justjanne.voctotv.mobile.Routes
 import de.justjanne.voctotv.mobile.route.conference.ConferenceRoute
 import de.justjanne.voctotv.mobile.route.home.HomeRoute
@@ -40,6 +42,8 @@ fun AppRouter(startRoute: NavKey? = null) {
         remember(backStack) {
             { backStack.removeAt(backStack.lastIndex) }
         }
+
+    println(backStack.last())
 
     NavDisplay(
         backStack = backStack,
@@ -64,9 +68,16 @@ fun AppRouter(startRoute: NavKey? = null) {
                 entry<Routes.Lecture> { key ->
                     Text("Lecture")
                 }
-                entry<Routes.Player> { key ->
+                entry<Routes.PlayerVod> { key ->
                     val viewModel =
-                        hiltViewModel<PlayerViewModel, PlayerViewModel.Factory> { factory ->
+                        hiltViewModel<PlayerVodViewModel, PlayerVodViewModel.Factory> { factory ->
+                            factory.create(key.id)
+                        }
+                    PlayerRoute(viewModel, back)
+                }
+                entry<Routes.PlayerLive> { key ->
+                    val viewModel =
+                        hiltViewModel<PlayerLiveViewModel, PlayerLiveViewModel.Factory> { factory ->
                             factory.create(key.id)
                         }
                     PlayerRoute(viewModel, back)

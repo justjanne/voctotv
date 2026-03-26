@@ -11,14 +11,14 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.voctoweb.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @Composable
 fun PlayerUi(
     viewModel: PlayerViewModel,
     contentPadding: PaddingValues,
     uiState: PlayerUiState,
-    lecture: LectureModel?,
+    video: VideoModel?,
     back: () -> Unit,
     content: @Composable BoxScope.() -> Unit,
 ) {
@@ -27,7 +27,7 @@ fun PlayerUi(
             viewModel = viewModel,
             contentPadding = contentPadding,
             uiState = uiState,
-            lecture = lecture,
+            video = video,
             content = content,
         )
     } else if (uiState.descriptionVisible.value) {
@@ -35,7 +35,7 @@ fun PlayerUi(
             viewModel = viewModel,
             contentPadding = contentPadding,
             uiState = uiState,
-            lecture = lecture,
+            video = video,
             content = content,
             back = back,
         )
@@ -44,7 +44,7 @@ fun PlayerUi(
             viewModel = viewModel,
             contentPadding = contentPadding,
             uiState = uiState,
-            lecture = lecture,
+            video = video,
             content = content,
         )
     }

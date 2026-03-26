@@ -35,6 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
@@ -55,7 +56,7 @@ import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.ui.rememberWindowState
 import de.justjanne.voctotv.tv.ui.theme.PlayerScrimBottom
 import de.justjanne.voctotv.tv.ui.theme.textShadow
-import de.justjanne.voctotv.voctoweb.model.LectureModel
+import de.justjanne.voctotv.voctoweb.model.VideoModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -65,7 +66,7 @@ import kotlin.time.Duration.Companion.seconds
 @Composable
 fun PlayerOverlay(
     viewModel: PlayerViewModel,
-    lecture: LectureModel?,
+    video: VideoModel?,
     sidebarVisible: MutableState<Boolean>,
 ) {
     val uiVisible = remember { mutableStateOf(false) }
@@ -98,18 +99,22 @@ fun PlayerOverlay(
     val seekBack =
         remember {
             {
-                viewModel.mediaSession.player.pause()
-                viewModel.mediaSession.player.seekBack()
-                seeking.value = true
+                if (!viewModel.playerState.isLive) {
+                    viewModel.mediaSession.player.pause()
+                    viewModel.mediaSession.player.seekBack()
+                    seeking.value = true
+                }
                 showUi()
             }
         }
     val seekForward =
         remember {
             {
-                viewModel.mediaSession.player.pause()
-                viewModel.mediaSession.player.seekForward()
-                seeking.value = true
+                if (!viewModel.playerState.isLive) {
+                    viewModel.mediaSession.player.pause()
+                    viewModel.mediaSession.player.seekForward()
+                    seeking.value = true
+                }
                 showUi()
             }
         }
@@ -146,7 +151,11 @@ fun PlayerOverlay(
         modifier =
             Modifier
                 .fillMaxSize()
-                .clickable(mainInteractionSource, indication = null, enabled = !uiVisible.value && !sidebarVisible.value) {
+                .clickable(
+                    mainInteractionSource,
+                    indication = null,
+                    enabled = !uiVisible.value && !sidebarVisible.value
+                ) {
                     uiVisible.value = true
                 }.onPreviewKeyEvent {
                     if (it.type == KeyEventType.KeyDown) {
@@ -223,7 +232,7 @@ fun PlayerOverlay(
     ) {
         TitleOverlay(
             uiVisible.value,
-            lecture,
+            video,
         )
 
         AnimatedVisibility(
@@ -233,13 +242,15 @@ fun PlayerOverlay(
             modifier = Modifier.align(Alignment.BottomCenter),
         ) {
             Box {
-                Previewbar(
-                    viewModel,
-                    viewModel.mediaSession.player,
-                    seekbarInteractionSource,
-                    seeking,
-                    modifier = Modifier.align(Alignment.TopCenter),
-                )
+                if (!viewModel.playerState.isLive) {
+                    Previewbar(
+                        viewModel,
+                        viewModel.mediaSession.player,
+                        seekbarInteractionSource,
+                        seeking,
+                        modifier = Modifier.align(Alignment.TopCenter),
+                    )
+                }
                 Column(
                     modifier =
                         Modifier
@@ -248,23 +259,44 @@ fun PlayerOverlay(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Row(Modifier.padding(start = 32.dp, end = 32.dp, top = 32.dp)) {
-                        Text(
-                            text = formatTime(viewModel.playerState.progressMs),
-                            style =
-                                MaterialTheme.typography.labelLarge.copy(
-                                    shadow = MaterialTheme.colorScheme.textShadow,
-                                ),
-                        )
-                        Spacer(Modifier.weight(1f))
-                        Text(
-                            text = formatTime(viewModel.playerState.durationMs),
-                            style =
-                                MaterialTheme.typography.labelLarge.copy(
-                                    shadow = MaterialTheme.colorScheme.textShadow,
-                                ),
-                        )
+                        if (viewModel.playerState.isLive) {
+                            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    painterResource(R.drawable.ic_live),
+                                    contentDescription = null,
+                                    tint = Color.Red,
+                                )
+                                Text(
+                                    text = "LIVE",
+                                    style =
+                                        MaterialTheme.typography.labelLarge.copy(
+                                            shadow = MaterialTheme.colorScheme.textShadow,
+                                        ),
+                                )
+                            }
+                        } else {
+                            Text(
+                                text = formatTime(viewModel.playerState.progressMs),
+                                style =
+                                    MaterialTheme.typography.labelLarge.copy(
+                                        shadow = MaterialTheme.colorScheme.textShadow,
+                                    ),
+                            )
+                            Spacer(Modifier.weight(1f))
+                            Text(
+                                text = formatTime(viewModel.playerState.durationMs),
+                                style =
+                                    MaterialTheme.typography.labelLarge.copy(
+                                        shadow = MaterialTheme.colorScheme.textShadow,
+                                    ),
+                            )
+                        }
                     }
-                    Seekbar(viewModel.mediaSession.player, seekbarInteractionSource, seekBack, seekForward)
+                    if (!viewModel.playerState.isLive) {
+                        Seekbar(viewModel.mediaSession.player, seekbarInteractionSource, seekBack, seekForward)
+                    } else {
+                        SeekbarLive()
+                    }
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically,
@@ -301,7 +333,7 @@ fun PlayerOverlay(
                             horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
                         ) {
                             CaptionSelection(viewModel.mediaSession.player, viewModel.playerState)
-                            AudioSelection(viewModel.mediaSession.player, viewModel.playerState, lecture)
+                            AudioSelection(viewModel.mediaSession.player, viewModel.playerState, video)
                         }
                     }
                 }

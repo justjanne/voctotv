@@ -126,7 +126,7 @@ fun ConferenceRoute(
                         LectureItem(
                             item = item,
                             onClick = {
-                                navigate(Routes.Player(item.guid))
+                                navigate(Routes.PlayerVod(item.guid))
                             },
                         )
                     }

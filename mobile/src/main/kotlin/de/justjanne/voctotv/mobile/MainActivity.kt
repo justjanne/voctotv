@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
         Log.i("MainActivity", "Started with deep link: $deepLink")
         val startRoute =
             when (deepLink) {
-                is DeepLink.Events.Show -> Routes.Player(deepLink.slug)
+                is DeepLink.Events.Show -> Routes.PlayerVod(deepLink.slug)
                 is DeepLink.Conferences.Show -> Routes.Conference(deepLink.acronym)
                 else -> null
             }

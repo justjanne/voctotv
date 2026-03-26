@@ -27,7 +27,7 @@ fun PlayerRoute(
     viewModel: PlayerViewModel,
     back: () -> Unit,
 ) {
-    val lecture = viewModel.lecture.collectAsState().value
+    val video = viewModel.video.collectAsState().value
     val uiState = rememberPlayerUiState(viewModel.playerState)
 
     UsePlayerState(viewModel)
@@ -39,7 +39,7 @@ fun PlayerRoute(
             viewModel = viewModel,
             contentPadding = contentPadding,
             uiState = uiState,
-            lecture = lecture,
+            video = video,
             back = back,
         ) {
             ContentFrame(
