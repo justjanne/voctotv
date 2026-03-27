@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
@@ -44,6 +45,7 @@ import coil3.compose.AsyncImage
 import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.voctoweb.model.LiveRoomModel
+import de.justjanne.voctotv.voctoweb.model.LiveTalkModel
 
 @Composable
 fun LiveRoomCardCard(
@@ -51,7 +53,9 @@ fun LiveRoomCardCard(
     navigate: (NavKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    CompactCard2(
+    val currentItem = room.talks.current
+
+    CompactCard(
         onClick = {
             navigate(Routes.PlayerLive(room.guid))
         },
@@ -60,6 +64,29 @@ fun LiveRoomCardCard(
                 .width(268.dp)
                 .aspectRatio(16f / 9),
         title = {
+            if (currentItem != null) {
+                Text(
+                    text = when (currentItem) {
+                        is LiveTalkModel.Break -> currentItem.title ?: stringResource(R.string.schedule_break)
+                        is LiveTalkModel.Talk -> currentItem.title
+                    },
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        },
+        subtitle = {
+            if (currentItem is LiveTalkModel.Talk) {
+                Text(
+                    text = currentItem.speaker,
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        },
+        description = {
             Text(
                 text = room.display,
                 modifier = Modifier.padding(start = 8.dp, end = 8.dp),
@@ -99,61 +126,4 @@ fun LiveRoomCardCard(
             }
         },
     )
-}
-
-@Composable
-private fun CompactCard2(
-    onClick: () -> Unit,
-    image: @Composable BoxScope.() -> Unit,
-    title: @Composable () -> Unit,
-    modifier: Modifier = Modifier.Companion,
-    onLongClick: (() -> Unit)? = null,
-    badge: @Composable () -> Unit = {},
-    shape: CardShape = CardDefaults.shape(),
-    colors: CardColors = CardDefaults.compactCardColors(),
-    scale: CardScale = CardDefaults.scale(),
-    border: CardBorder = CardDefaults.border(),
-    glow: CardGlow = CardDefaults.glow(),
-    scrimBrush: Brush = CardDefaults.ScrimBrush,
-    interactionSource: MutableInteractionSource? = null,
-) {
-    Card(
-        onClick = onClick,
-        onLongClick = onLongClick,
-        modifier = modifier,
-        interactionSource = interactionSource,
-        shape = shape,
-        colors = colors,
-        scale = scale,
-        border = border,
-        glow = glow,
-    ) {
-        Box(contentAlignment = Alignment.BottomStart) {
-            Box(
-                modifier =
-                    Modifier.drawWithCache {
-                        onDrawWithContent {
-                            drawContent()
-                            drawRect(brush = scrimBrush)
-                        }
-                    },
-                contentAlignment = Alignment.Center,
-                content = image,
-            )
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp),
-            ) {
-                Column(
-                    Modifier.weight(1f, true),
-                ) {
-                    ProvideTextStyle(
-                        MaterialTheme.typography.titleMedium,
-                        content = title,
-                    )
-                }
-                badge()
-            }
-        }
-    }
 }

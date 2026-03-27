@@ -87,4 +87,24 @@ fun VideoDescriptionLive(
             color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
         )
     }
+
+    Spacer(modifier = Modifier.height(24.dp))
+
+    video.room.talks.current?.let {
+        Text(
+            stringResource(R.string.schedule_current),
+            style = MaterialTheme.typography.bodyMedium,
+            color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
+        )
+        TalkCard(it)
+    }
+
+    video.room.talks.next?.let {
+        Text(
+            stringResource(R.string.schedule_next),
+            style = MaterialTheme.typography.bodyMedium,
+            color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
+        )
+        TalkCard(it)
+    }
 }

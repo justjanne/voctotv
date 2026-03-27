@@ -38,4 +38,8 @@
 
   <string name="search_results_placeholder">Enter a search term to start searching.</string>
   <string name="search_results_notfound">No results found for "%1$s"</string>
+
+  <string name="schedule_break">Break</string>
+  <string name="schedule_current">Now playing:</string>
+  <string name="schedule_next">Next up:</string>
 </resources>
