@@ -35,12 +35,12 @@ fun VideoDescriptionVod(video: VideoModel.Vod) {
         video.lecture.title,
         style =
             MaterialTheme.typography.titleLarge.copy(
-                lineBreak = LineBreak.Companion.Heading,
+                lineBreak = LineBreak.Heading,
             ),
     )
 
     if (!video.lecture.subtitle.isNullOrBlank()) {
-        Spacer(modifier = Modifier.Companion.height(4.dp))
+        Spacer(modifier = Modifier.height(4.dp))
         Text(
             video.lecture.subtitle ?: "",
             style = MaterialTheme.typography.bodyMedium,
@@ -48,16 +48,16 @@ fun VideoDescriptionVod(video: VideoModel.Vod) {
         )
     }
 
-    Spacer(modifier = Modifier.Companion.height(16.dp))
+    Spacer(modifier = Modifier.height(16.dp))
 
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier.Companion.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
     ) {
-        Column(horizontalAlignment = Alignment.Companion.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                String.format(Locale.Companion.current.platformLocale, "%,d", video.lecture.viewCount),
-                fontWeight = FontWeight.Companion.SemiBold,
+                String.format(Locale.current.platformLocale, "%,d", video.lecture.viewCount),
+                fontWeight = FontWeight.SemiBold,
                 fontSize = 16.sp,
             )
             Text(
@@ -66,7 +66,7 @@ fun VideoDescriptionVod(video: VideoModel.Vod) {
                 color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
             )
         }
-        Column(horizontalAlignment = Alignment.Companion.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 DateUtils.formatDateTime(
                     LocalContext.current,
@@ -75,7 +75,7 @@ fun VideoDescriptionVod(video: VideoModel.Vod) {
                             DateUtils.FORMAT_NO_YEAR or
                             DateUtils.FORMAT_ABBREV_MONTH,
                 ),
-                fontWeight = FontWeight.Companion.SemiBold,
+                fontWeight = FontWeight.SemiBold,
                 fontSize = 16.sp,
             )
             Text(
@@ -87,7 +87,7 @@ fun VideoDescriptionVod(video: VideoModel.Vod) {
     }
 
     if (video.lecture.persons.fastAny { it.isNotBlank() }) {
-        Spacer(modifier = Modifier.Companion.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             video.lecture.persons.fastJoinToString(" · "),
@@ -96,7 +96,7 @@ fun VideoDescriptionVod(video: VideoModel.Vod) {
     }
 
     if (!video.lecture.description.isNullOrBlank()) {
-        Spacer(modifier = Modifier.Companion.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             video.lecture.description ?: "",
@@ -105,11 +105,11 @@ fun VideoDescriptionVod(video: VideoModel.Vod) {
         )
     }
 
-    Spacer(Modifier.Companion.height(16.dp))
+    Spacer(Modifier.height(16.dp))
 
     FlowRow(
-        horizontalArrangement = Arrangement.spacedBy(8.dp, alignment = Alignment.Companion.Start),
-        verticalArrangement = Arrangement.spacedBy(8.dp, alignment = Alignment.Companion.Top),
+        horizontalArrangement = Arrangement.spacedBy(8.dp, alignment = Alignment.Start),
+        verticalArrangement = Arrangement.spacedBy(8.dp, alignment = Alignment.Top),
     ) {
         for (tag in video.lecture.tags) {
             TagChip { Text(tag) }

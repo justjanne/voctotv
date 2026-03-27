@@ -19,12 +19,14 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
+import de.justjanne.voctotv.common.viewmodel.LiveConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerLiveViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerVodViewModel
 import de.justjanne.voctotv.common.viewmodel.SearchViewModel
 import de.justjanne.voctotv.mobile.Routes
 import de.justjanne.voctotv.mobile.route.conference.ConferenceRoute
 import de.justjanne.voctotv.mobile.route.home.HomeRoute
+import de.justjanne.voctotv.mobile.route.liveconference.LiveConferenceRoute
 import de.justjanne.voctotv.mobile.route.player.PlayerRoute
 import de.justjanne.voctotv.mobile.route.search.SearchRoute
 
@@ -64,6 +66,13 @@ fun AppRouter(startRoute: NavKey? = null) {
                             factory.create(key.id)
                         }
                     ConferenceRoute(viewModel, navigate, back)
+                }
+                entry<Routes.LiveConference> { key ->
+                    val viewModel =
+                        hiltViewModel<LiveConferenceViewModel, LiveConferenceViewModel.Factory> { factory ->
+                            factory.create(key.id)
+                        }
+                    LiveConferenceRoute(viewModel, navigate, back)
                 }
                 entry<Routes.Search> {
                     val viewModel = hiltViewModel<SearchViewModel>()

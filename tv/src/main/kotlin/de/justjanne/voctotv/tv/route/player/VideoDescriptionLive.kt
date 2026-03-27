@@ -19,12 +19,12 @@ fun VideoDescriptionLive(video: VideoModel.Live) {
         video.room.display,
         style =
             MaterialTheme.typography.titleLarge.copy(
-                lineBreak = LineBreak.Companion.Heading,
+                lineBreak = LineBreak.Heading,
             ),
     )
 
     if (video.conference.conference.isNotBlank()) {
-        Spacer(modifier = Modifier.Companion.height(4.dp))
+        Spacer(modifier = Modifier.height(4.dp))
         Text(
             video.conference.conference,
             style = MaterialTheme.typography.bodyMedium,
@@ -32,13 +32,13 @@ fun VideoDescriptionLive(video: VideoModel.Live) {
         )
     }
 
-    Spacer(modifier = Modifier.Companion.height(16.dp))
+    Spacer(modifier = Modifier.height(16.dp))
 
     if (video.conference.description.isNotBlank()) {
-        Spacer(modifier = Modifier.Companion.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            video.conference.description ?: "",
+            video.conference.description,
             style = MaterialTheme.typography.bodyMedium,
             color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
         )

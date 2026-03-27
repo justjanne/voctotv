@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -266,6 +267,7 @@ fun PlayerOverlay(
                                     contentDescription = null,
                                     tint = Color.Red,
                                 )
+                                Spacer(Modifier.width(8.dp))
                                 Text(
                                     text = "LIVE",
                                     style =

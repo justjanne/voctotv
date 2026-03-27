@@ -20,7 +20,7 @@ object Routes {
     ) : NavKey
 
     @Serializable
-    data class Lecture(
+    data class LiveConference(
         val id: String,
     ) : NavKey
 

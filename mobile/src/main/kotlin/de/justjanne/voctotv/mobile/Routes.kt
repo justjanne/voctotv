@@ -20,6 +20,11 @@ object Routes {
     ) : NavKey
 
     @Serializable
+    data class LiveConference(
+        val id: String,
+    ) : NavKey
+
+    @Serializable
     data object Search : NavKey
 
     @Serializable

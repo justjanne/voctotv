@@ -15,6 +15,13 @@ class VoctowebLiveService @Inject constructor(
         null
     }
 
+    suspend fun getConference(id: String): LiveConferenceModel? = try {
+        api.streaming.streams().find { it.slug == id }
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
+
     suspend fun listRooms(): List<VideoModel.Live>? = try {
         api.streaming.streams()
             .flatMap { conference ->

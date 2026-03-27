@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -53,8 +52,7 @@ fun HomeRoute(
     val conferences by viewModel.conferences.collectAsState()
     val recent by viewModel.recentResult.collectAsState()
     val popular by viewModel.popularResult.collectAsState()
-    val featuredLectures by viewModel.featuredLectures.collectAsState()
-    val live = viewModel.live.collectAsState().value
+    val featuredItems by viewModel.featuredItems.collectAsState()
 
     val focusRequester = remember { FocusRequester() }
 
@@ -84,14 +82,10 @@ fun HomeRoute(
             }
         }
 
-        if (featuredLectures.isNotEmpty()) {
+        if (featuredItems.isNotEmpty()) {
             item("featured") {
-                FeaturedCarousel(featuredLectures, navigate, Modifier.focusRequester(focusRequester))
+                FeaturedCarousel(featuredItems, navigate, Modifier.focusRequester(focusRequester))
             }
-        }
-
-        items(live, { it.first.slug }) { item ->
-            LiveRow(item.first.conference, item.second, navigate)
         }
 
         if (recent.isNotEmpty()) {

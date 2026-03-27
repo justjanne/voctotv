@@ -5,7 +5,7 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-package de.justjanne.voctotv.mobile.route.home
+package de.justjanne.voctotv.mobile.route.liveconference
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,11 +27,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.voctoweb.model.VideoModel
+import de.justjanne.voctotv.voctoweb.model.LiveRoomModel
 
 @Composable
 fun LiveRoomItem(
-    item: VideoModel.Live,
+    item: LiveRoomModel,
     onClick: () -> Unit = {},
 ) {
     Row(
@@ -53,7 +52,7 @@ fun LiveRoomItem(
                     .background(MaterialTheme.colorScheme.onSurface),
         ) {
             AsyncImage(
-                model = item.room.poster,
+                model = item.poster,
                 contentDescription = null,
                 modifier =
                     Modifier
@@ -63,18 +62,9 @@ fun LiveRoomItem(
         }
         Column(Modifier.align(Alignment.CenterVertically), verticalArrangement = Arrangement.Center) {
             Text(
-                text = item.room.display,
+                text = item.display,
                 style = MaterialTheme.typography.titleMedium,
                 maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-                text = item.conference.conference,
-                style =
-                    MaterialTheme.typography.bodyMedium.copy(
-                        color = LocalContentColor.current.copy(alpha = 0.6f),
-                    ),
-                maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
         }

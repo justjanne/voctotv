@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import de.justjanne.voctotv.mobile.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.mobile.ui.theme.textShadow
@@ -37,6 +38,7 @@ fun VideoTitleLayout(
                     shadow = MaterialTheme.colorScheme.textShadow,
                 ),
             maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
         )
         Text(
             text = title,
@@ -45,7 +47,8 @@ fun VideoTitleLayout(
                     color = MaterialTheme.colorScheme.onSurface,
                     shadow = MaterialTheme.colorScheme.textShadow,
                 ),
-            maxLines = 2,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }

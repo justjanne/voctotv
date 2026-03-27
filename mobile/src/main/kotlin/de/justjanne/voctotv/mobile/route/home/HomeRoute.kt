@@ -35,19 +35,15 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.fastJoinToString
 import androidx.navigation3.runtime.NavKey
-import coil3.compose.rememberAsyncImagePainter
 import de.justjanne.voctotv.common.viewmodel.ConferenceKind
+import de.justjanne.voctotv.common.viewmodel.FeaturedItem
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
 import de.justjanne.voctotv.common.viewmodel.kind
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
-import de.justjanne.voctotv.mobile.ui.WatchNowButton
 import de.justjanne.voctotv.mobile.ui.carousel.HeroCarousel
-import de.justjanne.voctotv.mobile.ui.carousel.HeroCarouselContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,8 +53,7 @@ fun HomeRoute(
 ) {
     val currentFilter = viewModel.currentFilter.collectAsState().value
     val filteredItems = viewModel.filteredItems.collectAsState().value
-    val featuredLectures = viewModel.featuredLectures.collectAsState().value
-    val rooms = viewModel.rooms.collectAsState().value
+    val featuredItems = viewModel.featuredItems.collectAsState().value
 
     Scaffold(
         topBar = {
@@ -99,44 +94,15 @@ fun HomeRoute(
             contentPadding = horizontalPadding,
             modifier = Modifier.fillMaxSize().padding(verticalPadding),
         ) {
-            if (featuredLectures.isNotEmpty()) {
+            if (featuredItems.isNotEmpty()) {
                 item("featured") {
-                    HeroCarousel(count = featuredLectures.size) { index ->
-                        val lecture = featuredLectures[index]
-                        val painter = rememberAsyncImagePainter(lecture.posterUrl)
-
-                        HeroCarouselContent(
-                            background = painter,
-                            title = {
-                                Text(
-                                    lecture.title,
-                                    overflow = TextOverflow.Ellipsis,
-                                    maxLines = 2,
-                                )
-                            },
-                            description = {
-                                Text(
-                                    lecture.persons.fastJoinToString(" · "),
-                                    maxLines = 1,
-                                )
-                            },
-                            action = {
-                                WatchNowButton(onClick = {
-                                    navigate(Routes.PlayerVod(lecture.guid))
-                                })
-                            },
-                        )
+                    HeroCarousel(count = featuredItems.size) { index ->
+                        when (val item = featuredItems[index]) {
+                            is FeaturedItem.Lecture -> HeroCarouselLecture(item, navigate)
+                            is FeaturedItem.Stream -> HeroCarouselStream(item, navigate)
+                        }
                     }
                 }
-            }
-
-            items(rooms, { it.room.guid }) { item ->
-                LiveRoomItem(
-                    item = item,
-                    onClick = {
-                        navigate(Routes.PlayerLive(item.room.guid))
-                    },
-                )
             }
 
             stickyHeader("filter") {

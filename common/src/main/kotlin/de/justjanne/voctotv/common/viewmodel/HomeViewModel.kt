@@ -50,10 +50,6 @@ constructor(
     val rooms = flow { emit(liveService.listRooms().orEmpty()) }
         .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val live = rooms.map {
-        it.groupBy { it.conference }.toList().sortedBy { it.first.slug }
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
-
     val allConferences =
         conferenceResult
             .map {
@@ -71,10 +67,20 @@ constructor(
                     .mapValues { it.value.sortedByDescending { it.eventLastReleasedAt?.toEpochSecond() ?: 0 } }
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyMap())
 
-    val featuredLectures =
-        promotedResult
-            .map { it.sortedByDescending { it.releaseDate } }
-            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+    private val featuredStreams = rooms.map {
+        it.groupBy { it.conference }
+            .map { (conference, rooms) -> FeaturedItem.Stream(conference, rooms.map { it.room }) }
+            .sortedBy { it.conference.slug }
+    }
+
+    private val featuredLectures =
+        promotedResult.map {
+            it.map { FeaturedItem.Lecture(it) }
+                .sortedByDescending { it.lecture.releaseDate }
+        }
+
+    val featuredItems = combine(featuredStreams, featuredLectures) { live, lectures -> live + lectures }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val currentFilter = MutableStateFlow<ConferenceKind?>(null)
 

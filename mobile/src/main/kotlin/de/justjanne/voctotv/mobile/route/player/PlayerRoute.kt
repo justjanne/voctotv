@@ -42,11 +42,20 @@ fun PlayerRoute(
             video = video,
             back = back,
         ) {
-            ContentFrame(
-                player = viewModel.mediaSession.player,
-                modifier = Modifier.fillMaxSize(),
-                surfaceType = SURFACE_TYPE_SURFACE_VIEW,
-            )
+            // Workaround to reset surface after cast switch
+            if (viewModel.playerState.casting) {
+                ContentFrame(
+                    player = viewModel.mediaSession.player,
+                    modifier = Modifier.fillMaxSize(),
+                    surfaceType = SURFACE_TYPE_SURFACE_VIEW,
+                )
+            } else {
+                ContentFrame(
+                    player = viewModel.mediaSession.player,
+                    modifier = Modifier.fillMaxSize(),
+                    surfaceType = SURFACE_TYPE_SURFACE_VIEW,
+                )
+            }
 
             SubtitleDisplay(viewModel.mediaSession.player, viewModel.playerState)
         }
