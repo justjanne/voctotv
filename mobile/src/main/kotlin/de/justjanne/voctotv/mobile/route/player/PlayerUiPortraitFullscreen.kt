@@ -42,11 +42,10 @@ fun PlayerUiPortraitFullscreen(
             modifier =
                 Modifier
                     .windowInsetsPadding(WindowInsets.safeDrawing)
-                    .fillMaxHeight()
                     .aspectRatio(
                         if (viewModel.playerState.aspectRatio > 0f) viewModel.playerState.aspectRatio else 16 / 9f,
                         matchHeightConstraintsFirst = true,
-                    ),
+                    ).fillMaxSize(),
         ) {
             content()
             PreviewOverlay(viewModel)

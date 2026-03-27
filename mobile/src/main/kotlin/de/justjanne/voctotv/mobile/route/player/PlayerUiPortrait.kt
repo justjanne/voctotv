@@ -34,10 +34,10 @@ fun PlayerUiPortrait(
     val onFullscreen: () -> Unit =
         remember(uiState, context) {
             {
-                if (uiState.isLandscapeVideo.value) {
-                    context?.switchScreenOrientation(Configuration.ORIENTATION_LANDSCAPE)
-                } else {
+                if (uiState.isPortraitVideo.value) {
                     uiState.toggleDescription(false)
+                } else {
+                    context?.switchScreenOrientation(Configuration.ORIENTATION_LANDSCAPE)
                 }
             }
         }

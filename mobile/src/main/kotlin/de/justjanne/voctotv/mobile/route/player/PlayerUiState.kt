@@ -14,7 +14,7 @@ class PlayerUiState(
     configuration: Configuration,
 ) {
     val isLandscapeUI = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-    val isLandscapeVideo = derivedStateOf { playerState.aspectRatio > 1f }
+    val isPortraitVideo = derivedStateOf { playerState.aspectRatio > 0 && playerState.aspectRatio < 1f }
 
     val descriptionVisible = mutableStateOf(!isLandscapeUI)
 
