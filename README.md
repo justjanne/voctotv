@@ -30,7 +30,7 @@ A stylish new AndroidTV client for media.ccc.de.
 ### Smartphone
 
 <a href="metadata/screenshots/phone/seeking.png"><img src="metadata/screenshots/phone/seeking.png" width="640"></a>
-<a href="metadata/screenshots/phone/info.png"><img src="metadata/screenshots/phone/info.png" width="640"></a>
+<a href="metadata/screenshots/phone/info1.png"><img src="metadata/screenshots/phone/info1.png" width="640"></a>
 
 <a href="metadata/screenshots/phone/home.png"><img src="metadata/screenshots/phone/home.png" width="320"></a>
 <a href="metadata/screenshots/phone/conference.png"><img src="metadata/screenshots/phone/conference.png" width="320"></a>
