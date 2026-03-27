@@ -33,7 +33,6 @@ import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.tv.ui.theme.GridGutter
 import de.justjanne.voctotv.tv.ui.theme.GridPadding
 import de.justjanne.voctotv.tv.ui.theme.VoctoTvTheme
-import de.justjanne.voctotv.voctoweb.model.ConferenceModel
 import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @Composable

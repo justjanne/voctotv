@@ -16,11 +16,10 @@ import de.justjanne.voctotv.mobile.Routes
 import de.justjanne.voctotv.mobile.ui.WatchNowButton
 import de.justjanne.voctotv.mobile.ui.carousel.HeroCarouselContent
 
-
 @Composable
 fun HeroCarouselStream(
     item: FeaturedItem.Stream,
-    navigate: (NavKey) -> Unit
+    navigate: (NavKey) -> Unit,
 ) {
     val painter = rememberAsyncImagePainter(item.rooms.first().poster)
 

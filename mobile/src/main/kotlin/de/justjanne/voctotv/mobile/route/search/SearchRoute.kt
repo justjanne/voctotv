@@ -50,7 +50,7 @@ fun SearchRoute(
                 onBack = back,
                 modifier = Modifier.focusRequester(focusRequester),
             )
-        }
+        },
     ) { contentPadding ->
         if (results.itemCount == 0) {
             EmptyState(

@@ -67,14 +67,14 @@ fun HomeRoute(
                 },
                 actions = {
                     IconButton(
-                        onClick = { navigate(Routes.Search) }
+                        onClick = { navigate(Routes.Search) },
                     ) {
                         Icon(
                             painterResource(R.drawable.ic_search),
                             contentDescription = stringResource(R.string.action_search),
                         )
                     }
-                }
+                },
             )
         },
     ) { contentPadding ->

@@ -34,68 +34,70 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnsafeOptInUsageError")
 @HiltViewModel(assistedFactory = PlayerVodViewModel.Factory::class)
 class PlayerVodViewModel
-@AssistedInject
-constructor(
-    @Assisted lectureId: String,
-    lectureService: VoctowebLectureService,
-    previewLoader: PreviewLoader,
-    private val previewPreloader: PreviewPreloader,
-    override val mediaSession: MediaSession,
-) : ViewModel(), PlayerViewModel {
-    override val video: StateFlow<VideoModel.Vod?> = flow { emit(lectureService.getLecture(lectureId)) }
-        .map { it?.let { VideoModel.Vod(it) } }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+    @AssistedInject
+    constructor(
+        @Assisted lectureId: String,
+        lectureService: VoctowebLectureService,
+        previewLoader: PreviewLoader,
+        private val previewPreloader: PreviewPreloader,
+        override val mediaSession: MediaSession,
+    ) : ViewModel(),
+        PlayerViewModel {
+        override val video: StateFlow<VideoModel.Vod?> =
+            flow { emit(lectureService.getLecture(lectureId)) }
+                .map { it?.let { VideoModel.Vod(it) } }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    override val previews: StateFlow<List<TimedCue>> =
-        video
-            .map { it?.lecture?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+        override val previews: StateFlow<List<TimedCue>> =
+            video
+                .map { it?.lecture?.let { previewLoader.load(it.thumbnailsUrl) }.orEmpty() }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    override val playerState = PlayerState(mediaSession.player)
+        override val playerState = PlayerState(mediaSession.player)
 
-    init {
-        viewModelScope.launch {
-            previews.collectLatest {
-                previewPreloader.preload(it)
+        init {
+            viewModelScope.launch {
+                previews.collectLatest {
+                    previewPreloader.preload(it)
+                }
             }
-        }
-        viewModelScope.launch {
-            playerState.observe()
-        }
-        viewModelScope.launch {
-            video.collectLatest { video ->
-                mediaSession.player.clearMediaItems()
+            viewModelScope.launch {
+                playerState.observe()
+            }
+            viewModelScope.launch {
+                video.collectLatest { video ->
+                    mediaSession.player.clearMediaItems()
 
-                if (video != null) {
-                    val track =
-                        video.lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
-                            ?: video.lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
-                    if (track != null) {
-                        mediaSession.player.apply {
-                            trackSelectionParameters =
-                                trackSelectionParameters
-                                    .buildUpon()
-                                    .setPreferredAudioLanguages(video.lecture.originalLanguage ?: "")
-                                    .setPreferredTextLanguages()
-                                    .build()
-                            setMediaItem(buildMediaItem(video.lecture, track))
-                            prepare()
-                            playWhenReady = true
-                            play()
+                    if (video != null) {
+                        val track =
+                            video.lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 && it.highQuality }
+                                ?: video.lecture.resources?.firstOrNull { it.mimeType == MimeTypes.VIDEO_MP4 }
+                        if (track != null) {
+                            mediaSession.player.apply {
+                                trackSelectionParameters =
+                                    trackSelectionParameters
+                                        .buildUpon()
+                                        .setPreferredAudioLanguages(video.lecture.originalLanguage ?: "")
+                                        .setPreferredTextLanguages()
+                                        .build()
+                                setMediaItem(buildMediaItem(video.lecture, track))
+                                prepare()
+                                playWhenReady = true
+                                play()
+                            }
                         }
                     }
                 }
             }
         }
-    }
 
-    override fun onCleared() {
-        mediaSession.player.release()
-        mediaSession.release()
-    }
+        override fun onCleared() {
+            mediaSession.player.release()
+            mediaSession.release()
+        }
 
-    @AssistedFactory
-    interface Factory {
-        fun create(lectureId: String): PlayerVodViewModel
+        @AssistedFactory
+        interface Factory {
+            fun create(lectureId: String): PlayerVodViewModel
+        }
     }
-}

@@ -16,12 +16,10 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
 import de.justjanne.voctotv.common.viewmodel.LiveConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerLiveViewModel
-import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerVodViewModel
 import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.tv.route.conference.ConferenceRoute

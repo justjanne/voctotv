@@ -26,10 +26,11 @@ fun EmptyState(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = modifier
-            .imePadding()
-            .fillMaxSize()
-            .padding(32.dp),
+        modifier =
+            modifier
+                .imePadding()
+                .fillMaxSize()
+                .padding(32.dp),
     ) {
         Icon(
             painterResource(R.drawable.ic_search),
@@ -38,11 +39,12 @@ fun EmptyState(
             contentDescription = null,
         )
         Text(
-            text = if (query.isEmpty()) {
-                stringResource(R.string.search_results_placeholder)
-            } else {
-                stringResource(R.string.search_results_notfound, query)
-            },
+            text =
+                if (query.isEmpty()) {
+                    stringResource(R.string.search_results_placeholder)
+                } else {
+                    stringResource(R.string.search_results_notfound, query)
+                },
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(top = 16.dp),

@@ -11,11 +11,10 @@ import de.justjanne.voctotv.mobile.Routes
 import de.justjanne.voctotv.mobile.ui.WatchNowButton
 import de.justjanne.voctotv.mobile.ui.carousel.HeroCarouselContent
 
-
 @Composable
 fun HeroCarouselLecture(
     item: FeaturedItem.Lecture,
-    navigate: (NavKey) -> Unit
+    navigate: (NavKey) -> Unit,
 ) {
     val painter = rememberAsyncImagePainter(item.lecture.posterUrl)
 

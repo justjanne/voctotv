@@ -8,42 +8,22 @@
 package de.justjanne.voctotv.tv.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithCache
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastJoinToString
 import androidx.navigation3.runtime.NavKey
-import androidx.tv.material3.Card
-import androidx.tv.material3.CardBorder
-import androidx.tv.material3.CardColors
-import androidx.tv.material3.CardDefaults
-import androidx.tv.material3.CardGlow
-import androidx.tv.material3.CardScale
-import androidx.tv.material3.CardShape
-import androidx.tv.material3.LocalContentColor
-import androidx.tv.material3.ProvideTextStyle
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.tv.Routes
-import de.justjanne.voctotv.tv.ui.theme.DescriptionAlpha
-import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @Composable

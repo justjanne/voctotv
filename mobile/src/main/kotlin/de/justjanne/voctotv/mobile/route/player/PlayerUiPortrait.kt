@@ -31,15 +31,16 @@ fun PlayerUiPortrait(
     content: @Composable BoxScope.() -> Unit,
 ) {
     val context = LocalActivity.current
-    val onFullscreen: () -> Unit = remember(uiState, context) {
-        {
-            if (uiState.isLandscapeVideo.value) {
-                context?.switchScreenOrientation(Configuration.ORIENTATION_LANDSCAPE)
-            } else {
-                uiState.toggleDescription(false)
+    val onFullscreen: () -> Unit =
+        remember(uiState, context) {
+            {
+                if (uiState.isLandscapeVideo.value) {
+                    context?.switchScreenOrientation(Configuration.ORIENTATION_LANDSCAPE)
+                } else {
+                    uiState.toggleDescription(false)
+                }
             }
         }
-    }
 
     BackHandler(onBack = back)
 
@@ -55,19 +56,20 @@ fun PlayerUiPortrait(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .aspectRatio(aspectRatio)
+                    .aspectRatio(aspectRatio),
         ) {
             Box(
                 modifier = Modifier.clipToBounds(),
                 contentAlignment = Alignment.Center,
             ) {
                 Box(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .aspectRatio(
-                            if (viewModel.playerState.aspectRatio > 0f) viewModel.playerState.aspectRatio else 16 / 9f,
-                            matchHeightConstraintsFirst = true,
-                        ),
+                    modifier =
+                        Modifier
+                            .fillMaxHeight()
+                            .aspectRatio(
+                                if (viewModel.playerState.aspectRatio > 0f) viewModel.playerState.aspectRatio else 16 / 9f,
+                                matchHeightConstraintsFirst = true,
+                            ),
                 ) {
                     content()
                     PreviewOverlay(viewModel)

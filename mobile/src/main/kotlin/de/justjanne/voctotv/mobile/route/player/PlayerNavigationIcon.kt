@@ -8,9 +8,7 @@ import androidx.compose.ui.res.stringResource
 import de.justjanne.voctotv.mobile.R
 
 @Composable
-fun PlayerNavigationIcon(
-    back: () -> Unit,
-) {
+fun PlayerNavigationIcon(back: () -> Unit) {
     IconButton(
         onClick = { back() },
     ) {

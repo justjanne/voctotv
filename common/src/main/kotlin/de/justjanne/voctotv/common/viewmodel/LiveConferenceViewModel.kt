@@ -19,16 +19,18 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel(assistedFactory = LiveConferenceViewModel.Factory::class)
-class LiveConferenceViewModel @AssistedInject constructor(
-    @Assisted val conferenceId: String,
-    conferenceService: VoctowebLiveService,
-) : ViewModel() {
-    val conference =
-        flow { emit(conferenceService.getConference(conferenceId)) }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+class LiveConferenceViewModel
+    @AssistedInject
+    constructor(
+        @Assisted val conferenceId: String,
+        conferenceService: VoctowebLiveService,
+    ) : ViewModel() {
+        val conference =
+            flow { emit(conferenceService.getConference(conferenceId)) }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    @AssistedFactory
-    interface Factory {
-        fun create(conferenceId: String): LiveConferenceViewModel
+        @AssistedFactory
+        interface Factory {
+            fun create(conferenceId: String): LiveConferenceViewModel
+        }
     }
-}

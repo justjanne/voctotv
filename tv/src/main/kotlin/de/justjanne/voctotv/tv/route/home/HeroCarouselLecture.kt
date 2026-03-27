@@ -19,7 +19,6 @@ fun HeroCarouselLecture(
     item: FeaturedItem.Lecture,
     navigate: (NavKey) -> Unit,
 ) {
-
     Card(
         onClick = { navigate(Routes.PlayerVod(item.lecture.guid)) },
         colors =

@@ -16,12 +16,11 @@ class SearchPagingSource(
     private val service: VoctowebSearchService,
     private val query: String,
 ) : PagingSource<Int, LectureModel>() {
-    override fun getRefreshKey(state: PagingState<Int, LectureModel>): Int? {
-        return state.anchorPosition?.let { anchorPosition ->
+    override fun getRefreshKey(state: PagingState<Int, LectureModel>): Int? =
+        state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
-    }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, LectureModel> {
         val page = params.key ?: 1

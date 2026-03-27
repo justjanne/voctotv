@@ -124,7 +124,7 @@ fun PlayerContainer(
                     end = endContentPadding,
                     top = topContentPadding,
                     bottom = bottomContentPadding,
-                )
+                ),
             )
         }
 

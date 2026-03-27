@@ -8,7 +8,6 @@
 package de.justjanne.voctotv.mobile.route.player
 
 import androidx.annotation.OptIn
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.animation.fadeIn
@@ -34,7 +33,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi

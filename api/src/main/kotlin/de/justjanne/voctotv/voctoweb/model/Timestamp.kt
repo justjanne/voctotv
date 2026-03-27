@@ -24,12 +24,19 @@ typealias Timestamp =
 object TimestampSerializer : KSerializer<OffsetDateTime> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
 
-    val formatter: DateTimeFormatter = DateTimeFormatterBuilder()
-        .append(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-        .optionalStart().appendOffset("+HH:MM", "+00:00").optionalEnd()
-        .optionalStart().appendOffset("+HHMM", "+0000").optionalEnd()
-        .optionalStart().appendOffset("+HH", "Z").optionalEnd()
-        .toFormatter();
+    val formatter: DateTimeFormatter =
+        DateTimeFormatterBuilder()
+            .append(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+            .optionalStart()
+            .appendOffset("+HH:MM", "+00:00")
+            .optionalEnd()
+            .optionalStart()
+            .appendOffset("+HHMM", "+0000")
+            .optionalEnd()
+            .optionalStart()
+            .appendOffset("+HH", "Z")
+            .optionalEnd()
+            .toFormatter()
 
     override fun serialize(
         encoder: Encoder,
@@ -38,6 +45,5 @@ object TimestampSerializer : KSerializer<OffsetDateTime> {
         encoder.encodeString(value.format(formatter))
     }
 
-    override fun deserialize(decoder: Decoder): OffsetDateTime =
-        OffsetDateTime.parse(decoder.decodeString(), formatter)
+    override fun deserialize(decoder: Decoder): OffsetDateTime = OffsetDateTime.parse(decoder.decodeString(), formatter)
 }

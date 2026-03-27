@@ -155,7 +155,7 @@ fun PlayerOverlay(
                 .clickable(
                     mainInteractionSource,
                     indication = null,
-                    enabled = !uiVisible.value && !sidebarVisible.value
+                    enabled = !uiVisible.value && !sidebarVisible.value,
                 ) {
                     uiVisible.value = true
                 }.onPreviewKeyEvent {

@@ -72,7 +72,7 @@ fun PlayerOverlay(
         },
         top = {
             PlayerNavigationIcon(
-                back = { back() }
+                back = { back() },
             )
             Row(Modifier.weight(1f)) {
                 if (showTitle) {
@@ -98,10 +98,14 @@ fun PlayerOverlay(
                                 .graphicsLayer { alpha = if (showPreview && viewModel.playerState.seeking) 0f else 1f },
                     ) {
                         Text(
-                            text = formatTime(
-                                if (!showPreview && viewModel.playerState.seeking) viewModel.playerState.seekingMs
-                                else viewModel.playerState.progressMs
-                            ),
+                            text =
+                                formatTime(
+                                    if (!showPreview && viewModel.playerState.seeking) {
+                                        viewModel.playerState.seekingMs
+                                    } else {
+                                        viewModel.playerState.progressMs
+                                    },
+                                ),
                             style =
                                 MaterialTheme.typography.labelLarge.copy(
                                     shadow = MaterialTheme.colorScheme.textShadow,
@@ -167,6 +171,6 @@ fun PlayerOverlay(
                     viewModel.mediaSession.player.play()
                 },
             )
-        }
+        },
     )
 }

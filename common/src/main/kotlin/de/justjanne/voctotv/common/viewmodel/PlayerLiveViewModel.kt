@@ -10,7 +10,6 @@ package de.justjanne.voctotv.common.viewmodel
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.media3.common.MediaItem
 import androidx.media3.session.MediaSession
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -26,61 +25,62 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnsafeOptInUsageError")
 @HiltViewModel(assistedFactory = PlayerLiveViewModel.Factory::class)
 class PlayerLiveViewModel
-@AssistedInject
-constructor(
-    @Assisted roomId: String,
-    liveService: VoctowebLiveService,
-    override val mediaSession: MediaSession,
-) : ViewModel(), PlayerViewModel {
-    override val video: StateFlow<VideoModel.Live?> = flow { emit(liveService.getRoom(roomId)) }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+    @AssistedInject
+    constructor(
+        @Assisted roomId: String,
+        liveService: VoctowebLiveService,
+        override val mediaSession: MediaSession,
+    ) : ViewModel(),
+        PlayerViewModel {
+        override val video: StateFlow<VideoModel.Live?> =
+            flow { emit(liveService.getRoom(roomId)) }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    override val previews: StateFlow<List<TimedCue>> = MutableStateFlow(emptyList())
+        override val previews: StateFlow<List<TimedCue>> = MutableStateFlow(emptyList())
 
-    override val playerState = PlayerState(mediaSession.player)
+        override val playerState = PlayerState(mediaSession.player)
 
-    init {
-        viewModelScope.launch {
-            playerState.observe()
-        }
-        viewModelScope.launch {
-            video.collectLatest { video ->
-                mediaSession.player.clearMediaItems()
+        init {
+            viewModelScope.launch {
+                playerState.observe()
+            }
+            viewModelScope.launch {
+                video.collectLatest { video ->
+                    mediaSession.player.clearMediaItems()
 
-                if (video != null) {
-                    val stream = video.room.streams.firstOrNull { it.videoSize != null }
-                    val track = stream?.urls["hls"]
-                    if (track != null) {
-                        mediaSession.player.apply {
-                            trackSelectionParameters =
-                                trackSelectionParameters.buildUpon().build()
-                            val mediaItem = buildMediaItem(video.conference, video.room, stream, track)
-                            setMediaItem(mediaItem)
-                            println("Setting media item: $track $mediaItem")
-                            prepare()
-                            playWhenReady = true
-                            play()
+                    if (video != null) {
+                        val stream = video.room.streams.firstOrNull { it.videoSize != null }
+                        val track = stream?.urls["hls"]
+                        if (track != null) {
+                            mediaSession.player.apply {
+                                trackSelectionParameters =
+                                    trackSelectionParameters.buildUpon().build()
+                                val mediaItem = buildMediaItem(video.conference, video.room, stream, track)
+                                setMediaItem(mediaItem)
+                                println("Setting media item: $track $mediaItem")
+                                prepare()
+                                playWhenReady = true
+                                play()
+                            }
                         }
                     }
                 }
             }
         }
-    }
 
-    override fun onCleared() {
-        mediaSession.player.release()
-        mediaSession.release()
-    }
+        override fun onCleared() {
+            mediaSession.player.release()
+            mediaSession.release()
+        }
 
-    @AssistedFactory
-    interface Factory {
-        fun create(roomId: String): PlayerLiveViewModel
+        @AssistedFactory
+        interface Factory {
+            fun create(roomId: String): PlayerLiveViewModel
+        }
     }
-}

@@ -25,67 +25,72 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel
-@Inject
-constructor(
-    lectureService: VoctowebLectureService,
-    conferenceService: VoctowebConferenceService,
-    liveService: VoctowebLiveService,
-) : ViewModel() {
-    val popularResult =
-        flow { emit(lectureService.listPopular()) }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+    @Inject
+    constructor(
+        lectureService: VoctowebLectureService,
+        conferenceService: VoctowebConferenceService,
+        liveService: VoctowebLiveService,
+    ) : ViewModel() {
+        val popularResult =
+            flow { emit(lectureService.listPopular()) }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val conferenceResult =
-        flow { emit(conferenceService.listConferences()) }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+        val conferenceResult =
+            flow { emit(conferenceService.listConferences()) }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val recentResult =
-        flow { emit(lectureService.listRecent()) }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+        val recentResult =
+            flow { emit(lectureService.listRecent()) }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val promotedResult =
-        flow { emit(lectureService.listPromoted()) }
-            .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+        val promotedResult =
+            flow { emit(lectureService.listPromoted()) }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val rooms = flow { emit(liveService.listRooms().orEmpty()) }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+        val rooms =
+            flow { emit(liveService.listRooms().orEmpty()) }
+                .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
-    val allConferences =
-        conferenceResult
-            .map {
+        val allConferences =
+            conferenceResult
+                .map {
+                    it
+                        .filter { it.eventLastReleasedAt != null }
+                        .sortedByDescending { it.eventLastReleasedAt?.toEpochSecond() ?: 0 }
+                }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+
+        val conferences: StateFlow<Map<ConferenceKind, List<ConferenceModel>>> =
+            conferenceResult
+                .map {
+                    it
+                        .filter { it.eventLastReleasedAt != null }
+                        .groupBy { it.kind() }
+                        .mapValues { it.value.sortedByDescending { it.eventLastReleasedAt?.toEpochSecond() ?: 0 } }
+                }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyMap())
+
+        private val featuredStreams =
+            rooms.map {
                 it
-                    .filter { it.eventLastReleasedAt != null }
-                    .sortedByDescending { it.eventLastReleasedAt?.toEpochSecond() ?: 0 }
+                    .groupBy { it.conference }
+                    .map { (conference, rooms) -> FeaturedItem.Stream(conference, rooms.map { it.room }) }
+                    .sortedBy { it.conference.slug }
+            }
+
+        private val featuredLectures =
+            promotedResult.map {
+                it
+                    .map { FeaturedItem.Lecture(it) }
+                    .sortedByDescending { it.lecture.releaseDate }
+            }
+
+        val featuredItems =
+            combine(featuredStreams, featuredLectures) { live, lectures -> live + lectures }
+                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+
+        val currentFilter = MutableStateFlow<ConferenceKind?>(null)
+
+        val filteredItems: StateFlow<List<ConferenceModel>> =
+            combine(currentFilter, allConferences, conferences) { filter, all, items ->
+                if (filter == null) all else items[filter].orEmpty()
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
-
-    val conferences: StateFlow<Map<ConferenceKind, List<ConferenceModel>>> =
-        conferenceResult
-            .map {
-                it
-                    .filter { it.eventLastReleasedAt != null }
-                    .groupBy { it.kind() }
-                    .mapValues { it.value.sortedByDescending { it.eventLastReleasedAt?.toEpochSecond() ?: 0 } }
-            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyMap())
-
-    private val featuredStreams = rooms.map {
-        it.groupBy { it.conference }
-            .map { (conference, rooms) -> FeaturedItem.Stream(conference, rooms.map { it.room }) }
-            .sortedBy { it.conference.slug }
     }
-
-    private val featuredLectures =
-        promotedResult.map {
-            it.map { FeaturedItem.Lecture(it) }
-                .sortedByDescending { it.lecture.releaseDate }
-        }
-
-    val featuredItems = combine(featuredStreams, featuredLectures) { live, lectures -> live + lectures }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
-
-    val currentFilter = MutableStateFlow<ConferenceKind?>(null)
-
-    val filteredItems: StateFlow<List<ConferenceModel>> =
-        combine(currentFilter, allConferences, conferences) { filter, all, items ->
-            if (filter == null) all else items[filter].orEmpty()
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
-}

@@ -18,9 +18,10 @@ class PlayerUiState(
 
     val descriptionVisible = mutableStateOf(!isLandscapeUI)
 
-    val isFullscreen: State<Boolean> = derivedStateOf {
-        isLandscapeUI || !descriptionVisible.value
-    }
+    val isFullscreen: State<Boolean> =
+        derivedStateOf {
+            isLandscapeUI || !descriptionVisible.value
+        }
 
     fun toggleDescription(visible: Boolean) {
         descriptionVisible.value = visible
@@ -28,9 +29,7 @@ class PlayerUiState(
 }
 
 @Composable
-fun rememberPlayerUiState(
-    playerState: PlayerState
-): PlayerUiState {
+fun rememberPlayerUiState(playerState: PlayerState): PlayerUiState {
     val configuration = LocalConfiguration.current
 
     return remember(playerState, configuration) {

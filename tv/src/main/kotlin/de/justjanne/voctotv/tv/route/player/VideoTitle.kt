@@ -4,9 +4,7 @@ import androidx.compose.runtime.Composable
 import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @Composable
-fun VideoTitle(
-    video: VideoModel?,
-) {
+fun VideoTitle(video: VideoModel?) {
     when (video) {
         is VideoModel.Live ->
             VideoTitleLayout(

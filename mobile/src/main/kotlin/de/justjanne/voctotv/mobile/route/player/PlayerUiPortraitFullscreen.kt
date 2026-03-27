@@ -25,11 +25,12 @@ fun PlayerUiPortraitFullscreen(
     video: VideoModel?,
     content: @Composable BoxScope.() -> Unit,
 ) {
-    val onFullscreen: () -> Unit = remember(uiState) {
-        {
-            uiState.toggleDescription(true)
+    val onFullscreen: () -> Unit =
+        remember(uiState) {
+            {
+                uiState.toggleDescription(true)
+            }
         }
-    }
 
     BackHandler(onBack = onFullscreen)
 
@@ -38,12 +39,14 @@ fun PlayerUiPortraitFullscreen(
         contentAlignment = Alignment.Center,
     ) {
         Box(
-            modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing)
-                .fillMaxHeight()
-                .aspectRatio(
-                    if (viewModel.playerState.aspectRatio > 0f) viewModel.playerState.aspectRatio else 16 / 9f,
-                    matchHeightConstraintsFirst = true,
-                ),
+            modifier =
+                Modifier
+                    .windowInsetsPadding(WindowInsets.safeDrawing)
+                    .fillMaxHeight()
+                    .aspectRatio(
+                        if (viewModel.playerState.aspectRatio > 0f) viewModel.playerState.aspectRatio else 16 / 9f,
+                        matchHeightConstraintsFirst = true,
+                    ),
         ) {
             content()
             PreviewOverlay(viewModel)

@@ -1,5 +1,6 @@
 package de.justjanne.voctotv.mobile.route.player
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
@@ -9,6 +10,7 @@ import androidx.media3.cast.MediaRouteButton
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.voctoweb.model.VideoModel
 
+@SuppressLint("UnsafeOptInUsageError")
 @Composable
 fun PlayerActions(
     viewModel: PlayerViewModel,

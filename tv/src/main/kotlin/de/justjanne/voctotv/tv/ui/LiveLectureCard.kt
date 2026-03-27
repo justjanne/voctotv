@@ -37,15 +37,12 @@ import androidx.tv.material3.CardDefaults
 import androidx.tv.material3.CardGlow
 import androidx.tv.material3.CardScale
 import androidx.tv.material3.CardShape
-import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.ProvideTextStyle
 import androidx.tv.material3.Text
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.Routes
-import de.justjanne.voctotv.tv.ui.theme.DescriptionAlpha
-import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
 import de.justjanne.voctotv.voctoweb.model.LiveRoomModel
 
 @Composable
@@ -80,10 +77,11 @@ fun LiveRoomCardCard(
         badge = {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .padding(end = 6.dp)
-                    .background(MaterialTheme.colorScheme.scrim, shape = MaterialTheme.shapes.extraSmall)
-                    .padding(horizontal = 6.dp, vertical = 2.dp),
+                modifier =
+                    Modifier
+                        .padding(end = 6.dp)
+                        .background(MaterialTheme.colorScheme.scrim, shape = MaterialTheme.shapes.extraSmall)
+                        .padding(horizontal = 6.dp, vertical = 2.dp),
             ) {
                 Icon(
                     painterResource(R.drawable.ic_live),
@@ -93,15 +91,15 @@ fun LiveRoomCardCard(
                 Spacer(Modifier.width(8.dp))
                 Text(
                     text = "LIVE",
-                    style = MaterialTheme.typography.labelLarge.copy(
-                        color = Color.White,
-                    ),
+                    style =
+                        MaterialTheme.typography.labelLarge.copy(
+                            color = Color.White,
+                        ),
                 )
             }
         },
     )
 }
-
 
 @Composable
 private fun CompactCard2(

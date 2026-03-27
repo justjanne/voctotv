@@ -48,7 +48,7 @@ fun VideoDescription(
                     when (it.key) {
                         Key.MediaFastForward, Key.MediaStepForward, Key.MediaSkipForward,
                         Key.MediaRewind, Key.MediaStepBackward, Key.MediaSkipBackward,
-                            -> {
+                        -> {
                             true
                         }
 

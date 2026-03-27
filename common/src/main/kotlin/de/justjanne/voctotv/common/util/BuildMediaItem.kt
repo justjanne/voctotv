@@ -5,7 +5,6 @@ import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.media3.common.MimeTypes
-import de.justjanne.voctotv.voctoweb.model.ConferenceModel
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 import de.justjanne.voctotv.voctoweb.model.LiveConferenceModel
 import de.justjanne.voctotv.voctoweb.model.LiveResourceModel

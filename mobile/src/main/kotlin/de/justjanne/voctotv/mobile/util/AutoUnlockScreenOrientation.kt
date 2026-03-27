@@ -20,19 +20,21 @@ private class AutoUnlockScreenOrientationListener(
     private var job: Job? = null
 
     override fun onScreenOrientationChanged(orientation: Int) {
-        val lockedOrientation = when (context.requestedOrientation) {
-            ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE -> Configuration.ORIENTATION_LANDSCAPE
-            ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT -> Configuration.ORIENTATION_PORTRAIT
-            else -> null
-        }
+        val lockedOrientation =
+            when (context.requestedOrientation) {
+                ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE -> Configuration.ORIENTATION_LANDSCAPE
+                ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT -> Configuration.ORIENTATION_PORTRAIT
+                else -> null
+            }
 
         job?.cancel()
-        job = scope.launch {
-            delay(500.milliseconds)
-            if (orientation != Configuration.ORIENTATION_UNDEFINED && orientation != lockedOrientation) {
-                context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        job =
+            scope.launch {
+                delay(500.milliseconds)
+                if (orientation != Configuration.ORIENTATION_UNDEFINED && orientation != lockedOrientation) {
+                    context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+                }
             }
-        }
     }
 
     override fun disable() {

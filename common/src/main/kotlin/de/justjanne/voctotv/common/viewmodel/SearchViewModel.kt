@@ -25,17 +25,19 @@ import kotlin.time.Duration.Companion.milliseconds
 
 @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
 @HiltViewModel
-class SearchViewModel @Inject constructor(
-    private val searchService: VoctowebSearchService,
-) : ViewModel() {
-    val query = MutableStateFlow("")
+class SearchViewModel
+    @Inject
+    constructor(
+        private val searchService: VoctowebSearchService,
+    ) : ViewModel() {
+        val query = MutableStateFlow("")
 
-    val results = query
-        .debounce(300.milliseconds)
-        .flatMapLatest { query ->
-            Pager(PagingConfig(pageSize = 20)) {
-                SearchPagingSource(searchService, query)
-            }.flow
-        }
-        .cachedIn(viewModelScope)
-}
+        val results =
+            query
+                .debounce(300.milliseconds)
+                .flatMapLatest { query ->
+                    Pager(PagingConfig(pageSize = 20)) {
+                        SearchPagingSource(searchService, query)
+                    }.flow
+                }.cachedIn(viewModelScope)
+    }

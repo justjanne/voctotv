@@ -27,8 +27,7 @@ fun VideoTitleLayout(
                 .clip(RoundedCornerShape(8.dp))
                 .clickable {
                     onClick()
-                }
-                .padding(horizontal = 6.dp),
+                }.padding(horizontal = 6.dp),
     ) {
         Text(
             text = subtitle ?: "",

@@ -108,7 +108,9 @@ fun VideoDescriptionVod(
             Text(
                 DateUtils.formatDateTime(
                     LocalContext.current,
-                    video.lecture.releaseDate.toInstant().toEpochMilli(),
+                    video.lecture.releaseDate
+                        .toInstant()
+                        .toEpochMilli(),
                     DateUtils.FORMAT_SHOW_DATE or
                         DateUtils.FORMAT_NO_YEAR or
                         DateUtils.FORMAT_ABBREV_MONTH,
@@ -117,7 +119,8 @@ fun VideoDescriptionVod(
                 fontSize = 16.sp,
             )
             Text(
-                video.lecture.releaseDate.year.toString(),
+                video.lecture.releaseDate.year
+                    .toString(),
                 fontSize = 12.sp,
                 color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
             )

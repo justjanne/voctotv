@@ -9,7 +9,6 @@ package de.justjanne.voctotv.mobile.route.player
 
 import androidx.annotation.OptIn
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -28,12 +27,10 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
 import coil3.compose.AsyncImage
-import de.justjanne.voctotv.common.player.PlayerState
 import de.justjanne.voctotv.common.previews.rememberPreviewThumbnail
 import de.justjanne.voctotv.common.util.formatTime
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel

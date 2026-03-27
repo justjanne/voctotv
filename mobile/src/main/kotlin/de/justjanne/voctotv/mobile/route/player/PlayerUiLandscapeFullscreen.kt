@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
-import de.justjanne.voctotv.voctoweb.model.VideoModel
 import de.justjanne.voctotv.mobile.util.switchScreenOrientation
+import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @Composable
 fun PlayerUiLandscapeFullscreen(
@@ -20,11 +20,12 @@ fun PlayerUiLandscapeFullscreen(
     content: @Composable BoxScope.() -> Unit,
 ) {
     val context = LocalActivity.current
-    val onFullscreen: () -> Unit = remember(context) {
-        {
-            context?.switchScreenOrientation(Configuration.ORIENTATION_PORTRAIT)
+    val onFullscreen: () -> Unit =
+        remember(context) {
+            {
+                context?.switchScreenOrientation(Configuration.ORIENTATION_PORTRAIT)
+            }
         }
-    }
 
     BackHandler(onBack = onFullscreen)
 

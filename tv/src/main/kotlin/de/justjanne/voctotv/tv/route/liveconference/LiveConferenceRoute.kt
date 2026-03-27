@@ -26,16 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.LiveConferenceViewModel
-import de.justjanne.voctotv.tv.R
-import de.justjanne.voctotv.tv.ui.LectureCard
 import de.justjanne.voctotv.tv.ui.LiveRoomCardCard
 import de.justjanne.voctotv.tv.ui.theme.GridGutter
 import de.justjanne.voctotv.tv.ui.theme.GridPadding

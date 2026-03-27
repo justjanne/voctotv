@@ -12,22 +12,10 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Text
-import de.justjanne.voctotv.tv.ui.theme.PlayerScrimTop
-import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
-import de.justjanne.voctotv.tv.ui.theme.textShadow
-import de.justjanne.voctotv.voctoweb.model.LectureModel
 import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @Composable
