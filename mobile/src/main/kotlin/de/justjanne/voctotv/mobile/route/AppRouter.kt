@@ -7,8 +7,10 @@
 
 package de.justjanne.voctotv.mobile.route
 
+import android.util.Log
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
@@ -45,7 +47,9 @@ fun AppRouter(startRoute: NavKey? = null) {
             { backStack.removeAt(backStack.lastIndex) }
         }
 
-    println(backStack.last())
+    LaunchedEffect(backStack.last()) {
+        Log.i("AppRouter", backStack.last().toString())
+    }
 
     NavDisplay(
         backStack = backStack,

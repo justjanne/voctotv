@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,12 +31,6 @@ fun ColumnScope.LineDisplay(
     containerColor: Color,
     contentColor: Color,
 ) {
-    LaunchedEffect(cue) {
-        println(
-            "Cue(text=${cue.text}, textAlignment=${cue.textAlignment}, multiRowAlignment=${cue.multiRowAlignment}, bitmap=${cue.bitmap == null}, line=${cue.line}, lineType=${cue.lineType}, lineAnchor=${cue.lineAnchor}, position=${cue.position}, positionAnchor=${cue.positionAnchor}, textSizeType=${cue.textSizeType}, textSize=${cue.textSize}, size=${cue.size}, bitmapHeight=${cue.bitmapHeight}, windowColorSet=${cue.windowColorSet}, windowColor=${cue.windowColor}, verticalType=${cue.verticalType}, shearDegrees=${cue.shearDegrees}, zIndex=${cue.zIndex})",
-        )
-    }
-
     cue.text?.let { text ->
         Surface(
             modifier =
