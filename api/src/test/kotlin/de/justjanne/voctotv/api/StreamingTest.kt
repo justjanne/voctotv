@@ -27,4 +27,10 @@ class StreamingTest {
         runTest {
             println(Json.decodeFromStream<List<LiveConferenceModel>>(TestUtil.load("streaming2.json")))
         }
+
+    @Test
+    fun parseConferences3() =
+        runTest {
+            println(Json.decodeFromStream<List<LiveConferenceModel>>(TestUtil.load("streaming3.json")))
+        }
 }

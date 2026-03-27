@@ -1,23 +1,16 @@
 package de.justjanne.voctotv.voctoweb.model
 
-import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.descriptors.serialDescriptor
 import kotlinx.serialization.json.JsonContentPolymorphicSerializer
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonIgnoreUnknownKeys
-import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 
 @Serializable(with = LiveTalkModel.Serializer::class)
 sealed interface LiveTalkModel {
-    @SerialName("gap")
-    @OptIn(ExperimentalSerializationApi::class)
     @Serializable
-    @JsonIgnoreUnknownKeys
-    data class Gap(
+    data class Break(
         @SerialName("fstart")
         val startTimestamp: Timestamp,
         @SerialName("fend")
@@ -34,29 +27,24 @@ sealed interface LiveTalkModel {
         val offset: Int,
         @SerialName("duration")
         val duration: Int,
-    ) : LiveTalkModel
-
-    @SerialName("daychange")
-    @OptIn(ExperimentalSerializationApi::class)
-    @Serializable
-    @JsonIgnoreUnknownKeys
-    data class DayChange(
-        @SerialName("fstart")
-        val startTimestamp: Timestamp,
-        @SerialName("fend")
-        val endTimestamp: Timestamp,
-        @SerialName("tstart")
-        val startText: String,
-        @SerialName("tend")
-        val endText: String,
-        @SerialName("start")
-        val startInstant: Int,
-        @SerialName("end")
-        val endInstant: Int,
-        @SerialName("offset")
-        val offset: Int,
-        @SerialName("duration")
-        val duration: Int,
+        @SerialName("special")
+        val kind: String,
+        @SerialName("guid")
+        val guid: String? = null,
+        @SerialName("code")
+        val code: String? = null,
+        @SerialName("track")
+        val track: String? = null,
+        @SerialName("title")
+        val title: String? = null,
+        @SerialName("speaker")
+        val speaker: String? = null,
+        @SerialName("room_known")
+        val roomKnown: Boolean? = null,
+        @SerialName("optout")
+        val optOut: Boolean? = null,
+        @SerialName("url")
+        val url: String? = null,
     ) : LiveTalkModel
 
     @Serializable
@@ -96,12 +84,12 @@ sealed interface LiveTalkModel {
     ) : LiveTalkModel
 
     object Serializer : JsonContentPolymorphicSerializer<LiveTalkModel>(LiveTalkModel::class) {
-        override fun selectDeserializer(element: JsonElement) =
-            when (val kind = element.jsonObject["special"]?.jsonPrimitive?.contentOrNull) {
-                null -> Talk.serializer()
-                serialDescriptor<Gap>().serialName -> Gap.serializer()
-                serialDescriptor<DayChange>().serialName -> DayChange.serializer()
-                else -> error("Unknown live talk model: $kind")
+        override fun selectDeserializer(element: JsonElement): KSerializer<out LiveTalkModel> {
+            return if ("special" in element.jsonObject) {
+                Break.serializer()
+            } else {
+                Talk.serializer()
             }
+        }
     }
 }
