@@ -27,7 +27,7 @@ data class LectureModel(
     @SerialName("promoted") val promoted: Boolean,
     @SerialName("date") val date: String?,
     @SerialName("release_date") val releaseDate: Timestamp,
-    @SerialName("updated_at") val updatedAt: Timestamp,
+    @SerialName("updated_at") val updatedAt: Timestamp?,
     @SerialName("length") val length: Long,
     @SerialName("duration") val duration: Long,
     @SerialName("thumb_url") val thumbUrl: String,
