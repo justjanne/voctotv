@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 data class ConferenceModel(
     @SerialName("acronym") val acronym: String,
     @SerialName("aspect_ratio") val aspectRatio: String,
-    @SerialName("updated_at") val updatedAt: Timestamp,
+    @SerialName("updated_at") val updatedAt: Timestamp?,
     @SerialName("title") val title: String,
     @SerialName("schedule_url") val scheduleUrl: String?,
     @SerialName("slug") val slug: String,

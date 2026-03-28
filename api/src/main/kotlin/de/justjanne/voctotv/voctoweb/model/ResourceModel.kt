@@ -22,7 +22,7 @@ data class ResourceModel(
     @SerialName("high_quality") val highQuality: Boolean,
     @SerialName("width") val width: Int?,
     @SerialName("height") val height: Int?,
-    @SerialName("updated_at") val updatedAt: Timestamp,
+    @SerialName("updated_at") val updatedAt: Timestamp?,
     @SerialName("recording_url") val recordingUrl: String,
     @SerialName("url") val url: String,
     @SerialName("event_url") val eventUrl: String,

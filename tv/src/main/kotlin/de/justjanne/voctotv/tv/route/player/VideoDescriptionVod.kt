@@ -66,26 +66,28 @@ fun VideoDescriptionVod(video: VideoModel.Vod) {
                 color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
             )
         }
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(
-                DateUtils.formatDateTime(
-                    LocalContext.current,
-                    video.lecture.releaseDate
-                        .toInstant()
-                        .toEpochMilli(),
-                    DateUtils.FORMAT_SHOW_DATE or
-                        DateUtils.FORMAT_NO_YEAR or
-                        DateUtils.FORMAT_ABBREV_MONTH,
-                ),
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 16.sp,
-            )
-            Text(
-                video.lecture.releaseDate.year
-                    .toString(),
-                fontSize = 12.sp,
-                color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
-            )
+        video.lecture.releaseDate?.let { releaseDate ->
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    DateUtils.formatDateTime(
+                        LocalContext.current,
+                        releaseDate
+                            .toInstant()
+                            .toEpochMilli(),
+                        DateUtils.FORMAT_SHOW_DATE or
+                            DateUtils.FORMAT_NO_YEAR or
+                            DateUtils.FORMAT_ABBREV_MONTH,
+                    ),
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 16.sp,
+                )
+                Text(
+                    releaseDate.year
+                        .toString(),
+                    fontSize = 12.sp,
+                    color = LocalContentColor.current.copy(alpha = DescriptionAlpha),
+                )
+            }
         }
     }
 

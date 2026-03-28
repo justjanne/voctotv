@@ -30,7 +30,7 @@ class VoctowebLectureService
 
                 current
                     .plus(previous)
-                    .filter { it.releaseDate.isAfter(cutoff) }
+                    .filter { it.releaseDate?.isAfter(cutoff) == true }
                     .sortedByDescending { it.viewCount }
             } catch (e: Exception) {
                 e.printStackTrace()
