@@ -34,7 +34,7 @@ fun PlayerUiPortrait(
     val onFullscreen: () -> Unit =
         remember(uiState, context) {
             {
-                if (uiState.isPortraitVideo.value) {
+                if (uiState.isPortraitVideo.value || context?.isInMultiWindowMode == true) {
                     uiState.toggleDescription(false)
                 } else {
                     context?.switchScreenOrientation(Configuration.ORIENTATION_LANDSCAPE)
@@ -79,6 +79,7 @@ fun PlayerUiPortrait(
                     video = video,
                     showTitle = false,
                     showPreview = false,
+                    showFullscreenButton = true,
                     isFullscreen = false,
                     onFullscreen = onFullscreen,
                     onDescription = uiState::toggleDescription,

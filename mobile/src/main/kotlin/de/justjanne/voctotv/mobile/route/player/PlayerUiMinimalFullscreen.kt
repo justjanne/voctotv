@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -18,11 +17,13 @@ import de.justjanne.voctotv.common.viewmodel.PlayerViewModel
 import de.justjanne.voctotv.voctoweb.model.VideoModel
 
 @Composable
-fun PlayerUiPortraitFullscreen(
+fun PlayerUiMinimalFullscreen(
     viewModel: PlayerViewModel,
     contentPadding: PaddingValues,
+    showFullscreenButton: Boolean,
     uiState: PlayerUiState,
     video: VideoModel?,
+    back: () -> Unit,
     content: @Composable BoxScope.() -> Unit,
 ) {
     val onFullscreen: () -> Unit =
@@ -32,7 +33,7 @@ fun PlayerUiPortraitFullscreen(
             }
         }
 
-    BackHandler(onBack = onFullscreen)
+    BackHandler(enabled = showFullscreenButton, onBack = onFullscreen)
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -56,10 +57,11 @@ fun PlayerUiPortraitFullscreen(
             video = video,
             showTitle = false,
             showPreview = false,
-            isFullscreen = true,
+            showFullscreenButton = showFullscreenButton,
+            isFullscreen = showFullscreenButton,
             onFullscreen = onFullscreen,
             onDescription = uiState::toggleDescription,
-            back = onFullscreen,
+            back = if (showFullscreenButton) onFullscreen else back,
         )
     }
 }

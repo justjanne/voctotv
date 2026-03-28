@@ -3,26 +3,27 @@ package de.justjanne.voctotv.mobile.util
 import android.content.Context
 import android.content.res.Configuration
 import android.view.OrientationEventListener
+import android.view.Surface
 
 abstract class ScreenOrientationListener(
     context: Context,
 ) : OrientationEventListener(context) {
-    private var previousValue = -1
+    var orientation = -1
 
     abstract fun onScreenOrientationChanged(orientation: Int)
 
     override fun onOrientationChanged(orientation: Int) {
         val proposedOrientation =
             when (orientation) {
-                !in 31..<330 -> Configuration.ORIENTATION_PORTRAIT
-                in 60..120 -> Configuration.ORIENTATION_LANDSCAPE
-                in 150..210 -> Configuration.ORIENTATION_PORTRAIT
-                in 240..300 -> Configuration.ORIENTATION_LANDSCAPE
-                else -> Configuration.ORIENTATION_UNDEFINED
+                !in 31..<330 -> Surface.ROTATION_0
+                in 60..120 -> Surface.ROTATION_90
+                in 150..210 -> Surface.ROTATION_180
+                in 240..300 -> Surface.ROTATION_270
+                else -> -1
             }
 
-        if (proposedOrientation != previousValue) {
-            previousValue = proposedOrientation
+        if (proposedOrientation != this.orientation) {
+            this.orientation = proposedOrientation
             onScreenOrientationChanged(proposedOrientation)
         }
     }

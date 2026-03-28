@@ -7,6 +7,7 @@
 
 package de.justjanne.voctotv.mobile.route.player
 
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -22,7 +23,17 @@ fun PlayerUi(
     back: () -> Unit,
     content: @Composable BoxScope.() -> Unit,
 ) {
-    if (uiState.isLandscapeUI) {
+    if (uiState.isLandscapeUI && LocalActivity.current?.isInMultiWindowMode == true) {
+        PlayerUiMinimalFullscreen(
+            viewModel = viewModel,
+            contentPadding = contentPadding,
+            showFullscreenButton = false,
+            uiState = uiState,
+            video = video,
+            content = content,
+            back = back,
+        )
+    } else if (uiState.isLandscapeUI) {
         PlayerUiLandscapeFullscreen(
             viewModel = viewModel,
             contentPadding = contentPadding,
@@ -40,12 +51,14 @@ fun PlayerUi(
             back = back,
         )
     } else {
-        PlayerUiPortraitFullscreen(
+        PlayerUiMinimalFullscreen(
             viewModel = viewModel,
             contentPadding = contentPadding,
+            showFullscreenButton = true,
             uiState = uiState,
             video = video,
             content = content,
+            back = back,
         )
     }
 }

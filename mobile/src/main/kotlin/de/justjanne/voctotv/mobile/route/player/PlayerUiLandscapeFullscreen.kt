@@ -48,6 +48,7 @@ fun PlayerUiLandscapeFullscreen(
                 video = video,
                 showPreview = true,
                 showTitle = !uiState.descriptionVisible.value,
+                showFullscreenButton = true,
                 isFullscreen = true,
                 onFullscreen = onFullscreen,
                 onDescription = uiState::toggleDescription,

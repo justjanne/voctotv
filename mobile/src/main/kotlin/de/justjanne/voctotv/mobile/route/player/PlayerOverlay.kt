@@ -44,6 +44,7 @@ fun PlayerOverlay(
     video: VideoModel?,
     showTitle: Boolean,
     showPreview: Boolean,
+    showFullscreenButton: Boolean,
     isFullscreen: Boolean,
     onFullscreen: () -> Unit,
     onDescription: (Boolean) -> Unit,
@@ -146,16 +147,18 @@ fun PlayerOverlay(
                         Seekbar(viewModel.playerState)
                     }
                 }
-                IconButton(onClick = onFullscreen) {
-                    Icon(
-                        painterResource(
-                            if (isFullscreen) R.drawable.ic_fullscreen_exit else R.drawable.ic_fullscreen,
-                        ),
-                        contentDescription =
-                            stringResource(
-                                if (isFullscreen) R.string.action_fullscreen_exit else R.string.action_fullscreen_enter,
+                if (showFullscreenButton) {
+                    IconButton(onClick = onFullscreen) {
+                        Icon(
+                            painterResource(
+                                if (isFullscreen) R.drawable.ic_fullscreen_exit else R.drawable.ic_fullscreen,
                             ),
-                    )
+                            contentDescription =
+                                stringResource(
+                                    if (isFullscreen) R.string.action_fullscreen_exit else R.string.action_fullscreen_enter,
+                                ),
+                        )
+                    }
                 }
             }
         },
