@@ -21,11 +21,13 @@ import de.justjanne.voctotv.common.viewmodel.HomeViewModel
 import de.justjanne.voctotv.common.viewmodel.LiveConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerLiveViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerVodViewModel
+import de.justjanne.voctotv.common.viewmodel.WatchLaterViewModel
 import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.tv.route.conference.ConferenceRoute
 import de.justjanne.voctotv.tv.route.home.HomeRoute
 import de.justjanne.voctotv.tv.route.liveconference.LiveConferenceRoute
 import de.justjanne.voctotv.tv.route.player.PlayerRoute
+import de.justjanne.voctotv.tv.route.watchlater.WatchLaterRoute
 
 @Composable
 fun AppRouter() {
@@ -64,6 +66,10 @@ fun AppRouter() {
                         }
 
                     LiveConferenceRoute(viewModel, navigate)
+                }
+                entry<Routes.WatchLater> {
+                    val viewModel = hiltViewModel<WatchLaterViewModel>()
+                    WatchLaterRoute(viewModel, navigate)
                 }
                 entry<Routes.PlayerVod> { key ->
                     val viewModel =

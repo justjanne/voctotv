@@ -25,6 +25,9 @@ object Routes {
     ) : NavKey
 
     @Serializable
+    data object WatchLater : NavKey
+
+    @Serializable
     data class PlayerVod(
         val id: String,
     ) : NavKey

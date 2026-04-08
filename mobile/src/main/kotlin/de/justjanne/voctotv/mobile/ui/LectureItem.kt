@@ -8,7 +8,8 @@
 package de.justjanne.voctotv.mobile.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +18,9 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,22 +28,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import de.justjanne.voctotv.common.util.formatTime
+import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.voctoweb.model.LectureModel
 
 @Composable
 fun LectureItem(
     item: LectureModel,
     onClick: () -> Unit = {},
+    onLongClick: () -> Unit = {},
+    isSaved: Boolean = false,
 ) {
     Row(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .clickable(onClick = onClick)
+                .combinedClickable(onClick = onClick, onLongClick = onLongClick)
                 .padding(16.dp, 4.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
@@ -71,6 +80,14 @@ fun LectureItem(
                         color = MaterialTheme.colorScheme.onSurface,
                     ),
             )
+            if (isSaved) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_star),
+                    contentDescription = stringResource(R.string.action_watch_later),
+                    tint = Color(0xFFFFD54F),
+                    modifier = Modifier.align(Alignment.TopEnd).padding(6.dp).size(18.dp),
+                )
+            }
         }
         Column(Modifier.padding(vertical = 12.dp)) {
             Text(

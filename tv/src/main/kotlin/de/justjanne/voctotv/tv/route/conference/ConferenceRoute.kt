@@ -28,10 +28,12 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
+import de.justjanne.voctotv.common.viewmodel.WatchLaterViewModel
 import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.ui.LectureCard
 import de.justjanne.voctotv.tv.ui.theme.GridGutter
@@ -43,10 +45,12 @@ fun ConferenceRoute(
     viewModel: ConferenceViewModel,
     navigate: (NavKey) -> Unit,
 ) {
+    val watchLaterViewModel = hiltViewModel<WatchLaterViewModel>()
     val conference by viewModel.conference.collectAsState()
     val popular by viewModel.popular.collectAsState()
     val recent by viewModel.recent.collectAsState()
     val itemsByTrack by viewModel.itemsByTrack.collectAsState()
+    val watchLaterIds by watchLaterViewModel.itemIds.collectAsState()
 
     LazyColumn(
         verticalArrangement = Arrangement.Top,
@@ -91,6 +95,8 @@ fun ConferenceRoute(
                         lecture,
                         navigate,
                         if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                        onLongClick = { watchLaterViewModel.toggle(lecture) },
+                        isSaved = watchLaterIds.contains(lecture.guid),
                     )
                 }
             }
@@ -113,6 +119,8 @@ fun ConferenceRoute(
                         lecture,
                         navigate,
                         if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                        onLongClick = { watchLaterViewModel.toggle(lecture) },
+                        isSaved = watchLaterIds.contains(lecture.guid),
                     )
                 }
             }
@@ -135,6 +143,8 @@ fun ConferenceRoute(
                         lecture,
                         navigate,
                         if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                        onLongClick = { watchLaterViewModel.toggle(lecture) },
+                        isSaved = watchLaterIds.contains(lecture.guid),
                     )
                 }
             }

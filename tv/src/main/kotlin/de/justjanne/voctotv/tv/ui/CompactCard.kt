@@ -7,12 +7,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Card
 import androidx.tv.material3.CardBorder
@@ -23,6 +28,7 @@ import androidx.tv.material3.CardScale
 import androidx.tv.material3.CardShape
 import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.ProvideTextStyle
+import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.ui.theme.DescriptionAlpha
 import de.justjanne.voctotv.tv.ui.theme.SubtitleAlpha
 
@@ -36,6 +42,7 @@ internal fun CompactCard(
     subtitle: @Composable () -> Unit = {},
     description: @Composable () -> Unit = {},
     badge: @Composable () -> Unit = {},
+    showWatchLaterStar: Boolean = false,
     shape: CardShape = CardDefaults.shape(),
     colors: CardColors = CardDefaults.compactCardColors(),
     scale: CardScale = CardDefaults.scale(),
@@ -67,6 +74,14 @@ internal fun CompactCard(
                 contentAlignment = Alignment.Companion.Center,
                 content = image,
             )
+            if (showWatchLaterStar) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_star),
+                    contentDescription = stringResource(R.string.action_watch_later),
+                    tint = Color(0xFFFFD54F),
+                    modifier = Modifier.align(Alignment.TopEnd).padding(8.dp).size(20.dp),
+                )
+            }
             Column {
                 ProvideTextStyle(
                     MaterialTheme.typography.titleMedium,

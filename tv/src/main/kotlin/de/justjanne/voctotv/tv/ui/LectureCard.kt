@@ -31,11 +31,15 @@ fun LectureCard(
     lecture: LectureModel,
     navigate: (NavKey) -> Unit,
     modifier: Modifier = Modifier,
+    onLongClick: (() -> Unit)? = null,
+    isSaved: Boolean = false,
 ) {
     CompactCard(
         onClick = {
             navigate(Routes.PlayerVod(lecture.guid))
         },
+        onLongClick = onLongClick,
+        showWatchLaterStar = isSaved,
         modifier =
             modifier
                 .width(268.dp)
