@@ -92,11 +92,11 @@ fun LiveConferenceRoute(
                             modifier = Modifier.padding(16.dp, 4.dp).heightIn(min = 32.dp),
                         )
                     }
-                    items(group.rooms, key = { it.guid }) { item ->
+                    items(group.rooms, key = { it.id() }) { item ->
                         LiveRoomItem(
                             item = item,
                             onClick = {
-                                navigate(Routes.PlayerLive(item.guid))
+                                navigate(Routes.PlayerLive(item.id()))
                             },
                         )
                     }

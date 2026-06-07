@@ -73,7 +73,7 @@ fun buildMediaItem(
         .Builder()
         .setLiveConfiguration(MediaItem.LiveConfiguration.Builder().build())
         .setUri(track.url.toUri())
-        .setMediaId("${room.guid}-${stream.slug}")
+        .setMediaId("${room.id()}-${stream.slug}")
         .setMediaMetadata(
             MediaMetadata
                 .Builder()

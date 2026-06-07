@@ -7,12 +7,15 @@
 
 package de.justjanne.voctotv.voctoweb.model
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonIgnoreUnknownKeys
 import kotlin.uuid.ExperimentalUuidApi
 
-@OptIn(ExperimentalUuidApi::class)
+@OptIn(ExperimentalUuidApi::class, ExperimentalSerializationApi::class)
 @Serializable
+@JsonIgnoreUnknownKeys
 data class LectureModel(
     @SerialName("guid") val guid: String,
     @SerialName("title") val title: String,

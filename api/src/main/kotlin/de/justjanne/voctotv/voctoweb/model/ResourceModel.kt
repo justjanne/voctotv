@@ -7,10 +7,14 @@
 
 package de.justjanne.voctotv.voctoweb.model
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonIgnoreUnknownKeys
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
+@JsonIgnoreUnknownKeys
 data class ResourceModel(
     @SerialName("size") val size: Int?,
     @SerialName("length") val length: Int?,

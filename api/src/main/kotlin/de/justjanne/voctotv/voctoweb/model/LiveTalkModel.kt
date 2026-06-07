@@ -1,15 +1,19 @@
 package de.justjanne.voctotv.voctoweb.model
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonContentPolymorphicSerializer
 import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonIgnoreUnknownKeys
 import kotlinx.serialization.json.jsonObject
 
 @Serializable(with = LiveTalkModel.Serializer::class)
 sealed interface LiveTalkModel {
+    @OptIn(ExperimentalSerializationApi::class)
     @Serializable
+    @JsonIgnoreUnknownKeys
     data class Break(
         @SerialName("fstart")
         val startTimestamp: Timestamp,
@@ -47,7 +51,9 @@ sealed interface LiveTalkModel {
         val url: String? = null,
     ) : LiveTalkModel
 
+    @OptIn(ExperimentalSerializationApi::class)
     @Serializable
+    @JsonIgnoreUnknownKeys
     data class Talk(
         @SerialName("fstart")
         val startTimestamp: Timestamp,

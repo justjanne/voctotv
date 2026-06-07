@@ -42,7 +42,7 @@ fun LiveRoomCardCard(
 
     CompactCard(
         onClick = {
-            navigate(Routes.PlayerLive(room.guid))
+            navigate(Routes.PlayerLive(room.id()))
         },
         modifier =
             modifier

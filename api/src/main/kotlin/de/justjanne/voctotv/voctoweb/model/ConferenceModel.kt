@@ -7,13 +7,18 @@
 
 package de.justjanne.voctotv.voctoweb.model
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonIgnoreUnknownKeys
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
+@JsonIgnoreUnknownKeys
 data class ConferenceModel(
     @SerialName("acronym") val acronym: String,
     @SerialName("aspect_ratio") val aspectRatio: String,
+    @SerialName("created_at") val createdAt: Timestamp?,
     @SerialName("updated_at") val updatedAt: Timestamp?,
     @SerialName("title") val title: String,
     @SerialName("schedule_url") val scheduleUrl: String?,

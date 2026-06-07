@@ -1,12 +1,16 @@
 package de.justjanne.voctotv.voctoweb.model
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonIgnoreUnknownKeys
 
+@OptIn(ExperimentalSerializationApi::class)
 @Serializable
+@JsonIgnoreUnknownKeys
 data class LiveRoomModel(
     @SerialName("guid")
-    val guid: String,
+    val guid: String?,
     @SerialName("slug")
     val slug: String,
     @SerialName("schedulename")
@@ -25,4 +29,6 @@ data class LiveRoomModel(
     val talks: LiveRoomTalksModel,
     @SerialName("streams")
     val streams: List<LiveStreamModel>,
-)
+) {
+    fun id() = this.guid ?: this.slug
+}

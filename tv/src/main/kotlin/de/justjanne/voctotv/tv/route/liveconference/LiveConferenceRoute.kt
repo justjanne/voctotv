@@ -83,7 +83,7 @@ fun LiveConferenceRoute(
                     contentPadding = PaddingValues(horizontal = GridGutter, vertical = GridPadding),
                     modifier = Modifier.focusRestorer(focusRequester),
                 ) {
-                    itemsIndexed(group.rooms, key = { _, room -> room.guid }) { index, room ->
+                    itemsIndexed(group.rooms, key = { _, room -> room.id() }) { index, room ->
                         LiveRoomCardCard(
                             room,
                             navigate,

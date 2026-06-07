@@ -49,7 +49,7 @@ fun LiveRow(
         contentPadding = PaddingValues(vertical = GridPadding, horizontal = GridGutter),
         modifier = Modifier.focusRestorer(focusRequester),
     ) {
-        itemsIndexed(rooms, key = { _, item -> item.room.guid }) { index, item ->
+        itemsIndexed(rooms, key = { _, item -> item.room.id() }) { index, item ->
             val modifier = if (index == 0) Modifier.focusRequester(focusRequester) else Modifier
 
             Column {
@@ -58,7 +58,7 @@ fun LiveRow(
                     imageCard = { interactionSource ->
                         VoctoTvTheme(isInDarkTheme = false) {
                             Card(
-                                onClick = { navigate(Routes.PlayerLive(item.room.guid)) },
+                                onClick = { navigate(Routes.PlayerLive(item.room.id())) },
                                 modifier =
                                     Modifier
                                         .aspectRatio(16f / 9),

@@ -45,7 +45,7 @@ class VoctowebLiveService
             for (conference in conferences) {
                 for (group in conference.groups) {
                     for (room in group.rooms) {
-                        if (room.guid == roomId) {
+                        if (room.id() == roomId) {
                             return VideoModel.Live(conference, room)
                         }
                     }
