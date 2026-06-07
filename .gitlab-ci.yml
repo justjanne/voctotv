@@ -33,3 +33,16 @@ test:
       junit:
         - "*/build/test-results/**/TEST-*.xml"
         - "*/build/reports/*.xml"
+
+deploy-local:
+  stage: "release"
+  image: "quay.io/minio/mc:RELEASE.2025-08-13T08-35-41Z"
+  cache: { }
+  dependencies:
+    - "test"
+  script:
+    - "mc cp $S3_CONFIG /root/.mc/config.json"
+    - "mc find /repo --name '*.apk' --exec 'mc cp {} s3/releases/voctotv/'"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: on_success
