@@ -19,10 +19,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavKey
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import de.justjanne.voctotv.common.viewmodel.SearchViewModel
+import de.justjanne.voctotv.common.viewmodel.WatchLaterViewModel
 import de.justjanne.voctotv.mobile.Routes
 import de.justjanne.voctotv.mobile.ui.LectureItem
 
@@ -33,8 +35,10 @@ fun SearchRoute(
     navigate: (NavKey) -> Unit,
     back: () -> Unit,
 ) {
+    val watchLaterViewModel = hiltViewModel<WatchLaterViewModel>()
     val query by viewModel.query.collectAsState()
     val results = viewModel.results.collectAsLazyPagingItems()
+    val watchLaterIds = watchLaterViewModel.itemIds.collectAsState().value
 
     val focusRequester = remember { FocusRequester() }
 
@@ -70,7 +74,9 @@ fun SearchRoute(
                     if (item != null) {
                         LectureItem(
                             item = item,
+                            isSaved = watchLaterIds.contains(item.guid),
                             onClick = { navigate(Routes.PlayerVod(item.guid)) },
+                            onLongClick = { watchLaterViewModel.toggle(item) },
                         )
                     }
                 }

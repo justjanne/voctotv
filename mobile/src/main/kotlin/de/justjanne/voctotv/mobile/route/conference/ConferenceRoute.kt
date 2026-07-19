@@ -36,8 +36,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavKey
 import de.justjanne.voctotv.common.viewmodel.ConferenceViewModel
+import de.justjanne.voctotv.common.viewmodel.WatchLaterViewModel
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
 import de.justjanne.voctotv.mobile.ui.LectureItem
@@ -49,10 +51,12 @@ fun ConferenceRoute(
     navigate: (NavKey) -> Unit,
     back: () -> Unit,
 ) {
+    val watchLaterViewModel = hiltViewModel<WatchLaterViewModel>()
     val conference = viewModel.conference.collectAsState().value
     val currentFilter = viewModel.currentFilter.collectAsState().value
     val filterOptions = viewModel.filterOptions.collectAsState().value
     val filteredItems = viewModel.filteredItems.collectAsState().value
+    val watchLaterIds = watchLaterViewModel.itemIds.collectAsState().value
 
     Scaffold(
         topBar = {
@@ -125,9 +129,11 @@ fun ConferenceRoute(
                     items(filteredItems, key = { it.guid }) { item ->
                         LectureItem(
                             item = item,
+                            isSaved = watchLaterIds.contains(item.guid),
                             onClick = {
                                 navigate(Routes.PlayerVod(item.guid))
                             },
+                            onLongClick = { watchLaterViewModel.toggle(item) },
                         )
                     }
                 }

@@ -32,12 +32,17 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.ExperimentalTvMaterial3Api
+import androidx.tv.material3.Icon
+import androidx.tv.material3.IconButton
 import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.Text
 import de.justjanne.voctotv.common.viewmodel.ConferenceKind
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
+import de.justjanne.voctotv.common.viewmodel.WatchLaterViewModel
+import de.justjanne.voctotv.tv.Routes
 import de.justjanne.voctotv.tv.R
 import de.justjanne.voctotv.tv.ui.LectureCard
 import de.justjanne.voctotv.tv.ui.theme.GridGutter
@@ -49,10 +54,12 @@ fun HomeRoute(
     viewModel: HomeViewModel,
     navigate: (NavKey) -> Unit,
 ) {
+    val watchLaterViewModel = hiltViewModel<WatchLaterViewModel>()
     val conferences by viewModel.conferences.collectAsState()
     val recent by viewModel.recentResult.collectAsState()
     val popular by viewModel.popularResult.collectAsState()
     val featuredItems by viewModel.featuredItems.collectAsState()
+    val watchLaterIds by watchLaterViewModel.itemIds.collectAsState()
 
     val focusRequester = remember { FocusRequester() }
 
@@ -79,12 +86,26 @@ fun HomeRoute(
                     modifier = Modifier.height(32.dp),
                     colorFilter = ColorFilter.tint(LocalContentColor.current),
                 )
+                IconButton(
+                    onClick = { navigate(Routes.WatchLater) },
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_star),
+                        contentDescription = stringResource(R.string.action_watch_later),
+                    )
+                }
             }
         }
 
         if (featuredItems.isNotEmpty()) {
             item("featured") {
-                FeaturedCarousel(featuredItems, navigate, Modifier.focusRequester(focusRequester))
+                FeaturedCarousel(
+                    items = featuredItems,
+                    navigate = navigate,
+                    isLectureSaved = { guid -> watchLaterIds.contains(guid) },
+                    onLectureLongClick = { lecture -> watchLaterViewModel.toggle(lecture) },
+                    modifier = Modifier.focusRequester(focusRequester),
+                )
             }
         }
 
@@ -106,6 +127,8 @@ fun HomeRoute(
                             lecture,
                             navigate,
                             if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                            onLongClick = { watchLaterViewModel.toggle(lecture) },
+                            isSaved = watchLaterIds.contains(lecture.guid),
                         )
                     }
                 }
@@ -130,6 +153,8 @@ fun HomeRoute(
                             lecture,
                             navigate,
                             if (index == 0) Modifier.focusRequester(focusRequester) else Modifier,
+                            onLongClick = { watchLaterViewModel.toggle(lecture) },
+                            isSaved = watchLaterIds.contains(lecture.guid),
                         )
                     }
                 }

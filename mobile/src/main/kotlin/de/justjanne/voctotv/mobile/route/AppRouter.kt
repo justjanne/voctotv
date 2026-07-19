@@ -25,12 +25,14 @@ import de.justjanne.voctotv.common.viewmodel.LiveConferenceViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerLiveViewModel
 import de.justjanne.voctotv.common.viewmodel.PlayerVodViewModel
 import de.justjanne.voctotv.common.viewmodel.SearchViewModel
+import de.justjanne.voctotv.common.viewmodel.WatchLaterViewModel
 import de.justjanne.voctotv.mobile.Routes
 import de.justjanne.voctotv.mobile.route.conference.ConferenceRoute
 import de.justjanne.voctotv.mobile.route.home.HomeRoute
 import de.justjanne.voctotv.mobile.route.liveconference.LiveConferenceRoute
 import de.justjanne.voctotv.mobile.route.player.PlayerRoute
 import de.justjanne.voctotv.mobile.route.search.SearchRoute
+import de.justjanne.voctotv.mobile.route.watchlater.WatchLaterRoute
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -81,6 +83,10 @@ fun AppRouter(startRoute: NavKey? = null) {
                 entry<Routes.Search> {
                     val viewModel = hiltViewModel<SearchViewModel>()
                     SearchRoute(viewModel, navigate, back)
+                }
+                entry<Routes.WatchLater> {
+                    val viewModel = hiltViewModel<WatchLaterViewModel>()
+                    WatchLaterRoute(viewModel, navigate, back)
                 }
                 entry<Routes.PlayerVod> { key ->
                     val viewModel =

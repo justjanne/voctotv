@@ -22,6 +22,8 @@
   <string name="action_play">Play</string>
   <string name="action_restart">Play Again</string>
   <string name="action_search">Search</string>
+  <string name="action_watch_later">Watch Later</string>
+  <string name="action_toggle_watch_later">Toggle Watch Later</string>
   <string name="action_fullscreen_enter">Enter Fullscreen</string>
   <string name="action_fullscreen_exit">Exit Fullscreen</string>
 
@@ -38,6 +40,7 @@
 
   <string name="search_results_placeholder">Enter a search term to start searching.</string>
   <string name="search_results_notfound">No results found for "%1$s"</string>
+  <string name="watch_later_empty">No saved videos yet. Long press a video to add it.</string>
 
   <string name="schedule_break">Break</string>
   <string name="schedule_current">Now playing:</string>

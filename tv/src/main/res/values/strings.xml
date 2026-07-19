@@ -16,6 +16,8 @@
 
   <string name="action_watchnow">Watch now</string>
   <string name="action_back">Back</string>
+  <string name="action_watch_later">Watch Later</string>
+  <string name="action_toggle_watch_later">Toggle Watch Later</string>
   <string name="action_pause">Pause</string>
   <string name="action_play">Play</string>
   <string name="action_replay">Play Again</string>
@@ -30,6 +32,7 @@
   <string name="category_popular">Popular</string>
 
   <string name="video_info_views">Views</string>
+  <string name="watch_later_empty">No saved videos yet. Long press a video to add it.</string>
 
   <string name="schedule_break">Break</string>
   <string name="schedule_current">Now playing:</string>

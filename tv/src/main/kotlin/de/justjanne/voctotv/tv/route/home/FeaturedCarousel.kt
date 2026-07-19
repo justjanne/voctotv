@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavKey
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import de.justjanne.voctotv.common.viewmodel.FeaturedItem
+import de.justjanne.voctotv.voctoweb.model.LectureModel
 import de.justjanne.voctotv.tv.ui.carousel.HeroCarousel
 
 @OptIn(ExperimentalTvMaterial3Api::class)
@@ -19,11 +20,19 @@ import de.justjanne.voctotv.tv.ui.carousel.HeroCarousel
 fun FeaturedCarousel(
     items: List<FeaturedItem>,
     navigate: (NavKey) -> Unit,
+    isLectureSaved: (String) -> Boolean,
+    onLectureLongClick: (LectureModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     HeroCarousel(items.size, modifier = modifier) { index ->
         when (val item = items[index]) {
-            is FeaturedItem.Lecture -> HeroCarouselLecture(item, navigate)
+            is FeaturedItem.Lecture ->
+                HeroCarouselLecture(
+                    item = item,
+                    navigate = navigate,
+                    isSaved = isLectureSaved(item.lecture.guid),
+                    onLongClick = { onLectureLongClick(item.lecture) },
+                )
             is FeaturedItem.Stream -> HeroCarouselStream(item, navigate)
         }
     }

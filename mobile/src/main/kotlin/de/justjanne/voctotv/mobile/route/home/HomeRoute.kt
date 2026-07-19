@@ -36,10 +36,12 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavKey
 import de.justjanne.voctotv.common.viewmodel.ConferenceKind
 import de.justjanne.voctotv.common.viewmodel.FeaturedItem
 import de.justjanne.voctotv.common.viewmodel.HomeViewModel
+import de.justjanne.voctotv.common.viewmodel.WatchLaterViewModel
 import de.justjanne.voctotv.common.viewmodel.kind
 import de.justjanne.voctotv.mobile.R
 import de.justjanne.voctotv.mobile.Routes
@@ -51,9 +53,11 @@ fun HomeRoute(
     viewModel: HomeViewModel,
     navigate: (NavKey) -> Unit,
 ) {
+    val watchLaterViewModel = hiltViewModel<WatchLaterViewModel>()
     val currentFilter = viewModel.currentFilter.collectAsState().value
     val filteredItems = viewModel.filteredItems.collectAsState().value
     val featuredItems = viewModel.featuredItems.collectAsState().value
+    val watchLaterIds = watchLaterViewModel.itemIds.collectAsState().value
 
     Scaffold(
         topBar = {
@@ -72,6 +76,14 @@ fun HomeRoute(
                         Icon(
                             painterResource(R.drawable.ic_search),
                             contentDescription = stringResource(R.string.action_search),
+                        )
+                    }
+                    IconButton(
+                        onClick = { navigate(Routes.WatchLater) },
+                    ) {
+                        Icon(
+                            painterResource(R.drawable.ic_star),
+                            contentDescription = stringResource(R.string.action_watch_later),
                         )
                     }
                 },
@@ -98,7 +110,13 @@ fun HomeRoute(
                 item("featured") {
                     HeroCarousel(count = featuredItems.size) { index ->
                         when (val item = featuredItems[index]) {
-                            is FeaturedItem.Lecture -> HeroCarouselLecture(item, navigate)
+                            is FeaturedItem.Lecture ->
+                                HeroCarouselLecture(
+                                    item = item,
+                                    navigate = navigate,
+                                    isSaved = watchLaterIds.contains(item.lecture.guid),
+                                    onLongClick = { watchLaterViewModel.toggle(item.lecture) },
+                                )
                             is FeaturedItem.Stream -> HeroCarouselStream(item, navigate)
                         }
                     }
