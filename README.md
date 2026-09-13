@@ -22,18 +22,17 @@ A stylish new AndroidTV client for media.ccc.de.
 
 ### TV
 
-<a href="metadata/screenshots/tv/home.png"><img src="metadata/screenshots/tv/home.png" width="640"></a>
+<a href="metadata/en-GB/images/tvScreenshots/1_en-GB.png"><img src="metadata/en-GB/images/tvScreenshots/1_en-GB.png" width="640"></a>
 
-<a href="metadata/screenshots/tv/seeking.png"><img src="metadata/screenshots/tv/seeking.png" width="320"></a>
-<a href="metadata/screenshots/tv/info3.png"><img src="metadata/screenshots/tv/info3.png" width="320"></a>
+<a href="metadata/en-GB/images/tvScreenshots/2_en-GB.png"><img src="metadata/en-GB/images/tvScreenshots/2_en-GB.png" width="320"></a>
+<a href="metadata/en-GB/images/tvScreenshots/3_en-GB.png"><img src="metadata/en-GB/images/tvScreenshots/3_en-GB.png" width="320"></a>
 
 ### Smartphone
 
-<a href="metadata/screenshots/phone/seeking.png"><img src="metadata/screenshots/phone/seeking.png" width="640"></a>
-<a href="metadata/screenshots/phone/info1.png"><img src="metadata/screenshots/phone/info1.png" width="640"></a>
+<a href="metadata/en-GB/images/phoneScreenshots/1_en-GB.png"><img src="metadata/en-GB/images/phoneScreenshots/1_en-GB.png" width="640"></a>
+<a href="metadata/en-GB/images/phoneScreenshots/2_en-GB.png"><img src="metadata/en-GB/images/phoneScreenshots/2_en-GB.png" width="640"></a>
 
-<a href="metadata/screenshots/phone/home.png"><img src="metadata/screenshots/phone/home.png" width="320"></a>
-<a href="metadata/screenshots/phone/conference.png"><img src="metadata/screenshots/phone/conference.png" width="320"></a>
+<a href="metadata/en-GB/images/phoneScreenshots/3_en-GB.png"><img src="metadata/en-GB/images/phoneScreenshots/3_en-GB.png" width="640"></a>
 
 ## License
 
